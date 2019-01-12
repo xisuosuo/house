@@ -45,7 +45,7 @@
                 <Col span="12">
                 <div class="left name" style="margin-top: 5px">
                   <h2 style="display:inline-block;width:90px">{{value.name}}</h2>
-                  <Icon @click="detail(index,value)" type="ios-information-circle" color="#2d8cf0" size="17" />
+                  <Icon @click="detail(index,value)" type="ios-information-circle" color="#2d8cf0" size="17"  title="小区信息详情" style="margin-bottom:8px;"/>
                   <p style="margin-top: 5px">
                     <span>建面：</span>{{value.area}}/m2</p>
                   <p style="margin-top: 5px;color: red">
