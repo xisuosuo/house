@@ -50,7 +50,7 @@
                     <span>建面：</span>{{value.area}}/m2</p>
                   <p style="margin-top: 5px;color: red">
                     <span>均价：</span>{{value.price}}元</p>
-                  <a @click="getInfo(index,value)" style="font-size: 10px">查看小区周边详情>></a>
+                  <a @click="getInfo(index,value)" style="font-size: 10px">查看小区周边情>></a>
                 </div>
                 </Col>
               </Row>
