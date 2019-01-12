@@ -201,7 +201,7 @@
                         </Row>
                         <FormItem>
                             <div style="text-align: center;margin-top:20px">
-                                <Button style="margin-right: 20px" type="primary" @click="tomapMatching">确定</Button>
+                                <Button style="margin-right: 20px" type="primary" @click="showTable">确定</Button>
                                 <Button style="margin-right: 80px">重置</Button>
                             </div>
                         </FormItem>
@@ -287,23 +287,26 @@
                 }
                 this.percent3 -= 10;
             },
-            tomapMatching() {
-                Server.get({
-                    url: services.rightHouseInfo,
-                    params: {
-                        sorting: "",
-                        column: ""
-                    }
-                }).then(rsp => {
-                    if (rsp.status === 1) {
-                        // this_.information = rsp.data;
-                        userMessage.commit("user_message", rsp);
-                        // this_.total = rsp.length;
-                    }
-                });
-
-                this.$router.push("/mapMatching");
+            showTable(){
+                this.$router.push("/recommendHousing");
             }
+            // tomapMatching() {
+            //     Server.get({
+            //         url: services.rightHouseInfo,
+            //         params: {
+            //             sorting: "",
+            //             column: ""
+            //         }
+            //     }).then(rsp => {
+            //         if (rsp.status === 1) {
+            //             // this_.information = rsp.data;
+            //             userMessage.commit("user_message", rsp);
+            //             // this_.total = rsp.length;
+            //         }
+            //     });
+
+            //     this.$router.push("/mapMatching");
+            // }
         },
     };
 </script>

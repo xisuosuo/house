@@ -34,7 +34,7 @@
         </div>
         <div class="list-wrap3" style="overflow: auto;height:580px">
           <choice v-if="showChoice" />
-          <div @click="detail(index,value)" v-for="(value,index) in information" :key="index">
+          <div v-for="(value,index) in information" :key="index">
             <div style="margin: 10px;border-bottom:1px solid #999">
               <Row>
                 <Col span="12">
@@ -44,7 +44,8 @@
                 </Col>
                 <Col span="12">
                 <div class="left name" style="margin-top: 5px">
-                  <h2>{{value.name}}</h2>
+                  <h2 style="display:inline-block;width:90px">{{value.name}}</h2>
+                  <Icon @click="detail(index,value)" type="ios-information-circle" color="#2d8cf0" size="17" />
                   <p style="margin-top: 5px">
                     <span>建面：</span>{{value.area}}/m2</p>
                   <p style="margin-top: 5px;color: red">

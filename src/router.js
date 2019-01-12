@@ -148,6 +148,20 @@ export default new Router({
           }, ]
         },
         {
+          path: '/recommendHousing',
+          redirect: '/',
+          name: '推荐房源',
+          component: () =>
+            import('@/views/recommendation/recommendHousing.vue'),
+          children: [{
+            path: '/',
+
+            name: '推荐房源',
+            component: () =>
+              import('@/views/recommendation/recommendHousing.vue')
+          }, ]
+        },
+        {
           path: '/mapMatching',
           redirect: '/',
           name: '地图匹配',
