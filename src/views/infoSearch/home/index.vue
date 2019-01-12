@@ -79,7 +79,7 @@ export default {
       list: [],
       dialog: false,
       pageSize: 10,
-      txt_select: "",
+      txt_select: "小区",
       data: [],
       baseLayer: "",
       street: "",
@@ -413,7 +413,7 @@ export default {
   }
 };
 </script>
-<style  >
+<style>
 .main .container-fluid {
   padding: 0 0px;
 }
@@ -482,5 +482,10 @@ export default {
   position: absolute;
   right: 0;
   z-index: 3;
+}
+.esri-popup--is-docked-top-right .esri-popup__main-container {
+  max-height: 80%;
+  margin-top: 40px;
+  margin-right: 45px;
 }
 </style>

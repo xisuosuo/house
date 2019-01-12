@@ -7,7 +7,7 @@
           <Icon type="md-globe" size='40' color='white' />
           </Col>
           <Col span="17">
-          <span style='margin-left: 10px; font-size: 24px;color: white;font-family: sans-serif;'>滁州市“商品住宅”推荐系统</span>
+          <span style='margin-left: 10px; font-size: 24px;color: white;font-family: sans-serif;'>滁州市“商品住宅”选择推荐系统</span>
           <span class="sub-title">
             <span>({{this.name}})</span>
           </span>
@@ -29,12 +29,16 @@
               <DropdownMenu slot="list">
                 <div @click="getInfo()">
                   <DropdownItem divided>
-                    <icon type="ios-exit-outline" :size="16" />
+                    <icon type="ios-person-outline" :size="16" />
                     <span> 个人中心</span>
                   </DropdownItem>
                 </div>
                 <DropdownItem name="changePsd" divided>
-                  <icon type="ios-exit-outline" :size="16" />
+                  <icon type="ios-cart-outline" :size="16" />
+                  <span> 我的收藏</span>
+                </DropdownItem>
+                <DropdownItem name="changePsd" divided>
+                  <icon type="ios-lock-outline" :size="16" />
                   <span> 修改密码</span>
                 </DropdownItem>
                 <DropdownItem name="exit" divided>
@@ -149,7 +153,6 @@ export default {
 .toggle {
   font-size: 18px;
   color: white;
-
   margin-left: 10px;
   display: inline-block;
   cursor: pointer;

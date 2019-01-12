@@ -11,7 +11,8 @@
       <div class="wrapper">
         <div class="logo">
           <img src="../../assets/img/logo/gh_logo.png" width="60" />
-          <span class="title">滁州市“房源推荐”系统</span>
+          <span class="title">滁州市“商品住宅选择推荐 ”系统
+          </span>
         </div>
       </div>
     </header>
@@ -104,11 +105,12 @@ export default {
     .wrapper {
       height: 120px;
       width: 1024px;
-      padding-left: 20px;
+      margin-bottom: 20px;
+      padding-bottom: 20px;
       margin: 0 auto;
       .logo {
         float: left;
-        margin-top: 50px;
+        margin-top: 30px;
         * {
           vertical-align: middle;
         }
@@ -137,6 +139,7 @@ export default {
   }
   section {
     position: relative;
+    top: -10px;
     margin: 0 auto;
     background-size: cover;
     width: 100%;
@@ -180,7 +183,7 @@ export default {
 .login-content_style1 {
   position: absolute;
   top: 80px;
-  right: 75px;
+  right: 105px;
   padding: 20px;
   background-color: rgba(255, 255, 255, 0.3);
   border-radius: 4px;
