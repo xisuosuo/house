@@ -1,54 +1,52 @@
 <template>
     <Content>
-        <div class="data-view" style="margin-top: 55px">
+        <div class="data-view" style="margin-top: 55px;overflow: hidden;">
             <div title="数据台账">
                 <div class="group-panel-box blue">
                     <div class="panel-title">数据台账</div>
                     <div class="panel-line"></div>
                 </div>
             </div>
-            <Row :gutter="16">
-                <Col span="12" class="left">
-                    <card title="滁州市管理边界">
-                        <div slot="">
-                        </div>
-                        <span class="chartImage"  >
+            <Row :gutter="30">
+                <Col  span="12">
+                    <card title="滁州市管理边界" style="margin-left: 10%">
+                        <span class="chartImage">
                               <span @click="onDownChartImg('chartMap')"><Icon type="ios-download-outline" :size="22"></Icon></span>
                              </span>
                         <div id="chartMap" class="chart"></div>
                     </card>
                 </Col>
-                <Col span="12" class="left">
-                    <card title="滁州市房价走势">
+                <Col span="12">
+                    <card title="滁州市房价走势" style="margin-right: 10%">
                              <span class="chartImage"  >
                               <span @click="onDownChartImg('trend')"><Icon type="ios-download-outline" :size="22"></Icon></span>
                              </span>
-                        <div id="trend" class="chart"></div>
+                        <div id="trend" style="height: 200px;width: 600px;z-index: 9999"></div>
                     </card>
                 </Col>
             </Row>
             <br>
-            <Row :gutter="16">
-                <Col span="12" class="left">
-                    <card  title="滁州市城区房价对比">
+            <Row :gutter="30">
+                <Col span="12">
+                    <card  title="滁州市城区房价对比" style="margin-left: 10%">
                              <span class="chartImage"  >
                               <span @click="onDownChartImg('comprise')"><Icon type="ios-download-outline" :size="22"></Icon></span>
                              </span>
-                        <div id="comprise" class="chart"></div>
+                        <div id="comprise"  style="height: 210px;width: 600px"></div>
                     </card>
                 </Col>
-                <Col span="12" class="left">
-                    <card title="滁州市城区公服设施数量">
+                <Col span="12">
+                    <card title="滁州市城区公服设施数量" style="margin-right: 10%">
                               <span class="chartImage"  >
                               <span @click="onDownChartImg('chart')"><Icon type="ios-download-outline" :size="22"></Icon></span>
                              </span>
-                        <div style="height: 30px;width: 100%">
-                            <Select @on-change="publicNumCharts" v-model="model1" class="slelectInput" placeholder="城东">
+                        <div style="height: 30px;width: 100%;">
+                            <Select size="small" @on-change="publicNumCharts" v-model="model1" class="slelectInput" placeholder="城东">
                                 <Option  v-for="item in cityList" :value="item.value" :key="item.value">{{ item.label }}
                                 </Option>
                             </Select>
                         </div>
-                        <div id="publicNum" style="height: 370px" ></div>
+                        <div id="publicNum" style="height: 180px;width: 600px" ></div>
                     </card>
                 </Col>
             </Row>
@@ -110,7 +108,7 @@
                 }
                 onemap.server
                     .get({
-                        url: "js/json/cz.geojson"
+                        url: "js/json/liangqu.json"
                     })
                     .then(rsp => {
                         this.loading.map = false;
@@ -119,7 +117,7 @@
                         rsp.features.forEach(item => {
                             let properties = item.properties;
                             xData.push({
-                                name: properties.name,
+                                name:properties.NAME,
                                 value: properties.price,
                                 itemStyle: {
                                     color: properties.color
@@ -160,9 +158,21 @@
                         type: 'category',
                         data: ['2015', '2016', '2017', '2018']
                     },
+                    grid: {
+                        left: '1%',
+                        right: '3%',
+                        bottom: '7%',
+                        top: '3%',
+                        containLabel: true
+                    },
                     yAxis: {
-                        name: '元',
-                        type: 'value'
+                        min:0,
+                        max:8000,
+                        interval: 2000,
+                        type: 'value',
+                        axisLabel: {
+                            formatter: '{value} 元'
+                        }
                     },
                     series: [{
                         label: {
@@ -185,12 +195,13 @@
                         trigger: 'axis'
                     },
                     legend: {
-                        data: ['城东', '城南', '城西', '城北']
+                        data: ['城东', '城南', '城西', '城北'],
                     },
                     grid: {
-                        left: '3%',
-                        right: '5%',
-                        bottom: '5%',
+                        left: '1%',
+                        right: '1%',
+                        bottom: '7%',
+                        top: '22%',
                         containLabel: true
                     },
                     xAxis: {
@@ -285,6 +296,12 @@
                             type: 'category',
                             data: ['学校', '医院', '政府机构', '商场', '车站']
                         },
+                        grid: {
+                            left: '1%',
+                            right: '5%',
+                            bottom: '1%',
+                            top: '15%',
+                        },
                         yAxis: {
                             name: '个',
                             type: 'value'
@@ -307,17 +324,17 @@
     };
 </script>
 <style lang="less" scoped>
-    .ivu-layout {
-        height: 1024px;
-    }
-
     .group-panel-box {
         &.blue {
             .panel-title {
                 background: #2d8cf0;
-            }
+                margin-left: 5%;
+                margin-right: 5%
+        }
             .panel-line {
                 background: #2d8cf0;
+                margin-left: 5%;
+                margin-right: 5%
             }
         }
         .panel-title {
@@ -343,26 +360,24 @@
         cursor: pointer;
     }
     .slelectInput{
-        width: 200px;
+        width: 80px;
         float: right;
     }
-
+    .chart {
+        height: 200px;
+        width: 600px;
+    }
     .data-view {
         padding: 20px;
-        height: 1450px;
         .group-header {
             height: 20px;
         }
         .ivu-row {
-            .left {
-                padding-right: 10px;
-            }
+            /*.left {*/
+                /*padding-right: 10px;*/
+            /*}*/
             .right {
                 padding-left: 10px;
-            }
-            .chart {
-                height: 400px;
-                width: 100%;
             }
             .card-box {
                 .card-tools {
