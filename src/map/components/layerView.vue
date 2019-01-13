@@ -66,8 +66,7 @@ export default {
     changegj() {
       if (this.gj == false) {
         debugger;
-        onemap.pubsub.publish("clear");
-        this.list = [];
+        // onemap.pubsub.publish("clear");
         onemap.pubsub.publish("drawMarkerByList", {
           list: this.list
         });

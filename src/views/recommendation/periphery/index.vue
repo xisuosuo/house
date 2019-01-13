@@ -34,6 +34,7 @@
 <script>
 import routerView from "@/map/components/routerView";
 import Server from "@/core/server";
+import { MapAPI } from "@/core/config/const";
 import { services } from "@/core/config/services";
 import Item from "./components/item";
 import aroundInfo from "@/vuex/store";

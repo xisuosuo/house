@@ -107,8 +107,7 @@ class GDrawGraphic {
             pts.push(pt);
           }
           var item = list[index];
-          var symbol = GMapSymbol.getMarkerPoiSymbol({
-          });
+          var symbol = GMapSymbol.getMarkerPoiSymbol({});
           var graphic = new Graphic({
             geometry: pt,
             symbol: symbol,
