@@ -35,7 +35,7 @@
         <div class="list-wrap3" style="overflow: auto;height:580px">
           <choice v-if="showChoice" />
           <div v-for="(value,index) in information" :key="index">
-            <div style="margin: 10px;border-bottom:1px solid #999">
+            <div @click="location(index,value)" style="margin: 10px;border-bottom:1px solid #999">
               <Row>
                 <Col span="12">
                 <div class="left mend_img">
@@ -43,9 +43,11 @@
                 </div>
                 </Col>
                 <Col span="12">
-                <div class="left name" style="margin-top: 5px">
-                  <h2 style="display:inline-block;width:90px">{{value.name}}</h2>
-                  <Icon @click="detail(index,value)" type="ios-information-circle" color="#2d8cf0" size="17"  title="小区信息详情" style="margin-bottom:8px;"/>
+                <div  class="left name" style="margin-top: 5px">
+                  <h2 style="display:inline-block;width:140px">{{value.name}}</h2>
+                  <Icon @click="detail(index,value)" type="ios-information-circle" color="#2d8cf0" size="17" title="小区信息详情" style="margin-bottom:8px;" />
+                  <Icon id="collection" size="19" @click="Collection" v-show="downIcon" style="margin-bottom:9px" type="md-star-outline"/>
+                  <Icon id="collection" size="19" @click="Collection" v-show="!downIcon" style="margin-bottom:9px" type="md-star" color="#2d8cf0" />
                   <p style="margin-top: 5px">
                     <span>建面：</span>{{value.area}}/m2</p>
                   <p style="margin-top: 5px;color: red">
@@ -109,6 +111,7 @@ export default {
   },
   data() {
     return {
+      downIcon:true,
       total: "",
       map: true,
       info: false,
@@ -179,26 +182,26 @@ export default {
     detail(index, value) {
       this.currentImg = value.image;
       this.houseName = value.name;
-      for (var i = 0, g; (g = window.mapview.graphics.items[i]); i++) {
-        var pIndex = "p" + index;
-        if (g.attributes.id === value.pIndex) {
-          var geometry = null;
-          if (g.geometry.type === "point") {
-            geometry = g.geometry;
-          } else {
-            var extent = g.geometry.extent.clone();
-            geometry = extent.expand(2);
-          }
-          window.mapview.goTo(geometry);
-          var attributes = g.attributes;
-          mapApi.popup.show({
-            mapView: window.mapview,
-            res: attributes.attr,
-            centerPt: attributes.centerPt
-          });
-          break;
-        }
-      }
+      // for (var i = 0, g; (g = window.mapview.graphics.items[i]); i++) {
+      //   var pIndex = "p" + index;
+      //   if (g.attributes.id === value.pIndex) {
+      //     var geometry = null;
+      //     if (g.geometry.type === "point") {
+      //       geometry = g.geometry;
+      //     } else {
+      //       var extent = g.geometry.extent.clone();
+      //       geometry = extent.expand(2);
+      //     }
+      //     window.mapview.goTo(geometry);
+      //     var attributes = g.attributes;
+      //     mapApi.popup.show({
+      //       mapView: window.mapview,
+      //       res: attributes.attr,
+      //       centerPt: attributes.centerPt
+      //     });
+      //     break;
+      //   }
+      // }
       this.info = true;
       var _this = this;
       this.houseName = value.name;
@@ -219,6 +222,7 @@ export default {
         }
       });
     },
+
     giveOrder(value) {
       document.getElementById("part").style.display = "block";
       this.order = value.name;
@@ -237,6 +241,33 @@ export default {
           this_.total = rsp.length;
         }
       });
+    },
+    location(index, value) {
+      for (var i = 0, g; (g = window.mapview.graphics.items[i]); i++) {
+        var pIndex = "p" + index;
+        if (g.attributes.id === value.pIndex) {
+          var geometry = null;
+          if (g.geometry.type === "point") {
+            geometry = g.geometry;
+          } else {
+            var extent = g.geometry.extent.clone();
+            geometry = extent.expand(2);
+          }
+          window.mapview.goTo(geometry);
+          var attributes = g.attributes;
+          mapApi.popup.show({
+            mapView: window.mapview,
+            res: attributes.attr,
+            centerPt: attributes.centerPt
+          });
+          break;
+        }
+      }
+    },
+    Collection(){
+      this.downIcon = !this.downIcon;
+
+
     },
     changeStyle() {
       var obj = document.getElementById("drop");

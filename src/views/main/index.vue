@@ -33,10 +33,12 @@
                     <span> 个人中心</span>
                   </DropdownItem>
                 </div>
-                <DropdownItem name="changePsd" divided>
-                  <icon type="ios-cart-outline" :size="16" />
-                  <span> 我的收藏</span>
-                </DropdownItem>
+                <div  @click="collection()">               
+                  <DropdownItem divided>
+                    <icon type="ios-cart-outline" :size="16" />
+                    <span> 我的收藏</span>
+                  </DropdownItem>
+                </div>
                 <DropdownItem name="changePsd" divided>
                   <icon type="ios-lock-outline" :size="16" />
                   <span> 修改密码</span>
@@ -83,6 +85,9 @@ export default {
     this.user = JSON.parse(sessionStorage.getItem("userInfo"));
   },
   methods: {
+    collection(){
+      this.$router.push("/collection");
+    },
     getPath() {
       this.name = this.$route.name;
     },
