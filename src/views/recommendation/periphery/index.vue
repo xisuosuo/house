@@ -1,7 +1,6 @@
   <template>
   <div class="around">
     <div class="title">
-
       <p>{{houseName}}</p>
     </div>
     <ul>
@@ -40,6 +39,7 @@ import Item from "./components/item";
 import aroundInfo from "@/vuex/store";
 import userMessage from "@/vuex/store";
 import housueName from "@/vuex/store";
+import companyName from "@/vuex/store";
 export default {
   mounted() {
     setTimeout(() => {
@@ -118,6 +118,7 @@ export default {
       debugger;
       this.timeIndex = index;
       this.listName = value.name;
+      companyName.commit("companyName", this.listName);
       this.houseName = housueName.state.housueName;
       console.log(this.houseName);
       Server.get({

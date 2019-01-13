@@ -48,32 +48,117 @@
 import Server from "@/core/server";
 import { services } from "@/core/config/services";
 import housueName from "@/vuex/store";
+import GMapSymbol from "@/map/api/js/GMapSymbol";
 import { MapAPI } from "@/core/config/const";
 export default {
   data() {
     return {
-      gj: false,
+      gj: true,
       cz: false,
       yl: false,
       school: false,
       yl: false,
       gy: false,
+      gjLayer: "",
       houseName: "",
       list: []
     };
   },
   methods: {
     changegj() {
-      if (this.gj == false) {
+      if (this.gj == true) {
         debugger;
-        // onemap.pubsub.publish("clear");
-        onemap.pubsub.publish("drawMarkerByList", {
-          list: this.list
-        });
-      }
+        var value = "BUSSTATION";
+        this.houseName = housueName.state.housueName;
+        Server.get({
+          url: services.road,
+          params: {
+            name: this.houseName,
+            tableName: value
+          }
+        }).then(rsp => {
+          var _this = this;
+          if (rsp.status === 1) {
+            _this.list = rsp.data;
+            mapApi.esriApi.GetGraphic().then(Graphic => {
+              var geometryParse = [];
+              this.list.forEach((item, index) => {
+                geometryParse.push(
+                  mapApi.convert.toGeometryByWKT.parse({
+                    wkt: item.Shape,
+                    spatialReference: window.mapview.spatialReference
+                  })
+                );
+              });
+              Promise.all(geometryParse).then(geometries => {
+                var pts = [];
+                var graphics = [];
+                geometries.forEach((geometry, index) => {
+                  var pt = null;
+                  if (geometry !== null) {
+                    if (geometry.type === "point") {
+                      pt = geometry;
+                    } else {
+                      pt = geometry.extent.center;
+                    }
+                    pts.push(pt);
+                  }
+                  var item = this.list[index];
+                  var symbol = GMapSymbol.getMarkerPoiSymbol({});
+                  var graphic = new Graphic({
+                    geometry: pt,
+                    symbol: symbol,
+                    attributes: {
+                      id: item.pIndex,
+                      attr: item,
+                      centerPt: pt,
+                      marker: true,
+                      popup: true
+                    }
+                  });
+                  graphics.push(graphic);
+                });
 
-      var value = "BUSSTATION";
-      this.getData(value);
+                mapApi.esriApi.GetGraphicsLayer().then(GraphicsLayer => {
+                  this.gjLayer = new GraphicsLayer({});
+                  this.gjLayer.graphics.addMany(graphics);
+                  window.mapview.map.add(this.gjLayer);
+                });
+
+                // if (layer === null) {
+                //   mapview.graphics.addMany(graphics);
+                // } else {
+                //   layer.graphics.addMany(graphics);
+                // }
+                // if (extent) {
+                //   mapApi.geometryUtils.getMaxExtent(geometries).then(extent => {
+                //     mapview.extent = extent.expand(2);
+                //   });
+                // }
+
+                // if (popup && list.length > 0) {
+                //   mapApi.popup.show({
+                //     mapView: mapView,
+                //     res: list[0],
+                //     centerPt: pts[0],
+                //     pan: pan
+                //   });
+                // }
+              });
+            });
+          }
+        });
+
+        // this.getData(value);
+        // onemap.pubsub.publish("clear");
+
+        // onemap.pubsub.publish("drawMarkerByList", {
+        //   list: this.list
+        // });
+      } else {
+        debugger;
+        window.mapview.map.remove(this.gjLayer);
+      }
     },
     getData(value) {
       debugger;
