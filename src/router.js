@@ -42,6 +42,12 @@ export default new Router({
             import('@/views/personal/component/personal.vue'),
         },
         {
+          name: "我的收藏",
+          path: "/collection",
+          component: () =>
+            import('@/views/collection/index.vue'),
+        },
+        {
           path: '/menu',
           name: '首页',
           component: () =>

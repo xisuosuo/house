@@ -37,6 +37,7 @@ import GConvertGeometry from "@/map/api/js/convert/GConvertGeometry";
 import GMapSymbol from "@/map/api/js/GMapSymbol";
 import layerView from "./layerView";
 import housePoint from "@/vuex/store";
+
 export default {
   data() {
     return {

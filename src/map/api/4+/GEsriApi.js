@@ -85,6 +85,17 @@ class GEsriApi {
     });
   }
 
+  GetGraphicsLayer() {
+    return new Promise(resolve => {
+      esriLoader.loadModules(
+        ["esri/layers/GraphicsLayer"]).then(
+        ([Graphic]) => {
+          resolve(GraphicsLayer);
+        }
+      );
+    });
+  }
+
   GetColor() {
     return new Promise(resolve => {
       esriLoader.loadModules(
