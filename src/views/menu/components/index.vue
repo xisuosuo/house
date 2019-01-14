@@ -72,6 +72,18 @@
         </div>
       </div>
     </router-link>
+    <router-link to="/userManager">
+      <div class="item-view">
+        <div class="item bg6">
+          <div class="icon-wrap">
+            <i class="icon-pgkh"></i>
+          </div>
+          <div class="label">
+            <span>用户管理</span>
+          </div>
+        </div>
+      </div>
+    </router-link>
   </div>
 </template>
 <script>

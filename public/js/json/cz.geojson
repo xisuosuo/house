@@ -1,6 +1,7 @@
 ﻿{
   "type": "FeatureCollection",
-  "features": [{
+  "features": [
+    {
     "type": "Feature",
     "properties": {
       "name": "琅琊区",
@@ -44,7 +45,8 @@
         ]
       ]
     }
-  },  {
+  },
+  {
     "type": "Feature",
     "properties": {
       "name": "南谯区",
