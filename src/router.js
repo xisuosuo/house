@@ -234,6 +234,21 @@ export default new Router({
                 import('@/views/housingValuation/components/valuation.vue'),
             }
           ]
+        },
+        {
+          path: '/userManager',
+          name: '用户管理',
+          component: () =>
+            import('@/views/userManager/index.vue'),
+          children: [{
+            path: '/',
+            name: '用户管理',
+            meta: {
+              auth: true
+            },
+            component: () =>
+              import('@/views/userManager/index.vue'),
+          }, ]
         }
       ]
     }
