@@ -108,7 +108,7 @@
                 }
                 onemap.server
                     .get({
-                        url: "js/json/liangqu.json"
+                        url: "js/json/cz.geojson"
                     })
                     .then(rsp => {
                         this.loading.map = false;
@@ -117,7 +117,7 @@
                         rsp.features.forEach(item => {
                             let properties = item.properties;
                             xData.push({
-                                name:properties.NAME,
+                                name:properties.name,
                                 value: properties.price,
                                 itemStyle: {
                                     color: properties.color
