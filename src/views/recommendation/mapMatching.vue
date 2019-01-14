@@ -46,8 +46,8 @@
                 <div  class="left name" style="margin-top: 5px">
                   <h2 style="display:inline-block;width:140px">{{value.name}}</h2>
                   <Icon @click="detail(index,value)" type="ios-information-circle" color="#2d8cf0" size="17" title="小区信息详情" style="margin-bottom:8px;" />
-                  <Icon id="collection" size="19" @click="Collection" v-show="downIcon" style="margin-bottom:9px" type="md-star-outline"/>
-                  <Icon id="collection" size="19" @click="Collection" v-show="!downIcon" style="margin-bottom:9px" type="md-star" color="#2d8cf0" />
+                  <Icon  size="19" @click="Collection(index,value)" v-show="(timeIndex === index) ? false:true" style="margin-bottom:9px" type="md-star-outline"/>
+                  <Icon  size="19" @click="Collection(index,value)" v-show="(timeIndex === index) ? true:false" style="margin-bottom:9px" type="md-star" color="#2d8cf0" />
                   <p style="margin-top: 5px">
                     <span>建面：</span>{{value.area}}/m2</p>
                   <p style="margin-top: 5px;color: red">
@@ -111,7 +111,7 @@ export default {
   },
   data() {
     return {
-      downIcon:true,
+      timeIndex:"",
       total: "",
       map: true,
       info: false,
@@ -182,26 +182,6 @@ export default {
     detail(index, value) {
       this.currentImg = value.image;
       this.houseName = value.name;
-      // for (var i = 0, g; (g = window.mapview.graphics.items[i]); i++) {
-      //   var pIndex = "p" + index;
-      //   if (g.attributes.id === value.pIndex) {
-      //     var geometry = null;
-      //     if (g.geometry.type === "point") {
-      //       geometry = g.geometry;
-      //     } else {
-      //       var extent = g.geometry.extent.clone();
-      //       geometry = extent.expand(2);
-      //     }
-      //     window.mapview.goTo(geometry);
-      //     var attributes = g.attributes;
-      //     mapApi.popup.show({
-      //       mapView: window.mapview,
-      //       res: attributes.attr,
-      //       centerPt: attributes.centerPt
-      //     });
-      //     break;
-      //   }
-      // }
       this.info = true;
       var _this = this;
       this.houseName = value.name;
@@ -264,9 +244,9 @@ export default {
         }
       }
     },
-    Collection(){
-      this.downIcon = !this.downIcon;
-
+    Collection(index,value){
+      this.timeIndex =index;
+      debugger;
 
     },
     changeStyle() {
