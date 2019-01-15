@@ -124,9 +124,12 @@ export default {
     jump1() {
       var _this = this;
       _this.user = JSON.parse(sessionStorage.getItem("userAccount"));
-      if(_this.user==="admin"){
+      if(_this.user==="superAdmin"){
           this.$router.push("/userManager");
-      }else{
+      }else if(_this.user==="admin"){
+          this.$router.push("/userManager");
+      }
+      else{
           this.$Message.warning('用户不是管理员，没有权限使用该功能');
       }
     }

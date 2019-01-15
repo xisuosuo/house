@@ -24,23 +24,30 @@
                         </FormItem>
                         <FormItem label="婚姻情况" prop="Marriage">
                             <RadioGroup style="float:left" v-model="formValidate.Marriage">
-                                <Radio label="married">已婚</Radio>
-                                <Radio label="unmarried">未婚</Radio>
+                                <Radio label="true">已婚</Radio>
+                                <Radio label="false">未婚</Radio>
                             </RadioGroup>
                         </FormItem>
                         <FormItem label="是否有房" prop="house">
                             <RadioGroup style="float:left" v-model="formValidate.house">
-                                <Radio label="yes">有房</Radio>
-                                <Radio label="no">无房</Radio>
+                                <Radio label="true">有房</Radio>
+                                <Radio label="false">无房</Radio>
                             </RadioGroup>
                         </FormItem>
-                        <FormItem label="是否有房" prop="house">
+                        <FormItem label="类型" prop="house">
                             <RadioGroup style="float:left" v-model="formValidate.type">
                                 <Radio label="投资">投资型</Radio>
                                 <Radio label="教育">教育型</Radio>
                                 <Radio label="养老">养老型</Radio>
                                 <Radio label="生活">生活型</Radio>
                                 <Radio label="医疗">医疗型</Radio>
+                            </RadioGroup>
+                        </FormItem>
+                        <FormItem label="用户类型" prop="house">
+                            <RadioGroup style="float:left" v-model="formValidate.userType">
+                                <Radio label="普通用户">普通用户</Radio>
+                                <Radio label="管理员">管理员</Radio>
+                                <Radio label="超级管理员">超级管理员</Radio>
                             </RadioGroup>
                         </FormItem>
                         <FormItem style="margin-left:305px;width:300px">
@@ -88,6 +95,7 @@ export default {
         type: "",
         address: "",
         Marriage: "",
+        userType:"",
         house: ""
       },
       ruleValidate: {
@@ -120,7 +128,8 @@ export default {
            _this.formValidate.type=rsp.workType;
            _this.formValidate.address=rsp.workPlace;
            _this.formValidate.Marriage=rsp.isGetMarry;
-           _this.formValidate.house=rsp.isHouse
+           _this.formValidate.house=rsp.isHouse;
+           _this.formValidate.userType=rsp.userType
         }
         else {
           console.log(rsp.message);
@@ -141,6 +150,7 @@ export default {
           workPlace: _this.formValidate.address,
           isGetMarry: _this.formValidate.Marriage,
           isHouse: _this.formValidate.house,
+          userType:_this.formValidate.userType,
           username: username
         }
       }).then(rsp => {
