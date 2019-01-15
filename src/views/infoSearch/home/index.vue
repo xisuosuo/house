@@ -96,7 +96,7 @@ export default {
           label: "单位区"
         }
       ],
-      defaultMapExtent: "13391592.41591351,3404268.145961022,2",
+      defaultMapExtent: "13391592.41591351,3404268.145961022,3",
       spatialReference: "",
       toolsUrl: "js/json/common_tools.json",
       mapTileLayerLayers: "",
@@ -213,49 +213,49 @@ export default {
                 dom,
                 on
               ]) => {
-                esriConfig.request.corsEnabledServers.push("192.168.1.108/");
+                esriConfig.request.corsEnabledServers.push("122.112.216.247/");
 
                 var activeWidget = null;
 
                 var layer = new TileLayer({
                   url:
-                    "http://122.112.216.247:6080/arcgis/rest/services/CHUZHOU/Map/MapServer"
+                    "http://122.112.216.247:6080/arcgis/rest/services/CHUZHOU/chuzhouServer/MapServer"
                 });
                 this.baseLayer = layer;
 
-                var street = new TileLayer({
-                  url:
-                    "https://localhost:6443/arcgis/rest/services/ChuZhou/ChuZhouYX/MapServer",
-                  visible: false
-                });
+                // var street = new TileLayer({
+                //   url:
+                //     "https://localhost:6443/arcgis/rest/services/ChuZhou/ChuZhouYX/MapServer",
+                //   visible: false
+                // });
 
-                this.street = street;
-                var USALayer = new MapImageLayer({
-                  url:
-                    "https://192.168.1.108:6443/arcgis/rest/services/ChuZhou/行政区划/MapServer",
-                  visible: false
-                });
+                // this.street = street;
+                // var USALayer = new MapImageLayer({
+                //   url:
+                //     "https://192.168.1.108:6443/arcgis/rest/services/ChuZhou/行政区划/MapServer",
+                //   visible: false
+                // });
 
-                var censusLayer = new MapImageLayer({
-                  url:
-                    "https://192.168.1.108:6443/arcgis/rest/services/ChuZhou/yewuData/MapServer",
-                  title: "业务数据",
-                  visible: false
-                });
+                // var censusLayer = new MapImageLayer({
+                //   url:
+                //     "https://192.168.1.108:6443/arcgis/rest/services/ChuZhou/yewuData/MapServer",
+                //   title: "业务数据",
+                //   visible: false
+                // });
                 var baseMap = new Basemap({
-                  baseLayers: [layer, street]
+                  baseLayers: [layer]
                 });
-                var demographicGroupLayer = new GroupLayer({
-                  title: "专题图层",
-                  visible: true,
-                  visibilityMode: "independent",
-                  layers: [USALayer, censusLayer]
-                  // opacity: 0.75
-                });
+                // var demographicGroupLayer = new GroupLayer({
+                //   title: "专题图层",
+                //   visible: true,
+                //   visibilityMode: "independent",
+                //   layers: [USALayer, censusLayer]
+                //   // opacity: 0.75
+                // });
 
                 var map = new Map({
-                  basemap: baseMap,
-                  layers: [demographicGroupLayer]
+                  basemap: baseMap
+                  // layers: [demographicGroupLayer]
                 });
                 var ext = String(this.defaultMapExtent).split(",");
 
