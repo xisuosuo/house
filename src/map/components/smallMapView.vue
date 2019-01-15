@@ -166,7 +166,7 @@ export default {
                 var activeWidget = null;
                 var layer = new TileLayer({
                   url:
-                    "http://122.112.216.247:6080/arcgis/rest/services/CHUZHOU/Map/MapServer"
+                    "http://122.112.216.247:6080/arcgis/rest/services/CHUZHOU/chuzhouServer/MapServer"
                 });
                 this.baseLayer = layer;
                 // var street = new TileLayer({
