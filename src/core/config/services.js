@@ -19,4 +19,5 @@ export const services = {
   getInfo: `http://${IP}//chzuHouse/login/getUserInfo`,
   jump: `http://${IP}//chzuHouse/login/judgeUserInfo`,
   road: `http://${IP}//chzuHouse/accessibility/queryChzuServiceData`,
+  usermanager:`http://${IP}//chzuHouse/login/getUser`
 }
