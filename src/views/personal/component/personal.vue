@@ -45,9 +45,9 @@
                         </FormItem>
                         <FormItem label="用户类型" prop="house">
                             <RadioGroup style="float:left" v-model="formValidate.userType">
-                                <Radio label="普通用户">普通用户</Radio>
-                                <Radio label="管理员">管理员</Radio>
-                                <Radio label="超级管理员">超级管理员</Radio>
+                                <Radio label="普通用户" disabled>普通用户</Radio>
+                                <Radio label="管理员" disabled>管理员</Radio>
+                                <Radio label="超级管理员" disabled>超级管理员</Radio>
                             </RadioGroup>
                         </FormItem>
                         <FormItem style="margin-left:305px;width:300px">
