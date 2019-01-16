@@ -42,7 +42,22 @@
       </Col>
       <Col span="11" offset="2">
       <FormItem label="是否结婚:">
-        <RadioGroup  v-model="form.isGetMarry ">
+        <RadioGroup v-model="form.getMarry ">
+          <Radio label="true">已婚</Radio>
+          <Radio label="false">未婚</Radio>
+        </RadioGroup>
+      </FormItem>
+      </Col>
+    </Row>
+    <Row>
+      <Col span="11">
+      <FormItem label="买房资金:">
+        <Input v-model="form.buyHouseMoney " size="large" />
+      </FormItem>
+      </Col>
+      <Col span="11">
+      <FormItem label="是否有房:" offset="2">
+        <RadioGroup v-model="form.buyHouse ">
           <Radio label="true">已婚</Radio>
           <Radio label="false">未婚</Radio>
         </RadioGroup>
@@ -65,8 +80,8 @@ export default {
         buyHouseMoney: "",
         workType: "",
         workPlace: "",
-        isHouse: false,
-        isGetMarry: ""
+        buyHouse: "",
+        getMarry: ""
       },
       ruleValidate: {
         accountName: [
@@ -105,8 +120,8 @@ export default {
       this.form.buyHouseMoney = "";
       this.form.workType = "";
       this.form.workPlace = "";
-      this.form.isHouse = false;
-      this.form.isGetMarry = false;
+      this.form.buyHouse = false;
+      this.form.getMarry = false;
     },
     //编辑表单
     editForm(row) {
@@ -119,8 +134,8 @@ export default {
       this.form.buyHouseMoney = row.buyHouseMoney;
       this.form.workPlace = row.workPlace;
       this.form.workType = row.workType;
-      this.form.isHouse = row.isHouse;
-      this.form.isGetMarry = row.isGetMarry;
+      this.form.buyHouse = row.buyHouse;
+      this.form.getMarry = row.getMarry;
     },
     //初始化新增
     getForm() {
@@ -134,8 +149,8 @@ export default {
         buyHouseMoney: this.form.buyHouseMoney,
         workType: this.form.workType,
         workPlace: this.form.workPlace,
-        isHouse: this.form.isHouse,
-        isGetMarry: this.form.isGetMarry
+        buyHouse: this.form.buyHouse,
+        getMarry: this.form.getMarry
       };
     }
   }

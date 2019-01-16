@@ -212,9 +212,9 @@ export default {
     savePerson() {
       debugger;
       var form = this.$refs.userform.getForm();
-      Server.post({
+      Server.get({
         url: services.update,
-        params: JSON.stringify(form)
+        params: { user: JSON.stringify(form) }
       }).then(rsp => {
         if (rsp.status === 1) {
           this.$Message.success("操作成功");

@@ -21,5 +21,5 @@ export const services = {
   road: `http://${IP}//chzuHouse/accessibility/queryChzuServiceData`,
   usermanager: `http://${IP}//chzuHouse/login/getUser`,
   deleteUser: `http://${IP}//chzuHouse/login/delUser`,
-  update: `http://${IP}//chzuHouse/login/manageUpdateUser`,
+  update: `http://${IP}//chzuHouse/login/manageMapperUpdateUser`,
 }
