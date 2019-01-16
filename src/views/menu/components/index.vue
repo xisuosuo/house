@@ -82,6 +82,18 @@
         </div>
       </div>
     </div>
+    <router-link to="/housingValuation">
+      <div class="item-view">
+        <div class="item bg8">
+          <div class="icon-wrap">
+            <i class="icon-ywgl"></i>
+          </div>
+          <div class="label">
+            <span>个人中心</span>
+          </div>
+        </div>
+      </div>
+    </router-link>
   </div>
 </template>
 <script>
@@ -124,13 +136,12 @@ export default {
     jump1() {
       var _this = this;
       _this.user = JSON.parse(sessionStorage.getItem("userAccount"));
-      if(_this.user==="superAdmin"){
-          this.$router.push("/userManager");
-      }else if(_this.user==="admin"){
-          this.$router.push("/userManager");
-      }
-      else{
-          this.$Message.warning('用户不是管理员，没有权限使用该功能');
+      if (_this.user === "superAdmin") {
+        this.$router.push("/userManager");
+      } else if (_this.user === "admin") {
+        this.$router.push("/userManager");
+      } else {
+        this.$Message.warning("用户不是管理员，没有权限使用该功能");
       }
     }
   }
