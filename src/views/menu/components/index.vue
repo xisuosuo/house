@@ -82,7 +82,7 @@
         </div>
       </div>
     </div>
-    <router-link to="/housingValuation">
+    <router-link to="/personalcenter">
       <div class="item-view">
         <div class="item bg8">
           <div class="icon-wrap">
