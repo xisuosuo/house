@@ -78,7 +78,7 @@
                         <p>邻里特征</p>
                         <Row>
                             <Col span="10">
-                                <FormItem label="学校">
+                                <FormItem label="教育">
                                     <Slider v-model="formItem.school" :step="10" show-stops @on-input="add()"></Slider>
                                 </FormItem>
                             </Col>
@@ -116,7 +116,7 @@
                         </Row>
                         <Row>
                             <Col span="10">
-                                <FormItem label="医院">
+                                <FormItem label="医疗">
                                     <Slider v-model="formItem.hosptial" :step="10" show-stops @on-input="add"></Slider>
                                 </FormItem>
                             </Col>
@@ -134,7 +134,7 @@
                         </Row>
                         <Row>
                             <Col span="10">
-                                <FormItem label="车站">
+                                <FormItem label="交通">
                                     <Slider v-model="formItem.station" :step="10" show-stops @on-input="add"></Slider>
                                 </FormItem>
                             </Col>
@@ -152,7 +152,7 @@
                         </Row>
                         <Row>
                             <Col span="10">
-                                <FormItem label="商场">
+                                <FormItem label="休闲娱乐">
                                     <Slider v-model="formItem.market" :step="10" show-stops @on-input="add"></Slider>
                                 </FormItem>
                             </Col>
