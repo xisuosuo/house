@@ -1,5 +1,5 @@
 <template>
-    <Card style="margin: 10px;margin-top: 55px">
+    <Card style="margin: 10px;margin-top: 60px;">
         <div title="数据详情">
             <div class="group-panel-box blue">
                 <div class="panel-title">数据统计</div>
@@ -12,16 +12,12 @@
                 <Button type="primary" @click="getinfo" class="submit">查询</Button>
             </div>
         </div>
-            <Table  stripe border :columns="columns5" :data="data5"></Table>
-        <div style="overflow: hidden">
-            <Page class-name="pageFoot" :current="1" :total="50" simple />
-        </div>
+            <Table height="520"   stripe border :columns="columns5" :data="data5"></Table>
     </Card>
 </template>
 <script>
     import Server from "@/core/server";
     import { services } from "@/core/config/services";
-
     export default {
         data () {
             return {

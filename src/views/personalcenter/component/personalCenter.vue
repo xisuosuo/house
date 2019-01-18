@@ -75,15 +75,17 @@
                                 <div style="margin-left: 10%">
                                     <div>账户密码</div>
                                     <span>当前密码强度：<span style="color: green">强</span></span>
-                                    <a name="changePsd" divided style="color: #2d8cf0;float: right">修改密码</a>
-                                    <Divider dashed="true" />
-                                    <Modal v-model="modal" title="修改密码" width="400">
-                                        <change-psd ref="changepsd" @on-modal-close="modal=false" v-if="modal"></change-psd>
-                                        <div class="modal-footer" slot="footer" v-if="modal">
+                                    <a @click="modal1 = true" name="changePsd" style="color: #2d8cf0;float: right">修改密码</a>
+                                    <Modal
+                                            v-model="modal1"
+                                            title="修改密码" width="400">
+                                        <change-psd ref="changepsd" @on-modal-close="modal1=false" v-if="modal1"></change-psd>
+                                        <div class="modal-footer" slot="footer" v-if="modal1">
                                             <Button type="text" @click="onCancel">取消</Button>
                                             <Button type="primary" @click="onSubmit">确定</Button>
                                         </div>
                                     </Modal>
+                                    <Divider dashed="true" />
                                 </div>
                                 <div style="margin-left: 10%">
                                     <div>密保手机</div>
@@ -93,12 +95,11 @@
                                 </div>
                                 <div style="margin-left: 10%">
                                     <div>绑定邮箱</div>
-                                    <span>已绑定邮箱：<span style="color: green">183****6526@qq.com</span></span>
+                                    <span>已绑定邮箱：183****6526@qq.com</span>
                                     <a style="color: #2d8cf0;float: right">修改邮箱</a>
                                     <Divider dashed="true" />
                                 </div>
                             </div>
-
                         </Card>
                     </Col>
                 </Row>
@@ -111,9 +112,12 @@
     import { services } from "@/core/config/services";
     import ChangePsd from "@/views/login/components/changepsd";
     export default {
+        components: {
+            ChangePsd
+        },
         data() {
             return {
-                modal: false,
+                modal1: false,
                 columns1: [
                     {
                         align: "center",
@@ -244,7 +248,7 @@
         },
         methods: {
             onCancel() {
-                this.modal = false;
+                this.modal1 = false;
             },
             onSubmit() {
                 this.$refs.changepsd.onSubmit();
