@@ -48,6 +48,12 @@ export default new Router({
                   import('@/views/personalcenter/component/personalCenter.vue'),
          },
         {
+          name: "test",
+          path: "/test",
+          component: () =>
+            import('@/views/test/index.vue'),
+        },
+        {
           name: "我的收藏",
           path: "/collection",
           component: () =>
