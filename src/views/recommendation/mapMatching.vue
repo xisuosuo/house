@@ -44,14 +44,14 @@
                 </Col>
                 <Col span="12">
                 <div  class="left name" style="margin-top: 5px">
-                  <h2 style="display:inline-block;width:140px">{{value.name}}</h2>
+                  <h3 style="display:inline-block;width:140px">{{value.name}}</h3>
                   <Icon @click="detail(index,value)" type="ios-information-circle" color="#2d8cf0" size="17" title="小区信息详情" style="margin-bottom:8px;" />
                   <Icon  size="19" @click="Collection(index,value)" v-show="(timeIndex === index) ? false:true" style="margin-bottom:9px" type="md-star-outline"/>
                   <Icon  size="19" @click="Collection(index,value)" v-show="(timeIndex === index) ? true:false" style="margin-bottom:9px" type="md-star" color="#2d8cf0" />
-                  <p style="margin-top: 5px">
-                    <span>建面：</span>{{value.area}}/m2</p>
-                  <p style="margin-top: 5px;color: red">
-                    <span>均价：</span>{{value.price}}元</p>
+                  <span style="margin-top: 5px">
+                    <span>建面：</span>{{value.area}}/m2</span>
+                  <div style="margin-top: 5px;color: red">
+                    <span>均价：</span>{{value.price}}元</div>
                   <a @click="getInfo(index,value)" style="font-size: 10px">查看小区周边详情>></a>
                 </div>
                 </Col>

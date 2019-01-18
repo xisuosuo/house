@@ -23,7 +23,7 @@
                                 </div>
                             </div>
                             <Divider dashed="true" />
-                            <strong><p style="margin-bottom: 10px">标签</p></strong>
+                            <strong><div style="margin-bottom: 10px;">标签</div></strong>
                             <div>
                                 <Tag checkable color="error">有房</Tag>
                                 <Tag checkable color="success">有车</Tag>
@@ -32,7 +32,7 @@
                                 <Button icon="ios-add" type="dashed" size="small">添加标签</Button>
                             </div>
                             <Divider dashed="true" />
-                            <strong><p>详细信息:</p></strong>
+                            <strong><div>详细信息:</div></strong>
                             <Form style="margin-left: 10%" :model="formItem" :label-width="80">
                                 <FormItem label="昵称:">
                                    <span>林噙霜</span>
@@ -65,15 +65,15 @@
                     </Col>
                     <Col span="16">
                         <Card>
-                            <strong><p style="margin-bottom: 10px">我的收藏夹</p></strong>
+                            <strong><div style="margin-bottom: 10px">我的收藏夹</div></strong>
                             <div>
                                 <Table  height="311" stripe :columns="columns1" :data="data1"></Table>
                             </div>
                             <Divider dashed="true" />
-                            <strong><p>安全设置：</p></strong>
+                            <strong><div>安全设置：</div></strong>
                             <div style="font-size: 13px">
                                 <div style="margin-left: 10%">
-                                    <p>账户密码</p>
+                                    <div>账户密码</div>
                                     <span>当前密码强度：<span style="color: green">强</span></span>
                                     <a name="changePsd" divided style="color: #2d8cf0;float: right">修改密码</a>
                                     <Divider dashed="true" />
@@ -86,13 +86,13 @@
                                     </Modal>
                                 </div>
                                 <div style="margin-left: 10%">
-                                    <p>密保手机</p>
+                                    <div>密保手机</div>
                                     <span>已绑定手机：<span>183****6526</span></span>
                                     <a style="color: #2d8cf0;float: right">修改手机</a>
                                     <Divider dashed="true" />
                                 </div>
                                 <div style="margin-left: 10%">
-                                    <p>绑定邮箱</p>
+                                    <div>绑定邮箱</div>
                                     <span>已绑定邮箱：<span style="color: green">183****6526@qq.com</span></span>
                                     <a style="color: #2d8cf0;float: right">修改邮箱</a>
                                     <Divider dashed="true" />
