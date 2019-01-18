@@ -258,7 +258,7 @@
         }
     };
 </script>
-<style lang="less">
+<style lang="less" scoped>
 .avatar{
    text-align: center;
 }
