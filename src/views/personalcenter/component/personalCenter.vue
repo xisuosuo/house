@@ -1,12 +1,12 @@
 <template>
     <Layout >
         <Content>
-            <div style="margin: 0 auto;margin-top: 70px;width: 1200px">
+            <div style="margin: 0 auto;margin-top: 70px;width: 1200px;height: 1024px;overflow-y: auto">
                 <Row>
                     <Col span="8">
-                        <Card  >
+                        <Card>
                             <div class="avatar">
-                                <Avatar style="width: 100px;height: 100px;border-radius: 50%;margin: 20px"  src="http://img0.imgtn.bdimg.com/it/u=3227416909,1189547061&fm=26&gp=0.jpg" />
+                                <img style="width: 100px;height: 100px;border-radius: 50%;margin: 20px"  src="../../../assets/img/u=3085477210,754180516&fm=11&gp=0.jpg" />
                             </div>
                             <div style="text-align: left;margin-left: 10%;font-size: 12px">
                                 <div>
@@ -67,7 +67,7 @@
                         <Card>
                             <strong><p style="margin-bottom: 10px">我的收藏夹</p></strong>
                             <div>
-                                <Table  height="306" stripe :columns="columns1" :data="data1"></Table>
+                                <Table  height="311" stripe :columns="columns1" :data="data1"></Table>
                             </div>
                             <Divider dashed="true" />
                             <strong><p>安全设置：</p></strong>
