@@ -152,6 +152,9 @@
             };
         },
         methods: {
+            addCompare() {
+                this.count++;
+            },
             getdata() {
                 this.information = userMessage.state.information;
                 this.total = userMessage.state.total;

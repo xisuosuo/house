@@ -41,7 +41,18 @@ export default new Router({
           component: () =>
             import('@/views/recommendation/components/Details.vue'),
         },
-
+          {
+              name: "对比",
+              path: "/compare",
+              component: () =>
+                  import('@/views/houseCompare/components/compare.vue'),
+          },
+          {
+              name: "楼盘详情",
+              path: "/houseinfo",
+              component: () =>
+                  import('@/views/houseCompare/components/houseinfo.vue'),
+          },
         {
           name: "个人中心",
           path: "/personal",
@@ -141,7 +152,8 @@ export default new Router({
               import('@/views/map/index.vue'),
           }]
         },
-        {
+
+          {
           path: '/houseCompare',
           name: '房源对比',
           component: () =>
