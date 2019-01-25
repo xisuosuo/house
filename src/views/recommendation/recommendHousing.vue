@@ -1,6 +1,63 @@
 <template>
     <div style="margin:70px auto;width:1000px;">
-        <Table style="height: 280px" stripe :columns="columns1" :data="data1"></Table>
+        <table id="customers">
+        <tr>
+          <th>小区名称</th>
+          <th @click="education" title="查看教育资源可达性计算数据">教育资源可达性 <Icon type="ios-book" /></th>
+          <th title="查看医疗资源可达性计算数据">医疗资源可达性 <Icon type="md-add-circle" /></th>
+          <th title="查看交通资源可达性计算数据">交通资源可达性 <Icon type="ios-car" /></th>
+          <th title="查看休闲娱乐可达性计算数据">休闲娱乐可达性 <Icon type="md-cart" /></th>
+          <th>综合值</th>
+        </tr>
+        <tr>
+        <td>Alfreds</td>
+        <td>Maria Anders</td>
+        <td>Germany</td>
+        <td>Alfreds Futterkiste</td>
+        <td>Maria Anders</td>
+        <td>Germany</td>
+        </tr>
+        <tr class="alt">
+        <td>Berglunds</td>
+        <td>Christina Berglund</td>
+        <td>Sweden</td>
+        <td>Berglunds snabbköp</td>
+        <td>Christina Berglund</td>
+        <td>Sweden</td>
+        </tr>
+        <tr>
+        <td>Centro</td>
+        <td>Francisco Chang</td>
+        <td>Mexico</td>
+        <td>Centro comercial Moctezuma</td>
+        <td>Francisco Chang</td>
+        <td>Mexico</td>
+        </tr>
+        <tr class="alt">
+        <td>Ernst Handel</td>
+        <td>Roland Mendel</td>
+        <td>Austria</td>
+        <td>Ernst Handel</td>
+        <td>Roland Mendel</td>
+        <td>Austria</td>
+        </tr>
+        <tr>
+        <td>Island Trading</td>
+        <td>Helen Bennett</td>
+        <td>UK</td>
+        <td>Island Trading</td>
+        <td>Helen Bennett</td>
+        <td>UK</td>
+        </tr>
+        <tr class="alt">
+        <td>Königlich Essen</td>
+        <td>Philip Cramer</td>
+        <td>Germany</td>
+        <td>Königlich Essen</td>
+        <td>Philip Cramer</td>
+        <td>Germany</td>
+        </tr>
+    </table>
     <Row>
         <Col span="12">
             <div id="trend" style="height: 360px;margin-top: 5px;margin-right: 5px; border: 1px solid  #dcdee2">
@@ -24,94 +81,7 @@
     export default {
         data() {
             return {
-                columns1: [
-                    {
-                        align: "center",
-                        title: "小区名称",
-                        key: "name"
-                    },
-                    {
-                        align: "center",
-                        title: "教育资源可达性",
-                        key: "education"
-                    },
-                    {
-                        align: "center",
-                        title: "医疗资源可达性",
-                        key: "Medical"
-                    },
-                    {
-                        align: "center",
-                        title: "交通资源可达性",
-                        key: "traffic"
-                    },
-                    {
-                        align: "center",
-                        title: "休闲娱乐可达性",
-                        key: "entertainment"
-                    },
-                    {
-                        title: "操作",
-                        key: "action",
-                        maxWidth: 150,
-                        align: "center",
-                        render: (h, params) => {
-                            return h("div", [
-                                h("Button", {
-                                    props: {
-                                        shape: "circle",
-                                        icon: "ios-create"
-                                    },
-                                    style: {
-                                        marginRight: "5px"
-                                    },
-                                    on: {
-                                        click: () => {
-                                            this.showMap(params.row, params.index);
-                                        }
-                                    }
-                                })
-                            ]);
-                        }
-                    }
-                ],
-                data1: [
-                    {
-                        name: "John Brown",
-                        education: 18,
-                        Medical: "New York No. 1 Lake Park",
-                        traffic: "2016-10-03",
-                        entertainment: "123"
-                    },
-                    {
-                        name: "John Brown",
-                        education: 18,
-                        Medical: "New York No. 1 Lake Park",
-                        traffic: "2016-10-03",
-                        entertainment: "123"
-                    },
-                    {
-                        name: "John Brown",
-                        education: 18,
-                        Medical: "New York No. 1 Lake Park",
-                        traffic: "2016-10-03",
-                        entertainment: "123"
-                    },
-                    {
-                        name: "John Brown",
-                        education: 18,
-                        Medical: "New York No. 1 Lake Park",
-                        traffic: "2016-10-03",
-                        entertainment: "123"
-                    },
-                    {
-                        name: "John Brown",
-                        education: 18,
-                        Medical: "New York No. 1 Lake Park",
-                        traffic: "2016-10-03",
-                        entertainment: "123"
-                    }
-                ]
+
             };
         },
         mounted() {
@@ -119,6 +89,9 @@
             this.compriseMap();
         },
         methods: {
+            education(){
+                this.$router.push('/Details')
+            },
             showMap() {
                 Server.get({
                     url: services.rightHouseInfo,
@@ -268,3 +241,33 @@
         }
     }
 </script>
+<style lang="less">
+#customers
+{
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	width:100%;
+	border-collapse:collapse;
+}
+#customers td, #customers th 
+{
+	font-size:1.1em;
+	border:1px solid #2b85e4;
+    text-align:center;
+	padding:3px 7px 2px 7px;
+}
+#customers th 
+{
+	font-size:1.2em;
+	text-align:center;
+	padding-top:5px;
+	padding-bottom:4px;
+	background-color:#5cadff;
+    color:#ffffff;
+    cursor:pointer;
+}
+#customers tr.alt td 
+{
+	color:#000000;
+	background-color:#EAF2D3;
+}
+</style>

@@ -79,18 +79,19 @@ export default {
   mixins: [login],
   data() {
     return {
-        count:2,
+      count:2,
       name: "首页",
       user: "",
       modal: false
     };
   },
   mounted() {
-    this.user = JSON.parse(sessionStorage.getItem("userInfo"));
+      this.user = JSON.parse(sessionStorage.getItem("user Info"));
   },
   methods: {
       addComapre(){
-        this.count++
+       this.count=0;
+       this.$router.push("/compare");
     },
      collection(){
       this.$router.push("/collection");

@@ -22,4 +22,5 @@ export const services = {
   usermanager: `http://${IP}//chzuHouse/login/getUser`,
   deleteUser: `http://${IP}//chzuHouse/login/delUser`,
   update: `http://${IP}//chzuHouse/login/manageMapperUpdateUser`,
+  recommend: `http://192.168.1.102:8080//chzuHouse/accessibility/accessibilityLevel`
 }

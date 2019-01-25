@@ -36,6 +36,24 @@ export default new Router({
           redirect: "/menu"
         },
         {
+          name: "可达性数据",
+          path: "/Details",
+          component: () =>
+            import('@/views/recommendation/components/Details.vue'),
+        },
+          {
+              name: "对比",
+              path: "/compare",
+              component: () =>
+                  import('@/views/houseCompare/components/compare.vue'),
+          },
+          {
+              name: "楼盘详情",
+              path: "/houseinfo",
+              component: () =>
+                  import('@/views/houseCompare/components/houseinfo.vue'),
+          },
+        {
           name: "个人中心",
           path: "/personal",
           component: () =>
@@ -134,7 +152,8 @@ export default new Router({
               import('@/views/map/index.vue'),
           }]
         },
-        {
+
+          {
           path: '/houseCompare',
           name: '房源对比',
           component: () =>
@@ -163,7 +182,8 @@ export default new Router({
             },
             component: () =>
               import('@/views/recommendation/index.vue'),
-          }, ]
+          },
+         ]
         },
         {
           path: '/recommendHousing',
@@ -173,11 +193,11 @@ export default new Router({
             import('@/views/recommendation/recommendHousing.vue'),
           children: [{
             path: '/',
-
             name: '推荐房源',
             component: () =>
-              import('@/views/recommendation/recommendHousing.vue')
-          }, ]
+              import('@/views/recommendation/recommendHousing.vue'),
+          }, 
+        ]
         },
         {
           path: '/mapMatching',
