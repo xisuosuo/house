@@ -169,41 +169,13 @@ export default {
                     "http://122.112.216.247:6080/arcgis/rest/services/CHUZHOU/chuzhouServer/MapServer"
                 });
                 this.baseLayer = layer;
-                var street = new TileLayer({
-                  url:
-                    "	https://localhost:6443/arcgis/rest/services/ChuZhou/ChuZhouYX/MapServer",
 
-                  visible: false
-                });
-
-                this.street = street;
-                var USALayer = new MapImageLayer({
-                  url:
-                    "	https://localhost:6443/arcgis/rest/services/ChuZhou/XZQH/MapServer",
-                  title: "行政规划",
-                  visible: false
-                });
-
-                var censusLayer = new MapImageLayer({
-                  url:
-                    "https://localhost:6443/arcgis/rest/services/ChuZhou/yeWuData/MapServer",
-                  title: "业务数据",
-                  visible: false
-                });
                 var baseMap = new Basemap({
-                  baseLayers: [layer, street]
-                });
-                var demographicGroupLayer = new GroupLayer({
-                  title: "专题图层",
-                  visible: true,
-                  visibilityMode: "independent",
-                  layers: [USALayer, censusLayer]
-                  // opacity: 0.75
+                  baseLayers: [layer]
                 });
 
                 var map = new Map({
-                  basemap: baseMap,
-                  layers: [demographicGroupLayer]
+                  basemap: baseMap
                 });
                 var ext = String(this.defaultMapExtent).split(",");
                 if (ext.length > 3) {
