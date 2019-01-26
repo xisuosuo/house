@@ -16,7 +16,7 @@ export default new Vuex.Store({
         shapePoi: "",
         length: "",
         housueName: "",
-        companyName: ""
+        companyName: "",
     },
     /*
      * mutations里面规定的就是想要改变state(数据)的动作函数，

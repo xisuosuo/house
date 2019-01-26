@@ -48,7 +48,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.ivu-layout {
-  height: 1024px;
-}
+// .ivu-layout {
+//   height: 1024px;
+// }
 </style>

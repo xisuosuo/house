@@ -75,9 +75,9 @@
         }
 </script>
 <style lang="less" scoped>
-    .ivu-layout {
-        height: 1024px;
-    }
+    // .ivu-layout {
+    //     height: 1024px;
+    // }
     .submit{
         margin: 10px;
         margin-right: 0;

@@ -556,9 +556,9 @@ export default {
   padding-right: 18px;
 }
 
-.ivu-layout {
-  height: 1024px;
-}
+// .ivu-layout {
+//   height: 1024px;
+// }
 
 .light {
   cursor: pointer;
