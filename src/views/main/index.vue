@@ -21,9 +21,9 @@
           </Col>
           <Col span="6">
           <div class="user-tools">
-            <Badge :count=this.count style="margin-right: 20px;">
-                 <Icon  @click="addComapre" type="ios-notifications-outline" size="26"></Icon>
-            </Badge>
+            <!--<Badge :count=this.count style="margin-right: 20px;">-->
+                 <!--<Icon  @click="addComapre" type="ios-notifications-outline" size="26"></Icon>-->
+            <!--</Badge>-->
             <Dropdown :transfer="false" placement="bottom-end" @on-click="onUserItemClick">
               <div class="user-info">
                 <icon type="ios-contact" :size="25" />
@@ -79,7 +79,6 @@ export default {
   mixins: [login],
   data() {
     return {
-      count:2,
       name: "首页",
       user: "",
       modal: false
@@ -89,10 +88,6 @@ export default {
       this.user = JSON.parse(sessionStorage.getItem("user Info"));
   },
   methods: {
-      addComapre(){
-       this.count=0;
-       this.$router.push("/compare");
-    },
      collection(){
       this.$router.push("/collection");
     },

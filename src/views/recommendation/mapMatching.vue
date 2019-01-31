@@ -31,6 +31,9 @@
                             可视范围内找到
                             <span class="ret">{{this.total}}</span>
                             <span>个楼盘</span>
+                            <Badge :count=this.count style="float: right;margin-right: 10px">
+                                <Icon  @click="addComapre" type="ios-notifications-outline" size="26"></Icon>
+                            </Badge>
                         </div>
                     </div>
                     <div class="list-wrap">
@@ -58,7 +61,10 @@
                                                   type="md-star" color="#2d8cf0"/>
                                             <span style="margin-top: 5px"><span>建面：</span>{{value.area}}/m2</span>
                                             <div style="margin-top: 5px;color: red">
-                                                <span>均价：</span>{{value.price}}元 <Button @click="addCompare" size="small" style="float: right">加入对比</Button></div>
+                                                <span>均价：</span>{{value.price}}元
+                                                <Button @click="add(index,value)" size="small" style="float: right">加入对比
+                                                </Button>
+                                            </div>
                                             <a @click="getInfo(index,value)" style="font-size: 10px">查看小区周边详情>></a>
                                         </div>
                                     </Col>
@@ -125,6 +131,8 @@
         },
         data() {
             return {
+                count:0,
+                houseName:[],
                 timeIndex: "",
                 total: "",
                 map: true,
@@ -152,8 +160,17 @@
             };
         },
         methods: {
-            addCompare() {
+            addComapre(){
+                this.count=0;
+                this.$router.push("/compare");
+            },
+            add(index, value){
                 this.count++;
+                this.houseName.push(value.name);
+                if (this.houseName.length>3){
+                    this.count=4;
+                    this.$Message.warning('最多添加4条哦');
+                }
             },
             getdata() {
                 this.information = userMessage.state.information;
@@ -303,6 +320,10 @@
     };
 </script>
 <style lang="less" scoped>
+    ul{
+        list-style: none;
+        padding-left: 0;
+    }
     .filter {
         width: 380px;
         height: 51px;
@@ -371,7 +392,7 @@
             background-color: #f7f7f7;
             line-height: 35px;
             font-size: 12px;
-            text-indent: 20px;
+            text-indent:1px;
         }
         .ret,
         .ret-all {

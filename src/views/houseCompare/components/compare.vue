@@ -152,44 +152,6 @@
                         </tr>
                     </tbody>
                 </table>
-
-                <table class="mtable">
-                    <colgroup>
-                        <col class="key">
-                        <col span="4" class="value">
-                    </colgroup>
-                    <tbody>
-                        <tr class="headerd">
-                            <td colspan="5">
-                                <div class="title">交通信息</div>
-                            </td>
-                        </tr>
-                        <tr class="normal">
-                            <td class="key">轨道交通</td>
-                            <td id="value-railway-1"></td>
-                            <td id="value-railway-2"></td>
-                            <td id="value-railway-3"></td>
-                            <td id="value-railway-4"></td>
-                        </tr>
-                        <tr class="normal">
-                            <td class="key">公交线路</td>
-
-                            <td id="value-bus-1">
-                                <span class="bus-row" title="烟台市口腔医院站点，停靠：3路 3路刘家 6路 11路 17路 18路 18路竹林寺 28路 32路 37路 46路 47路 50路 50路杨家台子 高铁巴士1号线">烟台市口腔医院站点，停靠：3路 3路刘家 6路 11路 17路 18路 18路竹林寺 28路 32路 37路 46路 47路 50路 50路杨家台子 高铁巴士1号线
-                                    <span></span>
-                                </span>
-                            </td>
-                            <td id="value-bus-2">
-                                <span class="bus-row" title="乘9、101、5、10、13到协信天骄城下车即可">乘9、101、5、10、13到协信天骄城下车即可
-                                    <span></span>
-                                </span>
-                            </td>
-                            <td id="value-bus-3"></td>
-                            <td id="value-bus-4"></td>
-                        </tr>
-                    </tbody>
-                </table>
-
                 <table class="mtable">
                     <colgroup>
                         <col class="key">
