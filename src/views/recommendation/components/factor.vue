@@ -520,8 +520,8 @@ export default {
           grade: JSON.stringify(this.form)
         }
       }).then(rsp => {
-        debugger;
         if (rsp.status === 1) {
+          debugger;
           console.log(rsp);
           this.$router.push("/recommendHousing");
         } else {
