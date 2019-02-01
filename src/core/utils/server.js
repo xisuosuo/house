@@ -1,6 +1,7 @@
 import axios from "axios";
 import qs from "qs";
 /* eslint-disable */
+
 class Server {
     constructor() {
         axios.interceptors.request.use(config => {
@@ -15,7 +16,7 @@ class Server {
             return Promise.reject(error.response);
         });
     }
-
+    
     get(opt) {
         return new Promise((resolve, reject) => {
             if (opt.url.toLowerCase().indexOf("@ip") > -1) {
