@@ -19,6 +19,10 @@ Vue.prototype.$echarts = echarts
 Vue.prototype.$Message.config({
   top: 60,
 });
+
+router.afterEach(route => {
+  iView.LoadingBar.finish();
+});
 new Vue({
   router,
   store,
@@ -27,4 +31,3 @@ new Vue({
   },
   render: h => h(App)
 }).$mount('#app')
-

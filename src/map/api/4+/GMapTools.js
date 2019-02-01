@@ -1,7 +1,7 @@
 import esriLoader from "esri-loader";
 import GMeasureArea from "./api/GMeasureArea";
 import GMeasureLength from "./api/GMeasureLength";
-import $ from "jquery"
+
 // import GIQuery from "../js/GIQuery";
 // import GClip from "@api/api/GClip";
 // import GMarkerClusterLayer from "./api/GMarkerClusterLayer";

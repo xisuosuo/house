@@ -137,7 +137,11 @@ export default {
         });
     }
   },
-  components: {}
+  data() {
+    return {
+      social: []
+    };
+  }
 };
 </script>
 <style>
@@ -154,3 +158,4 @@ export default {
   width: 100%;
 }
 </style>
+

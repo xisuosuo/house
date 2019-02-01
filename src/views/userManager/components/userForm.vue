@@ -55,11 +55,11 @@
         <Input v-model="form.buyHouseMoney " size="large" />
       </FormItem>
       </Col>
-      <Col span="11">
-      <FormItem label="是否有房:" offset="2">
+      <Col span="11" offset="2">
+      <FormItem label="是否有房:">
         <RadioGroup v-model="form.buyHouse ">
-          <Radio label="true">已婚</Radio>
-          <Radio label="false">未婚</Radio>
+          <Radio label="true">有房</Radio>
+          <Radio label="false">无房</Radio>
         </RadioGroup>
       </FormItem>
       </Col>

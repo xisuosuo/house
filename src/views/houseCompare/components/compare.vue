@@ -1,5 +1,5 @@
 <template>
-  <div style="height: 1800px;width: 100%;">
+  <div id="mainBody" style="height: 1800px;width: 100%;">
     <Card style="margin: 0 auto;width: 1250px;margin-top: 70px;">
       <div node-type="module" class="module-lpcompare">
         <table class="mtable" note-type="common-data" data-cityprefix="yt" data-domain="focus" data-photodomain="https://t.focus-img.cn">
@@ -249,11 +249,20 @@ import Server from "@/core/server";
 import { services } from "@/core/config/services";
 import mapCompare from "./mapCompare";
 export default {
+  inject: ["reload"],
+  watch: {
+    $route: {
+      $route: "getPath"
+    }
+  },
   data() {
     return { mapModel: false };
   },
   mounted() {},
   methods: {
+    getPath() {
+      this.reload();
+    },
     showmapView() {
       debugger;
       this.mapModel = true;
@@ -267,10 +276,13 @@ export default {
   }
 };
 </script>
-<style lang="less"  >
+<style lang="less">
 body {
   overflow-y: auto;
 }
+</style>
+
+<style lang="less" scoped>
 // .ivu-layout {
 //   height: 1024px;
 // }

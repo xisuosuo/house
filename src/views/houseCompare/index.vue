@@ -86,7 +86,9 @@ export default {
     //   this.site = msg;
     // }
   },
-  mounted() {},
+  mounted() {
+ 
+  },
   data() {
     return {
       map: true,
@@ -103,9 +105,6 @@ export default {
 };
 </script>
 <style lang="less" scoped>
-body {
-  overflow: hidden;
-}
 .ivu-layout {
   height: 100%;
 }
