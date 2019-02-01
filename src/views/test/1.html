@@ -2,229 +2,288 @@
 <html>
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no">
-    <title>Closest Facilities</title>
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no">
+  <title>Closest Facilities</title>
 
-    <link rel="stylesheet" href="http://localhost/arcgis_js_api/library/3.27/3.27/dijit/themes/claro/claro.css">
-    <link rel="stylesheet" href="http://localhost/arcgis_js_api/library/3.27/3.27/esri/css/esri.css">
-    <style type="text/css">
-        #map {
-            width: 100%;
-            height: 600px;
-            border: 1px solid #000;
-        }
-    </style>
-    <script src="http://localhost/arcgis_js_api/library/3.27/3.27/init.js"></script>
-    <!-- <script src="../Scripts/jquery-1.7.1.js"></script> -->
+  <link rel="stylesheet" href="http://localhost/arcgis_js_api/library/3.27/3.27/dijit/themes/claro/claro.css">
+  <link rel="stylesheet" href="http://localhost/arcgis_js_api/library/3.27/3.27/esri/css/esri.css">
+  <style type="text/css">
+    #map {
+      width: 100%;
+      height: 600px;
+      border: 1px solid #000;
+    }
+  </style>
+  <script src="http://localhost/arcgis_js_api/library/3.27/3.27/init.js"></script>
+  <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
 
 </head>
 
 <body>
-    <div id="map"></div>
-    <input id="server" type="button" value="服务点" />
-    <input id="eventPoint" type="button" value="事件点" />
-    <input id="barriers" type="button" value="障碍点" />
-    <input id="analyse" type="button" value="分析" />
-    <input id="clear" type="button" value="清除" />
-    <script>
-        require([
-            "dojo/on",
-            "dojo/dom",
-            "dojo/_base/array",
-            "esri/Color",
-            "dojo/parser",
-            "dijit/registry",
+  <div id="map"></div>
+  <input id="server" type="button" value="服务点" />
+  <input id="eventPoint" type="button" value="事件点" />
+  <input id="barriers" type="button" value="障碍点" />
+  <input id="analyse" type="button" value="分析" />
+  <input id="clear" type="button" value="清除" />
+  <script>
+    require([
+      "dojo/on",
+      "dojo/dom",
+      "dojo/_base/array",
+      "esri/Color",
+      "dojo/parser",
+      "dijit/registry",
+      "esri/urlUtils",
+      "esri/map",
+      "esri/lang",
+      "esri/graphic",
+      "esri/InfoTemplate",
+      "esri/layers/GraphicsLayer",
+      "esri/renderers/SimpleRenderer",
+      "esri/layers/ArcGISDynamicMapServiceLayer",
 
-            "esri/urlUtils",
-            "esri/map",
-            "esri/lang",
-            "esri/graphic",
-            "esri/InfoTemplate",
-            "esri/layers/GraphicsLayer",
-            "esri/renderers/SimpleRenderer",
-            "esri/layers/ArcGISTiledMapServiceLayer",
+      "esri/geometry/Point",
+      "esri/tasks/FeatureSet",
 
-            "esri/geometry/Point",
-            "esri/tasks/FeatureSet",
+      "esri/tasks/ClosestFacilityTask",
+      "esri/tasks/ClosestFacilityParameters",
 
-            "esri/tasks/ClosestFacilityTask",
-            "esri/tasks/ClosestFacilityParameters",
+      "esri/symbols/SimpleMarkerSymbol",
+      "esri/symbols/SimpleLineSymbol",
+      "esri/symbols/TextSymbol",
 
-            "esri/symbols/SimpleMarkerSymbol",
-            "esri/symbols/SimpleLineSymbol",
-            "esri/symbols/TextSymbol",
+      "dijit/form/ComboBox",
+      "dijit/layout/BorderContainer",
+      "dijit/layout/ContentPane"
+    ], function (
+      on, dom, array, Color, parser, registry,
+      urlUtils, Map, esriLang, Graphic, InfoTemplate, GraphicsLayer, SimpleRenderer,
+      ArcGISDynamicMapServiceLayer,
+      Point, FeatureSet,
+      ClosestFacilityTask, ClosestFacilityParameters,
+      SimpleMarkerSymbol, SimpleLineSymbol, TextSymbol
+    ) {
+      var incidentsGraphicsLayer, routeGraphicLayer, closestFacilityTask;
 
-            "dijit/form/ComboBox",
-            "dijit/layout/BorderContainer",
-            "dijit/layout/ContentPane"
-        ], function (
-            on, dom, array, Color, parser, registry,
-            urlUtils, Map, esriLang, Graphic, InfoTemplate, GraphicsLayer, SimpleRenderer,
-            ArcGISTiledMapServiceLayer,
-            Point, FeatureSet,
-            ClosestFacilityTask, ClosestFacilityParameters,
-            SimpleMarkerSymbol, SimpleLineSymbol, TextSymbol
-        ) {
-            var incidentsGraphicsLayer, routeGraphicLayer, closestFacilityTask;
+      var map = new Map("map");
 
-            var map = new Map("map");
+      // var layer = new esri.layers.ArcGISTiledMapServiceLayer(
+      //      "http://122.112.216.247:6080/arcgis/rest/services/CHUZHOU/closeFac/MapServer"
+      // );
+      var layer = new esri.layers.ArcGISDynamicMapServiceLayer(
+        "http://122.112.216.247:6080/arcgis/rest/services/CHUZHOU/closeAnalysis/MapServer");
+      map.addLayer(layer)
+      var closestFacilityTask = new ClosestFacilityTask(
+        "http://122.112.216.247:6080/arcgis/rest/services/CHUZHOU/closeAnalysis/NAServer/CloseFacility");
+      //临近设施分析参数
+      var params = new ClosestFacilityParameters();
+      //单位
+      params.impedenceAttribute = "Miles";
+      // params.defaultCutoff = 7.0;
+      //是否返回事件信息
+      params.returnIncidents = false;
+      //是否返回路径
+      params.returnRoutes = true;
+      //路径是否有参数
+      params.returnDirections = true;
+      //服务点
+      params.facilities = new FeatureSet();
+      //事件点
+      params.incidents = new FeatureSet();
+      //点障碍
+      // params.pointBarriers = new FeatureSet();
+      //空间参考
+      params.outSpatialReference = map.SpatialReference;
+      //服务点符号样式
+      var facilityPointSymbol = new SimpleMarkerSymbol(
+        SimpleMarkerSymbol.STYLE_SQUARE,
+        20,
+        new SimpleLineSymbol(
+          SimpleLineSymbol.STYLE_SOLID,
+          new Color([89, 95, 35]), 2
+        ),
+        new Color([130, 159, 83, 0.40])
+      );
+      //事件点符号样式
+      var incidentPointSymbol = new SimpleMarkerSymbol(
+        SimpleMarkerSymbol.STYLE_CIRCLE,
+        16,
+        new SimpleLineSymbol(
+          SimpleLineSymbol.STYLE_SOLID,
+          new Color([89, 95, 35]), 2
+        ),
+        new Color([130, 159, 83, 0.40])
+      );
 
-            var layer = new esri.layers.ArcGISTiledMapServiceLayer({
-                url: "http://122.112.216.247:6080/arcgis/rest/services/CHUZHOU/chuzhouServer/MapServer"
+
+      //结果路径线符号样式
+
+      var routeGraphicLayer = new GraphicsLayer();
+
+      var routePolylineSymbol = new SimpleLineSymbol(
+        SimpleLineSymbol.STYLE_SOLID,
+        new Color("#0078df"),
+        4.0
+      );
+      var routeRenderer = new SimpleRenderer(routePolylineSymbol);
+      routeGraphicLayer.setRenderer(routeRenderer);
+
+      map.addLayer(routeGraphicLayer);
+
+      // var routePolylineSymbol = new SimpleLineSymbol(
+      //   SimpleLineSymbol.STYLE_SOLID,
+      //   new Color("#0078df"),
+      //   4.0
+      // );
+      //定义一个标志
+      //selectPointID=0什么都不做
+      //selectPointID=1是添加服务点
+      //selectPointID=2是添加事件点
+      //selectPointID=3是添加障碍点
+      var selectPointID;
+      //添加服务点
+      $("#server").click(function () {
+        selectPointID = 1;
+      });
+      //添加事件点
+      $("#eventPoint").click(function () {
+        selectPointID = 2;
+      });
+      //添加障碍点
+      $("#barriers").click(function () {
+        selectPointID = 3;
+      });
+      //清除所有障碍、事件、服务点和路径线
+      on(map, "mouse-down", function (evt) {
+        debugger;
+        //通过selectPointID判断是添加是停靠点还是障碍点
+        switch (selectPointID) {
+          case 0:
+            break;
+          case 1:
+            //获得服务点的坐标
+            var pointServer = evt.mapPoint;
+            var gr = new Graphic(pointServer, facilityPointSymbol);
+            //构建服务点的参数
+            params.facilities.features.push(gr);
+            break;
+          case 2:
+            //获得事件点的坐标
+            var pointEvent = evt.mapPoint;
+            var gr = new Graphic(pointEvent, incidentPointSymbol);
+            //构建事件点的参数
+            params.incidents.features.push(gr);
+            break;
+          case 3:
+            //获得障碍点的坐标
+            var pointBarrier = evt.mapPoint;
+            var gr = new Graphic(pointBarrier, barrierSymbol);
+            //构建障碍点的参数
+            params.pointBarriers.features.push(gr);
+            break;
+        }
+        //如果selectPointID不等于0，将点的坐标在地图上显示出来
+        if (selectPointID != 0) {
+          addTextPoint("服务点", pointServer, facilityPointSymbol);
+          addTextPoint("事件点", pointEvent, incidentPointSymbol);
+          addTextPoint("障碍点", pointBarrier, barrierSymbol);
+
+        }
+      });
+
+
+      //文本符号：文本信息，点坐标，符号
+      function addTextPoint(text, point, symbol) {
+        debugger;
+        var textSymbol = new TextSymbol(text);
+        textSymbol.setColor(new Color([128, 0, 0]));
+        var graphicText = Graphic(point, textSymbol);
+        var graphicpoint = new Graphic(point, symbol);
+        //用默认的图层添加
+        map.graphics.add(graphicpoint);
+        map.graphics.add(graphicText);
+      }
+      routeGraphicLayer.on("mouse-over", function (evt) {
+        //clear existing directions and highlight symbol
+         map.graphics.clear();
+        // dom.byId("directionsDiv").innerHTML= "Hover over the route to view directions";
+
+        var highlightSymbol = new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color([0, 255, 255], 0.25),
+          4.5);
+        var highlightGraphic = new Graphic(evt.graphic.geometry, highlightSymbol);
+
+        map.graphics.add(highlightGraphic);
+        // dom.byId("directionsDiv").innerHTML = esriLang.substitute(evt.graphic.attributes,"${*}");
+      });
+      //分析执行事件
+      $("#analyse").click(function () {
+
+        selectPointID = 0;
+        //如果服务点或者事件点的个数有一个为0，提示用户参数输入不对
+        if (params.facilities.features.length == 0 || params.incidents.features.length == 0) {
+          alert("输入参数不全，无法分析");
+          return;
+        }
+        debugger;
+        //执行路径分析函数
+        // closestFacilityTask.solve(params, showRoute)
+        closestFacilityTask.solve(params, function (solveResult) {
+          debugger;
+          array.forEach(solveResult.routes, function (route, index) {
+            //build an array of route info
+            var attr = array.map(solveResult.directions[index].features, function (feature) {
+              return feature.attributes.text;
             });
-            // var layer = new esri.layers.ArcGISDynamicMapServiceLayer(
-            //     "http://localhost:6080/arcgis/rest/services/Test/CloseFacilityTest/MapServer");
-            map.addLayer(layer)
-            closestFacilityTask = new ClosestFacilityTask(
-                "http://122.112.216.247:6080/arcgis/rest/services/CHUZHOU/closeFac/NAServer/CloseFacilit");
-            //临近设施分析参数
-            var params = new ClosestFacilityParameters();
-            //单位
-            params.impedenceAttribute = "Miles";
-            params.defaultCutoff = 7.0;
-            //是否返回事件信息
-            params.returnIncidents = false;
-            //是否返回路径
-            params.returnRoutes = true;
-            //路径是否有参数
-            params.returnDirections = true;
-            //服务点
-            params.facilities = new FeatureSet();
-            //事件点
-            params.incidents = new FeatureSet();
-            //点障碍
-            params.pointBarriers = new FeatureSet();
-            //空间参考
-            params.outSpatialReference = map.SpatialReference;
-            //服务点符号样式
-            var facilityPointSymbol = new SimpleMarkerSymbol(
-                SimpleMarkerSymbol.STYLE_SQUARE,
-                20,
-                new SimpleLineSymbol(
-                    SimpleLineSymbol.STYLE_SOLID,
-                    new Color([89, 95, 35]), 2
-                ),
-                new Color([130, 159, 83, 0.40])
-            );
-            //事件点符号样式
-            var incidentPointSymbol = new SimpleMarkerSymbol(
-                SimpleMarkerSymbol.STYLE_CIRCLE,
-                16,
-                new SimpleLineSymbol(
-                    SimpleLineSymbol.STYLE_SOLID,
-                    new Color([89, 95, 35]), 2
-                ),
-                new Color([130, 159, 83, 0.40])
-            );
-            //障碍点的符号样式
-            var barrierSymbol = new SimpleMarkerSymbol();
-            barrierSymbol.style = SimpleMarkerSymbol.STYLE_X;
-            barrierSymbol.setSize(12);
-            barrierSymbol.setColor(new Color("#f1a340"));
-            incidentsGraphicsLayer = new GraphicsLayer();
-            //结果路径线符号样式
-            var routePolylineSymbol = new SimpleLineSymbol(
-                SimpleLineSymbol.STYLE_SOLID,
-                new Color("#0078df"),
-                4.0
-            );
-            //定义一个标志
-            //selectPointID=0什么都不做
-            //selectPointID=1是添加服务点
-            //selectPointID=2是添加事件点
-            //selectPointID=3是添加障碍点
-            var selectPointID;
-            //添加服务点
-            $("#server").click(function () {
-                selectPointID = 1;
-            });
-            //添加事件点
-            $("#eventPoint").click(function () {
-                selectPointID = 2;
-            });
-            //添加障碍点
-            $("#barriers").click(function () {
-                selectPointID = 3;
-            });
-            //清除所有障碍、事件、服务点和路径线
-            on(map, "mouse-down", function (evt) {
-                //通过selectPointID判断是添加是停靠点还是障碍点
-                switch (selectPointID) {
-                    case 0:
-                        break;
-                    case 1:
-                        //获得服务点的坐标
-                        var pointServer = evt.mapPoint;
-                        var gr = new Graphic(pointServer, facilityPointSymbol);
-                        //构建服务点的参数
-                        params.facilities.features.push(gr);
-                        break;
-                    case 2:
-                        //获得事件点的坐标
-                        var pointEvent = evt.mapPoint;
-                        var gr = new Graphic(pointEvent, incidentPointSymbol);
-                        //构建事件点的参数
-                        params.incidents.features.push(gr);
-                        break;
-                    case 3:
-                        //获得障碍点的坐标
-                        var pointBarrier = evt.mapPoint;
-                        var gr = new Graphic(pointBarrier, barrierSymbol);
-                        //构建障碍点的参数
-                        params.pointBarriers.features.push(gr);
-                        break;
-                }
-                //如果selectPointID不等于0，将点的坐标在地图上显示出来
-                if (selectPointID != 0) {
-                    addTextPoint("服务点", pointServer, facilityPointSymbol);
-                    addTextPoint("事件点", pointEvent, incidentPointSymbol);
-                    addTextPoint("障碍点", pointBarrier, barrierSymbol);
+            // var infoTemplate = new InfoTemplate("Attributes", "${*}");
 
-                }
-            });
-            //文本符号：文本信息，点坐标，符号
-            function addTextPoint(text, point, symbol) {
-                var textSymbol = new TextSymbol(text);
-                textSymbol.setColor(new Color([128, 0, 0]));
-                var graphicText = Graphic(point, textSymbol);
-                var graphicpoint = new Graphic(point, symbol);
-                //用默认的图层添加
-                map.graphics.add(graphicpoint);
-                map.graphics.add(graphicText);
-            }
-            //分析执行事件
-            $("#analyse").click(function () {
-                selectPointID = 0;
-                //如果服务点或者事件点的个数有一个为0，提示用户参数输入不对
-                if (params.facilities.features.length == 0 || params.incidents.features.length == 0) {
-                    alert("输入参数不全，无法分析");
-                    return;
-                }
-                //执行路径分析函数
-                closestFacilityTask.solve(params, showRoute)
-            });
-            //处理路径分析返回的结果。
-            function showRoute(solveResult) {
-                //路径分析的结果
-                var routeResults = solveResult.routes;
-                //路径分析的长度
-                var res = routeResults.length;
-                if (res > 0) {
+            // route.setInfoTemplate(infoTemplate);
+            route.setAttributes(attr);
 
-                    for (var i = 0; i < res; i++) {
-                        var graphicroute = routeResults[i];
-                        var graphic = graphicroute;
-                        graphic.setSymbol(routePolylineSymbol);
-                        map.graphics.add(graphic);
-                    }
-                } else {
-                    alert("没有返回结果");
-                }
-            }
-        });
-    </script>
+            routeGraphicLayer.add(route);
+            // dom.byId("directionsDiv").innerHTML = "Hover over the route to view directions";
+          });
+
+          // var routeResults = solveResult.routes;
+          // console.log(solveResult);
+          // debugger;
+          // //路径分析的长度
+          // var res = routeResults.length;
+          // if (res > 0) {
+          //   for (var i = 0; i < res; i++) {
+          //     var graphicroute = routeResults[i];
+          //     var graphic = graphicroute;
+          //     graphic.setSymbol(routePolylineSymbol);
+          //     map.graphics.add(graphic);
+          //   }
+          // } else {
+          //   alert("没有返回结果");
+          // }
+        })
+      });
+      //处理路径分析返回的结果。
+      // function showRoute(solveResult) {
+      //   debugger;
+      //   //路径分析的结果
+      //   var routeResults = solveResult.routes;
+      //   //路径分析的长度
+      //   var res = routeResults.length;
+      //   if (res > 0) {
+
+      //     for (var i = 0; i < res; i++) {
+      //       var graphicroute = routeResults[i];
+      //       var graphic = graphicroute;
+      //       graphic.setSymbol(routePolylineSymbol);
+      //       map.graphics.add(graphic);
+      //     }
+      //   } else {
+      //     alert("没有返回结果");
+      //   }
+      // }
+    });
+  </script>
 </body>
 
 </html>

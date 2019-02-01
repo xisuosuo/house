@@ -59,16 +59,9 @@
    
       parser.parse();
       
-      urlUtils.addProxyRule({
-        urlPrefix: "route.arcgis.com",  
-        proxyUrl: "/sproxy/"
-      });
-        
+
       map = new Map("map", { 
         basemap: "streets", 
-        center: [-122.4, 37.785],
-        zoom: 14, 
-        showInfoWindowOnClick: false 
       });
 
       map.on("click", mapClickHandler);
@@ -174,13 +167,13 @@
         routeGraphicLayer.on("mouse-over", function(evt){
           //clear existing directions and highlight symbol
           map.graphics.clear();
-          dom.byId("directionsDiv").innerHTML= "Hover over the route to view directions";
+          // dom.byId("directionsDiv").innerHTML= "Hover over the route to view directions";
           
           var highlightSymbol = new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color([0,255,255],0.25), 4.5);
           var highlightGraphic = new Graphic(evt.graphic.geometry,highlightSymbol);
           
           map.graphics.add(highlightGraphic);
-          dom.byId("directionsDiv").innerHTML = esriLang.substitute(evt.graphic.attributes,"${*}");
+          // dom.byId("directionsDiv").innerHTML = esriLang.substitute(evt.graphic.attributes,"${*}");
         });
 
         //solve 
