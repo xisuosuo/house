@@ -513,12 +513,8 @@ export default {
       this.form.medicalRate = this.formItem.hosptials / 100;
       this.form.trafficRate = this.formItem.stations / 100;
       this.form.entertainmentRate = this.formItem.markets / 100;
-
-      var obj1 = JSON.stringify(this.form);
-      var _this = this;
-      this.$router.push("/recommendHousing");
-      
-      Server.post({
+            
+      Server.get({
         url: services.recommend,
         params: {
           grade: JSON.stringify(this.form)
