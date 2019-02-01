@@ -419,8 +419,8 @@ export default {
 }
 .search {
   position: absolute;
-  top: 65px;
-  left: 43px;
+  top: 62px;
+  left: 40px;
 }
 .wrapperBox {
   position: relative;
@@ -462,7 +462,7 @@ export default {
   cursor: pointer;
 }
 .close-wrapper {
-  z-index: 999;
+  z-index: 2;
   position: relative;
   float: right;
   top: -22px;

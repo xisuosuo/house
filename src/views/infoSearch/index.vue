@@ -22,6 +22,16 @@
               </a>
             </li>
           </router-link>
+          <li class="menu-item" @click="siteSelect">
+            <a class="nav-item">
+              <div class="icon-wrap">
+                <span class="menu-icon icon-collision"></span>
+              </div>
+              <div class="div-label">
+                <span>条件选房</span>
+              </div>
+            </a>
+          </li>
           <li class="menu-item">
             <a class="nav-item">
               <div class="icon-wrap">
@@ -46,6 +56,7 @@
       <buffer/>
     </Sider>
     <Content>
+      <siteSelection v-if="site" v-on:change="getfalse($event)" :site="site" />
       <router-view/>
     </Content>
   </Layout>
@@ -53,8 +64,24 @@
 <script>
 import toolForm from "@/views/infoSearch/inforCount/public.vue";
 import buffer from "@/views/infoSearch/inforCount/buffer.vue";
+import siteSelection from "./home/components/siteSelection";
 export default {
+  data() {
+    return {
+      site: false
+    };
+  },
   methods: {
+    siteSelect: function() {
+      if (this.site == false) {
+        this.site = true;
+      } else {
+        this.site = false;
+      }
+    },
+    getfalse(msg) {
+      this.site = msg;
+    },
     selectHouse() {
       this.$root.Bus.$emit("eventSelectHouse");
     },
@@ -67,7 +94,8 @@ export default {
   },
   components: {
     toolForm,
-    buffer
+    buffer,
+    siteSelection
   }
 };
 </script>

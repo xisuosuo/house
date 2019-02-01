@@ -10,7 +10,7 @@
                             </a>
                         </li>
                     </router-link>
-                    <li class="menu-item" @click="siteSelect">
+                    <!-- <li class="menu-item" @click="siteSelect">
                         <a class="nav-item">
                             <div class="icon-wrap">
                                 <span class="menu-icon icon-collision"></span>
@@ -19,7 +19,19 @@
                                 <span>条件选房</span>
                             </div>
                         </a>
-                    </li>
+                    </li> -->
+                    <router-link to="/compare">
+                        <li class="menu-item">
+                            <a class="nav-item">
+                                <div class="icon-wrap">
+                                    <span class="menu-icon icon-database"></span>
+                                </div>
+                                <div class="div-label">
+                                    <span>房源对比</span>
+                                </div>
+                            </a>
+                        </li>
+                    </router-link>
                     <li class="menu-item">
                         <a class="nav-item">
                             <div class="icon-wrap">
@@ -38,23 +50,12 @@
                             </li>
                         </ul>
                     </li>
-                    <router-link to="/compare">
-                        <li class="menu-item">
-                            <a class="nav-item">
-                                <div class="icon-wrap">
-                                    <span class="menu-icon icon-database"></span>
-                                </div>
-                                <div class="div-label">
-                                    <span>房源对比</span>
-                                </div>
-                            </a>
-                        </li>
-                    </router-link>
+
                 </ul>
             </div>
         </Sider>
         <Content>
-            <siteSelection v-if="site" v-on:change="getfalse($event)" :site="site" />
+            <!-- <siteSelection v-if="site" v-on:change="getfalse($event)" :site="site" /> -->
             <MapView v-if="map"></MapView>
             <Calculator></Calculator>
             <houseCompare></houseCompare>
@@ -64,7 +65,7 @@
 <script>
 import Calculator from "./components/Calculator";
 import houseCompare from "./components/houseCompare";
-import siteSelection from "./components/siteSelection";
+// import siteSelection from "./components/siteSelection";
 import MapView from "@/map/components/MapView";
 export default {
   methods: {
@@ -73,31 +74,31 @@ export default {
     },
     openCalculator() {
       this.$root.Bus.$emit("eventCalculator");
-    },
-    siteSelect: function() {
-      if (this.site == false) {
-        this.site = true;
-      } else {
-        this.site = false;
-      }
-    },
-    getfalse(msg) {
-      this.site = msg;
     }
+    // siteSelect: function() {
+    //   if (this.site == false) {
+    //     this.site = true;
+    //   } else {
+    //     this.site = false;
+    //   }
+    // },
+    // getfalse(msg) {
+    //   this.site = msg;
+    // }
   },
   mounted() {},
   data() {
     return {
       map: true,
-      site: false,
+      //   site: false,
       Result: false
     };
   },
   components: {
     MapView,
     houseCompare,
-    Calculator,
-    siteSelection
+    Calculator
+    // siteSelection
   }
 };
 </script>

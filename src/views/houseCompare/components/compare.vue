@@ -1,262 +1,273 @@
 <template>
-    <div style="height: 1800px;width: 100%;">
-        <Card style="margin: 0 auto;width: 1250px;margin-top: 70px;">
-            <div node-type="module" class="module-lpcompare">
-                <table class="mtable" note-type="common-data" data-cityprefix="yt" data-domain="focus" data-photodomain="https://t.focus-img.cn">
-                    <colgroup>
-                        <col class="key">
-                        <col span="4" class="value" data-cur-column="0">
-                    </colgroup>
-                    <tbody>
-                        <tr>
-                            <td class="compare" colspan="5">
-                                <span class="label">楼盘对比</span>
-                                <input type="text" class="query" node-type="input-query" data-cityid="139">
-                                <span class="btn compare-btn" node-type="compare-btn">+对比</span>
-                                <ul class="suggest-list" node-type="suggest-list">
-                                    <li class="suggest-item">国风美唐</li>
-                                    <li class="suggest-item">国风美唐</li>
-                                </ul>
-                            </td>
-                        </tr>
-                        <tr class="normal loupan-info" node-type="loupan-info">
-                            <td class="key">楼盘名称</td>
-                            <td id="value-name-1">
-                                <div>
-                                    <a @click="gethouseinfo" target="_blank" title=" 海上明珠"><img id="avatar-1" class="avatar" src="../../../assets/img/44b8812c-cb76-4ac6-aa53-5f3ab4db1100.png" alt=""></a>
-                                </div>
-                                <div id="name-1"> 海上明珠</div>
-                                <div class="ctrl-wrap">
-                                    <span class="del" data-index="1" data-pid="110110771">╳</span>
-                                </div>
-                            </td>
-                            <td id="value-name-2">
-                                <div>
-                                    <a @click="gethouseinfo" target="_blank" title="南山协信天骄城"><img id="avatar-2" class="avatar" src="../../../assets/img/83056b78-9f82-4b8b-ae23-2c3538e49fe0.png" alt=""></a>
-                                </div>
-                                <div id="name-2">南山协信天骄城</div>
-                                <div class="ctrl-wrap">
-                                    <span class="del" data-index="2" data-pid="110099217">╳</span>
-                                </div>
-                            </td>
-                            <td id="value-name-3">
-                            </td>
-                            <td id="value-name-4">
-                            </td>
-                        </tr>
-                        <tr class="normal loupan-info" node-type="loupan-info">
-                            <td class="key">价格</td>
-                            <td id="value-price-1">平均价格：
-                                <span id="price-1" class="price">18000元/㎡</span>
-                            </td>
-                            <td id="value-price-2">平均价格：
-                                <span id="price-2" class="price">6500元/㎡</span>
-                            </td>
-                            <td id="value-price-3"></td>
-                            <td id="value-price-4"></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <table class="mtable">
-                    <colgroup>
-                        <col class="key">
-                        <col span="4" class="value">
-                    </colgroup>
-                    <tbody>
-                        <tr class="headerd">
-                            <td colspan="5">
-                                <div class="title">基本信息</div>
-                            </td>
-                        </tr>
-                        <tr class="normal">
-                            <td class="key">项目位置</td>
-
-                            <td id="value-location-1">芝罘 北马路与西南河交汇处
-                                <a href="" class="maplink" target="_blank">查看地图</a>
-                            </td>
-                            <td id="value-location-2">龙口 齐鲁医院南山分院北侧
-                                <a href="" class="maplink" target="_blank">查看地图</a>
-                            </td>
-                            <td id="value-location-3"></td>
-                            <td id="value-location-4"></td>
-                        </tr>
-                        <tr class="normal">
-                            <td class="key">物业类别</td>
-                            <td id="value-property-1">普通住宅,自住型商品房</td>
-                            <td id="value-property-2">普通住宅,自住型商品房</td>
-                            <td id="value-property-3"></td>
-                            <td id="value-property-4"></td>
-                        </tr>
-                        <tr class="normal">
-                            <td class="key">装修状况</td>
-                            <td id="value-fitment-1">毛坯</td>
-                            <td id="value-fitment-2">毛坯</td>
-                            <td id="value-fitment-3"></td>
-                            <td id="value-fitment-4"></td>
-                        </tr>
-                        <tr class="normal">
-                            <td class="key">产权年限</td>
-                            <td id="value-years-1">70年</td>
-                            <td id="value-years-2">70年</td>
-                            <td id="value-years-3"></td>
-                            <td id="value-years-4"></td>
-                        </tr>
-                        <tr class="normal">
-                            <td class="key">开发商</td>
-                            <td id="value-devel-1"></td>
-                            <td id="value-devel-2"></td>
-                            <td id="value-devel-3"></td>
-                            <td id="value-devel-4"></td>
-                        </tr>
-                    </tbody>
-                </table>
-
-                <table class="mtable">
-                    <colgroup>
-                        <col class="key">
-                        <col span="4" class="value">
-                    </colgroup>
-                    <tbody>
-                        <tr class="headerd">
-                            <td colspan="5">
-                                <div class="title">销售信息</div>
-                            </td>
-                        </tr>
-                        <tr class="normal">
-                            <td class="key">销售状态</td>
-                            <td id="value-sale-1">在售</td>
-                            <td id="value-sale-2">在售</td>
-                            <td id="value-sale-3"></td>
-                            <td id="value-sale-4"></td>
-                        </tr>
-                        <tr class="normal">
-                            <td class="key">开盘时间</td>
-                            <td id="value-opentime-1">预计2018年07月</td>
-                            <td id="value-opentime-2">预计2018年06月</td>
-                            <td id="value-opentime-3"></td>
-                            <td id="value-opentime-4"></td>
-                        </tr>
-                        <tr class="normal">
-                            <td class="key">交房时间</td>
-                            <td id="value-givetime-1">预计2020年12月31日</td>
-                            <td id="value-givetime-2">2019年12月30日</td>
-                            <td id="value-givetime-3"></td>
-                            <td id="value-givetime-4"></td>
-                        </tr>
-                        <tr class="normal">
-                            <td class="key">售楼地址</td>
-                            <td id="value-salelocation-1">西南河路与北马路交界处</td>
-                            <td id="value-salelocation-2">齐鲁医院南山分院东北侧</td>
-                            <td id="value-salelocation-3"></td>
-                            <td id="value-salelocation-4"></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <table class="mtable">
-                    <colgroup>
-                        <col class="key">
-                        <col span="4" class="value">
-                    </colgroup>
-                    <tbody>
-                        <tr class="headerd">
-                            <td colspan="5">
-                                <div class="title">规划信息</div>
-                            </td>
-                        </tr>
-                        <tr class="normal">
-                            <td class="key">占地面积</td>
-                            <td id="value-floorarea-1">16700平方米</td>
-                            <td id="value-floorarea-2">64305平方米</td>
-                            <td id="value-floorarea-3"></td>
-                            <td id="value-floorarea-4"></td>
-                        </tr>
-                        <tr class="normal">
-                            <td class="key">建筑面积</td>
-                            <td id="value-buildarea-1">86376平方米</td>
-                            <td id="value-buildarea-2">136198.6平方米</td>
-                            <td id="value-buildarea-3"></td>
-                            <td id="value-buildarea-4"></td>
-                        </tr>
-                        <tr class="normal">
-                            <td class="key">容积率</td>
-                            <td id="value-volume-1">4.91</td>
-                            <td id="value-volume-2">1.69</td>
-                            <td id="value-volume-3"></td>
-                            <td id="value-volume-4"></td>
-                        </tr>
-                        <tr class="normal">
-                            <td class="key">绿化率</td>
-                            <td id="value-green-1">35%</td>
-                            <td id="value-green-2">35%</td>
-                            <td id="value-green-3"></td>
-                            <td id="value-green-4"></td>
-                        </tr>
-                        <tr class="normal">
-                            <td class="key">楼栋总数</td>
-                            <td id="value-blockcount-1">3</td>
-                            <td id="value-blockcount-2">19</td>
-                            <td id="value-blockcount-3"></td>
-                            <td id="value-blockcount-4"></td>
-                        </tr>
-                        <tr class="normal">
-                            <td class="key">户数</td>
-                            <td id="value-housecount-1">508</td>
-                            <td id="value-housecount-2">657</td>
-                            <td id="value-housecount-3"></td>
-                            <td id="value-housecount-4"></td>
-                        </tr>
-                        <tr class="normal">
-                            <td class="key">停车位</td>
-                            <td id="value-parking-1">
-                                <span class="park-row" title="323个">323个</span>
-                            </td>
-                            <td id="value-parking-2">
-                                <span class="park-row" title="805个（地上80个，地下725个）">805个（地上80个，地下725个）</span>
-                            </td>
-                            <td id="value-parking-3"></td>
-                            <td id="value-parking-4"></td>
-                        </tr>
-                        <tr class="normal">
-                            <td class="key">物业公司</td>
-                            <td id="value-propcompany-1">-</td>
-                            <td id="value-propcompany-2">天骄爱生活服务股份有限公司</td>
-                            <td id="value-propcompany-3"></td>
-                            <td id="value-propcompany-4"></td>
-                        </tr>
-                        <tr class="normal">
-                            <td class="key">物业费</td>
-                            <td id="value-proppay-1">-</td>
-                            <td id="value-proppay-2">-</td>
-                            <td id="value-proppay-3"></td>
-                            <td id="value-proppay-4"></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div class="lpcompare-tig" node-type="lpcompare-tig" style="display: none;">
-                    <p class="text">点评成功</p>
+  <div style="height: 1800px;width: 100%;">
+    <Card style="margin: 0 auto;width: 1250px;margin-top: 70px;">
+      <div node-type="module" class="module-lpcompare">
+        <table class="mtable" note-type="common-data" data-cityprefix="yt" data-domain="focus" data-photodomain="https://t.focus-img.cn">
+          <colgroup>
+            <col class="key">
+            <col span="4" class="value" data-cur-column="0">
+          </colgroup>
+          <tbody>
+            <tr>
+              <td class="compare" colspan="5">
+                <span class="label">楼盘对比</span>
+                <input type="text" class="query" node-type="input-query" data-cityid="139">
+                <span class="btn compare-btn" node-type="compare-btn" @click="showmapView">+对比</span>
+                <ul class="suggest-list" node-type="suggest-list">
+                  <li class="suggest-item">国风美唐</li>
+                  <li class="suggest-item">国风美唐</li>
+                </ul>
+              </td>
+            </tr>
+            <tr class="normal loupan-info" node-type="loupan-info">
+              <td class="key">楼盘名称</td>
+              <td id="value-name-1">
+                <div>
+                  <a @click="gethouseinfo" target="_blank" title=" 海上明珠"><img id="avatar-1" class="avatar" src="../../../assets/img/44b8812c-cb76-4ac6-aa53-5f3ab4db1100.png" alt=""></a>
                 </div>
-            </div>
-        </Card>
-    </div>
+                <div id="name-1"> 海上明珠</div>
+                <div class="ctrl-wrap">
+                  <span class="del" data-index="1" data-pid="110110771">╳</span>
+                </div>
+              </td>
+              <td id="value-name-2">
+                <div>
+                  <a @click="gethouseinfo" target="_blank" title="南山协信天骄城"><img id="avatar-2" class="avatar" src="../../../assets/img/83056b78-9f82-4b8b-ae23-2c3538e49fe0.png" alt=""></a>
+                </div>
+                <div id="name-2">南山协信天骄城</div>
+                <div class="ctrl-wrap">
+                  <span class="del" data-index="2" data-pid="110099217">╳</span>
+                </div>
+              </td>
+              <td id="value-name-3">
+              </td>
+              <td id="value-name-4">
+              </td>
+            </tr>
+            <tr class="normal loupan-info" node-type="loupan-info">
+              <td class="key">价格</td>
+              <td id="value-price-1">平均价格：
+                <span id="price-1" class="price">18000元/㎡</span>
+              </td>
+              <td id="value-price-2">平均价格：
+                <span id="price-2" class="price">6500元/㎡</span>
+              </td>
+              <td id="value-price-3"></td>
+              <td id="value-price-4"></td>
+            </tr>
+          </tbody>
+        </table>
+        <table class="mtable">
+          <colgroup>
+            <col class="key">
+            <col span="4" class="value">
+          </colgroup>
+          <tbody>
+            <tr class="headerd">
+              <td colspan="5">
+                <div class="title">基本信息</div>
+              </td>
+            </tr>
+            <tr class="normal">
+              <td class="key">项目位置</td>
+
+              <td id="value-location-1">芝罘 北马路与西南河交汇处
+                <a href="" class="maplink" target="_blank">查看地图</a>
+              </td>
+              <td id="value-location-2">龙口 齐鲁医院南山分院北侧
+                <a href="" class="maplink" target="_blank">查看地图</a>
+              </td>
+              <td id="value-location-3"></td>
+              <td id="value-location-4"></td>
+            </tr>
+            <tr class="normal">
+              <td class="key">物业类别</td>
+              <td id="value-property-1">普通住宅,自住型商品房</td>
+              <td id="value-property-2">普通住宅,自住型商品房</td>
+              <td id="value-property-3"></td>
+              <td id="value-property-4"></td>
+            </tr>
+            <tr class="normal">
+              <td class="key">装修状况</td>
+              <td id="value-fitment-1">毛坯</td>
+              <td id="value-fitment-2">毛坯</td>
+              <td id="value-fitment-3"></td>
+              <td id="value-fitment-4"></td>
+            </tr>
+            <tr class="normal">
+              <td class="key">产权年限</td>
+              <td id="value-years-1">70年</td>
+              <td id="value-years-2">70年</td>
+              <td id="value-years-3"></td>
+              <td id="value-years-4"></td>
+            </tr>
+            <tr class="normal">
+              <td class="key">开发商</td>
+              <td id="value-devel-1"></td>
+              <td id="value-devel-2"></td>
+              <td id="value-devel-3"></td>
+              <td id="value-devel-4"></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <table class="mtable">
+          <colgroup>
+            <col class="key">
+            <col span="4" class="value">
+          </colgroup>
+          <tbody>
+            <tr class="headerd">
+              <td colspan="5">
+                <div class="title">销售信息</div>
+              </td>
+            </tr>
+            <tr class="normal">
+              <td class="key">销售状态</td>
+              <td id="value-sale-1">在售</td>
+              <td id="value-sale-2">在售</td>
+              <td id="value-sale-3"></td>
+              <td id="value-sale-4"></td>
+            </tr>
+            <tr class="normal">
+              <td class="key">开盘时间</td>
+              <td id="value-opentime-1">预计2018年07月</td>
+              <td id="value-opentime-2">预计2018年06月</td>
+              <td id="value-opentime-3"></td>
+              <td id="value-opentime-4"></td>
+            </tr>
+            <tr class="normal">
+              <td class="key">交房时间</td>
+              <td id="value-givetime-1">预计2020年12月31日</td>
+              <td id="value-givetime-2">2019年12月30日</td>
+              <td id="value-givetime-3"></td>
+              <td id="value-givetime-4"></td>
+            </tr>
+            <tr class="normal">
+              <td class="key">售楼地址</td>
+              <td id="value-salelocation-1">西南河路与北马路交界处</td>
+              <td id="value-salelocation-2">齐鲁医院南山分院东北侧</td>
+              <td id="value-salelocation-3"></td>
+              <td id="value-salelocation-4"></td>
+            </tr>
+          </tbody>
+        </table>
+        <table class="mtable">
+          <colgroup>
+            <col class="key">
+            <col span="4" class="value">
+          </colgroup>
+          <tbody>
+            <tr class="headerd">
+              <td colspan="5">
+                <div class="title">规划信息</div>
+              </td>
+            </tr>
+            <tr class="normal">
+              <td class="key">占地面积</td>
+              <td id="value-floorarea-1">16700平方米</td>
+              <td id="value-floorarea-2">64305平方米</td>
+              <td id="value-floorarea-3"></td>
+              <td id="value-floorarea-4"></td>
+            </tr>
+            <tr class="normal">
+              <td class="key">建筑面积</td>
+              <td id="value-buildarea-1">86376平方米</td>
+              <td id="value-buildarea-2">136198.6平方米</td>
+              <td id="value-buildarea-3"></td>
+              <td id="value-buildarea-4"></td>
+            </tr>
+            <tr class="normal">
+              <td class="key">容积率</td>
+              <td id="value-volume-1">4.91</td>
+              <td id="value-volume-2">1.69</td>
+              <td id="value-volume-3"></td>
+              <td id="value-volume-4"></td>
+            </tr>
+            <tr class="normal">
+              <td class="key">绿化率</td>
+              <td id="value-green-1">35%</td>
+              <td id="value-green-2">35%</td>
+              <td id="value-green-3"></td>
+              <td id="value-green-4"></td>
+            </tr>
+            <tr class="normal">
+              <td class="key">楼栋总数</td>
+              <td id="value-blockcount-1">3</td>
+              <td id="value-blockcount-2">19</td>
+              <td id="value-blockcount-3"></td>
+              <td id="value-blockcount-4"></td>
+            </tr>
+            <tr class="normal">
+              <td class="key">户数</td>
+              <td id="value-housecount-1">508</td>
+              <td id="value-housecount-2">657</td>
+              <td id="value-housecount-3"></td>
+              <td id="value-housecount-4"></td>
+            </tr>
+            <tr class="normal">
+              <td class="key">停车位</td>
+              <td id="value-parking-1">
+                <span class="park-row" title="323个">323个</span>
+              </td>
+              <td id="value-parking-2">
+                <span class="park-row" title="805个（地上80个，地下725个）">805个（地上80个，地下725个）</span>
+              </td>
+              <td id="value-parking-3"></td>
+              <td id="value-parking-4"></td>
+            </tr>
+            <tr class="normal">
+              <td class="key">物业公司</td>
+              <td id="value-propcompany-1">-</td>
+              <td id="value-propcompany-2">天骄爱生活服务股份有限公司</td>
+              <td id="value-propcompany-3"></td>
+              <td id="value-propcompany-4"></td>
+            </tr>
+            <tr class="normal">
+              <td class="key">物业费</td>
+              <td id="value-proppay-1">-</td>
+              <td id="value-proppay-2">-</td>
+              <td id="value-proppay-3"></td>
+              <td id="value-proppay-4"></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="lpcompare-tig" node-type="lpcompare-tig" style="display: none;">
+          <p class="text">点评成功</p>
+        </div>
+      </div>
+    </Card>
+    <Modal v-model="mapModel" fullscreen footer-hide header-hide title="Fullscreen Modal">
+      <mapCompare/>
+    </Modal>
+  </div>
+
 </template>
 
 <script>
 import Server from "@/core/server";
 import { services } from "@/core/config/services";
-
+import mapCompare from "./mapCompare";
 export default {
   data() {
-    return {};
+    return { mapModel: false };
   },
   mounted() {},
   methods: {
+    showmapView() {
+      debugger;
+      this.mapModel = true;
+    },
     gethouseinfo() {
       this.$router.push("/houseinfo");
     }
+  },
+  components: {
+    mapCompare
   }
 };
 </script>
-<style lang="less">
+<style lang="less"  >
 body {
   overflow-y: auto;
 }
