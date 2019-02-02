@@ -121,6 +121,11 @@
     import aroundInfo from "@/vuex/store";
     import housueName from "@/vuex/store";
     import housePoint from "@/vuex/store";
+    import compareHouseOne from "@/vuex/store";
+    import compareHouseTwo from "@/vuex/store";
+    import compareHouseThree from "@/vuex/store";
+    import compareHouseFour from "@/vuex/store";
+
     // import Add from  "@/views/main/index.vue";
 
     export default {
@@ -156,13 +161,74 @@
                 list: "",
                 currentImg: "",
                 isPopup: true,
-                isPan: true
+                isPan: true,
+                nullData:{
+                    houseName:"",
+                    image:"",
+                    address: "",
+                    houseHeight: "",
+                    price:"",
+                    houseType: "",
+                    isSelling: "",
+                    greeningRate:"",
+                    parkingSpace:"",
+                }
             };
         },
         methods: {
             addComapre(){
                 this.count=0;
-                this.$router.push("/compare");
+                debugger;
+                var _this=this;
+                Server.get({
+                    url: services.compareHouseDetails,
+                    params: {
+                        name: this.houseName[0]
+                    }
+                }).then(function(rsp){
+                    if (rsp.status === 1) {
+                        compareHouseOne.commit("compareHouseOne", rsp);
+                    }else if(rsp.errMsg === "null"){
+                        compareHouseOne.commit("compareHouseOne", _this.nullData);
+                    }
+                });
+                Server.get({
+                    url: services.compareHouseDetails,
+                    params: {
+                        name: this.houseName[1]
+                    }
+                }).then(function(rsp){
+                    if (rsp.status === 1) {
+                        compareHouseTwo.commit("compareHouseTwo", rsp);
+                    }else if(rsp.errMsg === "null"){
+                        compareHouseTwo.commit("compareHouseTwo", _this.nullData);
+                    }
+                });
+                Server.get({
+                    url: services.compareHouseDetails,
+                    params: {
+                        name: this.houseName[2]
+                    }
+                }).then(function(rsp){
+                    if (rsp.status === 1) {
+                    compareHouseThree.commit("compareHouseThree", rsp);
+                    }else if(rsp.errMsg === "null"){
+                        compareHouseThree.commit("compareHouseThree", _this.nullData);
+                    }
+                });
+                Server.get({
+                    url: services.compareHouseDetails,
+                    params: {
+                        name: this.houseName[3]
+                    }
+                }).then(function(rsp){
+                    if (rsp.status === 1) {
+                    compareHouseFour.commit("compareHouseFour", rsp);
+                    }else if(rsp.errMsg === "null"){
+                        compareHouseFour.commit("compareHouseFour", _this.nullData);
+                    }
+                });
+                    this.$router.push("/compare");
             },
             add(index, value){
                 this.count++;

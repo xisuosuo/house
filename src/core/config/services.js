@@ -22,5 +22,6 @@ export const services = {
   usermanager: `http://${IP}//chzuHouse/login/getUser`,
   deleteUser: `http://${IP}//chzuHouse/login/delUser`,
   update: `http://${IP}//chzuHouse/login/manageMapperUpdateUser`,
-  recommend: `http://${IP}/chzuHouse/recommended/houseRecommended`
+  recommend: `http://${IP}/chzuHouse/recommended/houseRecommended`,
+  compareHouseDetails: `http://${IP}/chzuHouse/queryHouseInfo/compareHouseDetails`,
 }

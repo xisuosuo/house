@@ -17,6 +17,11 @@ export default new Vuex.Store({
         length: "",
         housueName: "",
         companyName: "",
+        HouseOne:[],
+        HouseTwo:[],
+        HouseThree:[],
+        HouseFour:[]
+
     },
     /*
      * mutations里面规定的就是想要改变state(数据)的动作函数，
@@ -24,6 +29,18 @@ export default new Vuex.Store({
      * state数据字段，达到更新数据的目的
      * */
     mutations: {
+        compareHouseOne(state, rsp) {
+            state.HouseOne = rsp.data;
+        },
+        compareHouseTwo(state, rsp) {
+            state.HouseTwo = rsp.data;
+        },
+        compareHouseThree(state, rsp) {
+            state.HouseThree = rsp.data;
+        },
+        compareHouseFour(state, rsp) {
+            state.HouseFour = rsp.data;
+        },
         user_message(state, rsp) {
             state.total = rsp.length;
             state.information = rsp.data;
