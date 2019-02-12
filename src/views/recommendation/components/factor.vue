@@ -513,19 +513,19 @@ export default {
       this.form.medicalRate = this.formItem.hosptials / 100;
       this.form.trafficRate = this.formItem.stations / 100;
       this.form.entertainmentRate = this.formItem.markets / 100;
-            
-      Server.get({
-        url: services.recommend,
-        params: {
-          grade: JSON.stringify(this.form)
+
+      Server.get(
+        {
+          url: services.recommend,
+          params: {
+            grade: JSON.stringify(this.form)
+          }
         }
-      }).then(rsp => {
+      ).then(rsp => {
         if (rsp.status === 1) {
-          debugger;
           console.log(rsp);
           this.$router.push("/recommendHousing");
         } else {
-          debugger;
           console.log(rsp);
         }
       });

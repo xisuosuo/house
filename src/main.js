@@ -12,6 +12,8 @@ import '../public/js/gfont/style.css';
 import echarts from 'echarts';
 import './core/';
 import "@/map/api/";
+import axios from "axios";
+// import qs from "qs";
 Vue.use(iView);
 
 Vue.config.productionTip = false
@@ -31,3 +33,4 @@ new Vue({
   },
   render: h => h(App)
 }).$mount('#app')
+

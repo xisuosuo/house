@@ -40,7 +40,7 @@ export default class Server {
 
   static setInitAxios(timeout) {
     if (!timeout) {
-      Axios.defaults.timeout = 2000;
+      Axios.defaults.timeout = 30000;
     } else {
       Axios.defaults.timeout = timeout
     }

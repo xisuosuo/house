@@ -16,16 +16,16 @@ class Server {
             return Promise.reject(error.response);
         });
     }
-    
+
     get(opt) {
         return new Promise((resolve, reject) => {
             if (opt.url.toLowerCase().indexOf("@ip") > -1) {
                 opt.url = opt.url.toLowerCase().replace(/@ip/g, onemap.CONST.IP);
             }
-            axios.defaults.timeout = opt.timeout || 5000; //5s超时
+            axios.defaults.timeout = opt.timeout || 20000; //5s超时
             axios.get(encodeURI(opt.url), {
-                params: opt.params || {}
-            })
+                    params: opt.params || {}
+                })
                 .then(function (rsp) {
                     if (typeof (rsp.data) === "string") {
                         resolve(rsp.data);
@@ -53,7 +53,7 @@ class Server {
             if (opt.url.toLowerCase().indexOf("@ip") > -1) {
                 opt.url = opt.url.toLowerCase().replace(/@ip/g, onemap.CONST.IP);
             }
-            axios.defaults.timeout = opt.timeout || 5000; //5s超时
+            axios.defaults.timeout = opt.timeout || 20000; //5s超时
             axios.post(encodeURI(opt.url), qs.stringify(opt.params || {}))
                 .then(function (rsp) {
                     rsp.data.netStatus = rsp.status;
