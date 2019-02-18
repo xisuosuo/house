@@ -20,7 +20,8 @@ export default new Vuex.Store({
         HouseOne:[],
         HouseTwo:[],
         HouseThree:[],
-        HouseFour:[]
+        HouseFour:[],
+        dataDeatil:{}
 
     },
     /*
@@ -57,8 +58,10 @@ export default new Vuex.Store({
             state.housueName = housueName
         },
         companyName(state, company) {
-            debugger;
             state.companyName = company
+        },
+        dataRap(state, data) {
+            state.dataDeatil = data
         }
     }
 })
