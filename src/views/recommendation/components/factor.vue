@@ -207,7 +207,7 @@
 import Server from "@/core/server";
 import { services } from "@/core/config/services";
 import userMessage from "@/vuex/store";
-
+import dataRap from "@/vuex/store";
 export default {
   computed: {
     color() {
@@ -514,19 +514,17 @@ export default {
       this.form.trafficRate = this.formItem.stations / 100;
       this.form.entertainmentRate = this.formItem.markets / 100;
 
-      Server.get(
-        {
-          url: services.recommend,
-          params: {
-            grade: JSON.stringify(this.form)
-          }
+      Server.get({
+        url: services.recommend,
+        params: {
+          grade: JSON.stringify(this.form)
         }
-      ).then(rsp => {
+      }).then(rsp => {
         if (rsp.status === 1) {
-          console.log(rsp);
+          debugger;
+          dataRap.commit("dataRap", rsp);
           this.$router.push("/recommendHousing");
         } else {
-          console.log(rsp);
         }
       });
     },
