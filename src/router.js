@@ -60,7 +60,7 @@ export default new Router({
             import('@/views/personal/component/personal.vue'),
         },
         {
-          name: "个人中心2",
+          name: "用户中心",
           path: "/personalcenter",
           component: () =>
             import('@/views/personalcenter/component/personalCenter.vue'),
