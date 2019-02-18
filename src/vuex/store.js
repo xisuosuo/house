@@ -46,7 +46,6 @@ export default new Vuex.Store({
             state.information = rsp.data;
         },
         aroundInfo(state, rsp) {
-            debugger;
             state.list = rsp.data;
             state.length = rsp.length;
         },
