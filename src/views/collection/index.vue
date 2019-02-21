@@ -4,103 +4,84 @@
     </div>
 </template>
 <script>
+    import Server from "@/core/server";
+    import { services } from "@/core/config/services";
 export default {
      data() {
     return {
-      columns1: [
-        {
-          align: "center",
-          title: "小区名称",
-          key: "name"
-        },
-        {
-          align: "center",
-          title: "地址",
-          key: "education"
-        },
-        {
-          align: "center",
-          title: "建筑面积",
-          key: "education"
-        },
-        {
-          align: "center",
-          title: "均价",
-          key: "education"
-        },
-        {
-          align: "center",
-          title: "容积率",
-          key: "education"
-        },
-        {
-          align: "center",
-          title: "绿化率",
-          key: "education"
-        },
-        {
-          align: "center",
-          title: "教育资源可达性",
-          key: "education"
-        },
-        {
-          align: "center",
-          title: "医疗资源可达性",
-          key: "Medical"
-        },
-        {
-          align: "center",
-          title: "交通资源可达性",
-          key: "traffic"
-        },
-        {
-          align: "center",
-          title: "休闲娱乐可达性",
-          key: "entertainment"
-        },
-        {
-          title: "操作",
-          key: "action",
-          maxWidth: 150,
-          align: "center",
-          render: (h, params) => {
-            return h("div", [
-              h("Button", {
-                props: {
-                  shape: "circle",
-                  icon: "ios-create"
-                },
-                style: {
-                  marginRight: "5px"
-                },
-                on: {
-                  click: () => {
-                    this.showMap(params.row, params.index);
-                  }
-                }
-              })
-            ]);
-          }
-        }
-      ],
-      data1: [
-        {
-          name: "John Brown",
-          education: 18,
-          Medical: "New York No. 1 Lake Park",
-          traffic: "2016-10-03",
-          entertainment: "123"
-        },
-        {
-          name: "John Brown",
-          education: 18,
-          Medical: "New York No. 1 Lake Park",
-          traffic: "2016-10-03",
-          entertainment: "123"
-        }
-      ]
+        columns1: [
+            {
+                type: "index",
+                width: 60,
+                align: "center",
+                title: "ID",
+            },
+            {
+                align: "center",
+                title: "小区名称",
+                key: "name"
+            },
+            {
+                align: "center",
+                title: "均价",
+                key: "price"
+            },
+            {
+                align: "center",
+                title: "面积/m2",
+                key: "area"
+            },
+            {
+                align: "center",
+                title: "楼层类型",
+                key: "houseHeight"
+            },
+            {
+                align: "center",
+                title: "楼盘类型",
+                key: "houseType"
+            },
+            {
+                align: "center",
+                title: "绿化率%",
+                key: "greeningRate"
+            },
+            {
+                align: "center",
+                title: "停车位",
+                key: "parkingSpace"
+            },
+            {
+                align: "center",
+                title: "街道",
+                key: "street"
+            },
+            {
+                align: "center",
+                title: "地址",
+                key: "address"
+            }
+        ],
+      data1: []
     };
   },
+    mounted() {
+        this.getTable();
+    },
+    methods: {
+        getTable() {
+            var this_=this;
+            var user = JSON.parse(sessionStorage.getItem("userAccount"));
+            Server.get({
+                url: services.getCollectHouseInfo,
+                params: {
+                    username: user
+                }
+            }).then(rsp => {
+                this_.data1 = rsp.data;
+            });
+        },
+    }
 };
 </script>
 

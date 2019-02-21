@@ -120,39 +120,35 @@
                 modal1: false,
                 columns1: [
                     {
+                        type: "index",
+                        width: 60,
+                        align: "center",
+                        title: "ID",
+                    },
+                    {
                         align: "center",
                         title: "小区名称",
                         key: "name"
                     },
                     {
                         align: "center",
-                        title: "地址",
-                        key: "education"
-                    },
-                    {
-                        align: "center",
                         title: "均价",
-                        key: "education"
+                        key: "price"
                     },
                     {
                         align: "center",
-                        title: "教育资源可达性",
-                        key: "education"
+                        title: "楼层类型",
+                        key: "houseHeight"
                     },
                     {
                         align: "center",
-                        title: "医疗资源可达性",
-                        key: "Medical"
+                        title: "绿化率%",
+                        key: "greeningRate"
                     },
                     {
                         align: "center",
-                        title: "交通资源可达性",
-                        key: "traffic"
-                    },
-                    {
-                        align: "center",
-                        title: "休闲娱乐可达性",
-                        key: "entertainment"
+                        title: "地址",
+                        key: "address"
                     },
                     {
                         title: '操作',
@@ -182,7 +178,7 @@
                                     },
                                     on: {
                                         click: () => {
-                                            this.remove(params.index)
+                                            this.remove(params.row, params.index);
                                         }
                                     }
                                 }, '删除')
@@ -190,65 +186,30 @@
                         }
                     }
                 ],
-                data1: [
-                    {
-                        name: "山水人家",
-                        education: 4555,
-                        Medical: "52",
-                        traffic: "03",
-                        entertainment: "53"
-                    },
-                    {
-                        name: "丰乐小区",
-                        education: 6666,
-                        Medical: "35",
-                        traffic: "33",
-                        entertainment: "45"
-                    },
-                    {
-                        name: "山水人家",
-                        education: 4555,
-                        Medical: "52",
-                        traffic: "03",
-                        entertainment: "53"
-                    },
-                    {
-                        name: "丰乐小区",
-                        education: 6666,
-                        Medical: "35",
-                        traffic: "33",
-                        entertainment: "45"
-                    },
-                    {
-                        name: "丰乐小区",
-                        education: 6666,
-                        Medical: "35",
-                        traffic: "33",
-                        entertainment: "45"
-                    },
-                    {
-                        name: "山水人家",
-                        education: 4555,
-                        Medical: "52",
-                        traffic: "03",
-                        entertainment: "53"
-                    },
-                    {
-                        name: "丰乐小区",
-                        education: 6666,
-                        Medical: "35",
-                        traffic: "33",
-                        entertainment: "45"
-                    }
-                ]
+                data1: []
             }
         },
         mounted() {
-
+            this.getTable();
         },
         methods: {
+            getTable() {
+                var this_=this;
+                var user = JSON.parse(sessionStorage.getItem("userAccount"));
+                Server.get({
+                    url: services.getCollectHouseInfo,
+                    params: {
+                        username: user
+                    }
+                }).then(rsp => {
+                    this_.data1 = rsp.data;
+                });
+            },
             onCancel() {
                 this.modal1 = false;
+            },
+            onRefresh() {
+                this.getTable();
             },
             onSubmit() {
                 this.$refs.changepsd.onSubmit();
@@ -256,9 +217,39 @@
             show () {
                this.$router.push("/collection");
             },
-            remove (index) {
-                this.data1.splice(index, 1);
-            }
+            remove(currentRow, index) {
+                var user = JSON.parse(sessionStorage.getItem("userAccount"));
+                currentRow.Index = index;
+                this.selectedRow = currentRow;
+                var row = this.selectedRow;
+                if (!row) {
+                    this.$Message.warning("请选择需要删除的行");
+                } else {
+                    this.$Modal.confirm({
+                        title: "提示",
+                        content: "是否永久删除此数据?",
+                        onOk: () => {
+                            debugger;
+                            var id = row.houseId;
+                            Server.get({
+                                url: services.delCollectHouse,
+                                params: {
+                                    houseId : id,
+                                    username:user
+                                }
+                            }).then(rsp => {
+                                if (rsp.status == 1) {
+                                    this.$Message.success(rsp.message);
+                                    this.onRefresh();
+                                } else {
+                                    this.$Message.error(rsp.message);
+                                }
+                            });
+                        },
+                        onCancel: () => {}
+                    });
+                }
+            },
         }
     };
 </script>
