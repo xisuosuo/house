@@ -1,41 +1,41 @@
 <template>
-    <div style="margin:70px auto;width:1000px;">
-        <table id="customers">
-            <tr>
-                <th>小区名称</th>
-                <th @click="education" title="查看教育资源可达性计算数据">教育资源可达性
-                    <Icon type="ios-book" />
-                </th>
-                <th title="查看医疗资源可达性计算数据">医疗资源可达性
-                    <Icon type="md-add-circle" />
-                </th>
-                <th title="查看交通资源可达性计算数据">交通资源可达性
-                    <Icon type="ios-car" />
-                </th>
-                <th title="查看休闲娱乐可达性计算数据">休闲娱乐可达性
-                    <Icon type="md-cart" />
-                </th>
-                <th>综合值</th>
-            </tr>
-            <tr>
-                <td class="jj">11</td>
-            </tr>
-        </table>
-        <Row>
-            <Col span="12">
-            <div id="trend" style="height: 360px;margin-top: 5px;margin-right: 5px; border: 1px solid  #dcdee2">
-            </div>
-            </Col>
-            <Col span="12">
-            <div id="comprise" style="height:360px;margin-top: 5px; margin-left: 5px;border: 1px solid  #dcdee2">
-            </div>
-            </Col>
-        </Row>
-    </div>
+  <div style="margin:70px auto;width:1000px;">
+    <table id="customers">
+      <thead>      
+        <tr>
+        <th>小区名称</th>
+        <th @click="education" title="查看教育资源可达性计算数据">教育资源可达性
+          <Icon type="ios-book" />
+        </th>
+        <th title="查看医疗资源可达性计算数据">医疗资源可达性
+          <Icon type="md-add-circle" />
+        </th>
+        <th title="查看交通资源可达性计算数据">交通资源可达性
+          <Icon type="ios-car" />
+        </th>
+        <th title="查看休闲娱乐可达性计算数据">休闲娱乐可达性
+          <Icon type="md-cart" />
+        </th>
+        <th>综合值</th>
+      </tr>
+      </thead>
+      <tbody id="customerss"></tbody>
+    </table>
+    <Row>
+      <Col span="12">
+      <div id="trend" style="height: 360px;margin-top: 5px;margin-right: 5px; border: 1px solid  #dcdee2">
+      </div>
+      </Col>
+      <Col span="12">
+      <div id="comprise" style="height:360px;margin-top: 5px; margin-left: 5px;border: 1px solid  #dcdee2">
+      </div>
+      </Col>
+    </Row>
+  </div>
 
 </template>
 <script>
-import $ from 'jquery';
+import $ from "jquery";
 import Server from "@/core/server";
 import { services } from "@/core/config/services";
 import userMessage from "@/vuex/store";
@@ -49,15 +49,29 @@ export default {
     };
   },
   mounted() {
-    this.qq();
+    this.getData();
     this.trendMap();
     this.compriseMap();
-    this.getData();
+    this.qq();
   },
   methods: {
-
+    qq() {
+      var tab = document.getElementById("customerss");
+      for (var i = 0; i < 10; i++) {
+        tab.insertRow(i);
+        for (var j = 0; j < 6; j++) {
+          var tt = this.tableData.data[i];
+          for (var k in tt) {
+            tab.rows[i].insertCell(j).innerHTML = tt[k];
+            continue;
+          }
+          break;
+        }
+      }
+    },
     getData() {
       this.tableData = dataRap.state.dataDeatil;
+      debugger;
     },
     education() {
       this.$router.push("/Details");

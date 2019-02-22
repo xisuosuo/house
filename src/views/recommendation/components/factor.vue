@@ -521,7 +521,6 @@ export default {
         }
       }).then(rsp => {
         if (rsp.status === 1) {
-          debugger;
           dataRap.commit("dataRap", rsp);
           this.$router.push("/recommendHousing");
         } else {
