@@ -56,11 +56,13 @@
                                                   color="#2d8cf0" size="17" title="小区信息详情" style="margin-bottom:8px;"/>
                                             <img v-if="value.collected == '0'" :src=uncollect
                                                  alt=""
+                                                 title="收藏"
                                                  @click="Collection(index,value)"
                                                  id="index"
                                                  style="width: 15px;height: 15px;margin-left: 5px">
                                             <img v-else-if="value.collected == '1'" :src=collect
                                                  alt=""
+                                                 title="取消收藏"
                                                  @click="Collection(index,value)"
                                                  style="width: 15px;height: 15px;margin-left: 5px">
                                             <p style="margin-top: 5px"><span>建面：</span>{{value.area}}/m2</p>
@@ -358,7 +360,6 @@
             },
             Collection(index, value) {
                 if (value.collected === 0) {
-                    value.collected = 1;
                     var user = JSON.parse(sessionStorage.getItem("userAccount"));
                     this.houseName = value.name;
                     this.houseId = value.houseId;
@@ -371,6 +372,7 @@
                         }
                     }).then(rsp => {
                         this.$Message.success(rsp.message);
+                        value.collected = 1;
                     });
                 } else if (value.collected === 1)
                 {

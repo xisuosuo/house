@@ -71,7 +71,6 @@ export default {
     },
     getData() {
       this.tableData = dataRap.state.dataDeatil;
-      debugger;
     },
     education() {
       this.$router.push("/Details");
@@ -90,7 +89,6 @@ export default {
           // this_.total = rsp.length;
         }
       });
-
       this.$router.push("/mapMatching");
     },
     trendMap() {
@@ -106,7 +104,9 @@ export default {
           }
         },
         legend: {
-          data: ["直接访问", "邮件营销", "联盟广告", "视频广告", "搜索引擎"]
+          type: 'scroll',
+          top: 10,
+          data: ["教育资源可达性", "医疗资源可达性", "交通资源可达性", "休闲娱乐可达性"]
         },
         grid: {
           left: "3%",
@@ -119,68 +119,56 @@ export default {
         },
         xAxis: {
           type: "category",
-          data: ["周一", "周二", "周三", "周四", "周五", "周六", "周日"]
+          data: [this.tableData.data[0].name,this.tableData.data[1].name,this.tableData.data[2].name,this.tableData.data[3].name,this.tableData.data[4].name,this.tableData.data[5].name,this.tableData.data[6].name,this.tableData.data[7].name,this.tableData.data[8].name,this.tableData.data[9].name,]
         },
         series: [
           {
-            name: "直接访问",
+            name: "教育资源可达性",
             type: "bar",
             stack: "总量",
             label: {
               normal: {
-                show: true,
-                position: "inside"
+                show: false,
+                position: "top"
               }
             },
-            data: [320, 302, 301, 334, 390, 330, 320]
+            data: [this.tableData.data[0].educationLevel,this.tableData.data[1].educationLevel,this.tableData.data[2].educationLevel,this.tableData.data[3].educationLevel,this.tableData.data[4].educationLevel,this.tableData.data[5].educationLevel,this.tableData.data[6].educationLevel,this.tableData.data[7].educationLevel,this.tableData.data[8].educationLevel,this.tableData.data[9].educationLevel,]
           },
           {
-            name: "邮件营销",
+            name: "医疗资源可达性",
             type: "bar",
             stack: "总量",
             label: {
               normal: {
-                show: true,
-                position: "inside"
+                show: false,
+                position: "top"
               }
             },
-            data: [120, 132, 101, 134, 90, 230, 210]
+              data: [this.tableData.data[0].medicalLevel,this.tableData.data[1].medicalLevel,this.tableData.data[2].medicalLevel,this.tableData.data[3].medicalLevel,this.tableData.data[4].medicalLevel,this.tableData.data[5].medicalLevel,this.tableData.data[6].medicalLevel,this.tableData.data[7].medicalLevel,this.tableData.data[8].medicalLevel,this.tableData.data[9].medicalLevel,]
           },
           {
-            name: "联盟广告",
+            name: "交通资源可达性",
             type: "bar",
             stack: "总量",
             label: {
               normal: {
-                show: true,
-                position: "inside"
+                show: false,
+                position: "top"
               }
             },
-            data: [220, 182, 191, 234, 290, 330, 310]
+              data: [this.tableData.data[0].trafficLevel,this.tableData.data[1].trafficLevel,this.tableData.data[2].trafficLevel,this.tableData.data[3].trafficLevel,this.tableData.data[4].trafficLevel,this.tableData.data[5].trafficLevel,this.tableData.data[6].trafficLevel,this.tableData.data[7].trafficLevel,this.tableData.data[8].trafficLevel,this.tableData.data[9].trafficLevel,]
           },
           {
-            name: "视频广告",
+            name: "休闲娱乐可达性",
             type: "bar",
             stack: "总量",
             label: {
               normal: {
-                show: true,
-                position: "inside"
+                show: false,
+                position: "top"
               }
             },
-            data: [150, 212, 201, 154, 190, 330, 410]
-          },
-          {
-            name: "搜索引擎",
-            type: "bar",
-            stack: "总量",
-            label: {
-              normal: {
-                show: true,
-                position: "inside"
-              }
-            },
-            data: [820, 832, 901, 934, 1290, 1330, 1320]
+              data: [this.tableData.data[0].entertainmentLevel,this.tableData.data[1].entertainmentLevel,this.tableData.data[2].entertainmentLevel,this.tableData.data[3].entertainmentLevel,this.tableData.data[4].entertainmentLevel,this.tableData.data[5].entertainmentLevel,this.tableData.data[6].entertainmentLevel,this.tableData.data[7].entertainmentLevel,this.tableData.data[8].entertainmentLevel,this.tableData.data[9].entertainmentLevel,]
           }
         ]
       });
@@ -192,25 +180,30 @@ export default {
       this.comprise.setOption({
         tooltip: {
           trigger: "item",
-          formatter: "{a} <br/>{b} : {c} ({d}%)"
+            formatter: "{a} <br/>{b}: {c} ({d}%)"
         },
         legend: {
-          orient: "vertical",
-          left: "left",
-          data: ["直接访问", "邮件营销", "联盟广告", "视频广告", "搜索引擎"]
+            type: 'scroll',
+            top: 10,
+            data: [this.tableData.data[0].name,this.tableData.data[1].name,this.tableData.data[2].name,this.tableData.data[3].name,this.tableData.data[4].name,this.tableData.data[5].name,this.tableData.data[6].name,this.tableData.data[7].name,this.tableData.data[8].name,this.tableData.data[9].name,]
         },
         series: [
           {
-            name: "访问来源",
+            name: "综合值对比",
             type: "pie",
             radius: "55%",
-            center: ["50%", "60%"],
+            center: ["50%", "55%"],
             data: [
-              { value: 335, name: "直接访问" },
-              { value: 310, name: "邮件营销" },
-              { value: 234, name: "联盟广告" },
-              { value: 135, name: "视频广告" },
-              { value: 1548, name: "搜索引擎" }
+              { value: this.tableData.data[0].level, name: this.tableData.data[0].name },  
+                { value: this.tableData.data[1].level, name: this.tableData.data[1].name },
+                { value: this.tableData.data[2].level, name: this.tableData.data[2].name },
+                { value: this.tableData.data[3].level, name: this.tableData.data[3].name },
+                { value: this.tableData.data[4].level, name: this.tableData.data[4].name },
+                { value: this.tableData.data[5].level, name: this.tableData.data[5].name },
+                { value: this.tableData.data[6].level, name: this.tableData.data[6].name },
+                { value: this.tableData.data[7].level, name: this.tableData.data[7].name },
+                { value: this.tableData.data[8].level, name: this.tableData.data[8].name },
+                { value: this.tableData.data[9].level, name: this.tableData.data[9].name },
             ],
             itemStyle: {
               emphasis: {
