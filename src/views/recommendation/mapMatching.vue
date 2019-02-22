@@ -32,8 +32,9 @@
                             <span class="ret">{{this.total}}</span>
                             <span>个楼盘</span>
                             <Badge :count=this.count style="float: right;margin-right: 10px">
-                                <Icon  @click="addComapre" type="ios-notifications-outline" size="26"></Icon>
+                                <Icon title="楼盘对比"  @click="addComapre" type="ios-notifications-outline" size="26"></Icon>
                             </Badge>
+                            <img title="我的收藏夹"  @click="jumpCollect"  src="../../assets/img/sumcollect.png" alt="" style="float: right;height: 20px;width: 20px;margin-top: 7px;margin-right: 10px">
                         </div>
                     </div>
                     <div class="list-wrap">
@@ -53,13 +54,16 @@
                                             <h3 style="display:inline-block;width:140px">{{value.name}}</h3>
                                             <Icon @click="detail(index,value)" type="ios-information-circle"
                                                   color="#2d8cf0" size="17" title="小区信息详情" style="margin-bottom:8px;"/>
-                                            <Icon size="19" @click="Collection(index,value)"
-                                                  v-show="(timeIndex === index) ? false:true" style="margin-bottom:9px"
-                                                  type="md-star-outline"/>
-                                            <Icon size="19" @click="Collection(index,value)"
-                                                  v-show="(timeIndex === index) ? true:false" style="margin-bottom:9px"
-                                                  type="md-star" color="#2d8cf0"/>
-                                            <span style="margin-top: 5px"><span>建面：</span>{{value.area}}/m2</span>
+                                            <img v-if="value.collected == '0'" :src=uncollect
+                                                 alt=""
+                                                 @click="Collection(index,value)"
+                                                 id="index"
+                                                 style="width: 15px;height: 15px;margin-left: 5px">
+                                            <img v-else-if="value.collected == '1'" :src=collect
+                                                 alt=""
+                                                 @click="Collection(index,value)"
+                                                 style="width: 15px;height: 15px;margin-left: 5px">
+                                            <p style="margin-top: 5px"><span>建面：</span>{{value.area}}/m2</p>
                                             <div style="margin-top: 5px;color: red">
                                                 <span>均价：</span>{{value.price}}元
                                                 <Button @click="add(index,value)" size="small" style="float: right">加入对比
@@ -125,7 +129,6 @@
     import compareHouseTwo from "@/vuex/store";
     import compareHouseThree from "@/vuex/store";
     import compareHouseFour from "@/vuex/store";
-
     // import Add from  "@/views/main/index.vue";
 
     export default {
@@ -136,8 +139,9 @@
         },
         data() {
             return {
-                count:0,
-                houseName:[],
+                count: 0,
+                countCollect:"",
+                houseName: [],
                 timeIndex: "",
                 total: "",
                 map: true,
@@ -162,33 +166,35 @@
                 currentImg: "",
                 isPopup: true,
                 isPan: true,
-                nullData:{
-                    houseName:"",
-                    image:"",
+                nullData: {
+                    houseName: "",
+                    image: "",
                     address: "",
                     houseHeight: "",
-                    price:"",
+                    price: "",
                     houseType: "",
                     isSelling: "",
-                    greeningRate:"",
-                    parkingSpace:"",
-                }
+                    greeningRate: "",
+                    parkingSpace: "",
+                },
+                collect: require(`../../assets/img/collect.png`),
+                uncollect: require(`../../assets/img/uncollect.png`),
             };
         },
         methods: {
-            addComapre(){
-                this.count=0;
+            addComapre() {
+                this.count = 0;
                 debugger;
-                var _this=this;
+                var _this = this;
                 Server.get({
                     url: services.compareHouseDetails,
                     params: {
                         name: this.houseName[0]
                     }
-                }).then(function(rsp){
+                }).then(function (rsp) {
                     if (rsp.status === 1) {
                         compareHouseOne.commit("compareHouseOne", rsp);
-                    }else if(rsp.errMsg === "null"){
+                    } else if (rsp.errMsg === "null") {
                         compareHouseOne.commit("compareHouseOne", _this.nullData);
                     }
                 });
@@ -197,10 +203,10 @@
                     params: {
                         name: this.houseName[1]
                     }
-                }).then(function(rsp){
+                }).then(function (rsp) {
                     if (rsp.status === 1) {
                         compareHouseTwo.commit("compareHouseTwo", rsp);
-                    }else if(rsp.errMsg === "null"){
+                    } else if (rsp.errMsg === "null") {
                         compareHouseTwo.commit("compareHouseTwo", _this.nullData);
                     }
                 });
@@ -209,10 +215,10 @@
                     params: {
                         name: this.houseName[2]
                     }
-                }).then(function(rsp){
+                }).then(function (rsp) {
                     if (rsp.status === 1) {
-                    compareHouseThree.commit("compareHouseThree", rsp);
-                    }else if(rsp.errMsg === "null"){
+                        compareHouseThree.commit("compareHouseThree", rsp);
+                    } else if (rsp.errMsg === "null") {
                         compareHouseThree.commit("compareHouseThree", _this.nullData);
                     }
                 });
@@ -221,24 +227,28 @@
                     params: {
                         name: this.houseName[3]
                     }
-                }).then(function(rsp){
+                }).then(function (rsp) {
                     if (rsp.status === 1) {
-                    compareHouseFour.commit("compareHouseFour", rsp);
-                    }else if(rsp.errMsg === "null"){
+                        compareHouseFour.commit("compareHouseFour", rsp);
+                    } else if (rsp.errMsg === "null") {
                         compareHouseFour.commit("compareHouseFour", _this.nullData);
                     }
                 });
-                    this.$router.push("/compare");
+                this.$router.push("/compare");
             },
-            add(index, value){
+            add(index, value) {
                 this.count++;
                 this.houseName.push(value.name);
-                if (this.houseName.length>3){
-                    this.count=4;
+                if (this.houseName.length > 3) {
+                    this.count = 4;
                     this.$Message.warning('最多添加4条哦');
                 }
             },
+            jumpCollect(){
+                this.$router.push("/personalcenter");
+            },
             getdata() {
+                debugger;
                 this.information = userMessage.state.information;
                 this.total = userMessage.state.total;
                 for (
@@ -305,6 +315,7 @@
 
             giveOrder(value) {
                 document.getElementById("part").style.display = "block";
+                var user = JSON.parse(sessionStorage.getItem("userAccount"));
                 this.order = value.name;
                 this.type = value.type;
                 this.type2 = value.type2;
@@ -313,7 +324,8 @@
                     url: services.rightHouseInfo,
                     params: {
                         sorting: this_.type,
-                        column: this_.type2
+                        column: this_.type2,
+                        username: user
                     }
                 }).then(rsp => {
                     if (rsp.status === 1) {
@@ -345,9 +357,46 @@
                 }
             },
             Collection(index, value) {
-                this.timeIndex = index;
-                debugger;
-
+                if (value.collected === 0) {
+                    value.collected = 1;
+                    var user = JSON.parse(sessionStorage.getItem("userAccount"));
+                    this.houseName = value.name;
+                    this.houseId = value.houseId;
+                    Server.get({
+                        url: services.addCollectHouse,
+                        params: {
+                            username: user,
+                            houseName: this.houseName,
+                            houseId: this.houseId
+                        }
+                    }).then(rsp => {
+                        this.$Message.success(rsp.message);
+                    });
+                } else if (value.collected === 1)
+                {
+                    this.houseId = value.houseId;
+                    var user = JSON.parse(sessionStorage.getItem("userAccount"));
+                    this.$Modal.confirm({
+                        title: "提示",
+                        content: "是否取消收藏?",
+                        onOk: () => {
+                            Server.get({
+                                url: services.delCollectHouse,
+                                params: {
+                                    houseId: this.houseId,
+                                    username: user
+                                }
+                            }).then(rsp => {
+                                if (rsp.status == 1) {
+                                    this.$Message.success(rsp.message);
+                                    value.collected = 0;
+                                } else {
+                                    this.$Message.error(rsp.message);
+                                }
+                            });
+                        },
+                    });
+                }
             },
             changeStyle() {
                 var obj = document.getElementById("drop");
@@ -386,10 +435,11 @@
     };
 </script>
 <style lang="less" scoped>
-    ul{
+    ul {
         list-style: none;
         padding-left: 0;
     }
+
     .filter {
         width: 380px;
         height: 51px;
@@ -458,7 +508,7 @@
             background-color: #f7f7f7;
             line-height: 35px;
             font-size: 12px;
-            text-indent:1px;
+            text-indent: 1px;
         }
         .ret,
         .ret-all {

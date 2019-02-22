@@ -34,7 +34,7 @@ export default {
           {
             type: "index",
             width: 60,
-            align: "center"
+            align: "center",
           },
           {
             title: "账号",
