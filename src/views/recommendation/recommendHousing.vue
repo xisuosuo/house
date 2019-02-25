@@ -300,6 +300,9 @@
         </tr>
     </table>
     </Modal>
+    <div>
+      <Button type="primary" @click="handleSpinCustom">自定义显示内容</Button>
+    </div>
   </div>
 
 </template>
@@ -494,7 +497,7 @@ export default {
           }
         ]
       });
-    }
+    },
   }
 };
 </script>
