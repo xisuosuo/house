@@ -5,22 +5,32 @@
       <span>房源对比</span>
     </p>
     <Row type="flex" justify="space-between" class="code-row-bg">
-      <Col span="6">
+      <Col span="10">
       <Input v-model="community1" placeholder="请输入小区名" />
       </Col>
       <Col span="4" style="text-align:center;line-height:32px;font-size:16px;font-weight:bold">VS</Col>
-      <Col span="6">
+      <Col span="10">
       <Input v-model="community2" placeholder="请输入小区名" />
       </Col>
-      <Col span="4">
+      <!-- <Col span="4">
       <Button type="primary"   @click="getResult()">基本对比</Button>
       </Col>
       <Col span="4">
       <Button type="primary" >地图对比</Button>
-      </Col>
+      </Col> -->
     </Row>
+
     <Table :columns="columns1" :data="data1" border="1" style="margin-top:10px"></Table>
+
     <div slot="footer">
+      <Row type="flex" justify="end" style="margin-top:10px">
+        <Col span="4">
+        <Button type="primary" @click="getResult()">基本对比</Button>
+        </Col>
+        <Col span="4">
+        <Button type="primary">地图对比</Button>
+        </Col>
+      </Row>
     </div>
   </Modal>
 </template>
