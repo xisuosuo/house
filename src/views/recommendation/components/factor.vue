@@ -510,7 +510,20 @@ export default {
       this.form.medicalRate = this.formItem.hosptials / 100;
       this.form.trafficRate = this.formItem.stations / 100;
       this.form.entertainmentRate = this.formItem.markets / 100;
-
+      this.$Spin.show({
+        render: h => {
+          return h("div", [
+            h("Icon", {
+              class: "demo-spin-icon-load",
+              props: {
+                type: "ios-loading",
+                size: 18
+              }
+            }),
+            h("div", "正在为您推荐")
+          ]);
+        }
+      });
       Server.get({
         url: services.recommend,
         params: {
@@ -519,27 +532,28 @@ export default {
       }).then(rsp => {
         if (rsp.status === 1) {
           dataRap.commit("dataRap", rsp);
+          this.$Spin.hide();
           this.$router.push("/recommendHousing");
         } else {
         }
       });
-                      this.$Spin.show({
-                    render: (h) => {
-                        return h('div', [
-                            h('Icon', {
-                                'class': 'demo-spin-icon-load',
-                                props: {
-                                    type: 'ios-loading',
-                                    size: 18
-                                }
-                            }),
-                            h('div', 'Loading')
-                        ])
-                    }
-                });
-                setTimeout(() => {
-                    this.$Spin.hide();
-                }, 25000);
+      // this.$Spin.show({
+      //   render: h => {
+      //     return h("div", [
+      //       h("Icon", {
+      //         class: "demo-spin-icon-load",
+      //         props: {
+      //           type: "ios-loading",
+      //           size: 18
+      //         }
+      //       }),
+      //       h("div", "Loading")
+      //     ]);
+      //   }
+      // });
+      // setTimeout(() => {
+      //   this.$Spin.hide();
+      // }, 25000);
     },
     change() {
       this.downIcon = !this.downIcon;
@@ -582,5 +596,10 @@ export default {
 p {
   font-size: 14px;
   font-weight: bold;
+}
+</style>
+<style lang="less" >
+.demo-spin-icon-load {
+  animation: ani-demo-spin 1s linear infinite;
 }
 </style>

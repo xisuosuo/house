@@ -22,6 +22,11 @@ Vue.prototype.$Message.config({
   top: 60,
 });
 
+router.beforeEach((to, from, next) => {
+  iView.LoadingBar.start();
+  next();
+});
+
 router.afterEach(route => {
   iView.LoadingBar.finish();
 });
@@ -33,4 +38,3 @@ new Vue({
   },
   render: h => h(App)
 }).$mount('#app')
-
