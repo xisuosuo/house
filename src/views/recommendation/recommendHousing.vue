@@ -1,19 +1,19 @@
 <template>
-  <div style="margin:70px auto;width:1000px;">
+  <div style="margin:65px auto;width:1000px;">
     <table id="customers">
       <thead>      
         <tr>
         <th>小区名称</th>
-        <th @click="education" title="查看教育资源可达性计算数据">教育资源可达性
+        <th @click="modal1 = true" title="查看教育资源可达性计算数据">教育资源可达性
           <Icon type="ios-book" />
         </th>
-        <th title="查看医疗资源可达性计算数据">医疗资源可达性
+        <th @click="modal2 = true" title="查看医疗资源可达性计算数据">医疗资源可达性
           <Icon type="md-add-circle" />
         </th>
-        <th title="查看交通资源可达性计算数据">交通资源可达性
+        <th @click="modal3 = true" title="查看交通资源可达性计算数据">交通资源可达性
           <Icon type="ios-car" />
         </th>
-        <th title="查看休闲娱乐可达性计算数据">休闲娱乐可达性
+        <th @click="modal4 = true" title="查看休闲娱乐可达性计算数据">休闲娱乐可达性
           <Icon type="md-cart" />
         </th>
         <th>综合值</th>
@@ -23,14 +23,283 @@
     </table>
     <Row>
       <Col span="12">
-      <div id="trend" style="height: 360px;margin-top: 5px;margin-right: 5px; border: 1px solid  #dcdee2">
+      <div id="trend" style="height: 350px;margin-top: 5px;margin-right: 5px; border: 1px solid  #dcdee2">
       </div>
       </Col>
       <Col span="12">
-      <div id="comprise" style="height:360px;margin-top: 5px; margin-left: 5px;border: 1px solid  #dcdee2">
+      <div id="comprise" style="height:350px;margin-top: 5px; margin-left: 5px;border: 1px solid  #dcdee2">
       </div>
       </Col>
     </Row>
+    <Row type="flex" justify="end" class="code-row-bg" style="margin-top:6px">
+      <Col span="5">
+        <ButtonGroup shape="circle">
+          <Button type="primary">
+              <Icon type="ios-arrow-back" @click="back()"></Icon>
+              重新推荐
+          </Button>
+          <Button type="primary" @click="map()">
+              地图查看
+              <Icon type="ios-arrow-forward"></Icon>
+          </Button>
+          </ButtonGroup>
+        </Col>  
+    </Row>
+
+        <Modal
+        v-model="modal1"
+        title="教育资源的中间过程数据"
+        :loading="loading"
+        :styles="{top: '55px'}"
+        width="700">
+        <table id="customers">
+        <tr>
+           <th>小区名称</th>
+           <th>人口</th> 
+        </tr>
+        <tr>
+        <td>Alfreds</td>
+        <td>Maria Anders</td>
+        </tr>
+        <tr class="alt">
+        <td>Berglunds</td>
+        <td>Christina Berglund</td>
+        </tr>
+        <tr>
+        <td>Centro</td>
+        <td>Francisco Chang</td>
+        </tr>
+    </table>
+           
+    <table id="customers" class="table">
+        <tr>
+           <th></th>
+           <th>距离</th> 
+        </tr>
+        <tr>
+        <td>Alfreds</td>
+        <td>Maria Anders</td>
+        </tr>
+        <tr class="alt">
+        <td>Berglunds</td>
+        <td>Christina Berglund</td>
+        </tr>
+        <tr>
+        <td>Centro</td>
+        <td>Francisco Chang</td>
+        </tr>
+    </table>
+            
+    <table id="customers" class="table">
+        <tr>
+           <th></th>
+           <th>服务能力</th> 
+        </tr>
+        <tr>
+        <td>Alfreds</td>
+        <td>Maria Anders</td>
+        </tr>
+        <tr class="alt">
+        <td>Berglunds</td>
+        <td>Christina Berglund</td>
+        </tr>
+        <tr>
+        <td>Centro</td>
+        <td>Francisco Chang</td>
+        </tr>
+    </table>
+    </Modal>
+
+            <Modal
+        v-model="modal2"
+        title="医疗资源的中间过程数据"
+        :loading="loading"
+        :styles="{top: '55px'}"
+        width="700">
+        <table id="customers">
+        <tr>
+           <th>小区名称</th>
+           <th>人口</th> 
+        </tr>
+        <tr>
+        <td>Alfreds</td>
+        <td>Maria Anders</td>
+        </tr>
+        <tr class="alt">
+        <td>Berglunds</td>
+        <td>Christina Berglund</td>
+        </tr>
+        <tr>
+        <td>Centro</td>
+        <td>Francisco Chang</td>
+        </tr>
+    </table>
+           
+    <table id="customers" class="table">
+        <tr>
+           <th></th>
+           <th>距离</th> 
+        </tr>
+        <tr>
+        <td>Alfreds</td>
+        <td>Maria Anders</td>
+        </tr>
+        <tr class="alt">
+        <td>Berglunds</td>
+        <td>Christina Berglund</td>
+        </tr>
+        <tr>
+        <td>Centro</td>
+        <td>Francisco Chang</td>
+        </tr>
+    </table>
+            
+    <table id="customers" class="table">
+        <tr>
+           <th></th>
+           <th>服务能力</th> 
+        </tr>
+        <tr>
+        <td>Alfreds</td>
+        <td>Maria Anders</td>
+        </tr>
+        <tr class="alt">
+        <td>Berglunds</td>
+        <td>Christina Berglund</td>
+        </tr>
+        <tr>
+        <td>Centro</td>
+        <td>Francisco Chang</td>
+        </tr>
+    </table>
+    </Modal>
+
+            <Modal
+        v-model="modal3"
+        title="交通资源的中间过程数据"
+        :loading="loading"
+        :styles="{top: '55px'}"
+        width="700">
+        <table id="customers">
+        <tr>
+           <th>小区名称</th>
+           <th>人口</th> 
+        </tr>
+        <tr>
+        <td>Alfreds</td>
+        <td>Maria Anders</td>
+        </tr>
+        <tr class="alt">
+        <td>Berglunds</td>
+        <td>Christina Berglund</td>
+        </tr>
+        <tr>
+        <td>Centro</td>
+        <td>Francisco Chang</td>
+        </tr>
+    </table>
+           
+    <table id="customers" class="table">
+        <tr>
+           <th></th>
+           <th>距离</th> 
+        </tr>
+        <tr>
+        <td>Alfreds</td>
+        <td>Maria Anders</td>
+        </tr>
+        <tr class="alt">
+        <td>Berglunds</td>
+        <td>Christina Berglund</td>
+        </tr>
+        <tr>
+        <td>Centro</td>
+        <td>Francisco Chang</td>
+        </tr>
+    </table>
+            
+    <table id="customers" class="table">
+        <tr>
+           <th></th>
+           <th>服务能力</th> 
+        </tr>
+        <tr>
+        <td>Alfreds</td>
+        <td>Maria Anders</td>
+        </tr>
+        <tr class="alt">
+        <td>Berglunds</td>
+        <td>Christina Berglund</td>
+        </tr>
+        <tr>
+        <td>Centro</td>
+        <td>Francisco Chang</td>
+        </tr>
+    </table>
+    </Modal>
+            <Modal
+        v-model="modal4"
+        title="休闲娱乐的中间过程数据"
+        :loading="loading"
+        :styles="{top: '55px'}"
+        width="700">
+        <table id="customers">
+        <tr>
+           <th>小区名称</th>
+           <th>人口</th> 
+        </tr>
+        <tr>
+        <td>Alfreds</td>
+        <td>Maria Anders</td>
+        </tr>
+        <tr class="alt">
+        <td>Berglunds</td>
+        <td>Christina Berglund</td>
+        </tr>
+        <tr>
+        <td>Centro</td>
+        <td>Francisco Chang</td>
+        </tr>
+    </table>
+           
+    <table id="customers" class="table">
+        <tr>
+           <th></th>
+           <th>距离</th> 
+        </tr>
+        <tr>
+        <td>Alfreds</td>
+        <td>Maria Anders</td>
+        </tr>
+        <tr class="alt">
+        <td>Berglunds</td>
+        <td>Christina Berglund</td>
+        </tr>
+        <tr>
+        <td>Centro</td>
+        <td>Francisco Chang</td>
+        </tr>
+    </table>
+            
+    <table id="customers" class="table">
+        <tr>
+           <th></th>
+           <th>服务能力</th> 
+        </tr>
+        <tr>
+        <td>Alfreds</td>
+        <td>Maria Anders</td>
+        </tr>
+        <tr class="alt">
+        <td>Berglunds</td>
+        <td>Christina Berglund</td>
+        </tr>
+        <tr>
+        <td>Centro</td>
+        <td>Francisco Chang</td>
+        </tr>
+    </table>
+    </Modal>
   </div>
 
 </template>
@@ -45,6 +314,10 @@ var echarts = require("echarts");
 export default {
   data() {
     return {
+      modal1: false,
+      modal2: false,
+      modal3: false,
+      modal4: false,
       tableData: {}
     };
   },
@@ -52,7 +325,7 @@ export default {
     this.getData();
     this.trendMap();
     this.compriseMap();
-    this.qq();
+    this.qq();  
   },
   methods: {
     qq() {
@@ -69,9 +342,14 @@ export default {
         }
       }
     },
+    back(){
+      this.$router.push("/recommendation")
+    },
+    map(){
+      this.$router.push("/mapMatching")
+    },
     getData() {
       this.tableData = dataRap.state.dataDeatil;
-      debugger;
     },
     education() {
       this.$router.push("/Details");
@@ -90,7 +368,6 @@ export default {
           // this_.total = rsp.length;
         }
       });
-
       this.$router.push("/mapMatching");
     },
     trendMap() {
@@ -106,7 +383,9 @@ export default {
           }
         },
         legend: {
-          data: ["直接访问", "邮件营销", "联盟广告", "视频广告", "搜索引擎"]
+          type: 'scroll',
+          top: 10,
+          data: ["教育资源可达性", "医疗资源可达性", "交通资源可达性", "休闲娱乐可达性"]
         },
         grid: {
           left: "3%",
@@ -119,68 +398,56 @@ export default {
         },
         xAxis: {
           type: "category",
-          data: ["周一", "周二", "周三", "周四", "周五", "周六", "周日"]
+          data: [this.tableData.data[0].name,this.tableData.data[1].name,this.tableData.data[2].name,this.tableData.data[3].name,this.tableData.data[4].name,this.tableData.data[5].name,this.tableData.data[6].name,this.tableData.data[7].name,this.tableData.data[8].name,this.tableData.data[9].name,]
         },
         series: [
           {
-            name: "直接访问",
+            name: "教育资源可达性",
             type: "bar",
             stack: "总量",
             label: {
               normal: {
-                show: true,
-                position: "inside"
+                show: false,
+                position: "top"
               }
             },
-            data: [320, 302, 301, 334, 390, 330, 320]
+            data: [this.tableData.data[0].educationLevel,this.tableData.data[1].educationLevel,this.tableData.data[2].educationLevel,this.tableData.data[3].educationLevel,this.tableData.data[4].educationLevel,this.tableData.data[5].educationLevel,this.tableData.data[6].educationLevel,this.tableData.data[7].educationLevel,this.tableData.data[8].educationLevel,this.tableData.data[9].educationLevel,]
           },
           {
-            name: "邮件营销",
+            name: "医疗资源可达性",
             type: "bar",
             stack: "总量",
             label: {
               normal: {
-                show: true,
-                position: "inside"
+                show: false,
+                position: "top"
               }
             },
-            data: [120, 132, 101, 134, 90, 230, 210]
+              data: [this.tableData.data[0].medicalLevel,this.tableData.data[1].medicalLevel,this.tableData.data[2].medicalLevel,this.tableData.data[3].medicalLevel,this.tableData.data[4].medicalLevel,this.tableData.data[5].medicalLevel,this.tableData.data[6].medicalLevel,this.tableData.data[7].medicalLevel,this.tableData.data[8].medicalLevel,this.tableData.data[9].medicalLevel,]
           },
           {
-            name: "联盟广告",
+            name: "交通资源可达性",
             type: "bar",
             stack: "总量",
             label: {
               normal: {
-                show: true,
-                position: "inside"
+                show: false,
+                position: "top"
               }
             },
-            data: [220, 182, 191, 234, 290, 330, 310]
+              data: [this.tableData.data[0].trafficLevel,this.tableData.data[1].trafficLevel,this.tableData.data[2].trafficLevel,this.tableData.data[3].trafficLevel,this.tableData.data[4].trafficLevel,this.tableData.data[5].trafficLevel,this.tableData.data[6].trafficLevel,this.tableData.data[7].trafficLevel,this.tableData.data[8].trafficLevel,this.tableData.data[9].trafficLevel,]
           },
           {
-            name: "视频广告",
+            name: "休闲娱乐可达性",
             type: "bar",
             stack: "总量",
             label: {
               normal: {
-                show: true,
-                position: "inside"
+                show: false,
+                position: "top"
               }
             },
-            data: [150, 212, 201, 154, 190, 330, 410]
-          },
-          {
-            name: "搜索引擎",
-            type: "bar",
-            stack: "总量",
-            label: {
-              normal: {
-                show: true,
-                position: "inside"
-              }
-            },
-            data: [820, 832, 901, 934, 1290, 1330, 1320]
+              data: [this.tableData.data[0].entertainmentLevel,this.tableData.data[1].entertainmentLevel,this.tableData.data[2].entertainmentLevel,this.tableData.data[3].entertainmentLevel,this.tableData.data[4].entertainmentLevel,this.tableData.data[5].entertainmentLevel,this.tableData.data[6].entertainmentLevel,this.tableData.data[7].entertainmentLevel,this.tableData.data[8].entertainmentLevel,this.tableData.data[9].entertainmentLevel,]
           }
         ]
       });
@@ -192,25 +459,30 @@ export default {
       this.comprise.setOption({
         tooltip: {
           trigger: "item",
-          formatter: "{a} <br/>{b} : {c} ({d}%)"
+            formatter: "{a} <br/>{b}: {c} ({d}%)"
         },
         legend: {
-          orient: "vertical",
-          left: "left",
-          data: ["直接访问", "邮件营销", "联盟广告", "视频广告", "搜索引擎"]
+            type: 'scroll',
+            top: 10,
+            data: [this.tableData.data[0].name,this.tableData.data[1].name,this.tableData.data[2].name,this.tableData.data[3].name,this.tableData.data[4].name,this.tableData.data[5].name,this.tableData.data[6].name,this.tableData.data[7].name,this.tableData.data[8].name,this.tableData.data[9].name,]
         },
         series: [
           {
-            name: "访问来源",
+            name: "综合值对比",
             type: "pie",
             radius: "55%",
-            center: ["50%", "60%"],
+            center: ["50%", "55%"],
             data: [
-              { value: 335, name: "直接访问" },
-              { value: 310, name: "邮件营销" },
-              { value: 234, name: "联盟广告" },
-              { value: 135, name: "视频广告" },
-              { value: 1548, name: "搜索引擎" }
+              { value: this.tableData.data[0].level, name: this.tableData.data[0].name },  
+                { value: this.tableData.data[1].level, name: this.tableData.data[1].name },
+                { value: this.tableData.data[2].level, name: this.tableData.data[2].name },
+                { value: this.tableData.data[3].level, name: this.tableData.data[3].name },
+                { value: this.tableData.data[4].level, name: this.tableData.data[4].name },
+                { value: this.tableData.data[5].level, name: this.tableData.data[5].name },
+                { value: this.tableData.data[6].level, name: this.tableData.data[6].name },
+                { value: this.tableData.data[7].level, name: this.tableData.data[7].name },
+                { value: this.tableData.data[8].level, name: this.tableData.data[8].name },
+                { value: this.tableData.data[9].level, name: this.tableData.data[9].name },
             ],
             itemStyle: {
               emphasis: {

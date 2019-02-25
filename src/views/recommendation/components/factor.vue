@@ -125,10 +125,10 @@
                   <Checkbox label="三甲医院"></Checkbox>
                 </CheckboxGroup>
                 <CheckboxGroup v-model="Medical2">
-                  <Checkbox label="一级医疗"></Checkbox>
+                  <Checkbox label="一级医疗设施"></Checkbox>
                 </CheckboxGroup>
                 <CheckboxGroup v-model="Medical3">
-                  <Checkbox label="二级医疗"></Checkbox>
+                  <Checkbox label="二级医疗设施"></Checkbox>
                 </CheckboxGroup>
                 </Col>
               </Row>
@@ -150,9 +150,6 @@
                 </CheckboxGroup>
                 <CheckboxGroup v-model="traffic3">
                   <Checkbox label="高铁站"></Checkbox>
-                </CheckboxGroup>
-                <CheckboxGroup v-model="traffic4">
-                  <Checkbox label="公交站"></Checkbox>
                 </CheckboxGroup>
                 </Col>
               </Row>
