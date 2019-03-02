@@ -229,15 +229,34 @@ export default new Router({
           name: '辅助决策',
           component: () =>
             import('@/views/auDecision/index.vue'),
-          children: [{
-            path: '/',
-            name: '辅助决策',
-            meta: {
-              auth: true
+            children: [
+                {
+                path: '/auDecision/usersManual',
+                name: '用户手册',
+                meta: {
+                    auth: true
+                },
+                component: () =>
+                    import('@/views/auDecision/components/usersManual.vue'),
             },
-            component: () =>
-              import('@/views/auDecision/index.vue'),
-          }]
+                {
+                    path: '/auDecision/livablemodel',
+                    name:'宜居模型',
+                    meta: {
+                        auth: true
+                    },
+                    component: () =>
+                        import('@/views/auDecision/components/livablemodel.vue'),
+                },
+                {
+                    path: '/auDecision/model',
+                    name: '引力模型',
+                    meta: {
+                        auth: true
+                    },
+                    component: () =>
+                        import('@/views/auDecision/components/model.vue'),
+                }]
         },
         {
           path: '/housingValuation',

@@ -29,7 +29,6 @@
                                 <Tag checkable color="success">有车</Tag>
                                 <Tag checkable color="primary">有存款</Tag>
                                 <Tag checkable color="warning">长得漂亮</Tag>
-                                <Button icon="ios-add" type="dashed" size="small">添加标签</Button>
                             </div>
                             <Divider dashed="true" />
                             <strong><div>详细信息:</div></strong>
@@ -38,7 +37,7 @@
                                    <span>林噙霜</span>
                                 </FormItem>
                                 <FormItem label="年龄:">
-                                   <span>21岁</span>
+                                   <span>{{this.userInfo.age}}</span>
                                 </FormItem>
                                 <FormItem label="工作类型:">
                                    <span>程序猿</span>
@@ -186,13 +185,29 @@
                         }
                     }
                 ],
-                data1: []
+                data1: [],
+                userInfo:[],
             }
         },
         mounted() {
             this.getTable();
+            this.getInfo();
         },
         methods: {
+            getInfo(){
+                // debugger;
+                var this_=this;
+                var user = JSON.parse(sessionStorage.getItem("userAccount"));
+                Server.get({
+                    url: services.getInfo,
+                    params: {
+                        username: user
+                    }
+                }).then(rsp => {
+                    // this_.data.userInfo = rsp;
+                    console.log(rsp.data) ;
+                });
+            },
             getTable() {
                 var this_=this;
                 var user = JSON.parse(sessionStorage.getItem("userAccount"));

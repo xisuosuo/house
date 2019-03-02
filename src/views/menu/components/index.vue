@@ -37,7 +37,7 @@
         </div>
       </div>
     </router-link>
-    <router-link to="/auDecision">
+    <router-link to="/auDecision/usersManual">
       <div class="item-view">
         <div class="item bg3">
           <div class="icon-wrap">
