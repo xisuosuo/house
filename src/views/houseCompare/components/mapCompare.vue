@@ -1,22 +1,22 @@
 <template>
-    <Row>
-        <Col span="12">
-        <div class="blockHeader">
-            <Icon type="ios-ribbon-outline" size="20" />
-            <span style="padding-left: 3px;">安邦花园OD距离</span>
-        </div>
+  <Row>
+    <Col span="12">
+    <div class="blockHeader">
+      <Icon type="ios-ribbon-outline" size="20" />
+      <span style="padding-left: 3px;">安邦花园OD距离</span>
+    </div>
 
-        <div id="viewDiv">
-        </div>
-        </Col>
-        <Col span="12">
-        <div class="blockHeader">
-            <Icon type="ios-ribbon-outline" size="20" />
-            <span style="padding-left: 3px;">山水人家OD距离</span>
-        </div>
-        <div id="viewDiv1"> </div>
-        </Col>
-    </Row>
+    <div id="viewDiv">
+    </div>
+    </Col>
+    <Col span="12">
+    <div class="blockHeader">
+      <Icon type="ios-ribbon-outline" size="20" />
+      <span style="padding-left: 3px;">山水人家OD距离</span>
+    </div>
+    <div id="viewDiv1"> </div>
+    </Col>
+  </Row>
 </template>
 <script>
 import axios from "axios";
@@ -55,14 +55,14 @@ export default {
               "esri/Map",
               "esri/Basemap",
               "esri/views/MapView",
-              "esri/layers/TileLayer"
+              "esri/layers/MapImageLayer"
             ])
-            .then(([Map, Basemap, MapView, TileLayer, dom, on]) => {
+            .then(([Map, Basemap, MapView, MapImageLayer, dom, on]) => {
               var activeWidget = null;
 
-              var street = new TileLayer({
+              var street = new MapImageLayer({
                 url:
-                  "http://122.112.216.247:6080/arcgis/rest/services/CHUZHOU/chuzhouServer/MapServer"
+                  "http://122.112.216.247:6080/arcgis/rest/services/CHUZHOU/odqllj/MapServer"
               });
 
               var baseMap = new Basemap({
@@ -106,14 +106,14 @@ export default {
               "esri/Map",
               "esri/Basemap",
               "esri/views/MapView",
-              "esri/layers/TileLayer"
+              "esri/layers/MapImageLayer"
             ])
-            .then(([Map, Basemap, MapView, TileLayer, dom, on]) => {
+            .then(([Map, Basemap, MapView, MapImageLayer, dom, on]) => {
               var activeWidget = null;
 
-              var street = new TileLayer({
+              var street = new MapImageLayer({
                 url:
-                  "http://122.112.216.247:6080/arcgis/rest/services/CHUZHOU/chuzhouServer/MapServer"
+                  "http://122.112.216.247:6080/arcgis/rest/services/CHUZHOU/odjpsxmd/MapServer"
               });
 
               var baseMap = new Basemap({

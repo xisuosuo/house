@@ -22,7 +22,7 @@
           <Col span="6">
           <div class="user-tools">
             <!--<Badge :count=this.count style="margin-right: 20px;">-->
-                 <!--<Icon  @click="addComapre" type="ios-notifications-outline" size="26"></Icon>-->
+            <!--<Icon  @click="addComapre" type="ios-notifications-outline" size="26"></Icon>-->
             <!--</Badge>-->
             <Dropdown :transfer="false" placement="bottom-end" @on-click="onUserItemClick">
               <div class="user-info">
@@ -36,7 +36,7 @@
                     <span> 个人中心</span>
                   </DropdownItem>
                 </div>
-                <div  @click="collection()">               
+                <div @click="collection()">
                   <DropdownItem divided>
                     <icon type="ios-cart-outline" :size="16" />
                     <span> 我的收藏</span>
@@ -63,7 +63,7 @@
           </Col>
         </Row>
       </Header>
-      <Content :style="{minHeight: '970px', background: '#fff'}">
+      <Content :style="{minHeight: 'w_height-55', background: '#fff'}">
         <router-view/>
       </Content>
     </Layout>
@@ -75,8 +75,9 @@ import { services } from "@/core/config/services";
 import Navigation from "@/views/menu/components";
 import { login } from "@/views/login/js/login.js";
 import ChangePsd from "@/views/login/components/changepsd";
+import { computeh } from "@/core/computeh";
 export default {
-  mixins: [login],
+  mixins: [login, computeh],
   data() {
     return {
       name: "首页",
@@ -85,11 +86,11 @@ export default {
     };
   },
   mounted() {
-      this.user = JSON.parse(sessionStorage.getItem("user Info"));
-      console.log(this.user)
+    this.user = JSON.parse(sessionStorage.getItem("user Info"));
+    console.log(this.user);
   },
   methods: {
-     collection(){
+    collection() {
       this.$router.push("/collection");
     },
     getPath() {
@@ -140,6 +141,10 @@ export default {
 
 
 <style lang="less" scoped>
+.body {
+  height: 100%;
+  width: 100%;
+}
 .header {
   background: #2d8cf0;
   height: 55px;
@@ -190,7 +195,7 @@ export default {
 .poupTitle:hover {
   display: block;
 }
-.demo-badge{
+.demo-badge {
   float: right;
   width: 22px;
   height: 22px;

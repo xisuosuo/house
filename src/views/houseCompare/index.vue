@@ -1,5 +1,5 @@
 <template>
-    <Layout>
+    <Layout :height="w_height-55">
         <Sider hide-trigger :width="70">
             <div class="layout-menu">
                 <ul>
@@ -65,9 +65,11 @@
 <script>
 import Calculator from "./components/Calculator";
 import houseCompare from "./components/houseCompare";
+import { computeh } from "@/core/computeh";
 // import siteSelection from "./components/siteSelection";
 import MapView from "@/map/components/MapView";
 export default {
+  mixins: [computeh],
   methods: {
     openCompare() {
       this.$root.Bus.$emit("eventCompare");
@@ -86,9 +88,7 @@ export default {
     //   this.site = msg;
     // }
   },
-  mounted() {
- 
-  },
+  mounted() {},
   data() {
     return {
       map: true,

@@ -517,10 +517,18 @@ export default {
               class: "demo-spin-icon-load",
               props: {
                 type: "ios-loading",
-                size: 18
+                size: 35
               }
             }),
-            h("div", "正在为您推荐")
+            h(
+              "div",
+              {
+                style: {
+                  fontSize: "20px"
+                }
+              },
+              "正在为您推荐"
+            )
           ]);
         }
       });

@@ -12,12 +12,6 @@
       <Col span="10">
       <Input v-model="community2" placeholder="请输入小区名" />
       </Col>
-      <!-- <Col span="4">
-      <Button type="primary"   @click="getResult()">基本对比</Button>
-      </Col>
-      <Col span="4">
-      <Button type="primary" >地图对比</Button>
-      </Col> -->
     </Row>
 
     <Table :columns="columns1" :data="data1" border="1" style="margin-top:10px"></Table>
@@ -25,18 +19,23 @@
     <div slot="footer">
       <Row type="flex" justify="end" style="margin-top:10px">
         <Col span="4">
-        <Button type="primary" @click="getResult()">基本对比</Button>
+        <Button type="primary" style="margin-left:2px" @click="getResult()">基本对比</Button>
         </Col>
         <Col span="4">
-        <Button type="primary">地图对比</Button>
+        <Button type="primary" style="margin-left:3px" @click="showmapView">地图对比</Button>
         </Col>
       </Row>
     </div>
+    <Modal v-model="mapModel" fullscreen>
+      <mapCompare/>
+    </Modal>
   </Modal>
+
 </template>
 <script>
 import Server from "@/core/server";
 import { services } from "@/core/config/services";
+import mapCompare from "./mapCompare";
 export default {
   created() {
     this.$root.Bus.$on("eventCompare", () => {
@@ -46,6 +45,7 @@ export default {
   data() {
     return {
       Compare: false,
+      mapModel: false,
       columns1: [
         {
           title: "比较参数",
@@ -103,7 +103,14 @@ export default {
         _this.data1[2].community1 = res.data[2].shopDistance1;
         _this.data1[2].community2 = res.data[2].shopDistance2;
       });
+    },
+    showmapView() {
+      debugger;
+      this.mapModel = true;
     }
+  },
+  components: {
+    mapCompare
   },
   beforeDestroy() {
     this.$root.Bus.$off("eventCompare");
