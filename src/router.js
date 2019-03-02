@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import main from '@/views/main/index.vue'
 import login from './views/login/index.vue'
-// import test from './views/test/test.vue'
+import test from './views/test/'
 Vue.use(Router)
 
 export default new Router({
@@ -20,14 +20,10 @@ export default new Router({
         auth: false,
       }
     },
-    // {
-    //   path: '/test',
-    //   component: test,
-
-    //   meta: {
-    //     auth: false,
-    //   }
-    // },
+    {
+      path: '/test',
+      component: test,
+    },
     {
       path: '/main',
       component: main,

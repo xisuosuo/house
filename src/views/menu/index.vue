@@ -28,7 +28,7 @@ export default {
 
 <style lang="less" scoped>
 .home {
-  height: 1980px;
+  height: 650px;
   background: url("../../assets/img/logo/home_bg.png");
   margin-top: 55px;
 }

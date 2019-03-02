@@ -1,5 +1,5 @@
 <template>
-  <Layout>
+ <Layout :height="w_height-55">
     <Sider hide-trigger :width="70">
       <div class="layout-menu">
         <ul>
