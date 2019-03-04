@@ -56,7 +56,7 @@ export const login = {
           password: this.user.userPwd
         }
       }).then(rsp => {
-        if (rsp.status === 1) {
+        if (rsp.data.status === 1) {
           this.accountName = rsp.accountName
           var jsonStr = JSON.stringify({
             user: this.user.userAccount,

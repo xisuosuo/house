@@ -2,7 +2,7 @@ import {
   IP
 } from "@/core/config/const";
 export const services = {
-  login: `http://${IP}/chzuHouse/login/login`,
+  login: `http://${IP}/chzuHouse/user/login`,
   streetquery: `http://${IP}/chzuHouse/facilities/getFacilities`,
   compare: `http://${IP}/chzuHouse/querylessdistance/querylesshospitaldistance`,
   houseQuery: `http://${IP}//chzuHouse/newHouse/queryHouseInfoPoint`,
