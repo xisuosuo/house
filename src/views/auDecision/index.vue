@@ -1,34 +1,66 @@
 <template>
-    <Layout >
+    <Layout>
         <Sider hide-trigger :width="70">
-          <div class="layout-menu">
-            <ul>
-               <router-link to="/menu">
-               <li class="menu-home"><a><span class="icon-home"></span></a></li>
-               </router-link>
-                <router-link to="/auDecision/usersManual">
-                    <li class="menu-item"><a class="nav-item">
-                        <div class="icon-wrap"><span class="menu-icon icon-chart"></span></div>
-                        <div class="div-label"><span>用户手册</span></div>
-                    </a></li>
-                </router-link>
-                <router-link to="/auDecision/livablemodel">
-              <li class="menu-item"><a class="nav-item">
-                  <div class="icon-wrap"><span class="menu-icon icon-chart"></span></div>
-                  <div class="div-label"><span>宜居模型</span></div>
-                </a></li>
-                </router-link>
-                <router-link to="/auDecision/model">
-              <li class="menu-item"><a class="nav-item">
-                  <div class="icon-wrap"><span class="menu-icon icon-xmsc"></span></div>
-                  <div class="div-label"><span>引力模型</span></div>
-                </a>
-              </li>
-                </router-link>
-            </ul>
-          </div>
+            <div class="layout-menu">
+                <ul>
+                    <router-link to="/menu">
+                        <li class="menu-home">
+                            <a>
+                                <span class="icon-home"></span>
+                            </a>
+                        </li>
+                    </router-link>
+                    <router-link to="/auDecision/usersManual">
+                        <li class="menu-item">
+                            <a class="nav-item">
+                                <div class="icon-wrap">
+                                    <span class="menu-icon icon-chart"></span>
+                                </div>
+                                <div class="div-label">
+                                    <span>用户手册</span>
+                                </div>
+                            </a>
+                        </li>
+                    </router-link>
+                    <router-link to="/auDecision/livablemodel">
+                        <li class="menu-item">
+                            <a class="nav-item">
+                                <div class="icon-wrap">
+                                    <span class="menu-icon icon-chart"></span>
+                                </div>
+                                <div class="div-label">
+                                    <span>宜居模型</span>
+                                </div>
+                            </a>
+                            <ul class="sub-menu-item">
+                                <li>
+                                    <a @click="openCompare()">房源对比</a>
+                                </li>
+                                <li>
+                                    <router-link to="/auDecision/livablemodel">
+                                        模型介绍
+                                    </router-link>
+                                </li>
+                            </ul>
+                        </li>
+                    </router-link>
+                    <router-link to="/auDecision/model">
+                        <li class="menu-item">
+                            <a class="nav-item">
+                                <div class="icon-wrap">
+                                    <span class="menu-icon icon-xmsc"></span>
+                                </div>
+                                <div class="div-label">
+                                    <span>引力模型</span>
+                                </div>
+                            </a>
+                        </li>
+                    </router-link>
+                </ul>
+            </div>
         </Sider>
         <Content>
+            <houseCompare></houseCompare>
             <router-view/>
         </Content>
     </Layout>
@@ -38,5 +70,19 @@
 //   height: 1024px;
 // }
 </style>
+<script>
+import houseCompare from "./components/houseCompare";
+export default {
+  methods: {
+    openCompare() {
+      this.$root.Bus.$emit("eventCompare");
+    }
+  },
+  components: {
+    houseCompare
+  }
+};
+</script>
+
 
         

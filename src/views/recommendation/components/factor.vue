@@ -189,10 +189,17 @@
             <img class="light" v-show="!downIcon" @click="change" src="../../../assets/img/lightbulb1.png">
             <img class="light" v-show="downIcon" @click="change" src="../../../assets/img/lightbulb2.png">
             <Alert type=success id="tip" style="width:200px;">
-              <h3 style="margin-left:10px">用户提示</h3>
-              <p style="font-weight: normal;font-size: 12px;margin-left:10px">
-                在使用房源推荐功能之前，需完善用户个人信息，以此确定您的购房类型在使用房源推荐功能之前以此确定您的购房类型在使用房源推荐功能之前以此确定您的购房类型在使用房源推荐功能之前以此确定您的购房类型在使用房源推荐功能之前以此确定您的购房类型在使用房源推荐功能之前以此确定您的购房类型在使用房源推荐功能之前，需完善用户个人信息，以此确定您的购房类型在使用房源推荐功能之前，需完善用户个人信息，以此确定您的购房类型。</p>
+              <h3 style="margin-left:6px">用户提示</h3>
+              <p style="font-weight: normal;font-size: 12px;margin-left:6px">
+                在使用房源推荐功能之前，需完善用户个人信息，以此确定您的购房类型在使用房源推荐功能之前以此确定您的购房类型。</p>
+              <ButtonGroup shape="circle">
+                <Button type="primary" size="small" @click="push" style="margin-left:4px">
+                  可达性模型
+                  <Icon type="ios-arrow-forward"></Icon>
+                </Button>
+              </ButtonGroup>
             </Alert>
+
           </div>
           </Col>
         </Row>
@@ -562,6 +569,9 @@ export default {
       // setTimeout(() => {
       //   this.$Spin.hide();
       // }, 25000);
+    },
+    push(){
+      this.$router.push("/auDecision/model")
     },
     change() {
       this.downIcon = !this.downIcon;
