@@ -6,6 +6,12 @@
                <router-link to="/menu">
                <li class="menu-home"><a><span class="icon-home"></span></a></li>
                </router-link>
+                <router-link to="/auDecision/usersManual">
+                    <li class="menu-item"><a class="nav-item">
+                        <div class="icon-wrap"><span class="menu-icon icon-chart"></span></div>
+                        <div class="div-label"><span>用户手册</span></div>
+                    </a></li>
+                </router-link>
                 <router-link to="/auDecision/livablemodel">
               <li class="menu-item"><a class="nav-item">
                   <div class="icon-wrap"><span class="menu-icon icon-chart"></span></div>
