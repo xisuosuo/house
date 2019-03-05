@@ -24,7 +24,8 @@ export const services = {
   update: `http://${IP}//chzuHouse/login/manageMapperUpdateUser`,
   recommend: `http://${IP}/chzuHouse/recommended/houseRecommended`,
   compareHouseDetails: `http://${IP}/chzuHouse/queryHouseInfo/compareHouseDetails`,
-  getCollectHouseInfo:`http://${IP}/chzuHouse/queryHouseInfo/getCollectHouseInfo`,
-  delCollectHouse:`http://${IP}/chzuHouse/queryHouseInfo/delCollectHouse`,
-  addCollectHouse:`http://${IP}/chzuHouse/queryHouseInfo/addCollectHouse`,
+  getCollectHouseInfo: `http://${IP}/chzuHouse/queryHouseInfo/getCollectHouseInfo`,
+  delCollectHouse: `http://${IP}/chzuHouse/queryHouseInfo/delCollectHouse`,
+  addCollectHouse: `http://${IP}/chzuHouse/queryHouseInfo/addCollectHouse`,
+  getlayers: `http://${IP}/chzuHouse/shapeDeal/dealShape`,
 };
