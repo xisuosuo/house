@@ -188,14 +188,15 @@
         methods: {
             addComapre() {
                 this.count = 0;
-                debugger;
                 var _this = this;
+                debugger;
                 Server.get({
-                    url: services.getallinfo,
+                    url: services.compareHouseDetails,
                     params: {
-                        name: this.houseName[0]
+                        houseId: this.houseName[0]
                     }
                 }).then(function (rsp) {
+                    console.log(rsp);
                     if (rsp.status === 1) {
                         compareHouseOne.commit("compareHouseOne", rsp);
                     } else if (rsp.errMsg === 0) {
@@ -203,9 +204,9 @@
                     }
                 });
                 Server.get({
-                    url: services.getallinfo,
+                    url: services.compareHouseDetails,
                     params: {
-                        name: this.houseName[1]
+                        houseId: this.houseName[1]
                     }
                 }).then(function (rsp) {
                     if (rsp.status === 1) {
@@ -215,9 +216,10 @@
                     }
                 });
                 Server.get({
-                    url: services.getallinfo,
+                    url: services.compareHouseDetails,
                     params: {
-                        name: this.houseName[2]
+                        houseId: this.houseName[2]
+
                     }
                 }).then(function (rsp) {
                     if (rsp.status === 1) {
@@ -227,9 +229,9 @@
                     }
                 });
                 Server.get({
-                    url: services.getallinfo,
+                    url: services.compareHouseDetails,
                     params: {
-                        name: this.houseName[3]
+                        houseId: this.houseName[3]
                     }
                 }).then(function (rsp) {
                     if (rsp.status === 1) {
@@ -242,7 +244,7 @@
             },
             add(index, value) {
                 this.count++;
-                this.houseName.push(value.name);
+                this.houseName.push(value.houseId);
                 if (this.houseName.length > 3) {
                     this.count = 4;
                     this.$Message.warning('最多添加4条哦');
@@ -252,7 +254,6 @@
                 this.$router.push("/personalcenter");
             },
             getdata() {
-                debugger;
                 this.information = userMessage.state.information;
                 this.total = userMessage.state.total;
                 for (
