@@ -103,7 +103,7 @@
                     </div>
 
                     <div v-for="(value,index) in detailList" style="margin-top:20px;border-bottom:1px solid #999;">
-                        <img v-bind:src="value.image" style="width: 150px;height: 100px;">
+                        <img v-bind:src=imgdata style="width: 150px;height: 100px;">
                         <div style="width:130px;height:40px;float:right;margin-right:25px;">
                             <p style="font-weight:bold; font-size:14px;text-align:center;margin-top:5px">
                                 {{value.imagename}}</p>
@@ -137,11 +137,13 @@
         mounted() {
             setTimeout(() => {
                 this.getdata();
+                this.getimag();
             }, 1000);
         },
         data() {
             return {
                 count: 0,
+                imgdata:[],
                 countCollect:"",
                 houseName: [],
                 timeIndex: "",
@@ -189,50 +191,50 @@
                 debugger;
                 var _this = this;
                 Server.get({
-                    url: services.compareHouseDetails,
+                    url: services.getallinfo,
                     params: {
                         name: this.houseName[0]
                     }
                 }).then(function (rsp) {
                     if (rsp.status === 1) {
                         compareHouseOne.commit("compareHouseOne", rsp);
-                    } else if (rsp.errMsg === "null") {
+                    } else if (rsp.errMsg === 0) {
                         compareHouseOne.commit("compareHouseOne", _this.nullData);
                     }
                 });
                 Server.get({
-                    url: services.compareHouseDetails,
+                    url: services.getallinfo,
                     params: {
                         name: this.houseName[1]
                     }
                 }).then(function (rsp) {
                     if (rsp.status === 1) {
                         compareHouseTwo.commit("compareHouseTwo", rsp);
-                    } else if (rsp.errMsg === "null") {
+                    } else if (rsp.errMsg === 0) {
                         compareHouseTwo.commit("compareHouseTwo", _this.nullData);
                     }
                 });
                 Server.get({
-                    url: services.compareHouseDetails,
+                    url: services.getallinfo,
                     params: {
                         name: this.houseName[2]
                     }
                 }).then(function (rsp) {
                     if (rsp.status === 1) {
                         compareHouseThree.commit("compareHouseThree", rsp);
-                    } else if (rsp.errMsg === "null") {
+                    } else if (rsp.errMsg === 0) {
                         compareHouseThree.commit("compareHouseThree", _this.nullData);
                     }
                 });
                 Server.get({
-                    url: services.compareHouseDetails,
+                    url: services.getallinfo,
                     params: {
                         name: this.houseName[3]
                     }
                 }).then(function (rsp) {
                     if (rsp.status === 1) {
                         compareHouseFour.commit("compareHouseFour", rsp);
-                    } else if (rsp.errMsg === "null") {
+                    } else if (rsp.errMsg === 0) {
                         compareHouseFour.commit("compareHouseFour", _this.nullData);
                     }
                 });
@@ -314,10 +316,17 @@
                     }
                 });
             },
-
+            getimag(){
+                Server.get({
+                    url: services.getOneImageToCommunity,
+                }).then(rsp => {
+                    this.imgdata = rsp.imageData.image
+                });
+            },
             giveOrder(value) {
                 document.getElementById("part").style.display = "block";
                 var user = JSON.parse(sessionStorage.getItem("userAccount"));
+                var userId = JSON.parse(sessionStorage.getItem("userId"));
                 this.order = value.name;
                 this.type = value.type;
                 this.type2 = value.type2;
@@ -327,7 +336,8 @@
                     params: {
                         sorting: this_.type,
                         column: this_.type2,
-                        username: user
+                        username: user,
+                        userId:userId
                     }
                 }).then(rsp => {
                     if (rsp.status === 1) {
@@ -360,15 +370,14 @@
             },
             Collection(index, value) {
                 if (value.collected === 0) {
-                    var user = JSON.parse(sessionStorage.getItem("userAccount"));
+                    var userId = JSON.parse(sessionStorage.getItem("userId"));
                     this.houseName = value.name;
                     this.houseId = value.houseId;
                     Server.get({
                         url: services.addCollectHouse,
                         params: {
-                            username: user,
+                            userId: userId,
                             houseName: this.houseName,
-                            houseId: this.houseId
                         }
                     }).then(rsp => {
                         this.$Message.success(rsp.message);
@@ -377,7 +386,8 @@
                 } else if (value.collected === 1)
                 {
                     this.houseId = value.houseId;
-                    var user = JSON.parse(sessionStorage.getItem("userAccount"));
+                    this.houseName = value.name;
+                    var userId = JSON.parse(sessionStorage.getItem("userId"));
                     this.$Modal.confirm({
                         title: "提示",
                         content: "是否取消收藏?",
@@ -385,8 +395,8 @@
                             Server.get({
                                 url: services.delCollectHouse,
                                 params: {
-                                    houseId: this.houseId,
-                                    username: user
+                                    userId: userId,
+                                    houseName: this.houseName,
                                 }
                             }).then(rsp => {
                                 if (rsp.status == 1) {

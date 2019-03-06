@@ -48,10 +48,11 @@
           <span class="icon baseLayerImg"></span>
           <span>影像</span>
         </li>
-        <li class="btn" @click="onToggleLayer">
+        <li class="btn" @click="onControlLayerView">
           <span class="icon layerView"></span>
           <span>图层</span>
         </li>
+        <map-layer-view ref="layerView" style="margin-left:35px;" :mapView="mapView" :layerOpt="layerList" :isOut="true"></map-layer-view>
       </ul>
     </div>
   </div>
@@ -68,6 +69,7 @@ import measureLength from "@/map/components/measureLength";
 import MapToolsView from "@/map/components/MapToolsView";
 import GDrawSketch from "@/map/api/4+/GDrawSketch";
 import GConvertGeometry from "@/map/api/js/convert/GConvertGeometry";
+import MapLayerView from "@/map/components/MapLayerView";
 export default {
   data() {
     return {
@@ -103,7 +105,8 @@ export default {
       TileLayerStreets: "",
       MapImageLayer: "",
       mapview: null,
-      IsMapToolsView: false
+      IsMapToolsView: false,
+      isLayerViewShow: false
     };
   },
   computed: {
@@ -127,6 +130,11 @@ export default {
     // }, 600);
   },
   methods: {
+    onControlLayerView() {
+      this.isLayerViewShow = !this.isLayerViewShow;
+      debugger;
+      this.$refs.layerView.showLayerView();
+    },
     switch3d() {
       this.$router.push("/3dmap");
     },
@@ -169,17 +177,17 @@ export default {
         }).toggle();
       }
     },
-    onToggleLayer() {
-      if (document.getElementsByClassName) {
-        var target = document.getElementsByClassName("esri-layer-list");
-        var targetName = target[0];
-        if (targetName.style.display == "block") {
-          targetName.style.display = "none";
-        } else {
-          targetName.style.display = "block";
-        }
-      }
-    },
+    // onToggleLayer() {
+    //   if (document.getElementsByClassName) {
+    //     var target = document.getElementsByClassName("esri-layer-list");
+    //     var targetName = target[0];
+    //     if (targetName.style.display == "block") {
+    //       targetName.style.display = "none";
+    //     } else {
+    //       targetName.style.display = "block";
+    //     }
+    //   }
+    // },
     addLayer(callback) {
       esriLoader
         .loadScript({
@@ -409,7 +417,8 @@ export default {
     measureArea,
     measureLength,
     MapToolsView,
-    Item
+    Item,
+    MapLayerView
   }
 };
 </script>

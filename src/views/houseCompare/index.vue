@@ -32,23 +32,15 @@
                             </a>
                         </li>
                     </router-link>
-                    <li class="menu-item">
+                    <li class="menu-item" @click="openCalculator()">
                         <a class="nav-item">
                             <div class="icon-wrap">
                                 <span class="menu-icon icon-wnpg"></span>
                             </div>
                             <div class="div-label">
-                                <span>智能选房</span>
+                                <span>房贷计算器</span>
                             </div>
                         </a>
-                        <ul class="sub-menu-item">
-                            <li>
-                                <a @click="openCompare()">房源对比</a>
-                            </li>
-                            <li>
-                                <a @click="openCalculator()">房源计算器</a>
-                            </li>
-                        </ul>
                     </li>
 
                 </ul>
@@ -58,13 +50,12 @@
             <!-- <siteSelection v-if="site" v-on:change="getfalse($event)" :site="site" /> -->
             <MapView v-if="map"></MapView>
             <Calculator></Calculator>
-            <houseCompare></houseCompare>
         </Content>
     </Layout>
 </template>
 <script>
 import Calculator from "./components/Calculator";
-import houseCompare from "./components/houseCompare";
+
 import { computeh } from "@/core/computeh";
 // import siteSelection from "./components/siteSelection";
 import MapView from "@/map/components/MapView";
@@ -98,7 +89,7 @@ export default {
   },
   components: {
     MapView,
-    houseCompare,
+
     Calculator
     // siteSelection
   }

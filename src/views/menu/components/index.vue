@@ -114,24 +114,7 @@ export default {
       });
     },
     jump() {
-      var _this = this;
-      _this.user = JSON.parse(sessionStorage.getItem("userAccount"));
-      Server.get({
-        url: services.jump,
-        params: {
-          username: _this.user
-        }
-      }).then(rsp => {
-        if (rsp.status === 1) {
-          if (rsp.data === false) {
-            _this.$router.push("/personal");
-          } else if (rsp.data === true) {
-            _this.$router.push("/recommendation");
-          }
-        } else {
-          console.log(rsp.message);
-        }
-      });
+      this.$router.push("/recommendation");
     },
     jump1() {
       var _this = this;
