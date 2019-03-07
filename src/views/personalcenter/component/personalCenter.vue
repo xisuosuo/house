@@ -11,7 +11,7 @@
                             <div style="text-align: left;margin-left: 10%;font-size: 12px">
                                 <div>
                                     <span>昵称：</span>
-                                    <span style="margin-left: 5px">林噙霜</span>
+                                    <span style="margin-left: 5px">{{this.user}}</span>
                                 </div>
                                 <div>
                                     <span>地址：</span>
@@ -22,7 +22,7 @@
                                     <span style="margin-left: 5px">这个人很懒，什么都没有留下</span>
                                 </div>
                             </div>
-                            <Divider dashed="true" />
+                            <Divider dashed="tr ue" />
                             <strong><div style="margin-bottom: 10px;">标签</div></strong>
                             <div>
                                 <Tag checkable color="error">有房</Tag>
@@ -34,7 +34,7 @@
                             <strong><div>详细信息:</div></strong>
                             <Form style="margin-left: 10%" :model="formItem" :label-width="80">
                                 <FormItem label="昵称:">
-                                   <span>林噙霜</span>
+                                   <span>{{this.user}}</span>
                                 </FormItem>
                                 <FormItem label="年龄:">
                                    <span>{{this.userInfo.age}}</span>
@@ -42,17 +42,17 @@
                                 <FormItem label="工作类型:">
                                    <span>程序猿</span>
                                 </FormItem>
-                                <FormItem label="工作地址:">
-                                   <span>地信楼325</span>
+                                <FormItem label="注册时间:">
+                                   <span>{{this.userInfo.createTime}}</span>
                                 </FormItem>
-                                <FormItem label="婚姻状况:">
-                                   <span>未婚</span>
+                                <FormItem label="资金:">
+                                   <span>{{this.userInfo.userMoney}}元</span>
                                 </FormItem>
                                 <FormItem label="购房类型:">
                                    <span>投资型</span>
                                 </FormItem>
                                 <FormItem label="用户类型:">
-                                   <span>超级VIP用户</span>
+                                   <span>{{this.userInfo.roleName}}</span>
                                 </FormItem>
                                 <FormItem >
                                     <router-link to="/personal">
@@ -187,6 +187,7 @@
                 ],
                 data1: [],
                 userInfo:[],
+                user:""
             }
         },
         mounted() {
@@ -195,26 +196,28 @@
         },
         methods: {
             getInfo(){
-                // debugger;
                 var this_=this;
                 var user = JSON.parse(sessionStorage.getItem("userAccount"));
+                this.user = user;
+                var userId = JSON.parse(sessionStorage.getItem("userId"));
                 Server.get({
                     url: services.getInfo,
                     params: {
-                        username: user
+                        username: user,
+                        userId: userId
                     }
                 }).then(rsp => {
-                    // this_.data.userInfo = rsp;
-                    console.log(rsp.data) ;
+                    this.userInfo = rsp.data;
+                    // console.log() ;
                 });
             },
             getTable() {
                 var this_=this;
-                var user = JSON.parse(sessionStorage.getItem("userAccount"));
+                var userId = JSON.parse(sessionStorage.getItem("userId"));
                 Server.get({
                     url: services.getCollectHouseInfo,
                     params: {
-                        username: user
+                        userId: userId
                     }
                 }).then(rsp => {
                     this_.data1 = rsp.data;
@@ -233,7 +236,7 @@
                this.$router.push("/collection");
             },
             remove(currentRow, index) {
-                var user = JSON.parse(sessionStorage.getItem("userAccount"));
+                var userId = JSON.parse(sessionStorage.getItem("userId"));
                 currentRow.Index = index;
                 this.selectedRow = currentRow;
                 var row = this.selectedRow;
@@ -245,12 +248,13 @@
                         content: "是否永久删除此数据?",
                         onOk: () => {
                             debugger;
-                            var id = row.houseId;
+                            // var id = row.houseId;
+                            var name = row.name;
                             Server.get({
                                 url: services.delCollectHouse,
                                 params: {
-                                    houseId : id,
-                                    username:user
+                                    userId : userId,
+                                    houseName :name
                                 }
                             }).then(rsp => {
                                 if (rsp.status == 1) {

@@ -76,6 +76,7 @@ export const login = {
           this.$Message.success("登录成功");
           sessionStorage.setItem("userInfo", JSON.stringify(this.accountName));
           sessionStorage.setItem("userAccount", JSON.stringify(this.user.userAccount));
+          sessionStorage.setItem("userId", JSON.stringify(rsp.data.userId));
           this.$router.push({
             path: `/menu`
           });

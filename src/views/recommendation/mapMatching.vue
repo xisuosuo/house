@@ -105,7 +105,7 @@
         </Row>
     </div>
 </template>
-
+ 
 <script>
 import smallMapView from "@/map/components/smallMapView";
 import recommendHose from "./components/recommendHose.vue";

@@ -71,11 +71,11 @@ export default {
     methods: {
         getTable() {
             var this_=this;
-            var user = JSON.parse(sessionStorage.getItem("userAccount"));
+            var userId = JSON.parse(sessionStorage.getItem("userId"));
             Server.get({
                 url: services.getCollectHouseInfo,
                 params: {
-                    username: user
+                    userId: userId
                 }
             }).then(rsp => {
                 this_.data1 = rsp.data;
