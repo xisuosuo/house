@@ -15,7 +15,7 @@ export const services = {
   changePsd: `http://${IP}//chzuHouse/login/modifyUser`,
   getallinfo: `http://${IP}//chzuHouse/queryHouseInfo/queryHouseDetails`,
   rightHouseInfo: `http://${IP}//chzuHouse/queryHouseInfo/queryHouseSorting`,
-  getdetail: `http://${IP}//chzuHouse/queryHouseInfo/queryHouseImageInfo`,
+  getdetail: `http://${IP}/chzuHouse/queryHouseInfo/queryHouseIndexInfo`,
   getInfo: `http://${IP}//chzuHouse/login/getUserInfo`,
   jump: `http://${IP}//chzuHouse/login/judgeUserInfo`,
   road: `http://${IP}//chzuHouse/accessibility/queryChzuServiceData`,
@@ -27,4 +27,6 @@ export const services = {
   getCollectHouseInfo:`http://${IP}/chzuHouse/queryHouseInfo/getCollectHouseInfo`,
   delCollectHouse:`http://${IP}/chzuHouse/queryHouseInfo/delCollectHouse`,
   addCollectHouse:`http://${IP}/chzuHouse/queryHouseInfo/addCollectHouse`,
+  getImageToCommunity:`http://${IP}/chzuHouse/queryImage/getMoreImageToIndoor`,
+  getlayers: `http://${IP}/chzuHouse/shapeDeal/dealShape`,
 };

@@ -29,7 +29,7 @@
                         </div>
                         <div style="text-align:center;">
                             <img style="width:1000px;height:500px;" src="../../../assets/img/fytj.png">
-                            <div style="font-size:60px;">=>></div>
+                            <div> <img style="width:110px;height:150px;" src="../../../assets/img/jt.png"></div>
                             <img style="width:1000px;height:500px;" src="../../../assets/img/tuijaindata.png">
                         </div>
                     </div>

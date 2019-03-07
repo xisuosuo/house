@@ -151,6 +151,9 @@
                 <CheckboxGroup v-model="traffic3">
                   <Checkbox label="高铁站"></Checkbox>
                 </CheckboxGroup>
+                <CheckboxGroup v-model="traffic4">
+                  <Checkbox label="公交站"></Checkbox>
+                </CheckboxGroup>
                 </Col>
               </Row>
               <Row>
@@ -570,8 +573,8 @@ export default {
       //   this.$Spin.hide();
       // }, 25000);
     },
-    push(){
-      this.$router.push("/auDecision/model")
+    push() {
+      this.$router.push("/auDecision/model");
     },
     change() {
       this.downIcon = !this.downIcon;
