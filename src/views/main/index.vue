@@ -86,7 +86,7 @@ export default {
     };
   },
   mounted() {
-    this.user = JSON.parse(sessionStorage.getItem("user Info"));
+    this.user = JSON.parse(sessionStorage.getItem("userAccount"));
     console.log(this.user);
   },
   methods: {
