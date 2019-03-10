@@ -8,7 +8,7 @@
             <i class="icon-chart"></i>
           </div>
           <div class="label">
-            <span>数据台账</span>
+            <span>数据展示</span>
           </div>
         </div>
       </div>
@@ -20,7 +20,7 @@
             <i class="icon-cgzs"></i>
           </div>
           <div class="label">
-            <span>信息共享展示</span>
+            <span>信息查询</span>
           </div>
         </div>
       </div>
@@ -37,19 +37,6 @@
         </div>
       </div>
     </router-link>
-    <router-link to="/auDecision/usersManual">
-      <div class="item-view">
-        <div class="item bg3">
-          <div class="icon-wrap">
-            <i class="icon-fzjc"></i>
-          </div>
-          <div class="label">
-            <span>辅助决策</span>
-          </div>
-        </div>
-      </div>
-    </router-link>
-
     <div @click="jump()" class="item-view">
       <div class="item bg4">
         <div class="icon-wrap">
@@ -90,6 +77,18 @@
           </div>
           <div class="label">
             <span>个人中心</span>
+          </div>
+        </div>
+      </div>
+    </router-link>
+    <router-link to="/auDecision/usersManual">
+      <div class="item-view">
+        <div class="item bg3">
+          <div class="icon-wrap">
+            <i class="icon-fzjc"></i>
+          </div>
+          <div class="label">
+            <span>用户手册</span>
           </div>
         </div>
       </div>

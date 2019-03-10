@@ -14,10 +14,10 @@
             <span class="icon baseLayerImg"></span>
             <span>影像</span>
           </li>
-          <!-- <li class="btn" @click="onToggleLayer">
+          <li class="btn" @click="onToggleLayer">
             <span class="icon layerView"></span>
             <span>图层</span>
-          </li> -->
+          </li>
         </ul>
       </div>
     </div>
@@ -116,17 +116,17 @@ export default {
         }).toggle();
       }
     },
-    // onToggleLayer() {
-    //   if (document.getElementsByClassName) {
-    //     var target = document.getElementsByClassName("esri-layer-list");
-    //     var targetName = target[0];
-    //     if (targetName.style.display == "block") {
-    //       targetName.style.display = "none";
-    //     } else {
-    //       targetName.style.display = "block";
-    //     }
-    //   }
-    // },
+    onToggleLayer() {
+      if (document.getElementsByClassName) {
+        var target = document.getElementsByClassName("esri-layer-list");
+        var targetName = target[0];
+        if (targetName.style.display == "block") {
+          targetName.style.display = "none";
+        } else {
+          targetName.style.display = "block";
+        }
+      }
+    },
 
     addLayer(callback) {
       esriLoader

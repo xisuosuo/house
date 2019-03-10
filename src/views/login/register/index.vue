@@ -26,7 +26,7 @@
           </form-item>
         </i-form>
       </Row>
-      <model-footer slot="footer" saveText="提交" @on-cancel="onCancelUser" @on-save="onSaveUser" />
+      <model-footer slot="footer" saveText="提交" @on-cancel="onCancelUser" @on-save="onsaveUser" />
     </modal>
   </div>
 </template>
@@ -125,38 +125,31 @@ export default {
     onCheck() {
       this.checkModal = true;
     },
-
-    onSaveUser() {
+    onsaveUser() {
       debugger;
       const title = "注册提示";
       const content = "信息提交成功，等待管理员审核";
-      // this.$refs.form.validate(valid => {
-      //   debugger;
-      //   if (valid) {
-          Server.post({
-            url: services.register,
-            params: {
-              userName: this.formValidate.userName,
-              password: this.formValidate.password,
-              userNickName: this.formValidate.accountName,
-              userMobile: this.formValidate.userMobile,
-              eMail: "ceshieMail@qq.com"
-            }
-          }).then(rsp => {
-            debugger;
-            if (rsp.status === 1) {
-              this.checkModal = false;
-              this.$Modal.success({
-                title: title,
-                content: content
-              });
-              this.$refs.form.resetFields();
-            } else {
-              this.$Message.error(rsp.message);
-            }
+      Server.post({
+        url: services.register,
+        params: {
+          userName: this.formValidate.userName,
+          password: this.formValidate.password,
+          userNickName: this.formValidate.accountName,
+          userMobile: this.formValidate.userMobile,
+          eMail: ""
+        }
+      }).then(rsp => {
+        if (rsp.data.status === 1) {
+          this.checkModal = false;
+          this.$Modal.success({
+            title: title,
+            content: content
           });
-      //   }
-      // });
+          this.$refs.form.resetFields();
+        } else {
+          this.$Message.error(rsp.message);
+        }
+      });
     },
     onCancelUser() {
       this.checkModal = false;

@@ -18,7 +18,7 @@
     </header>
 
     <section>
-      <Carousel autoplay :autoplay-speed="3000" loop :radius-dot="true" v-model="imgIdx">
+      <Carousel autoplay :autoplay-speed="3000" loop :radius-dot="true">
         <CarouselItem>
           <div class="bg1"></div>
         </CarouselItem>

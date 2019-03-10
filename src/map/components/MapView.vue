@@ -18,7 +18,7 @@
             <span class="icon layerView"></span>
             <span>图层</span>
           </li>
-          <map-layer-view ref="layerView" style="margin-left:35px;" :mapView="mapView" :layerOpt="layerList" :isOut="true"></map-layer-view>
+          <!-- <map-layer-view ref="layerView" style="margin-left:35px;" :mapView="mapView" :layerOpt="layerList" :isOut="true"></map-layer-view> -->
         </ul>
       </div>
 

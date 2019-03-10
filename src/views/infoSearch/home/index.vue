@@ -48,11 +48,11 @@
           <span class="icon baseLayerImg"></span>
           <span>影像</span>
         </li>
-        <li class="btn" @click="onControlLayerView">
+        <li class="btn" @click="onToggleLayer">
           <span class="icon layerView"></span>
           <span>图层</span>
         </li>
-        <map-layer-view ref="layerView" style="margin-left:35px;" :mapView="mapView" :layerOpt="layerList" :isOut="true"></map-layer-view>
+        <!-- <map-layer-view ref="layerView" style="margin-left:35px;" :mapView="mapView" :layerOpt="layerList" :isOut="true"></map-layer-view> -->
       </ul>
     </div>
   </div>
@@ -177,17 +177,17 @@ export default {
         }).toggle();
       }
     },
-    // onToggleLayer() {
-    //   if (document.getElementsByClassName) {
-    //     var target = document.getElementsByClassName("esri-layer-list");
-    //     var targetName = target[0];
-    //     if (targetName.style.display == "block") {
-    //       targetName.style.display = "none";
-    //     } else {
-    //       targetName.style.display = "block";
-    //     }
-    //   }
-    // },
+    onToggleLayer() {
+      if (document.getElementsByClassName) {
+        var target = document.getElementsByClassName("esri-layer-list");
+        var targetName = target[0];
+        if (targetName.style.display == "block") {
+          targetName.style.display = "none";
+        } else {
+          targetName.style.display = "block";
+        }
+      }
+    },
     addLayer(callback) {
       esriLoader
         .loadScript({
@@ -238,32 +238,34 @@ export default {
                 // });
 
                 // this.street = street;
-                // var USALayer = new MapImageLayer({
-                //   url:
-                //     "https://192.168.1.108:6443/arcgis/rest/services/ChuZhou/行政区划/MapServer",
-                //   visible: false
-                // });
+                var USALayer = new MapImageLayer({
+                  url:
+                    "http://122.112.216.247:6080/arcgis/rest/services/CHUZHOU/odqllj/MapServer",
+                  title: "od成本",
+                  visible: false
+                });
 
-                // var censusLayer = new MapImageLayer({
-                //   url:
-                //     "https://192.168.1.108:6443/arcgis/rest/services/ChuZhou/yewuData/MapServer",
-                //   title: "业务数据",
-                //   visible: false
-                // });
+                var censusLayer = new MapImageLayer({
+                  url:
+                    "http://122.112.216.247:6080/arcgis/rest/services/CHUZHOU/zhonguexuequ/MapServer",
+                  title: "学区数据",
+                  opacity: 0.8,
+                  visible: false
+                });
                 var baseMap = new Basemap({
                   baseLayers: [layer]
                 });
-                // var demographicGroupLayer = new GroupLayer({
-                //   title: "专题图层",
-                //   visible: true,
-                //   visibilityMode: "independent",
-                //   layers: [USALayer, censusLayer]
-                //   // opacity: 0.75
-                // });
+                var demographicGroupLayer = new GroupLayer({
+                  title: "专题图层",
+                  visible: true,
+                  visibilityMode: "independent",
+                  layers: [USALayer, censusLayer]
+                  // 
+                });
 
                 var map = new Map({
-                  basemap: baseMap
-                  // layers: [demographicGroupLayer]
+                  basemap: baseMap,
+                  layers: [demographicGroupLayer]
                 });
                 var ext = String(this.defaultMapExtent).split(",");
 
