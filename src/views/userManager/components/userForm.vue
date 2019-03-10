@@ -2,25 +2,25 @@
   <Form :model="form" ref="formValidate" :rules="ruleValidate" :label-width="80">
     <Row>
       <Col span="11">
-      <FormItem label="账号:" prop="accountName">
-        <Input v-model="form.accountName" size="large" />
+      <FormItem label="账号:" prop="username">
+        <Input v-model="form.username" size="large" />
       </FormItem>
       </Col>
       <Col span="11" offset="2">
-      <FormItem label="昵称:" prop="landName ">
-        <Input v-model="form.landName " size="large" />
+      <FormItem label="昵称:" prop="userNickName ">
+        <Input v-model="form.userNickName " size="large" />
       </FormItem>
       </Col>
     </Row>
     <Row>
       <Col span="11">
       <FormItem label="密码:" prop="password ">
-        <Input v-model="form.password " size="large" />
+        <Input v-model="form.password" size="large" />
       </FormItem>
       </Col>
       <Col span="11" offset="2">
       <FormItem label="年龄:">
-        <Input v-model="form.age" size="large" />
+        <Input v-model="form.userAge" size="large" />
       </FormItem>
       </Col>
     </Row>
@@ -31,39 +31,45 @@
       </FormItem>
       </Col>
       <Col span="11" offset="2">
-      <FormItem label="单位:">
-        <Input v-model="form.workType " size="large" />
+      <FormItem label="文化程度:">
+        <Input v-model="form.userEducationLevel " size="large" />
       </FormItem>
       </Col>
       <Col span="11">
       <FormItem label="手机:">
-        <Input v-model="form.workPlace " size="large" />
+        <Input v-model="form.tel" size="large" />
       </FormItem>
       </Col>
-      <Col span="11" offset="2">
+      <!-- <Col span="11" offset="2">
+      <FormItem label="角色等级:">
+        <Input v-model="form.roleId " size="large" />
+      </FormItem>
+      </Col> -->
+      <!-- <Col span="11" offset="2">
       <FormItem label="是否结婚:">
         <RadioGroup v-model="form.getMarry ">
           <Radio label="true">已婚</Radio>
           <Radio label="false">未婚</Radio>
         </RadioGroup>
       </FormItem>
-      </Col>
+      </Col> -->
     </Row>
     <Row>
       <Col span="11">
-      <FormItem label="买房资金:">
-        <Input v-model="form.buyHouseMoney " size="large" />
-      </FormItem>
-      </Col>
-      <Col span="11" offset="2">
-      <FormItem label="是否有房:">
-        <RadioGroup v-model="form.buyHouse ">
-          <Radio label="true">有房</Radio>
-          <Radio label="false">无房</Radio>
-        </RadioGroup>
+      <FormItem label="家庭收入:">
+        <Input v-model="form.userMoney" size="large" />
       </FormItem>
       </Col>
     </Row>
+    <!-- <Col span="11" offset="2">
+    <FormItem label="是否有房:">
+      <RadioGroup v-model="form.buyHouse ">
+        <Radio label="true">有房</Radio>
+        <Radio label="false">无房</Radio>
+      </RadioGroup>
+    </FormItem>
+    </Col> -->
+
   </Form>
 </template>
 <script>
@@ -72,26 +78,26 @@ export default {
     return {
       form: {
         userId: "",
-        accountName: "",
-        landName: "",
+        userNickName: "",
+        username: "",
         password: "",
-        userMobile: "",
-        age: "",
-        buyHouseMoney: "",
-        workType: "",
-        workPlace: "",
-        buyHouse: "",
-        getMarry: ""
+        tel: "",
+        email: "",
+        roleId: "R0001",
+        userAge: "",
+        userMoney: "",
+        userStatus: "",
+        userEducationLevel: ""
       },
       ruleValidate: {
-        accountName: [
+        username: [
           {
             required: true,
             message: "账号不能为空",
             trigger: "blur"
           }
         ],
-        landName: [
+        userNickName: [
           {
             required: true,
             message: "用户名不能为空",
@@ -112,45 +118,46 @@ export default {
     //重置表单
     resetForm() {
       this.form.userId = "";
-      this.form.accountName = "";
-      this.form.landName = "";
+      this.form.userNickName = "";
+      this.form.username = "";
       this.form.password = "";
-      this.form.age = "";
-      this.form.userMobile = "";
-      this.form.buyHouseMoney = "";
-      this.form.workType = "";
+      this.form.userAge = "";
+      this.form.tel = "";
+      this.form.email = "";
+      this.form.userMoney = "";
       this.form.workPlace = "";
-      this.form.buyHouse = false;
-      this.form.getMarry = false;
+      this.form.userEducationLevel = "";
+      this.form.userStatus = "";
     },
     //编辑表单
     editForm(row) {
       this.form.userId = row.userId;
-      this.form.accountName = row.accountName;
-      this.form.landName = row.landName;
+      this.form.userNickName = row.userNickName;
+      this.form.username = row.username;
       this.form.password = row.password;
-      this.form.userMobile = row.userMobile;
-      this.form.age = row.age;
-      this.form.buyHouseMoney = row.buyHouseMoney;
-      this.form.workPlace = row.workPlace;
-      this.form.workType = row.workType;
-      this.form.buyHouse = row.buyHouse;
-      this.form.getMarry = row.getMarry;
+      this.form.tel = row.tel;
+      this.form.userAge = row.userAge;
+      this.form.email = row.email;
+      this.form.roleId = row.roleId;
+      this.form.userMoney = row.userMoney;
+      this.form.userStatus = row.userStatus;
+      this.form.userEducationLevel = row.userEducationLevel;
     },
     //初始化新增
     getForm() {
+      debugger
       return {
-        userId: this.form.userId,
-        accountName: this.form.accountName,
-        landName: this.form.landName,
-        password: this.form.password,
-        userMobile: this.form.userMobile,
-        age: this.form.age,
-        buyHouseMoney: this.form.buyHouseMoney,
-        workType: this.form.workType,
-        workPlace: this.form.workPlace,
-        buyHouse: this.form.buyHouse,
-        getMarry: this.form.getMarry
+        userId: this.form.userId||"",
+        userNickName: this.form.userNickName||"",
+        username: this.form.username||"",
+        password: this.form.password||"",
+        tel: this.form.tel||"",
+        email: this.form.email||"",
+        roleId: this.form.roleId||"R0001",
+        userAge: this.form.userAge||"",
+        userMoney: this.form.userMoney||"",
+        userStatus: this.form.userStatus||"",
+        userEducationLevel: this.form.userEducationLevel||""
       };
     }
   }

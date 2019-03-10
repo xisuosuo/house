@@ -3,7 +3,7 @@
     <div class="userHeader">
       <span style="margin-left:5px">账号：</span>
       <Input class="control search-input-default" style="width: 200px" clearable v-model="username" @on-enter="onSearch" />
-      <span>用户名：</span>
+      <span>昵称：</span>
       <Input class="control search-input-default" style="width: 200px" clearable v-model="nickName" @on-enter="onSearch" />
       <search-buttons :showSearch="true" @on-search="onSearch" @on-refresh="onRefresh"></search-buttons>
     </div>
@@ -28,7 +28,7 @@ export default {
       dialog: false,
       accountname: "",
       username: "",
-      nickName:"",
+      nickName: "",
       loading: false,
       table: {
         columns: [
@@ -75,6 +75,7 @@ export default {
             maxWidth: 150,
             align: "center"
           },
+
           // {
           //   title: "电脑端",
           //   key: "isEnablePC",
@@ -146,7 +147,7 @@ export default {
         url: services.usermanager,
         params: {
           nickName: this.nickName,
-          queryUsername:this.userId,
+          queryUsername: this.username,
           userId: userId
         }
       }).then(rsp => {
@@ -196,7 +197,7 @@ export default {
             Server.get({
               url: services.deleteUser,
               params: {
-                id: id
+                userId: id
               }
             }).then(rsp => {
               if (rsp.status == 1) {
@@ -215,9 +216,9 @@ export default {
     savePerson() {
       debugger;
       var form = this.$refs.userform.getForm();
-      Server.get({
+      Server.post({
         url: services.update,
-        params: { user: JSON.stringify(form) }
+        params: { userInfo: JSON.stringify(form) }
       }).then(rsp => {
         if (rsp.status === 1) {
           this.$Message.success("操作成功");

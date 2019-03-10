@@ -14,10 +14,10 @@
             <span class="icon baseLayerImg"></span>
             <span>影像</span>
           </li>
-          <li class="btn" :class="{layerActive:isLayerViewShow}" @click="onControlLayerView">
+          <!-- <li class="btn" :class="{layerActive:isLayerViewShow}" @click="onControlLayerView">
             <span class="icon layerView"></span>
             <span>图层</span>
-          </li>
+          </li> -->
           <!-- <map-layer-view ref="layerView" style="margin-left:35px;" :mapView="mapView" :layerOpt="layerList" :isOut="true"></map-layer-view> -->
         </ul>
       </div>
@@ -245,6 +245,9 @@ export default {
 </script>
 
 <style >
+.esri-component esri-layer-list esri-widget esri-widget--panel {
+  display: none;
+}
 .main .container-fluid {
   padding: 0 0px;
 }

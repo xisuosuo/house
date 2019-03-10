@@ -21,7 +21,7 @@ export const services = {
   road: `http://${IP}//chzuHouse/accessibility/queryChzuServiceData`,
   usermanager: `http://${IP}/chzuHouse/user/getUser`,
   deleteUser: `http://${IP}//chzuHouse/user/delUser`,
-  update: `http://${IP}//chzuHouse/login/manageMapperUpdateUser`,
+  update: `http://${IP}//chzuHouse/user/manageMapperUpdateUser`,
   recommend: `http://${IP}/chzuHouse/recommended/houseRecommended`,
   compareHouseDetails: `http://${IP}/chzuHouse/queryHouseInfo/compareHouseDetails`,
   getImageToCommunity:`http://${IP}/chzuHouse/queryImage/getMoreImageToIndoor`,

@@ -247,9 +247,9 @@
         </div>
       </div>
     </Card>
-    <Modal v-model="mapModel" fullscreen footer-hide header-hide title="Fullscreen Modal">
+    <!-- <Modal v-model="mapModel" fullscreen footer-hide header-hide title="Fullscreen Modal">
       <mapCompare/>
-    </Modal>
+    </Modal> -->
   </div>
 
 </template>

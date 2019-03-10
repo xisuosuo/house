@@ -14,10 +14,10 @@
             <span class="icon baseLayerImg"></span>
             <span>影像</span>
           </li>
-          <li class="btn" @click="onToggleLayer">
+          <!-- <li class="btn" @click="onToggleLayer">
             <span class="icon layerView"></span>
             <span>图层</span>
-          </li>
+          </li> -->
         </ul>
       </div>
     </div>
@@ -263,6 +263,9 @@ export default {
 </script>
 
 <style >
+.esri-component esri-layer-list esri-widget esri-widget--panel {
+  display: none;
+}
 .main .container-fluid {
   padding: 0 0px;
 }
