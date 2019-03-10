@@ -77,6 +77,8 @@ export const login = {
           sessionStorage.setItem("userInfo", JSON.stringify(this.accountName));
           sessionStorage.setItem("userAccount", JSON.stringify(this.user.userAccount));
           sessionStorage.setItem("userId", JSON.stringify(rsp.data.userId));
+          sessionStorage.setItem("nickName", JSON.stringify(rsp.data.nickName));
+          sessionStorage.setItem("userName", JSON.stringify(rsp.data.userName));
           this.$router.push({
             path: `/menu`
           });
