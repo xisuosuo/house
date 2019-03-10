@@ -4,7 +4,7 @@
       <span style="margin-left:5px">账号：</span>
       <Input class="control search-input-default" style="width: 200px" clearable v-model="username" @on-enter="onSearch" />
       <span>用户名：</span>
-      <Input class="control search-input-default" style="width: 200px" clearable v-model="accountname" @on-enter="onSearch" />
+      <Input class="control search-input-default" style="width: 200px" clearable v-model="nickName" @on-enter="onSearch" />
       <search-buttons :showSearch="true" @on-search="onSearch" @on-refresh="onRefresh"></search-buttons>
     </div>
     <div class="section main-table-section">
@@ -28,13 +28,14 @@ export default {
       dialog: false,
       accountname: "",
       username: "",
+      nickName:"",
       loading: false,
       table: {
         columns: [
           {
             type: "index",
             width: 60,
-            align: "center",
+            align: "center"
           },
           {
             title: "账号",
@@ -43,8 +44,8 @@ export default {
             align: "center"
           },
           {
-            title: "用户名",
-            key: "accountName",
+            title: "昵称",
+            key: "nickName",
             align: "center"
           },
           {
@@ -59,18 +60,18 @@ export default {
             align: "center"
           },
           {
-            title: "工作类型",
-            key: "workType",
+            title: "文化程度",
+            key: "userEducationLevel",
             align: "center"
           },
           {
-            title: "工作单位",
-            key: "workPlace",
+            title: "家庭收入",
+            key: "money",
             align: "center"
           },
           {
             title: "手机号码",
-            key: "userMobile",
+            key: "mobile",
             maxWidth: 150,
             align: "center"
           },
@@ -137,14 +138,16 @@ export default {
   methods: {
     getTable() {
       debugger;
-      var user = JSON.parse(sessionStorage.getItem("userAccount"));
+      var userId = JSON.parse(sessionStorage.getItem("userId"));
+      // var nickName = JSON.parse(sessionStorage.getItem("nickName"));
+      // var userName = JSON.parse(sessionStorage.getItem("userName"));
       //   this.loading = true;
       Server.post({
         url: services.usermanager,
         params: {
-          name: this.username,
-          accountname: this.accountname,
-          username: user
+          nickName: this.nickName,
+          queryUsername:this.userId,
+          userId: userId
         }
       }).then(rsp => {
         // this.loading = false;
