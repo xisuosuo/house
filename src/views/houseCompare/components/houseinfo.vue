@@ -8,32 +8,29 @@
                             <Col span="12">
                                 <div style="padding: 5px">
                                     <span style="font-size: 14px"><strong>楼盘首页:</strong></span>
-                                    <span style="font-size: 14px"><strong>山水人家</strong></span>
+                                    <span style="font-size: 14px"><strong>{{this.houseInfo.name}}</strong></span>
                                     <img style="height: 250px;width: 300px;margin: 10px"
-                                         src="../../../assets/img/44b8812c-cb76-4ac6-aa53-5f3ab4db1100.png" alt="">
+                                         v-bind:src="this.houseInfo.image" alt="">
                                 </div>
                             </Col>
                             <Col span="12">
                                 <div style="margin-top:40px;margin-left: 10px">
                                     <div>
                                         <div class="key"><strong>楼盘最低价:</strong></div>
-                                        <div class="value light"><span class="price">37000</span> 元/平方米
+                                        <div class="value light"><span class="price">{{this.houseInfo.price}}</span> 元/平方米
                                         </div>
                                         <Form :model="formItem" :label-width="70">
                                             <FormItem label="价格说明:">
-                                                <span>价格为37000元/平-39000元/平</span>
+                                                <span>最低价格为{{this.houseInfo.price}}</span>
                                             </FormItem>
                                             <FormItem label="楼盘位置:">
-                                                <span>大兴 庞各庄桥西1500米</span>
+                                                <span>{{this.houseInfo.address}}</span>
                                             </FormItem>
                                             <FormItem label="开盘时间:">
                                                 <span>2018年10月30日</span>
                                             </FormItem>
                                             <FormItem label="主力户型:">
-                                                <span>三居(建面89.0㎡)</span>
-                                            </FormItem>
-                                            <FormItem label="开发商:">
-                                            <span>北京中海兴达房地产开发有限公司</span>
+                                                <span>{{this.detailList[0].imagename}}</span>
                                             </FormItem>
                                         </Form>
                                     </div>
@@ -94,42 +91,31 @@
                                 <tbody>
                                 <tr>
                                     <td class="label-l">楼盘名称：</td>
-                                    <td valign="top" class="text-l"> 海上明珠</td>
+                                    <td valign="top" class="text-l"> {{this.houseInfo.name}}</td>
                                 </tr>
                                 <tr>
                                     <td class="label-l">物业类型：</td>
-                                    <td valign="top" class="text-l"> 普通住宅 , 自住型商品房</td>
-                                    <td class="label-r">容积率：</td>
-                                    <td valign="top" class="text-r">30%</td>
+                                    <td valign="top" class="text-l">{{this.houseInfo.houseType}}</td>
+                                    <td class="label-l">停车位：</td>
+                                    <td valign="top" class="text-l">{{this.houseInfo.parkingSpace}}</td>
                                 </tr>
                                 <tr>
                                     <td class="label-l">建筑类型：</td>
-                                    <td valign="top" class="text-l"> 板楼 , 高层</td>
+                                    <td valign="top" class="text-l">{{this.houseInfo.houseHeight}}</td>
                                     <td class="label-r">绿化率：</td>
-                                    <td valign="top" class="text-r">30%</td>
+                                    <td valign="top" class="text-r">{{this.houseInfo.greeningRate}}</td>
                                 </tr>
                                 <tr>
-                                    <td class="label-l">产权年限：</td>
-                                    <td valign="top" class="text-l">70年</td>
+                                    <td class="label-l">是否已售：</td>
+                                    <td valign="top" class="text-l">{{this.houseInfo.isSelling}}</td>
                                     <td class="label-r">装修情况：</td>
-                                    <td valign="top" class="text-r"> 毛坯</td>
+                                    <td valign="top" class="text-r"> </td>
                                 </tr>
                                 <tr>
                                     <td class="label-l">楼盘地址：</td>
-                                    <td valign="top" class="text-l">北马路与西南河交汇处</td>
+                                    <td valign="top" class="text-l">{{this.houseInfo.address}}</td>
                                     <td class="label-r">建筑面积：</td>
-                                    <td valign="top" class="text-r">30000</td>
-
-                                </tr>
-                                <tr>
-                                    <td class="label-l">产权年限：</td>
-                                    <td valign="top" class="text-l">70年</td>
-                                    <td class="label-r">装修情况：</td>
-                                    <td valign="top" class="text-r"> 毛坯</td>
-                                </tr>
-                                <tr>
-                                    <td class="label-l">楼盘地址：</td>
-                                    <td valign="top" class="text-l">北马路与西南河交汇处</td>
+                                    <td valign="top" class="text-r"></td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -163,16 +149,37 @@
 <script>
     import Server from "@/core/server";
     import {services} from "@/core/config/services";
+    import houseInfoId from "@/vuex/store";
     export default {
         mounted() {
           this.getimg();
+          this.getData()
         },
         data(){
             return{
-                detailList:[]
+                detailList:[],
+                Id:[],
+                houseInfo:[],
             }
         },
         methods:{
+            getData() {
+                debugger;
+                var _this = this;
+                this.Id = houseInfoId.state.houseId;
+                console.log(houseInfoId.state.houseId);
+                Server.get({
+                    url: services.compareHouseDetails,
+                    params: {
+                        houseId: _this.Id
+                    }
+                }).then(function (rsp) {
+                    if (rsp.status === 1) {
+                        console.log(rsp);
+                        _this.houseInfo = rsp.data;
+                    }
+                });
+            },
             getimg() {
                 var _this = this;
                 Server.get({
@@ -182,18 +189,6 @@
                         _this.detailList = rsp.imageData;
                     }
                 });
-                // Server.get({
-                //     url: services.compareHouseDetails,
-                //     params: {
-                //         name: this.houseName[0]
-                //     }
-                // }).then(function (rsp) {
-                //     if (rsp.status === 1) {
-                //
-                //     } else if (rsp.errMsg === "null") {
-                //
-                //     }
-                // });
             },
 
         },
