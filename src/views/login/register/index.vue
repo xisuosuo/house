@@ -21,10 +21,7 @@
           <form-item label="昵称" prop="accountName">
             <i-input v-model="formValidate.accountName" placeholder="输入用户昵称" />
           </form-item>
-          <form-item label="联系人" prop="landName">
-            <i-input v-model="formValidate.landName" placeholder="输入姓名" />
-          </form-item>
-          <form-item label="手机号码" prop="userMobile">
+          <form-item label="注册号码" prop="userMobile">
             <i-input v-model="formValidate.userMobile" placeholder="输入手机号码" />
           </form-item>
         </i-form>
@@ -43,19 +40,6 @@ export default {
       var reg = /^[A-Za-z0-9]{1,30}$/;
       if (!reg.test(value)) {
         callback(new Error("请输入字母或数字组成的账户"));
-      } else {
-        Server.get({
-          url: services.userExist,
-          params: {
-            userAccount: this.formValidate.userAccount
-          }
-        }).then(rsp => {
-          if (rsp.data === true) {
-            callback(new Error("该账号已存在，请修改账户..."));
-          } else {
-            callback();
-          }
-        });
       }
     };
     const pwdValidate = (rule, value, callback) => {
@@ -85,7 +69,6 @@ export default {
         userName: "",
         password: "",
         pwdCheck: "",
-        landName: "",
         accountName: "",
         userMobile: ""
       },
@@ -128,13 +111,6 @@ export default {
             trigger: "blur"
           }
         ],
-        landName: [
-          {
-            required: true,
-            trigger: "blur",
-            message: "联系人不能为空"
-          }
-        ],
         userMobile: [
           {
             validator: validatePhone,
@@ -149,31 +125,25 @@ export default {
     onCheck() {
       this.checkModal = true;
     },
-    getForm() {
-      return {
-        userName: this.formValidate.userName,
-        password: this.formValidate.password,
-        landName: this.formValidate.landName,
-        accountName: this.formValidate.accountName,
-        userMobile: this.formValidate.userMobile
-      };
-    },
+
     onSaveUser() {
+      debugger;
       const title = "注册提示";
       const content = "信息提交成功，等待管理员审核";
-
-      this.$refs.form.validate(valid => {
-        if (valid) {
+      // this.$refs.form.validate(valid => {
+      //   debugger;
+      //   if (valid) {
           Server.post({
             url: services.register,
             params: {
               userName: this.formValidate.userName,
               password: this.formValidate.password,
-              landName: this.formValidate.landName,
-              accountName: this.formValidate.accountName,
-              userMobile: this.formValidate.userMobile
+              userNickName: this.formValidate.accountName,
+              userMobile: this.formValidate.userMobile,
+              eMail: "ceshieMail@qq.com"
             }
           }).then(rsp => {
+            debugger;
             if (rsp.status === 1) {
               this.checkModal = false;
               this.$Modal.success({
@@ -185,8 +155,8 @@ export default {
               this.$Message.error(rsp.message);
             }
           });
-        }
-      });
+      //   }
+      // });
     },
     onCancelUser() {
       this.checkModal = false;

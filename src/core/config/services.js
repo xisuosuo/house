@@ -11,7 +11,7 @@ export const services = {
   queryurb: `http://${IP}//chzuHouse/urbanfacilities/queryurbanfacilities`,
   autoStreet: `http://${IP}//chzuHouse/statistical/queryStatisticalByPloygon`,
   getHouse: `http://${IP}//chzuHouse/queryHouseInfo/queryHouseByBufferArea`,
-  register: `http://${IP}//chzuHouse/login/registered`,
+  register: `http://${IP}/chzuHouse/user/registered`,
   changePsd: `http://${IP}//chzuHouse/login/modifyUser`,
   getallinfo: `http://${IP}//chzuHouse/queryHouseInfo/queryHouseDetails`,
   rightHouseInfo: `http://${IP}//chzuHouse/queryHouseInfo/queryHouseSorting`,

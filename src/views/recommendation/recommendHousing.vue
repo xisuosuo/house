@@ -311,7 +311,7 @@ export default {
   methods: {
     qq() {
       var tab = document.getElementById("customerss");
-      for (var i = 0; i < 10; i++) {
+      for (var i = 0; i < 24; i++) {
         tab.insertRow(i);
         for (var j = 0; j < 6; j++) {
           var tt = this.tableData.data[i];
