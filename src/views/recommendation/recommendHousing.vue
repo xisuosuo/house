@@ -290,6 +290,7 @@ import Server from "@/core/server";
 import { services } from "@/core/config/services";
 import userMessage from "@/vuex/store";
 import dataRap from "@/vuex/store";
+import mapHouse from "@/vuex/store";
 var echarts = require("echarts");
 
 export default {
@@ -312,7 +313,11 @@ export default {
     qq() {
       setTimeout(() => {
         debugger;
-        console.log(this.tableData);
+        // var recommend = this.tableData.houseInfo.sort(this.compare("level"));
+        // var t = recommend.reverse();
+        // console.log(this.tableData);
+        
+        dataRap.commit("mapHouse", this.tableData.data.houseInfo);
         var tab = document.getElementById("customerss");
         for (var i = 0; i < 5; i++) {
           tab.insertRow(i);
@@ -326,7 +331,15 @@ export default {
             break;
           }
         }
-      }, 1000);
+      }, 100);
+    },
+    compare(property) {
+      debugger;
+      return function(a, b) {
+        var value1 = a[property];
+        var value2 = b[property];
+        return value1 - value2;
+      };
     },
     back() {
       this.$router.push("/recommendation");
