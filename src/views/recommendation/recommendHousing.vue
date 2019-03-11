@@ -341,22 +341,6 @@ export default {
     education() {
       this.$router.push("/Details");
     },
-    showMap() {
-      Server.get({
-        url: services.rightHouseInfo,
-        params: {
-          sorting: "",
-          column: ""
-        }
-      }).then(rsp => {
-        if (rsp.status === 1) {
-          // this_.information = rsp.data;
-          userMessage.commit("user_message", rsp);
-          // this_.total = rsp.length;
-        }
-      });
-      this.$router.push("/mapMatching");
-    },
     trendMap() {
       if (!this.trend) {
         this.trend = echarts.init(document.getElementById("trend"));
