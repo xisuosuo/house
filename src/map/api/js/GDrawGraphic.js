@@ -1,6 +1,7 @@
 import GMapSymbol from "./GMapSymbol";
 class GDrawGraphic {
   markersByList(args, layer = null) {
+
     var list = args.list || [];
     var marker = args.marker || false;
     var name = args.name || null;
@@ -10,7 +11,7 @@ class GDrawGraphic {
     var mapView = args.mapView;
     if (list.length === 0) return;
     mapApi.esriApi.GetGraphic().then(Graphic => {
-      debugger;
+
       var geometryParse = [];
       list.forEach((item, index) => {
         geometryParse.push(
@@ -22,7 +23,7 @@ class GDrawGraphic {
 
       });
       Promise.all(geometryParse).then(geometries => {
-        debugger
+
         var pts = [];
         var graphics = [];
         geometries.forEach((geometry, index) => {
@@ -75,6 +76,7 @@ class GDrawGraphic {
     });
   }
   housesByList(args, layer = null) {
+    debugger;
     var list = args.list || [];
     var marker = args.marker || false;
     var name = args.name || null;
