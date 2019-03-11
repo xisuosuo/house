@@ -332,6 +332,7 @@ export default {
           }
         }
       }, 100);
+<<<<<<< HEAD
     },
     compare(property) {
       debugger;
@@ -340,6 +341,8 @@ export default {
         var value2 = b[property];
         return value1 - value2;
       };
+=======
+>>>>>>> c6544cba1acbe3390cc9143e8a53ea7ef7385c1f
     },
     back() {
       this.$router.push("/recommendation");
