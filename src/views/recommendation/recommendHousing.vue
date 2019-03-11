@@ -326,7 +326,7 @@ export default {
             break;
           }
         }
-      }, 1000);
+      }, 100);
     },
     back() {
       this.$router.push("/recommendation");
