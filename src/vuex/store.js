@@ -63,7 +63,8 @@ export default new Vuex.Store({
             state.houseId = rsp.data.houseId;
         },
         dataRap(state, data) {
-            state.dataDeatil = data
+            debugger;
+            state.dataDeatil =data
         }
     }
 })

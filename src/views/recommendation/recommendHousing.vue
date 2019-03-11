@@ -35,7 +35,7 @@
       <Col span="5">
       <ButtonGroup shape="circle">
         <Button type="primary" @click="back()">
-          <Icon type="ios-arrow-back" ></Icon>
+          <Icon type="ios-arrow-back"></Icon>
           重新推荐
         </Button>
         <Button type="primary" @click="map()">
@@ -46,7 +46,7 @@
       </Col>
     </Row>
 
-    <Modal v-model="modal1" title="教育资源的中间过程数据" :loading="loading" :styles="{top: '55px'}" width="700">
+    <Modal v-model="modal1" title="教育资源的中间过程数据" :styles="{top: '55px'}" width="700">
       <table id="customers">
         <tr>
           <th>小区名称</th>
@@ -105,7 +105,7 @@
       </table>
     </Modal>
 
-    <Modal v-model="modal2" title="医疗资源的中间过程数据" :loading="loading" :styles="{top: '55px'}" width="700">
+    <Modal v-model="modal2" title="医疗资源的中间过程数据" :styles="{top: '55px'}" width="700">
       <table id="customers">
         <tr>
           <th>小区名称</th>
@@ -164,7 +164,7 @@
       </table>
     </Modal>
 
-    <Modal v-model="modal3" title="交通资源的中间过程数据" :loading="loading" :styles="{top: '55px'}" width="700">
+    <Modal v-model="modal3" title="交通资源的中间过程数据" :styles="{top: '55px'}" width="700">
       <table id="customers">
         <tr>
           <th>小区名称</th>
@@ -222,7 +222,7 @@
         </tr>
       </table>
     </Modal>
-    <Modal v-model="modal4" title="休闲娱乐的中间过程数据" :loading="loading" :styles="{top: '55px'}" width="700">
+    <Modal v-model="modal4" title="休闲娱乐的中间过程数据" :styles="{top: '55px'}" width="700">
       <table id="customers">
         <tr>
           <th>小区名称</th>
@@ -304,24 +304,29 @@ export default {
   },
   mounted() {
     this.getData();
-    this.trendMap();
-    this.compriseMap();
+    // this.trendMap();
+    // this.compriseMap();
     this.qq();
   },
   methods: {
     qq() {
-      var tab = document.getElementById("customerss");
-      for (var i = 0; i < 24; i++) {
-        tab.insertRow(i);
-        for (var j = 0; j < 6; j++) {
-          var tt = this.tableData.data[i];
-          for (var k in tt) {
-            tab.rows[i].insertCell(j).innerHTML = tt[k];
-            continue;
+      setTimeout(() => {
+        debugger;
+        console.log(this.tableData);
+        var tab = document.getElementById("customerss");
+        for (var i = 0; i < 24; i++) {
+          tab.insertRow(i);
+          for (var j = 0; j < 6; j++) {
+            var tt = this.tableData.data.houseLevel[i];
+            debugger;
+            for (var k in tt) {
+              tab.rows[i].insertCell(j).innerHTML = tt[k];
+              continue;
+            }
+            break;
           }
-          break;
         }
-      }
+      }, 1000);
     },
     back() {
       this.$router.push("/recommendation");
@@ -331,6 +336,7 @@ export default {
     },
     getData() {
       this.tableData = dataRap.state.dataDeatil;
+      console.log(this.tableData);
     },
     education() {
       this.$router.push("/Details");
