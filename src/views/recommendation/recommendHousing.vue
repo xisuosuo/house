@@ -332,17 +332,6 @@ export default {
           }
         }
       }, 100);
-<<<<<<< HEAD
-    },
-    compare(property) {
-      debugger;
-      return function(a, b) {
-        var value1 = a[property];
-        var value2 = b[property];
-        return value1 - value2;
-      };
-=======
->>>>>>> c6544cba1acbe3390cc9143e8a53ea7ef7385c1f
     },
     back() {
       this.$router.push("/recommendation");

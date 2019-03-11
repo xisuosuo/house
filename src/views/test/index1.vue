@@ -25,7 +25,8 @@
       </div>
     </div>
   </div>
-</template><script>
+</template>
+<script>
 import esriLoader from "esri-loader";
 import { MapAPI } from "@/core/config/const";
 import Register from "@/map/api/register";
