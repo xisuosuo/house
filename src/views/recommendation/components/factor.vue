@@ -548,7 +548,11 @@ export default {
           grade: JSON.stringify(this.form)
         }
       }).then(rsp => {
+        debugger;
         if (rsp.status === 1) {
+          var recommendHouse = rsp.data.houseLevel.sort(this.compare("level"));
+          // for(var i=0)
+          var t = recommendHouse.reverse();
           dataRap.commit("dataRap", rsp);
           this.$Spin.hide();
           this.$router.push("/recommendHousing");
@@ -575,6 +579,14 @@ export default {
     },
     push() {
       this.$router.push("/auDecision/model");
+    },
+    compare(property) {
+      debugger;
+      return function(a, b) {
+        var value1 = a[property];
+        var value2 = b[property];
+        return value1 - value2;
+      };
     },
     change() {
       this.downIcon = !this.downIcon;
