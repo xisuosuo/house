@@ -314,7 +314,7 @@ export default {
         debugger;
         console.log(this.tableData);
         var tab = document.getElementById("customerss");
-        for (var i = 0; i < 24; i++) {
+        for (var i = 0; i < 5; i++) {
           tab.insertRow(i);
           for (var j = 0; j < 6; j++) {
             var tt = this.tableData.data.houseLevel[i];
