@@ -8,8 +8,8 @@ export const login = {
     return {
       accountName: "",
       user: {
-        userAccount: "superAdmin",
-        userPwd: "superAdmin",
+        userAccount: "admin",
+        userPwd: "123456",
         remember: false
       },
       rules: {
