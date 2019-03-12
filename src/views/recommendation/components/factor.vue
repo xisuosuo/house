@@ -548,11 +548,13 @@ export default {
           grade: JSON.stringify(this.form)
         }
       }).then(rsp => {
-        debugger;
         if (rsp.status === 1) {
-          var recommendHouse = rsp.data.houseLevel.sort(this.compare("level"));
+          var recommendHouse = rsp.data.sort(this.compare("level"));
           // for(var i=0)
           var t = recommendHouse.reverse();
+          // var recommend = rsp.data.houseInfo.sort(this.compare("level"));
+          // for(var i=0)
+          // var s = recommend.reverse();
           dataRap.commit("dataRap", rsp);
           this.$Spin.hide();
           this.$router.push("/recommendHousing");

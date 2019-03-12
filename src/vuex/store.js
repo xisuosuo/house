@@ -17,12 +17,13 @@ export default new Vuex.Store({
         length: "",
         housueName: "",
         companyName: "",
-        houseId:[],
-        HouseOne:[],
-        HouseTwo:[],
-        HouseThree:[],
-        HouseFour:[],
-        dataDeatil:{},
+        houseId: [],
+        HouseOne: [],
+        HouseTwo: [],
+        HouseThree: [],
+        HouseFour: [],
+        dataDeatil: {},
+        maphouseData: []
     },
     /*
      * mutations里面规定的就是想要改变state(数据)的动作函数，
@@ -63,8 +64,11 @@ export default new Vuex.Store({
             state.houseId = rsp.data.houseId;
         },
         dataRap(state, data) {
+            state.dataDeatil = data
+        },
+        mapHouse(state, houseMap) {
             debugger;
-            state.dataDeatil =data
+            state.maphouseData = houseMap
         }
     }
 })

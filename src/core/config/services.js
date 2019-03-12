@@ -31,4 +31,6 @@ export const services = {
   delCollectHouse: `http://${IP}/chzuHouse/queryHouseInfo/delCollectHouse`,
   addCollectHouse: `http://${IP}/chzuHouse/queryHouseInfo/addCollectHouse`,
   getlayers: `http://${IP}/chzuHouse/shapeDeal/dealShape`,
+  getrecommendHouse: `http://${IP}/chzuHouse/recommended/getRecommendedHouseData`,
+  processData:`http://${IP}/chzuHouse/recommended/getRecommendedHouseDetails`
 };
