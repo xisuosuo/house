@@ -32,4 +32,5 @@ export const services = {
   addCollectHouse: `http://${IP}/chzuHouse/queryHouseInfo/addCollectHouse`,
   getlayers: `http://${IP}/chzuHouse/shapeDeal/dealShape`,
   getrecommendHouse: `http://${IP}/chzuHouse/recommended/getRecommendedHouseData`,
+  processData:`http://${IP}/chzuHouse/recommended/getRecommendedHouseDetails`
 };

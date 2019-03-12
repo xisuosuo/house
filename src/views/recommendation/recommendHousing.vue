@@ -4,16 +4,16 @@
       <thead>
         <tr>
           <th>小区名称</th>
-          <th @click="modal1 = true" title="查看教育资源可达性计算数据">教育资源可达性
+          <th @click="education" title="查看教育资源可达性计算数据">教育资源可达性
             <Icon type="ios-book" />
           </th>
-          <th @click="modal2 = true" title="查看医疗资源可达性计算数据">医疗资源可达性
+          <th @click="Medical" title="查看医疗资源可达性计算数据">医疗资源可达性
             <Icon type="md-add-circle" />
           </th>
-          <th @click="modal3 = true" title="查看交通资源可达性计算数据">交通资源可达性
+          <th @click="traffic" title="查看交通资源可达性计算数据">交通资源可达性
             <Icon type="ios-car" />
           </th>
-          <th @click="modal4 = true" title="查看休闲娱乐可达性计算数据">休闲娱乐可达性
+          <th @click="entertainment" title="查看休闲娱乐可达性计算数据">休闲娱乐可达性
             <Icon type="md-cart" />
           </th>
           <th>综合值</th>
@@ -48,236 +48,128 @@
 
     <Modal v-model="modal1" title="教育资源的中间过程数据" :styles="{top: '55px'}" width="700">
       <table id="customers">
-        <tr>
-          <th>小区名称</th>
-          <th>人口</th>
-        </tr>
-        <tr>
-          <td>Alfreds</td>
-          <td>Maria Anders</td>
-        </tr>
-        <tr class="alt">
-          <td>Berglunds</td>
-          <td>Christina Berglund</td>
-        </tr>
-        <tr>
-          <td>Centro</td>
-          <td>Francisco Chang</td>
-        </tr>
+        <thead>
+          <tr>
+            <th>小区名称</th>
+            <th>人口</th>
+          </tr>
+        </thead>
+        <tbody id="population"></tbody>
       </table>
 
-      <table id="customers" class="table">
-        <tr>
-          <th></th>
-          <th>距离</th>
-        </tr>
-        <tr>
-          <td>Alfreds</td>
-          <td>Maria Anders</td>
-        </tr>
-        <tr class="alt">
-          <td>Berglunds</td>
-          <td>Christina Berglund</td>
-        </tr>
-        <tr>
-          <td>Centro</td>
-          <td>Francisco Chang</td>
-        </tr>
+      <table id="customers">
+        <thead>
+          <tr>
+            <th>公服设施</th>
+            <th>服务能力</th>
+          </tr>
+        </thead>
+        <tbody id="service"></tbody>
       </table>
 
-      <table id="customers" class="table">
-        <tr>
-          <th></th>
-          <th>服务能力</th>
-        </tr>
-        <tr>
-          <td>Alfreds</td>
-          <td>Maria Anders</td>
-        </tr>
-        <tr class="alt">
-          <td>Berglunds</td>
-          <td>Christina Berglund</td>
-        </tr>
-        <tr>
-          <td>Centro</td>
-          <td>Francisco Chang</td>
-        </tr>
+      <table id="customers">
+        <thead>
+          <tr>
+            <th></th>
+            <th>距离</th>
+          </tr>
+        </thead>
+        <tbody id="distance"></tbody>
       </table>
     </Modal>
 
     <Modal v-model="modal2" title="医疗资源的中间过程数据" :styles="{top: '55px'}" width="700">
       <table id="customers">
-        <tr>
-          <th>小区名称</th>
-          <th>人口</th>
-        </tr>
-        <tr>
-          <td>Alfreds</td>
-          <td>Maria Anders</td>
-        </tr>
-        <tr class="alt">
-          <td>Berglunds</td>
-          <td>Christina Berglund</td>
-        </tr>
-        <tr>
-          <td>Centro</td>
-          <td>Francisco Chang</td>
-        </tr>
+        <thead>
+          <tr>
+            <th>小区名称</th>
+            <th>人口</th>
+          </tr>
+        </thead>
+        <tbody id="population2"></tbody>
       </table>
 
-      <table id="customers" class="table">
-        <tr>
-          <th></th>
-          <th>距离</th>
-        </tr>
-        <tr>
-          <td>Alfreds</td>
-          <td>Maria Anders</td>
-        </tr>
-        <tr class="alt">
-          <td>Berglunds</td>
-          <td>Christina Berglund</td>
-        </tr>
-        <tr>
-          <td>Centro</td>
-          <td>Francisco Chang</td>
-        </tr>
+      <table id="customers">
+        <thead>
+          <tr>
+            <th></th>
+            <th>服务能力</th>
+          </tr>
+        </thead>
+        <tbody id="service2"></tbody>
       </table>
 
-      <table id="customers" class="table">
-        <tr>
-          <th></th>
-          <th>服务能力</th>
-        </tr>
-        <tr>
-          <td>Alfreds</td>
-          <td>Maria Anders</td>
-        </tr>
-        <tr class="alt">
-          <td>Berglunds</td>
-          <td>Christina Berglund</td>
-        </tr>
-        <tr>
-          <td>Centro</td>
-          <td>Francisco Chang</td>
-        </tr>
+      <table id="customers">
+        <thead>
+          <tr>
+            <th></th>
+            <th>距离</th>
+          </tr>
+        </thead>
+        <tbody id="distance2"></tbody>
       </table>
     </Modal>
 
     <Modal v-model="modal3" title="交通资源的中间过程数据" :styles="{top: '55px'}" width="700">
       <table id="customers">
-        <tr>
-          <th>小区名称</th>
-          <th>人口</th>
-        </tr>
-        <tr>
-          <td>Alfreds</td>
-          <td>Maria Anders</td>
-        </tr>
-        <tr class="alt">
-          <td>Berglunds</td>
-          <td>Christina Berglund</td>
-        </tr>
-        <tr>
-          <td>Centro</td>
-          <td>Francisco Chang</td>
-        </tr>
+        <thead>
+          <tr>
+            <th>小区名称</th>
+            <th>人口</th>
+          </tr>
+        </thead>
+        <tbody id="population3"></tbody>
       </table>
 
-      <table id="customers" class="table">
-        <tr>
-          <th></th>
-          <th>距离</th>
-        </tr>
-        <tr>
-          <td>Alfreds</td>
-          <td>Maria Anders</td>
-        </tr>
-        <tr class="alt">
-          <td>Berglunds</td>
-          <td>Christina Berglund</td>
-        </tr>
-        <tr>
-          <td>Centro</td>
-          <td>Francisco Chang</td>
-        </tr>
+      <table id="customers">
+        <thead>
+          <tr>
+            <th></th>
+            <th>服务能力</th>
+          </tr>
+        </thead>
+        <tbody id="service3"></tbody>
       </table>
 
-      <table id="customers" class="table">
-        <tr>
-          <th></th>
-          <th>服务能力</th>
-        </tr>
-        <tr>
-          <td>Alfreds</td>
-          <td>Maria Anders</td>
-        </tr>
-        <tr class="alt">
-          <td>Berglunds</td>
-          <td>Christina Berglund</td>
-        </tr>
-        <tr>
-          <td>Centro</td>
-          <td>Francisco Chang</td>
-        </tr>
+      <table id="customers">
+        <thead>
+          <tr>
+            <th></th>
+            <th>距离</th>
+          </tr>
+        </thead>
+        <tbody id="distance3"></tbody>
       </table>
     </Modal>
     <Modal v-model="modal4" title="休闲娱乐的中间过程数据" :styles="{top: '55px'}" width="700">
       <table id="customers">
-        <tr>
-          <th>小区名称</th>
-          <th>人口</th>
-        </tr>
-        <tr>
-          <td>Alfreds</td>
-          <td>Maria Anders</td>
-        </tr>
-        <tr class="alt">
-          <td>Berglunds</td>
-          <td>Christina Berglund</td>
-        </tr>
-        <tr>
-          <td>Centro</td>
-          <td>Francisco Chang</td>
-        </tr>
+        <thead>
+          <tr>
+            <th>小区名称</th>
+            <th>人口</th>
+          </tr>
+        </thead>
+        <tbody id="population4"></tbody>
       </table>
 
-      <table id="customers" class="table">
-        <tr>
-          <th></th>
-          <th>距离</th>
-        </tr>
-        <tr>
-          <td>Alfreds</td>
-          <td>Maria Anders</td>
-        </tr>
-        <tr class="alt">
-          <td>Berglunds</td>
-          <td>Christina Berglund</td>
-        </tr>
-        <tr>
-          <td>Centro</td>
-          <td>Francisco Chang</td>
-        </tr>
+      <table id="customers">
+        <thead>
+          <tr>
+            <th></th>
+            <th>服务能力</th>
+          </tr>
+        </thead>
+        <tbody id="service4"></tbody>
       </table>
 
-      <table id="customers" class="table">
-        <tr>
-          <th></th>
-          <th>服务能力</th>
-        </tr>
-        <tr>
-          <td>Alfreds</td>
-          <td>Maria Anders</td>
-        </tr>
-        <tr class="alt">
-          <td>Berglunds</td>
-          <td>Christina Berglund</td>
-        </tr>
-        <tr>
-          <td>Centro</td>
-          <td>Francisco Chang</td>
-        </tr>
+      <table id="customers">
+        <thead>
+          <tr>
+            <th></th>
+            <th>距离</th>
+          </tr>
+        </thead>
+        <tbody id="distance4"></tbody>
       </table>
     </Modal>
 
@@ -311,27 +203,218 @@ export default {
   },
   methods: {
     qq() {
-      setTimeout(() => {
-        debugger;
-        // var recommend = this.tableData.houseInfo.sort(this.compare("level"));
-        // var t = recommend.reverse();
-        // console.log(this.tableData);
-        
-        dataRap.commit("mapHouse", this.tableData.data.houseInfo);
-        var tab = document.getElementById("customerss");
-        for (var i = 0; i < 5; i++) {
-          tab.insertRow(i);
-          for (var j = 0; j < 6; j++) {
-            var tt = this.tableData.data.houseLevel[i];
-            debugger;
-            for (var k in tt) {
-              tab.rows[i].insertCell(j).innerHTML = tt[k];
-              continue;
-            }
-            break;
+      // var recommend = this.tableData.houseInfo.sort(this.compare("level"));
+      // var t = recommend.reverse();
+      // console.log(this.tableData);
+      // dataRap.commit("mapHouse", this.tableData.data.houseInfo);
+      var tab = document.getElementById("customerss");
+      for (var i = 0; i < 5; i++) {
+        tab.insertRow(i);
+        for (var j = 0; j < 6; j++) {
+          var tt = this.tableData.data[i];
+          for (var k in tt) {
+            tab.rows[i].insertCell(j).innerHTML = tt[k];
+            continue;
           }
+          break;
         }
-      }, 100);
+      }
+    },
+    education() {
+      this.modal1 = true;
+      Server.get({
+        url: services.processData,
+        params: {
+          serviceType: "education"
+        }
+      }).then(rsp => {
+        if (rsp.status === 1) {
+          var tab1 = document.getElementById("population");
+          var tab2 = document.getElementById("service");
+          var tab3 = document.getElementById("distance");
+          for (var i = 0; i < 5; i++) {
+            tab1.insertRow(i);
+            for (var j = 0; j < 2; j++) {
+              var tt = rsp.data.peopleNumList[i];
+              for (var k in tt) {
+                tab1.rows[i].insertCell(j).innerHTML = tt[k];
+                continue;
+              }
+              break;
+            }
+          }
+          for (var i = 0; i < 100; i++) {
+            tab2.insertRow(i);
+            for (var j = 0; j < 2; j++) {
+              var tt = rsp.data.serviceList[i];
+              for (var k in tt) {
+                tab2.rows[i].insertCell(j).innerHTML = tt[k];
+                continue;
+              }
+              break;
+            }
+          }
+          for (var i = 0; i < 100; i++) {
+            tab3.insertRow(i);
+            for (var j = 0; j < 2; j++) {
+              var tt = rsp.data.distanceList[i];
+              for (var k in tt) {
+                tab3.rows[i].insertCell(j).innerHTML = tt[k];
+                continue;
+              }
+              break;
+            }
+          }
+        } else {
+        }
+      });
+    },
+    Medical() {
+      this.modal2 = true;
+      Server.get({
+        url: services.processData,
+        params: {
+          serviceType: "medical"
+        }
+      }).then(rsp => {
+        if (rsp.status === 1) {
+          var tab1 = document.getElementById("population2");
+          var tab2 = document.getElementById("service2");
+          var tab3 = document.getElementById("distance2");
+          for (var i = 0; i < 5; i++) {
+            tab1.insertRow(i);
+            for (var j = 0; j < 2; j++) {
+              var tt = rsp.data.peopleNumList[i];
+              for (var k in tt) {
+                tab1.rows[i].insertCell(j).innerHTML = tt[k];
+                continue;
+              }
+              break;
+            }
+          }
+          for (var i = 0; i < 100; i++) {
+            tab2.insertRow(i);
+            for (var j = 0; j < 2; j++) {
+              var tt = rsp.data.serviceList[i];
+              for (var k in tt) {
+                tab2.rows[i].insertCell(j).innerHTML = tt[k];
+                continue;
+              }
+              break;
+            }
+          }
+          for (var i = 0; i < 100; i++) {
+            tab3.insertRow(i);
+            for (var j = 0; j < 2; j++) {
+              var tt = rsp.data.distanceList[i];
+              for (var k in tt) {
+                tab3.rows[i].insertCell(j).innerHTML = tt[k];
+                continue;
+              }
+              break;
+            }
+          }
+        } else {
+        }
+      });
+    },
+    traffic() {
+      this.modal3 = true;
+      Server.get({
+        url: services.processData,
+        params: {
+          serviceType: "station"
+        }
+      }).then(rsp => {
+        if (rsp.status === 1) {
+          var tab1 = document.getElementById("population3");
+          var tab2 = document.getElementById("service3");
+          var tab3 = document.getElementById("distance3");
+          for (var i = 0; i < 5; i++) {
+            tab1.insertRow(i);
+            for (var j = 0; j < 2; j++) {
+              var tt = rsp.data.peopleNumList[i];
+              for (var k in tt) {
+                tab1.rows[i].insertCell(j).innerHTML = tt[k];
+                continue;
+              }
+              break;
+            }
+          }
+          for (var i = 0; i < 100; i++) {
+            tab2.insertRow(i);
+            for (var j = 0; j < 2; j++) {
+              var tt = rsp.data.serviceList[i];
+              for (var k in tt) {
+                tab2.rows[i].insertCell(j).innerHTML = tt[k];
+                continue;
+              }
+              break;
+            }
+          }
+          for (var i = 0; i < 100; i++) {
+            tab3.insertRow(i);
+            for (var j = 0; j < 2; j++) {
+              var tt = rsp.data.distanceList[i];
+              for (var k in tt) {
+                tab3.rows[i].insertCell(j).innerHTML = tt[k];
+                continue;
+              }
+              break;
+            }
+          }
+        } else {
+        }
+      });
+    },
+    entertainment() {
+      this.modal4 = true;
+      Server.get({
+        url: services.processData,
+        params: {
+          serviceType: "entertainment"
+        }
+      }).then(rsp => {
+        if (rsp.status === 1) {
+          var tab1 = document.getElementById("population4");
+          var tab2 = document.getElementById("service4");
+          var tab3 = document.getElementById("distance4");
+          for (var i = 0; i < 5; i++) {
+            tab1.insertRow(i);
+            for (var j = 0; j < 2; j++) {
+              var tt = rsp.data.peopleNumList[i];
+              for (var k in tt) {
+                tab1.rows[i].insertCell(j).innerHTML = tt[k];
+                continue;
+              }
+              break;
+            }
+          }
+          for (var i = 0; i < 100; i++) {
+            tab2.insertRow(i);
+            for (var j = 0; j < 2; j++) {
+              var tt = rsp.data.serviceList[i];
+              for (var k in tt) {
+                tab2.rows[i].insertCell(j).innerHTML = tt[k];
+                continue;
+              }
+              break;
+            }
+          }
+          for (var i = 0; i < 100; i++) {
+            tab3.insertRow(i);
+            for (var j = 0; j < 2; j++) {
+              var tt = rsp.data.distanceList[i];
+              for (var k in tt) {
+                tab3.rows[i].insertCell(j).innerHTML = tt[k];
+                continue;
+              }
+              break;
+            }
+          }
+        } else {
+        }
+      });
     },
     back() {
       this.$router.push("/recommendation");
@@ -342,9 +425,6 @@ export default {
     getData() {
       this.tableData = dataRap.state.dataDeatil;
       console.log(this.tableData);
-    },
-    education() {
-      this.$router.push("/Details");
     },
     trendMap() {
       if (!this.trend) {
@@ -587,6 +667,7 @@ export default {
   border: 1px solid #2b85e4;
   text-align: center;
   padding: 3px 7px 2px 7px;
+  width:350px
 }
 #customers th {
   font-size: 1.2em;
