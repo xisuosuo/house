@@ -130,7 +130,7 @@ export default {
     this.getdata();
     setTimeout(() => {
       this.showGraphics();
-    }, 100);
+    }, 3000);
 
     this.getimag();
   },
@@ -256,6 +256,7 @@ export default {
       });
     },
     showGraphics() {
+      debugger;
       for (
         var i = 0, len = this.total, item;
         i < len, (item = this.information[i]);
