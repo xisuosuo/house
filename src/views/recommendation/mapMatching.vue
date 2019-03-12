@@ -26,8 +26,8 @@
                 </div>
                 <div class="list-wrap1">
                     <div class="hd" id="part" style="display: none">
-                        可视范围内找到
-                        <span class="ret">{{this.total}}</span>
+                       为您推荐
+                        <span class="ret">5</span>
                         <span>个楼盘</span>
                         <Badge :count=this.count style="float: right;margin-right: 10px">
                             <Icon title="楼盘对比" @click="addComapre" type="ios-notifications-outline" size="26"></Icon>
@@ -130,7 +130,7 @@ export default {
     this.getdata();
     setTimeout(() => {
       this.showGraphics();
-    }, 100);
+    }, 3000);
   },
   data() {
     return {
