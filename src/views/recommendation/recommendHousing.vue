@@ -197,8 +197,8 @@ export default {
   },
   mounted() {
     this.getData();
-    // this.trendMap();
-    // this.compriseMap();
+    this.trendMap();
+    this.compriseMap();
     this.qq();
   },
   methods: {
@@ -472,6 +472,7 @@ export default {
             name: "教育资源可达性",
             type: "bar",
             stack: "总量",
+            barMaxWidth:50,
             label: {
               normal: {
                 show: false,
@@ -490,6 +491,7 @@ export default {
             name: "医疗资源可达性",
             type: "bar",
             stack: "总量",
+              barMaxWidth:50,
             label: {
               normal: {
                 show: false,
@@ -508,6 +510,7 @@ export default {
             name: "交通资源可达性",
             type: "bar",
             stack: "总量",
+              barMaxWidth:50,
             label: {
               normal: {
                 show: false,
@@ -526,6 +529,7 @@ export default {
             name: "休闲娱乐可达性",
             type: "bar",
             stack: "总量",
+              barMaxWidth:50,
             label: {
               normal: {
                 show: false,
