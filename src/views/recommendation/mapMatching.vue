@@ -130,9 +130,7 @@ export default {
     this.getdata();
     setTimeout(() => {
       this.showGraphics();
-    }, 3000);
-
-    this.getimag();
+    }, 100);
   },
   data() {
     return {
@@ -151,8 +149,8 @@ export default {
         { name: "默认排序", type: "" },
         { name: "单价由低到高", type: "1", type2: "PRICE" },
         { name: "单价由高到低", type: "0", type2: "PRICE" },
-        { name: "面积由低到高", type: "1", type2: "GROSS_FLOOR_AREA" },
-        { name: "面积由高到低", type: "0", type2: "GROSS_FLOOR_AREA" }
+        { name: "面积由低到高", type: "1", type2: "AREA " },
+        { name: "面积由高到低", type: "0", type2: "AREA " }
       ],
       houseHeight: "",
       houseType: "",
@@ -326,27 +324,17 @@ export default {
         }
       });
     },
-    getimag() {
-      Server.get({
-        url: services.getOneImageToCommunity
-      }).then(rsp => {
-        this.imgdata = rsp.imageData.image;
-      });
-    },
     giveOrder(value) {
       debugger;
       document.getElementById("part").style.display = "block";
-      var userId = JSON.parse(sessionStorage.getItem("userId"));
-      this.order = value.name;
       this.type = value.type;
       this.type2 = value.type2;
       let this_ = this;
       Server.get({
-        url: services.rightHouseInfo,
+        url: services.getrecommendHouse,
         params: {
           sorting: this_.type,
           column: this_.type2,
-          userId: userId
         }
       }).then(rsp => {
         if (rsp.status === 1) {
