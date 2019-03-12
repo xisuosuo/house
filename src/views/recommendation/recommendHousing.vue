@@ -396,11 +396,6 @@ export default {
             this.tableData.data[2].name,
             this.tableData.data[3].name,
             this.tableData.data[4].name,
-            this.tableData.data[5].name,
-            this.tableData.data[6].name,
-            this.tableData.data[7].name,
-            this.tableData.data[8].name,
-            this.tableData.data[9].name
           ]
         },
         series: [
@@ -420,11 +415,6 @@ export default {
               this.tableData.data[2].educationLevel,
               this.tableData.data[3].educationLevel,
               this.tableData.data[4].educationLevel,
-              this.tableData.data[5].educationLevel,
-              this.tableData.data[6].educationLevel,
-              this.tableData.data[7].educationLevel,
-              this.tableData.data[8].educationLevel,
-              this.tableData.data[9].educationLevel
             ]
           },
           {
@@ -443,11 +433,6 @@ export default {
               this.tableData.data[2].medicalLevel,
               this.tableData.data[3].medicalLevel,
               this.tableData.data[4].medicalLevel,
-              this.tableData.data[5].medicalLevel,
-              this.tableData.data[6].medicalLevel,
-              this.tableData.data[7].medicalLevel,
-              this.tableData.data[8].medicalLevel,
-              this.tableData.data[9].medicalLevel
             ]
           },
           {
@@ -466,11 +451,6 @@ export default {
               this.tableData.data[2].trafficLevel,
               this.tableData.data[3].trafficLevel,
               this.tableData.data[4].trafficLevel,
-              this.tableData.data[5].trafficLevel,
-              this.tableData.data[6].trafficLevel,
-              this.tableData.data[7].trafficLevel,
-              this.tableData.data[8].trafficLevel,
-              this.tableData.data[9].trafficLevel
             ]
           },
           {
@@ -489,11 +469,6 @@ export default {
               this.tableData.data[2].entertainmentLevel,
               this.tableData.data[3].entertainmentLevel,
               this.tableData.data[4].entertainmentLevel,
-              this.tableData.data[5].entertainmentLevel,
-              this.tableData.data[6].entertainmentLevel,
-              this.tableData.data[7].entertainmentLevel,
-              this.tableData.data[8].entertainmentLevel,
-              this.tableData.data[9].entertainmentLevel
             ]
           }
         ]
@@ -517,11 +492,6 @@ export default {
             this.tableData.data[2].name,
             this.tableData.data[3].name,
             this.tableData.data[4].name,
-            this.tableData.data[5].name,
-            this.tableData.data[6].name,
-            this.tableData.data[7].name,
-            this.tableData.data[8].name,
-            this.tableData.data[9].name
           ]
         },
         series: [
@@ -550,26 +520,6 @@ export default {
               {
                 value: this.tableData.data[4].level,
                 name: this.tableData.data[4].name
-              },
-              {
-                value: this.tableData.data[5].level,
-                name: this.tableData.data[5].name
-              },
-              {
-                value: this.tableData.data[6].level,
-                name: this.tableData.data[6].name
-              },
-              {
-                value: this.tableData.data[7].level,
-                name: this.tableData.data[7].name
-              },
-              {
-                value: this.tableData.data[8].level,
-                name: this.tableData.data[8].name
-              },
-              {
-                value: this.tableData.data[9].level,
-                name: this.tableData.data[9].name
               }
             ],
             itemStyle: {
