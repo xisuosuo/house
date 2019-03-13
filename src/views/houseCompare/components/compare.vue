@@ -73,27 +73,6 @@
                             </td>
                         </tr>
                         <tr class="normal">
-                            <td class="key">项目位置</td>
-                            <td id="value-location-1">{{this.HouseOne.address}}</td>
-                            <td id="value-location-2">{{this.HouseTwo.address}}</td>
-                            <td id="value-location-3">{{this.HouseThree.address}}</td>
-                            <td id="value-location-4">{{this.HouseFour.address}}</td>
-                        </tr>
-                        <tr class="normal">
-                            <td class="key">物业类别</td>
-                            <td id="value-property-1">{{this.HouseOne.houseType}}</td>
-                            <td id="value-property-2">{{this.HouseTwo.houseType}}</td>
-                            <td id="value-property-3">{{this.HouseThree.houseType}}</td>
-                            <td id="value-property-4">{{this.HouseFour.houseType}}</td>
-                        </tr>
-                        <tr class="normal">
-                            <td class="key">建筑结构</td>
-                            <td id="value-fitment-1">{{this.HouseOne.houseFeature}}</td>
-                            <td id="value-fitment-2">{{this.HouseTwo.houseFeature}}</td>
-                            <td id="value-fitment-3">{{this.HouseThree.houseFeature}}</td>
-                            <td id="value-fitment-4">{{this.HouseFour.houseFeature}}</td>
-                        </tr>
-                        <tr class="normal">
                             <td class="key">建筑面积/㎡</td>
                             <td id="value-years-1">{{this.HouseOne.area}}</td>
                             <td id="value-years-2">{{this.HouseTwo.area}}</td>
@@ -106,6 +85,29 @@
                             <td id="value-devel-2">{{this.HouseTwo.isSelling}}</td>
                             <td id="value-devel-3">{{this.HouseThree.isSelling}}</td>
                             <td id="value-devel-4">{{this.HouseFour.isSelling}}</td>
+                        </tr>
+                        <tr class="normal">
+                            <td class="key">建筑结构</td>
+                            <td id="value-fitment-1">{{this.HouseOne.houseFeature}}</td>
+                            <td id="value-fitment-2">{{this.HouseTwo.houseFeature}}</td>
+                            <td id="value-fitment-3">{{this.HouseThree.houseFeature}}</td>
+                            <td id="value-fitment-4">{{this.HouseFour.houseFeature}}</td>
+                        </tr>
+                        <tr class="normal">
+                            <td class="key">项目位置</td>
+                            <td id="value-location-1">{{this.HouseOne.address}}</td>
+                            <td id="value-location-2">{{this.HouseTwo.address}}</td>
+                            <td id="value-location-3">{{this.HouseThree.address}}</td>
+                            <td id="value-location-4">{{this.HouseFour.address}}</td>
+                        </tr>
+
+
+                        <tr class="normal">
+                            <td class="key">物业类别</td>
+                            <td id="value-property-1">{{this.HouseOne.houseType}}</td>
+                            <td id="value-property-2">{{this.HouseTwo.houseType}}</td>
+                            <td id="value-property-3">{{this.HouseThree.houseType}}</td>
+                            <td id="value-property-4">{{this.HouseFour.houseType}}</td>
                         </tr>
                     </tbody>
                 </table>
