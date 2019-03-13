@@ -12,18 +12,33 @@
           <form-item label="用户名" prop="userName">
             <i-input v-model="formValidate.userName" placeholder="输入用户账户" />
           </form-item>
+          <form-item label="昵称" prop="accountName">
+            <i-input v-model="formValidate.accountName" placeholder="输入用户昵称" />
+          </form-item>
           <form-item label="密码" prop="password">
             <i-input type="password" v-model="formValidate.password" placeholder="输入至少6位数密码" />
           </form-item>
           <form-item label="确认密码" prop="pwdCheck">
             <i-input type="password" v-model="formValidate.pwdCheck" placeholder="输入至少6位数密码" />
           </form-item>
-          <form-item label="昵称" prop="accountName">
-            <i-input v-model="formValidate.accountName" placeholder="输入用户昵称" />
-          </form-item>
-          <form-item label="注册号码" prop="userMobile">
+          <!-- <form-item label="注册号码" prop="userMobile">
             <i-input v-model="formValidate.userMobile" placeholder="输入手机号码" />
-          </form-item>
+          </form-item> -->
+          <FormItem label="年龄" prop="age">
+            <Select v-model="ageModel">
+              <Option v-for="item in age" :value="item.value" :key="item.value">{{ item.label }}</Option>
+            </Select>
+          </FormItem>
+          <FormItem label="购房资金" prop="capital">
+            <Select v-model="capitalModel">
+              <Option v-for="item in capital" :value="item.value" :key="item.value">{{ item.label }}</Option>
+            </Select>
+          </FormItem>
+          <FormItem label="学历" prop="education">
+            <Select v-model="educationModel">
+              <Option v-for="item in education" :value="item.value" :key="item.value">{{ item.label }}</Option>
+            </Select>
+          </FormItem>
         </i-form>
       </Row>
       <model-footer slot="footer" saveText="提交" @on-cancel="onCancelUser" @on-save="onsaveUser" />
@@ -64,6 +79,123 @@ export default {
       }
     };
     return {
+      ageModel: "",
+      capitalModel: "",
+      educationModel: "",
+      age: [
+        {
+          value: "1",
+          label: "25岁以下"
+        },
+        {
+          value: "2",
+          label: "26-30岁"
+        },
+        {
+          value: "3",
+          label: "31-35岁"
+        },
+        {
+          value: "4",
+          label: "36-40岁"
+        },
+        {
+          value: "5",
+          label: "41-45岁"
+        },
+        {
+          value: "6",
+          label: "46-50岁"
+        },
+        {
+          value: "7",
+          label: "51-55岁"
+        },
+        {
+          value: "8",
+          label: "51-55岁"
+        },
+        {
+          value: "9",
+          label: "60岁以上"
+        }
+      ],
+      capital: [
+        {
+          value: "1",
+          label: "1w以下"
+        },
+        {
+          value: "2",
+          label: "1w-3w"
+        },
+        {
+          value: "3",
+          label: "3w-5w"
+        },
+        {
+          value: "4",
+          label: "5w-10w"
+        },
+        {
+          value: "5",
+          label: "10w-20w"
+        },
+        {
+          value: "6",
+          label: "20w-50w"
+        },
+        {
+          value: "7",
+          label: "80w-150w"
+        },
+        {
+          value: "8",
+          label: "80w-150w"
+        },
+        {
+          value: "9",
+          label: "150w以上"
+        }
+      ],
+      education: [
+        {
+          value: "1",
+          label: "小学及以下"
+        },
+        {
+          value: "2",
+          label: "初中"
+        },
+        {
+          value: "3",
+          label: "高中"
+        },
+        {
+          value: "4",
+          label: "中专"
+        },
+        {
+          value: "5",
+          label: "大专"
+        },
+        {
+          value: "6",
+          label: "本科"
+        },
+        {
+          value: "7",
+          label: "硕士"
+        },
+        {
+          value: "8",
+          label: "博士"
+        },
+        {
+          value: "9",
+          label: "博士以上"
+        }
+      ],
       checkModal: false,
       formValidate: {
         userName: "",
@@ -135,7 +267,10 @@ export default {
           userName: this.formValidate.userName,
           password: this.formValidate.password,
           userNickName: this.formValidate.accountName,
-          userMobile: this.formValidate.userMobile,
+          age: this.ageModel,
+          money: this.capitalModel,
+          userEducationLevel: this.educationModel,
+          userMobile: "",
           eMail: ""
         }
       }).then(rsp => {

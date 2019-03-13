@@ -189,6 +189,27 @@ export default {
   }
 };
 </script>
+<style >
+.esri-view-height-small .esri-expand .esri-widget--panel,
+.esri-view-height-small .esri-expand .esri-widget--panel-height-only,
+.esri-view-height-small .esri-ui-corner .esri-component.esri-widget--panel,
+.esri-view-height-small .esri-ui-corner .esri-component.esri-widget--panel-height-only {
+    max-height: 206px;
+    width: 206px;
+    margin-top: 80px;
+    margin-right: 65px;
+    display: none;
+}
+
+.esri-view-height-xsmall .esri-expand .esri-widget--panel,
+.esri-view-height-xsmall .esri-expand .esri-widget--panel-height-only,
+.esri-view-height-xsmall .esri-ui-corner .esri-component.esri-widget--panel,
+.esri-view-height-xsmall .esri-ui-corner .esri-component.esri-widget--panel-height-only {
+    display: none;
+}
+
+</style>
+
       <!-- <tab-pane name="layer" :label="label">
         <section :style="{maxHeight:maxHeight+'px'}" v-if="visible" v-show="tabName==='layer'"> -->
           <!-- <tree-view ref="tree" 
@@ -225,6 +246,10 @@ export default {
     <!-- </tabs>
   </div>
 
+
+
+
+  
 
 
 
