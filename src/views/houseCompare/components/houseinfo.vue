@@ -313,6 +313,7 @@ export default {
       });
     },
     getData() {
+        debugger;
       var _this = this;
       this.Id = houseInfoId.state.houseId;
       console.log(houseInfoId.state.houseId);
