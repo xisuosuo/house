@@ -37,7 +37,8 @@
         </div>
       </div>
     </router-link>
-    <div @click="jump()" class="item-view">
+    <router-link to="/recommendation/housingPreference">
+    <div class="item-view">
       <div class="item bg4">
         <div class="icon-wrap">
           <i class="icon-text"></i>
@@ -47,6 +48,7 @@
         </div>
       </div>
     </div>
+    </router-link>
     <router-link to="/housingValuation">
       <div class="item-view">
         <div class="item bg5">

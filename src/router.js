@@ -165,19 +165,26 @@ export default new Router({
         },
         {
           path: '/recommendation',
-          redirect: '/',
           name: '房源推荐',
           component: () =>
             import('@/views/recommendation/index.vue'),
           children: [{
-            path: '/',
-            name: '房源推荐',
+              name: '房源推荐',
+              path: '/recommendation/housingPreference',
+              meta: {
+                  auth: true
+              },
+              component: () =>
+                  import('@/views/recommendation/components/housingPreference.vue'),
+          },{
+            path: '/recommendation/factor',
+            name: '房源选择',
             meta: {
               auth: true
             },
             component: () =>
-              import('@/views/recommendation/index.vue'),
-          }, ]
+                import('@/views/recommendation/components/factor.vue'),
+          }]
         },
         {
           path: '/recommendHousing',

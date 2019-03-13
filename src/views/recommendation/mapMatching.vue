@@ -330,9 +330,11 @@ export default {
       this.type = value.type;
       this.type2 = value.type2;
       let this_ = this;
+      var userId = JSON.parse(sessionStorage.getItem("userId"));
       Server.get({
         url: services.getrecommendHouse,
         params: {
+          userId: userId,
           sorting: this_.type,
           column: this_.type2,
         }

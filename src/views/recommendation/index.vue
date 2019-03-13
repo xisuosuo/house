@@ -10,45 +10,61 @@
                             </a>
                         </li>
                     </router-link>
-                    <li class="menu-item">
-                        <a class="nav-item">
-                            <div class="icon-wrap">
-                                <span class="menu-icon icon-cgzs"></span>
-                            </div>
-                            <div class="div-label">
-                                <span>住房推荐</span>
-                            </div>
-                        </a>
-                    </li>
+                    <router-link to="/recommendation/housingPreference">
+                        <li class="menu-item">
+                            <a class="nav-item">
+                                <div class="icon-wrap">
+                                    <span class="menu-icon icon-cgzs"></span>
+                                </div>
+                                <div class="div-label">
+                                    <span>住房推荐</span>
+                                </div>
+                            </a>
+                        </li>
+                    </router-link>
+                    <router-link to="/recommendation/factor">
+                        <li class="menu-item">
+                            <a class="nav-item">
+                                <div class="icon-wrap">
+                                    <span class="menu-icon icon-cgzs"></span>
+                                </div>
+                                <div class="div-label">
+                                    <span>住房选择</span>
+                                </div>
+                            </a>
+                        </li>
+                    </router-link>
                 </ul>
             </div>
         </Sider>
         <Content>
-            <factor/>
+
+            <router-view/>
         </Content>
     </Layout>
 </template>
 
 <script>
-import factor from "./components/factor.vue";
-export default {
-  data() {
-    return {};
-  },
-  components: {
-    factor
-  }
-};
+    import factor from "./components/factor.vue";
+
+    export default {
+        data() {
+            return {};
+        },
+        components: {
+            factor
+        }
+    };
 </script>
 
 <style lang="less" scoped>
-// .ivu-layout {
-//   height: 1024px;
-// }
-.wripper {
-  height: 100%;
-  width: 100%;
-  padding-top: 20px;
-  /*background: url(../../assets/img/house.jpg)  no-repeat ;*/
-}
+    // .ivu-layout {
+    //   height: 1024px;
+    // }
+    .wripper {
+        height: 100%;
+        width: 100%;
+        padding-top: 20px;
+        /*background: url(../../assets/img/house.jpg)  no-repeat ;*/
+    }
 </style>
