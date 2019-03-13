@@ -24,15 +24,16 @@ export const services = {
   update: `http://${IP}//chzuHouse/user/manageMapperUpdateUser`,
   recommend: `http://${IP}/chzuHouse/recommended/houseRecommended`,
   compareHouseDetails: `http://${IP}/chzuHouse/queryHouseInfo/compareHouseDetails`,
-  getImageToCommunity:`http://${IP}/chzuHouse/queryImage/getMoreImageToIndoor`,
-  getOneImageToCommunity:`http://${IP}/chzuHouse/queryImage/getOneImageToCommunity`,
-  queryHouseInfoPoint:`http://${IP}/chzuHouse/queryHouseInfo/queryHouseInfoPoint`,
+  getImageToCommunity: `http://${IP}/chzuHouse/queryImage/getMoreImageToIndoor`,
+  getOneImageToCommunity: `http://${IP}/chzuHouse/queryImage/getOneImageToCommunity`,
+  queryHouseInfoPoint: `http://${IP}/chzuHouse/queryHouseInfo/queryHouseInfoPoint`,
   getCollectHouseInfo: `http://${IP}/chzuHouse/queryHouseInfo/getCollectHouseInfo`,
   delCollectHouse: `http://${IP}/chzuHouse/queryHouseInfo/delCollectHouse`,
   addCollectHouse: `http://${IP}/chzuHouse/queryHouseInfo/addCollectHouse`,
   getlayers: `http://${IP}/chzuHouse/shapeDeal/dealShape`,
   getrecommendHouse: `http://${IP}/chzuHouse/recommended/getRecommendedHouseData`,
-  processData:`http://${IP}/chzuHouse/recommended/getRecommendedHouseDetails`,
-    getSimilarUserInfo:`http://${IP}/chzuHouse/passiveRecommended/getSimilarUserInfo`,
-  preserve:`http://${IP}/chzuHouse/user/updateUserInfo`
+  processData: `http://${IP}/chzuHouse/recommended/getRecommendedHouseDetails`,
+  getSimilarUserInfo: `http://${IP}/chzuHouse/passiveRecommended/getSimilarUserInfo`,
+  preserve: `http://${IP}/chzuHouse/user/updateUserInfo`,
+  getcomments: `http://${IP}/chzuHouse/user/commentsHouse`
 };

@@ -276,7 +276,7 @@ export default {
       this.$refs.routerView.addStop(data);
     },
     getmapdata() {
-      this.houseName = housueName.state.housueName;
+      this.houseName = this.houseInfo.name;
       this.list = aroundInfo.state.list;
       this.total = aroundInfo.state.length;
       this.onPageChange(1);
@@ -340,6 +340,7 @@ export default {
         if (rsp.status === 1) {
           console.log(rsp);
           _this.houseInfo = rsp.data;
+          console.log(_this.houseInfo);
         }
       });
     },
