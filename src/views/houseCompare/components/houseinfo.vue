@@ -27,16 +27,22 @@
                                 </div>
                                 <Form :model="formItem" :label-width="70">
                                     <FormItem label="价格说明:">
-                                        <span>最低价格为{{this.houseInfo.price}}</span>
+                                        <span>价格说明：</span>在{{this.houseInfo.minPrice}}元/㎡ ~ {{this.houseInfo.maxPrice}}元/㎡之间
+                                    </FormItem>
+                                    <FormItem label="建筑类型:">
+                                        <span>{{this.houseInfo.houseFeature}}</span>
+                                    </FormItem>
+                                    <FormItem label="物业类型:">
+                                        <span>{{this.houseInfo.houseType}}</span>
+                                    </FormItem>
+                                    <FormItem label="楼盘高度:">
+                                    <span>{{this.houseInfo.houseHeight}}</span>
+                                </FormItem>
+                                    <FormItem label="主力户型:">
+                                        <span>{{this.detailList[0].imagename}}</span>
                                     </FormItem>
                                     <FormItem label="楼盘位置:">
                                         <span>{{this.houseInfo.address}}</span>
-                                    </FormItem>
-                                    <FormItem label="开盘时间:">
-                                        <span>2018年10月30日</span>
-                                    </FormItem>
-                                    <FormItem label="主力户型:">
-                                        <span>{{this.detailList[0].imagename}}</span>
                                     </FormItem>
                                 </Form>
                             </div>
@@ -115,16 +121,22 @@
                                     <td valign="top" class="text-r">{{this.houseInfo.greeningRate}}</td>
                                 </tr>
                                 <tr>
+                                    <td class="label-l">结构类型：</td>
+                                    <td valign="top" class="text-l">{{this.houseInfo.houseFeature}}</td>
+                                    <td class="label-r">最小面积：</td>
+                                    <td valign="top" class="text-r">{{this.houseInfo.minFloorArea}}㎡</td>
+                                </tr>
+                                <tr>
                                     <td class="label-l">是否已售：</td>
                                     <td valign="top" class="text-l">{{this.houseInfo.isSelling}}</td>
-                                    <td class="label-r">装修情况：</td>
-                                    <td valign="top" class="text-r"> </td>
+                                    <td class="label-r">最大面积：</td>
+                                    <td valign="top" class="text-r">{{this.houseInfo.maxFloorArea}}㎡</td>
                                 </tr>
                                 <tr>
                                     <td class="label-l">楼盘地址：</td>
                                     <td valign="top" class="text-l">{{this.houseInfo.address}}</td>
                                     <td class="label-r">建筑面积：</td>
-                                    <td valign="top" class="text-r"></td>
+                                    <td valign="top" class="text-r">{{this.houseInfo.area}}㎡</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -399,14 +411,12 @@ export default {
 }
 
 .text-l {
-  width: 366px;
   line-height: 24px;
   vertical-align: top;
   padding: 5px 40px 5px 4px;
 }
 
 .text-r {
-  width: 286px;
   line-height: 24px;
   overflow: hidden;
   display: inline-block;
