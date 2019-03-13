@@ -202,7 +202,9 @@ import companyName from "@/vuex/store";
 export default {
   mounted() {
     this.getimg();
-    this.getData();
+    setTimeout(() => {
+      this.getData();
+    }, 600);
     setTimeout(() => {
       this.getmapdata();
     }, 600);
@@ -313,7 +315,7 @@ export default {
       });
     },
     getData() {
-        debugger;
+      debugger;
       var _this = this;
       this.Id = houseInfoId.state.houseId;
       console.log(houseInfoId.state.houseId);
