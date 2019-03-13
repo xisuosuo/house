@@ -90,8 +90,7 @@
 <script>
     import Server from "@/core/server";
     import {services} from "@/core/config/services";
-    import userMessage from "@/vuex/store";
-    import dataRap from "@/vuex/store";
+    import houseInfoId from "@/vuex/store";
 
     export default {
         computed: {},
@@ -106,6 +105,20 @@
             this.getdata();
         },
         methods: {
+            getInfo(index, value) {
+                this.houseId = value.houseId;
+                Server.get({
+                    url: services.compareHouseDetails,
+                    params: {
+                        houseId: this.houseId
+                    }
+                }).then(rsp => {
+                    if (rsp.status === 1) {
+                        houseInfoId.commit("houseInfoId", rsp);
+                    }
+                });
+                this.$router.push("/houseinfo");
+            },
             getdata(){
                 this.$Spin.show({
                     render: h => {
