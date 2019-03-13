@@ -64,7 +64,7 @@
         </Row>
       </Header>
       <Content :style="{minHeight: 'w_height-55', background: '#fff'}">
-        <router-view/>
+        <router-view v-if="isRouterAlive" />
       </Content>
     </Layout>
   </div>
@@ -78,11 +78,18 @@ import ChangePsd from "@/views/login/components/changepsd";
 import { computeh } from "@/core/computeh";
 export default {
   mixins: [login, computeh],
+  provide() {
+    return {
+      reload: this.reload
+    };
+  },
+
   data() {
     return {
       name: "首页",
       user: "",
-      modal: false
+      modal: false,
+      isRouterAlive: true
     };
   },
   mounted() {
@@ -90,6 +97,12 @@ export default {
     console.log(this.user);
   },
   methods: {
+    reload() {
+      this.isRouterAlive = false;
+      this.$nextTick(function() {
+        this.isRouterAlive = true;
+      });
+    },
     collection() {
       this.$router.push("/collection");
     },

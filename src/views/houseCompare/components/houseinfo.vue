@@ -188,6 +188,7 @@
 </template>
 
 <script>
+import $ from "jquery";
 import routerView from "@/map/components/routerView";
 import Server from "@/core/server";
 import { services } from "@/core/config/services";
@@ -200,6 +201,7 @@ import housueName from "@/vuex/store";
 import companyName from "@/vuex/store";
 export default {
   mounted() {
+    this.hasClass();
     this.getimg();
     this.getData();
     setTimeout(() => {
@@ -280,7 +282,6 @@ export default {
       // }
     },
     selectTimer(index, value) {
-      debugger;
       this.timeIndex = index;
       this.listName = value.name;
       companyName.commit("companyName", this.listName);
@@ -302,7 +303,6 @@ export default {
       });
     },
     onPageChange(page) {
-      debugger;
       let data = [];
       for (
         var i = (page - 1) * this.pageSize, len = this.total, item;
@@ -326,9 +326,16 @@ export default {
         list: this.listData
       });
     },
-
-    getData() {
+    hasClass() {
       debugger;
+      if ($("div").is(".esri-ui-corner")) {
+        this.$router.go(0);
+      }
+      //   if ($("div").hasClass("esri-ui-corner")) {
+      //
+      //   }
+    },
+    getData() {
       var _this = this;
       this.Id = houseInfoId.state.houseId;
       console.log(houseInfoId.state.houseId);
@@ -351,6 +358,7 @@ export default {
       }).then(rsp => {
         if (rsp.status === 1) {
           _this.detailList = rsp.imageData;
+          //   this.reload();
         }
       });
     }
