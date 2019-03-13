@@ -49,12 +49,7 @@ export default new Router({
           component: () =>
             import('@/views/houseCompare/components/houseinfo.vue'),
         },
-         {
-              name: "楼盘详情",
-              path: "/houseInfomation",
-              component: () =>
-                  import('@/views/recommendation/components/houseInfomation.vue'),
-         },
+
         {
           name: "个人中心",
           path: "/personal",
