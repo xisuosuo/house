@@ -34,4 +34,5 @@ export const services = {
   getrecommendHouse: `http://${IP}/chzuHouse/recommended/getRecommendedHouseData`,
   processData:`http://${IP}/chzuHouse/recommended/getRecommendedHouseDetails`,
     getSimilarUserInfo:`http://${IP}/chzuHouse/passiveRecommended/getSimilarUserInfo`,
+  preserve:`http://${IP}/chzuHouse/user/updateUserInfo`
 };
