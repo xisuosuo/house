@@ -45,29 +45,35 @@
                     <a @click="moreInfo">点击查看更多小区>></a>
                 </div>
             </div>
-            <div style="margin-top: 55px;background-color: #fff">
-                <div v-for="(value,index) in informations" :key="index" style="width: 900px;margin: 0 auto;">
+            <div id="moreInfo" style="margin-top: 55px;background-color: #F5F5F5;display: none">
+                <div v-for="(value,index) in information2" :key="index" style="width: 800px;margin: 0 auto;background-color: #fff;">
                     <div @click="location(index,value)" style="margin: 10px;border-bottom:1px solid #999">
                         <Row>
-                            <Col span="6">
+                            <Col span="7">
                                 <div class="left mend_img">
                                     <img style="width: 200px;height: 150px;margin-top: 20px;margin-bottom: 10px" v-bind:src="value.image" />
                                 </div>
                             </Col>
-                            <Col span="18">
+                            <Col span="17">
                                 <div class="left name" style="margin-top: 35px">
-                                    <div style="margin-top: 25px;color: red;font-size: 20px;font-weight: bold;float: right">
-                                      <span >均价：</span>{{value.price}}元/㎡
+                                    <div style="margin-top: 25px;float: right">
+                                      <span style="color: red;font-size: 20px;font-weight: bold;">均价：{{value.price}}元/㎡</span>
+                                        <p style="margin-top: 5px;font-size: 13px">
+                                            <span>楼层高度：{{value.houseHeight}}</span></p>
+                                        <p style="margin-top: 5px;font-size: 13px">
+                                            <span>销售情况：{{value.isSelling}}</span></p>
+                                        <p style="margin-top: 5px;font-size: 13px">
+                                            <span>停车位：{{value.parkingSpace}}个</span></p>
                                        </div>
                                     <h2 style="display:inline-block;">{{value.name}}</h2>
                                     <img v-if="value.collected == '0'" :src=uncollect alt="" title="收藏" @click="Collection(index,value)" id="index" style="width: 15px;height: 15px;margin-left: 20px">
                                     <img v-else-if="value.collected == '1'" :src=collect alt="" title="取消收藏" @click="Collection(index,value)" style="width: 15px;height: 15px;margin-left: 20px">
 
-                                    <p style="margin-top: 5px;font-size: 14px">
+                                    <p style="margin-top: 5px;font-size: 13px">
                                         <span>价格说明：</span>在{{value.minPrice}}元/㎡ ~ {{value.maxPrice}}元/㎡之间</p>
-                                    <p style="margin-top: 5px;font-size: 14px">
-                                        <span>物业类型：</span>{{value.houseHeight}}</p>
-                                    <p style="margin-top: 5px;font-size: 14px">
+                                    <p style="margin-top: 5px;font-size: 13px">
+                                        <span>物业类型：</span>{{value.houseType}}</p>
+                                    <p style="margin-top: 5px;font-size: 13px">
                                         <span>地址：</span>{{value.address}}</p>
                                     <p style="margin-top: 5px">
                                         <a  @click="getInfo(index,value)" style="font-size: 10px">查看小区详情>></a>
@@ -91,7 +97,6 @@
         computed: {},
         data() {
             return {
-                informations: [],
                 information2: [],
                 collect: require(`.././../../assets/img/collect.png`),
                 uncollect: require(`.././../../assets/img/uncollect.png`),
@@ -140,42 +145,8 @@
 
             },
             moreInfo() {
-                this.$Spin.show({
-                    render: h => {
-                        return h("div", [
-                            h("Icon", {
-                                class: "demo-spin-icon-load",
-                                props: {
-                                    type: "ios-loading",
-                                    size: 35
-                                }
-                            }),
-                            h(
-                                "div",
-                                {
-                                    style: {
-                                        fontSize: "20px"
-                                    }
-                                },
-                                "正在为您获取更多房源信息"
-                            )
-                        ]);
-                    }
-                });
-                var this_=this;
-                var userId = JSON.parse(sessionStorage.getItem("userId"));
                 document.getElementById("preference").style.display = "none";
-                Server.get({
-                    url: services.getSimilarUserInfo,
-                    params: {
-                        userId: userId,
-                    }
-                }).then(function(rsp) {
-                    if (rsp.status === 1) {
-                        this_.informations = rsp.data;
-                        this_.$Spin.hide();
-                    }
-                });
+                document.getElementById("moreInfo").style.display = "block";
             },
             Collection(index, value) {
                 if (value.collected === 0) {
