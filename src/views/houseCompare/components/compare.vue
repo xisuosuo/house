@@ -1,5 +1,5 @@
 <template>
-    <div id="mainBody" style="height: 1800px;width: 100%;">
+    <div id="mainBody" style="height: 900px;width: 100%;">
         <Card style="margin: 0 auto;width: 1250px;margin-top: 70px;">
             <div node-type="module" class="module-lpcompare">
                 <table class="mtable" note-type="common-data" data-cityprefix="yt" data-domain="focus">
@@ -23,28 +23,25 @@
                                         <img style="width: 120px;height: 90px;" v-bind:src="this.HouseOne.image" alt="">
                                     </a>
                                 </div>
-                                <div id="name-1">{{this.HouseOne.houseName}}</div>
-                                <!--<div class="ctrl-wrap">-->
-                                <!--<span class="del" data-index="1" data-pid="110110771">╳</span>-->
-                                <!--</div>-->
+                                <div id="name-1">{{this.HouseOne.name}}</div>
                             </td>
                             <td id="value-name-2">
                                 <div>
                                     <a @click="getTwohouseinfo" target="_blank"><img style="width: 120px;height: 90px;" v-bind:src="this.HouseTwo.image" alt=""></a>
                                 </div>
-                                <div id="name-2">{{this.HouseTwo.houseName}}</div>
+                                <div id="name-2">{{this.HouseTwo.name}}</div>
                             </td>
                             <td id="value-name-3">
                                 <div>
                                     <a @click="getThreehouseinfo" target="_blank"><img style="width: 120px;height: 90px;" v-bind:src="this.HouseThree.image" alt=""></a>
                                 </div>
-                                <div id="name-3">{{this.HouseThree.houseName}}</div>
+                                <div id="name-3">{{this.HouseThree.name}}</div>
                             </td>
                             <td id="value-name-4">
                                 <div>
                                     <a @click="getFourhouseinfo" target="_blank"><img style="width: 120px;height: 90px;" v-bind:src="this.HouseFour.image" alt=""></a>
                                 </div>
-                                <div id="name-4">{{this.HouseFour.houseName}}</div>
+                                <div id="name-4">{{this.HouseFour.name}}</div>
                             </td>
                         </tr>
                         <tr class="normal loupan-info" node-type="loupan-info">
@@ -90,67 +87,25 @@
                             <td id="value-property-4">{{this.HouseFour.houseType}}</td>
                         </tr>
                         <tr class="normal">
-                            <td class="key">装修状况</td>
-                            <td id="value-fitment-1"></td>
-                            <td id="value-fitment-2"></td>
-                            <td id="value-fitment-3"></td>
-                            <td id="value-fitment-4"></td>
+                            <td class="key">建筑结构</td>
+                            <td id="value-fitment-1">{{this.HouseOne.houseFeature}}</td>
+                            <td id="value-fitment-2">{{this.HouseTwo.houseFeature}}</td>
+                            <td id="value-fitment-3">{{this.HouseThree.houseFeature}}</td>
+                            <td id="value-fitment-4">{{this.HouseFour.houseFeature}}</td>
                         </tr>
                         <tr class="normal">
-                            <td class="key">产权年限</td>
-                            <td id="value-years-1"></td>
-                            <td id="value-years-2"></td>
-                            <td id="value-years-3"></td>
-                            <td id="value-years-4"></td>
+                            <td class="key">建筑面积/㎡</td>
+                            <td id="value-years-1">{{this.HouseOne.area}}</td>
+                            <td id="value-years-2">{{this.HouseTwo.area}}</td>
+                            <td id="value-years-3">{{this.HouseThree.area}}</td>
+                            <td id="value-years-4">{{this.HouseFour.area}}</td>
                         </tr>
                         <tr class="normal">
-                            <td class="key">开发商</td>
-                            <td id="value-devel-1"></td>
-                            <td id="value-devel-2"></td>
-                            <td id="value-devel-3"></td>
-                            <td id="value-devel-4"></td>
-                        </tr>
-                    </tbody>
-                </table>
-
-                <table class="mtable">
-                    <colgroup>
-                        <col class="key">
-                        <col span="4" class="value">
-                    </colgroup>
-                    <tbody>
-                        <tr class="headerd">
-                            <td colspan="5">
-                                <div class="title">销售信息</div>
-                            </td>
-                        </tr>
-                        <tr class="normal">
-                            <td class="key">销售状态</td>
-                            <td id="value-sale-1">{{this.HouseOne.isSelling}}</td>
-                            <td id="value-sale-2">{{this.HouseTwo.isSelling}}</td>
-                            <td id="value-sale-3">{{this.HouseThree.isSelling}}</td>
-                            <td id="value-sale-4">{{this.HouseFour.isSelling}}</td>
-                        </tr>
-                        <tr class="normal">
-                            <td class="key">开盘时间</td>
-                            <td id="value-opentime-1"></td>
-                            <td id="value-opentime-2"></td>
-                            <td id="value-opentime-3"></td>
-                            <td id="value-opentime-4"></td>
-                        </tr>
-                        <tr class="normal">
-                            <td class="key">交房时间</td>
-                            <td id="value-givetime-1"></td>
-                            <td id="value-givetime-2"></td>
-                            <td id="value-givetime-3"></td>
-                            <td id="value-givetime-4"></td>
-                        </tr>
-                        <tr class="normal">
-                            <td class="key">售楼地址</td>
-                            <td id="value-salelocation-1"></td>
-                            <td id="value-salelocation-2"></td>
-                            <td id="value-salelocation-3"></td>
-                            <td id="value-salelocation-4"></td>
+                            <td class="key">销售信息</td>
+                            <td id="value-devel-1">{{this.HouseOne.isSelling}}</td>
+                            <td id="value-devel-2">{{this.HouseTwo.isSelling}}</td>
+                            <td id="value-devel-3">{{this.HouseThree.isSelling}}</td>
+                            <td id="value-devel-4">{{this.HouseFour.isSelling}}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -166,25 +121,18 @@
                             </td>
                         </tr>
                         <tr class="normal">
-                            <td class="key">占地面积</td>
-                            <td id="value-floorarea-1"></td>
-                            <td id="value-floorarea-2"></td>
-                            <td id="value-floorarea-3"></td>
-                            <td id="value-floorarea-4"></td>
+                            <td class="key">最小面积㎡</td>
+                            <td id="value-housecount-1">{{this.HouseOne.minFloorArea}}</td>
+                            <td id="value-housecount-2">{{this.HouseTwo.minFloorArea}}</td>
+                            <td id="value-housecount-3">{{this.HouseThree.minFloorArea}}</td>
+                            <td id="value-housecount-4">{{this.HouseFour.minFloorArea}}</td>
                         </tr>
                         <tr class="normal">
-                            <td class="key">建筑面积</td>
-                            <td id="value-buildarea-1"></td>
-                            <td id="value-buildarea-2"></td>
-                            <td id="value-buildarea-3"></td>
-                            <td id="value-buildarea-4"></td>
-                        </tr>
-                        <tr class="normal">
-                            <td class="key">容积率</td>
-                            <td id="value-volume-1"></td>
-                            <td id="value-volume-2"></td>
-                            <td id="value-volume-3"></td>
-                            <td id="value-volume-4"></td>
+                            <td class="key">最大面积㎡</td>
+                            <td id="value-volume-1">{{this.HouseOne.maxFloorArea}}</td>
+                            <td id="value-volume-2">{{this.HouseTwo.maxFloorArea}}</td>
+                            <td id="value-volume-3">{{this.HouseThree.maxFloorArea}}</td>
+                            <td id="value-volume-4">{{this.HouseFour.maxFloorArea}}</td>
                         </tr>
                         <tr class="normal">
                             <td class="key">绿化率</td>
@@ -201,14 +149,7 @@
                             <td id="value-blockcount-4">{{this.HouseFour.houseHeight}}</td>
                         </tr>
                         <tr class="normal">
-                            <td class="key">户数</td>
-                            <td id="value-housecount-1"></td>
-                            <td id="value-housecount-2"></td>
-                            <td id="value-housecount-3"></td>
-                            <td id="value-housecount-4"></td>
-                        </tr>
-                        <tr class="normal">
-                            <td class="key">停车位</td>
+                            <td class="key">停车位（个）</td>
                             <td id="value-parking-1">
                                 <span class="park-row">{{this.HouseOne.parkingSpace}}</span>
                             </td>
@@ -221,20 +162,6 @@
                             <td id="value-parking-4">
                                 <span class="park-row">{{this.HouseFour.parkingSpace}}</span>
                             </td>
-                        </tr>
-                        <tr class="normal">
-                            <td class="key">物业公司</td>
-                            <td id="value-propcompany-1"></td>
-                            <td id="value-propcompany-2"></td>
-                            <td id="value-propcompany-3"></td>
-                            <td id="value-propcompany-4"></td>
-                        </tr>
-                        <tr class="normal">
-                            <td class="key">物业费</td>
-                            <td id="value-proppay-1"></td>
-                            <td id="value-proppay-2"></td>
-                            <td id="value-proppay-3"></td>
-                            <td id="value-proppay-4"></td>
                         </tr>
                     </tbody>
                 </table>
