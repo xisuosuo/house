@@ -49,12 +49,6 @@ export default new Router({
           component: () =>
             import('@/views/houseCompare/components/houseinfo.vue'),
         },
-         {
-              name: "楼盘详情",
-              path: "/houseInfomation",
-              component: () =>
-                  import('@/views/recommendation/components/houseInfomation.vue'),
-         },
         {
           name: "个人中心",
           path: "/personal",
@@ -175,21 +169,21 @@ export default new Router({
           component: () =>
             import('@/views/recommendation/index.vue'),
           children: [{
-              name: '房源推荐',
-              path: '/recommendation/housingPreference',
-              meta: {
-                  auth: true
-              },
-              component: () =>
-                  import('@/views/recommendation/components/housingPreference.vue'),
-          },{
+            name: '房源推荐',
+            path: '/recommendation/housingPreference',
+            meta: {
+              auth: true
+            },
+            component: () =>
+              import('@/views/recommendation/components/housingPreference.vue'),
+          }, {
             path: '/recommendation/factor',
             name: '房源选择',
             meta: {
               auth: true
             },
             component: () =>
-                import('@/views/recommendation/components/factor.vue'),
+              import('@/views/recommendation/components/factor.vue'),
           }]
         },
         {
@@ -238,34 +232,34 @@ export default new Router({
           name: '辅助决策',
           component: () =>
             import('@/views/auDecision/index.vue'),
-            children: [
-                {
-                path: '/auDecision/usersManual',
-                name: '用户手册',
-                meta: {
-                    auth: true
-                },
-                component: () =>
-                    import('@/views/auDecision/components/usersManual.vue'),
+          children: [{
+              path: '/auDecision/usersManual',
+              name: '用户手册',
+              meta: {
+                auth: true
+              },
+              component: () =>
+                import('@/views/auDecision/components/usersManual.vue'),
             },
-                {
-                    path: '/auDecision/livablemodel',
-                    name:'宜居模型',
-                    meta: {
-                        auth: true
-                    },
-                    component: () =>
-                        import('@/views/auDecision/components/livablemodel.vue'),
-                },
-                {
-                    path: '/auDecision/model',
-                    name: '引力模型',
-                    meta: {
-                        auth: true
-                    },
-                    component: () =>
-                        import('@/views/auDecision/components/model.vue'),
-                }]
+            {
+              path: '/auDecision/livablemodel',
+              name: '宜居模型',
+              meta: {
+                auth: true
+              },
+              component: () =>
+                import('@/views/auDecision/components/livablemodel.vue'),
+            },
+            {
+              path: '/auDecision/model',
+              name: '引力模型',
+              meta: {
+                auth: true
+              },
+              component: () =>
+                import('@/views/auDecision/components/model.vue'),
+            }
+          ]
         },
         {
           path: '/housingValuation',
