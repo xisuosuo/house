@@ -201,13 +201,11 @@ import housueName from "@/vuex/store";
 import companyName from "@/vuex/store";
 export default {
   mounted() {
-    this.hasClass();
     this.getimg();
     this.getData();
     setTimeout(() => {
       this.getmapdata();
     }, 600);
-    //  this.$router.go(0);
   },
   data() {
     return {
@@ -268,18 +266,6 @@ export default {
       this.list = aroundInfo.state.list;
       this.total = aroundInfo.state.length;
       this.onPageChange(1);
-      // for (
-      //   var i = 0, len = this.total, item;
-      //   i < len, (item = this.listData[i]);
-      //   i++
-      // ) {
-      //   if (i < this.total) {
-      //     item.pIndex = "p" + i;
-      //     this.listData.push(item);
-      //   } else {
-      //     break;
-      //   }
-      // }
     },
     selectTimer(index, value) {
       this.timeIndex = index;
@@ -326,15 +312,6 @@ export default {
         list: this.listData
       });
     },
-    hasClass() {
-      debugger;
-      if ($("div").is(".esri-ui-corner")) {
-        this.$router.go(0);
-      }
-      //   if ($("div").hasClass("esri-ui-corner")) {
-      //
-      //   }
-    },
     getData() {
       var _this = this;
       this.Id = houseInfoId.state.houseId;
@@ -358,7 +335,6 @@ export default {
       }).then(rsp => {
         if (rsp.status === 1) {
           _this.detailList = rsp.imageData;
-          //   this.reload();
         }
       });
     }
@@ -371,6 +347,11 @@ export default {
 </script>
 
 <style lang="less" scoped>
+#viewDiv {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
 .value {
   display: inline-block;
   zoom: 1;

@@ -92,7 +92,6 @@
     import {services} from "@/core/config/services";
     import userMessage from "@/vuex/store";
     import dataRap from "@/vuex/store";
-
     export default {
         computed: {},
         data() {
