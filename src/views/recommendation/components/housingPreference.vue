@@ -46,7 +46,7 @@
                 </div>
             </div>
             <div style="margin-top: 55px;background-color: #fff">
-                <div v-for="(value,index) in informations" :key="index" style="width: 1000px;margin: 0 auto;">
+                <div v-for="(value,index) in informations" :key="index" style="width: 900px;margin: 0 auto;">
                     <div @click="location(index,value)" style="margin: 10px;border-bottom:1px solid #999">
                         <Row>
                             <Col span="6">
@@ -56,22 +56,22 @@
                             </Col>
                             <Col span="18">
                                 <div class="left name" style="margin-top: 35px">
-                                    <div style="margin-top: 5px;color: red;font-size: 20px;font-weight: bold;float: right">
-                                        <span >均价：</span>{{value.price}}元/㎡
-                                        <br>
-                                        <img v-if="value.collected == '0'" :src=uncollect alt="" title="收藏" @click="Collection(index,value)" id="index" style="width: 15px;height: 15px;margin-right: 50px;margin-left: 10px;margin-top: 20px">
-                                        <img v-else-if="value.collected == '1'" :src=collect alt="" title="取消收藏" @click="Collection(index,value)" style="width: 15px;height: 15px;margin-right: 50px;margin-left: 10px;margin-top: 20px">
-                                        <Button @click="add(index,value)" size="small">加入对比
-                                        </Button>
+                                    <div style="margin-top: 25px;color: red;font-size: 20px;font-weight: bold;float: right">
+                                      <span >均价：</span>{{value.price}}元/㎡
                                        </div>
-                                    <h2 style="display:inline-block;width:200px">{{value.name}}</h2>
+                                    <h2 style="display:inline-block;">{{value.name}}</h2>
+                                    <img v-if="value.collected == '0'" :src=uncollect alt="" title="收藏" @click="Collection(index,value)" id="index" style="width: 15px;height: 15px;margin-left: 20px">
+                                    <img v-else-if="value.collected == '1'" :src=collect alt="" title="取消收藏" @click="Collection(index,value)" style="width: 15px;height: 15px;margin-left: 20px">
+
                                     <p style="margin-top: 5px;font-size: 14px">
                                         <span>价格说明：</span>在{{value.minPrice}}元/㎡ ~ {{value.maxPrice}}元/㎡之间</p>
                                     <p style="margin-top: 5px;font-size: 14px">
                                         <span>物业类型：</span>{{value.houseHeight}}</p>
                                     <p style="margin-top: 5px;font-size: 14px">
                                         <span>地址：</span>{{value.address}}</p>
-                                    <a  @click="getInfo(index,value)" style="font-size: 10px;margin-top: 5px">查看小区详情>></a>
+                                    <p style="margin-top: 5px">
+                                        <a  @click="getInfo(index,value)" style="font-size: 10px">查看小区详情>></a>
+                                    </p>
                                 </div>
                             </Col>
                         </Row>
