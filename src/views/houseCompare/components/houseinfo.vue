@@ -1,202 +1,196 @@
 <template>
-    <div style="margin: 100px">
-        <div style="margin-top: 55px">
-            <Row :gutter="30">
-                <Col span="12">
-                <div style="border: 1px solid #dcdee2;">
-                    <Row>
-                        <Col span="12">
-                        <div style="padding: 5px">
-                            <span style="font-size: 14px">
-                                <strong>楼盘首页:</strong>
-                            </span>
-                            <span style="font-size: 14px">
-                                <strong>{{this.houseInfo.name}}</strong>
-                            </span>
-                            <img style="height: 250px;width: 300px;margin: 10px" v-bind:src="this.houseInfo.image" alt="">
-                        </div>
-                        </Col>
-                        <Col span="12">
-                        <div style="margin-top:40px;margin-left: 10px">
-                            <div>
-                                <div class="key">
-                                    <strong>楼盘最低价:</strong>
-                                </div>
-                                <div class="value light">
-                                    <span class="price">{{this.houseInfo.price}}</span> 元/平方米
-                                </div>
-                                <Form :model="formItem" :label-width="70">
-                                    <FormItem label="价格说明:">
-                                        <span>价格说明：</span>在{{this.houseInfo.minPrice}}元/㎡ ~ {{this.houseInfo.maxPrice}}元/㎡之间
-                                    </FormItem>
-                                    <FormItem label="建筑类型:">
-                                        <span>{{this.houseInfo.houseFeature}}</span>
-                                    </FormItem>
-                                    <FormItem label="物业类型:">
-                                        <span>{{this.houseInfo.houseType}}</span>
-                                    </FormItem>
-                                    <FormItem label="楼盘高度:">
-                                    <span>{{this.houseInfo.houseHeight}}</span>
-                                </FormItem>
-                                    <FormItem label="主力户型:">
-                                        <span>{{this.detailList[0].imagename}}</span>
-                                    </FormItem>
-                                    <FormItem label="楼盘位置:">
-                                        <span>{{this.houseInfo.address}}</span>
-                                    </FormItem>
-                                </Form>
-                            </div>
-                        </div>
-                        </Col>
-                    </Row>
+  <div style="margin: 100px">
+    <div style="margin-top: 55px">
+      <Row :gutter="30">
+        <Col span="12">
+        <div style="border: 1px solid #dcdee2;">
+          <Row>
+            <Col span="12">
+            <div style="padding: 5px">
+              <span style="font-size: 14px">
+                <strong>楼盘首页:</strong>
+              </span>
+              <span style="font-size: 14px">
+                <strong>{{this.houseInfo.name}}</strong>
+              </span>
+              <img style="height: 250px;width: 300px;margin: 10px" v-bind:src="this.houseInfo.image" alt="">
+            </div>
+            </Col>
+            <Col span="12">
+            <div style="margin-top:40px;margin-left: 10px">
+              <div>
+                <div class="key">
+                  <strong>楼盘最低价:</strong>
                 </div>
-                </Col>
-                <Col span="12">
-                <div style="border: 1px solid #dcdee2;">
-                    <Row>
-                        <Col span="12">
-                        <div style="padding: 5px">
-                            <span style="font-size: 14px">
-                                <strong>户型:</strong>
-                            </span>
-                            <span style="font-size: 14px">
-                                <strong>{{this.detailList[0].imagename}}</strong>
-                            </span>
-                            <img style="height: 250px;width: 300px;margin: 10px" :src=detailList[0].image alt="">
-                        </div>
-                        </Col>
-                        <Col span="12">
-                        <table style="margin-top: 50px">
-                            <tbody>
-                                <tr>
-                                    <td class="label-l">居室：</td>
-                                    <td valign="top" class="text-l"> {{this.detailList[0].imagename}}</td>
-                                </tr>
-                                <tr>
-                                    <td class="label-l">层高：</td>
-                                    <td valign="top" class="text-l"> 暂无</td>
-                                </tr>
-                                <tr>
-                                    <td class="label-l">户型朝向：</td>
-                                    <td valign="top" class="text-l"> 南</td>
-                                </tr>
-                                <tr>
-                                    <td class="label-l">建筑面积：</td>
-                                    <td valign="top" class="text-l"> 74.0平米</td>
-                                </tr>
-                                <tr>
-                                    <td class="label-l">详情：</td>
-                                    <td valign="top" class="text-l">{{this.detailList[0].charact}}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        </Col>
-                    </Row>
+                <div class="value light">
+                  <span class="price">{{this.houseInfo.price}}</span> 元/平方米
                 </div>
-
-                </Col>
-            </Row>
-            <br>
-            <Row :gutter="30">
-                <Col span="12">
-                <div style="border: 1px solid #dcdee2;height: 280px">
-                    <div style="padding: 14px">
-                        <h3>基本信息</h3>
-                        <table class="table-noline">
-                            <tbody>
-                                <tr>
-                                    <td class="label-l">楼盘名称：</td>
-                                    <td valign="top" class="text-l"> {{this.houseInfo.name}}</td>
-                                </tr>
-                                <tr>
-                                    <td class="label-l">物业类型：</td>
-                                    <td valign="top" class="text-l">{{this.houseInfo.houseType}}</td>
-                                    <td class="label-l">停车位：</td>
-                                    <td valign="top" class="text-l">{{this.houseInfo.parkingSpace}}</td>
-                                </tr>
-                                <tr>
-                                    <td class="label-l">建筑类型：</td>
-                                    <td valign="top" class="text-l">{{this.houseInfo.houseHeight}}</td>
-                                    <td class="label-r">绿化率：</td>
-                                    <td valign="top" class="text-r">{{this.houseInfo.greeningRate}}</td>
-                                </tr>
-                                <tr>
-                                    <td class="label-l">结构类型：</td>
-                                    <td valign="top" class="text-l">{{this.houseInfo.houseFeature}}</td>
-                                    <td class="label-r">最小面积：</td>
-                                    <td valign="top" class="text-r">{{this.houseInfo.minFloorArea}}㎡</td>
-                                </tr>
-                                <tr>
-                                    <td class="label-l">是否已售：</td>
-                                    <td valign="top" class="text-l">{{this.houseInfo.isSelling}}</td>
-                                    <td class="label-r">最大面积：</td>
-                                    <td valign="top" class="text-r">{{this.houseInfo.maxFloorArea}}㎡</td>
-                                </tr>
-                                <tr>
-                                    <td class="label-l">楼盘地址：</td>
-                                    <td valign="top" class="text-l">{{this.houseInfo.address}}</td>
-                                    <td class="label-r">建筑面积：</td>
-                                    <td valign="top" class="text-r">{{this.houseInfo.area}}㎡</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-
-                </div>
-                </Col>
-                <Col span="12">
-                <div style="border: 1px solid #dcdee2;">
-                    <div style="padding: 14px;height: 280px;overflow-y: scroll">
-                        <h3>楼盘评论</h3>
-                        <Form :model="formItem" :label-width="70">
-                            <FormItem label="焦点网友:">
-                                <span>在园中植栽设计上，采用色彩丰富、复合种植、自然搭配的手法，树阵、花树搭配修剪成型的球类及绿篱错落有致，园中春夏秋冬，四季有景有保障中海项目，大企业，有保障中海项目，大企业，有保障中海项目，大企业，有保障</span>
-                            </FormItem>
-                            <FormItem label="焦点网友:">
-                                <span>在园中植栽设计上，采用色彩丰富、复合种植、自然搭配的手法，树阵、花树搭配修剪成型的球类及绿篱错落有致，园中春夏秋冬，四季有景有保障中海项目，大企业，有保障中海项目，大企业，有保障中海项目，大企业，有保障</span>
-                            </FormItem>
-                            <FormItem label="焦点网友:">
-                                <span>在园中植栽设计上，采用色彩丰富、复合种植、自然搭配的手法，树阵、花树搭配修剪成型的球类及绿篱错落有致</span>
-                            </FormItem>
-                        </Form>
-                    </div>
-                </div>
-                </Col>
-            </Row>
-            <Card>
-                <div class="around">
-                    <div class="title">
-                        <p>{{houseName}}</p>
-                    </div>
-                    <ul>
-                        <li v-for="(value,index) in orderList" :key="index" @click="selectTimer(index,value)" :class="timeIndex === index ? 'default-active' : 'default' ">{{ value.name }}</li>
-                    </ul>
-                    <Row>
-                        <Col span="17">
-                        <div class="map" style="height: 540px;width: 100%;">
-                            <routerView ref="routerView" v-if="map"></routerView>
-                        </div>
-                        </Col>
-                        <Col span="7">
-                        <div class="list" id="mapListContainer">
-                            <div class="name">{{listName}}</div>
-                            <div class="ul-box">
-                                <div class="around-no-info">
-                                    <ul>
-                                        <item v-for="(item,id) in listData" :key="item.id" :data="item" :id="id+1" @on-item-click="onItemClick" />
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="page-footer" v-show="list.length>10">
-                                <Page :total="list.length" :page-size="pageSize" size="small" @on-change="onPageChange"></Page>
-                            </div>
-                        </div>
-                        </Col>
-                    </Row>
-                </div>
-            </Card>
+                <Form :model="formItem" :label-width="70">
+                  <FormItem label="价格说明:">
+                    <span>价格说明：</span>在{{this.houseInfo.minPrice}}元/㎡ ~ {{this.houseInfo.maxPrice}}元/㎡之间
+                  </FormItem>
+                  <FormItem label="建筑类型:">
+                    <span>{{this.houseInfo.houseFeature}}</span>
+                  </FormItem>
+                  <FormItem label="物业类型:">
+                    <span>{{this.houseInfo.houseType}}</span>
+                  </FormItem>
+                  <FormItem label="楼盘高度:">
+                    <span>{{this.houseInfo.houseHeight}}</span>
+                  </FormItem>
+                  <FormItem label="主力户型:">
+                    <span>{{this.detailList[0].imagename}}</span>
+                  </FormItem>
+                  <FormItem label="楼盘位置:">
+                    <span>{{this.houseInfo.address}}</span>
+                  </FormItem>
+                </Form>
+              </div>
+            </div>
+            </Col>
+          </Row>
         </div>
+        </Col>
+        <Col span="12">
+        <div style="border: 1px solid #dcdee2;">
+          <Row>
+            <Col span="12">
+            <div style="padding: 5px">
+              <span style="font-size: 14px">
+                <strong>户型:</strong>
+              </span>
+              <span style="font-size: 14px">
+                <strong>{{this.detailList[0].imagename}}</strong>
+              </span>
+              <img style="height: 250px;width: 300px;margin: 10px" :src=detailList[0].image alt="">
+            </div>
+            </Col>
+            <Col span="12">
+            <table style="margin-top: 50px">
+              <tbody>
+                <tr>
+                  <td class="label-l">居室：</td>
+                  <td valign="top" class="text-l"> {{this.detailList[0].imagename}}</td>
+                </tr>
+                <tr>
+                  <td class="label-l">层高：</td>
+                  <td valign="top" class="text-l"> 暂无</td>
+                </tr>
+                <tr>
+                  <td class="label-l">户型朝向：</td>
+                  <td valign="top" class="text-l"> 南</td>
+                </tr>
+                <tr>
+                  <td class="label-l">建筑面积：</td>
+                  <td valign="top" class="text-l"> 74.0平米</td>
+                </tr>
+                <tr>
+                  <td class="label-l">详情：</td>
+                  <td valign="top" class="text-l">{{this.detailList[0].charact}}</td>
+                </tr>
+              </tbody>
+            </table>
+            </Col>
+          </Row>
+        </div>
+
+        </Col>
+      </Row>
+      <br>
+      <Row :gutter="30">
+        <Col span="12">
+        <div style="border: 1px solid #dcdee2;height: 280px">
+          <div style="padding: 14px">
+            <h3>基本信息</h3>
+            <table class="table-noline">
+              <tbody>
+                <tr>
+                  <td class="label-l">楼盘名称：</td>
+                  <td valign="top" class="text-l"> {{this.houseInfo.name}}</td>
+                </tr>
+                <tr>
+                  <td class="label-l">物业类型：</td>
+                  <td valign="top" class="text-l">{{this.houseInfo.houseType}}</td>
+                  <td class="label-l">停车位：</td>
+                  <td valign="top" class="text-l">{{this.houseInfo.parkingSpace}}</td>
+                </tr>
+                <tr>
+                  <td class="label-l">建筑类型：</td>
+                  <td valign="top" class="text-l">{{this.houseInfo.houseHeight}}</td>
+                  <td class="label-r">绿化率：</td>
+                  <td valign="top" class="text-r">{{this.houseInfo.greeningRate}}</td>
+                </tr>
+                <tr>
+                  <td class="label-l">结构类型：</td>
+                  <td valign="top" class="text-l">{{this.houseInfo.houseFeature}}</td>
+                  <td class="label-r">最小面积：</td>
+                  <td valign="top" class="text-r">{{this.houseInfo.minFloorArea}}㎡</td>
+                </tr>
+                <tr>
+                  <td class="label-l">是否已售：</td>
+                  <td valign="top" class="text-l">{{this.houseInfo.isSelling}}</td>
+                  <td class="label-r">最大面积：</td>
+                  <td valign="top" class="text-r">{{this.houseInfo.maxFloorArea}}㎡</td>
+                </tr>
+                <tr>
+                  <td class="label-l">楼盘地址：</td>
+                  <td valign="top" class="text-l">{{this.houseInfo.address}}</td>
+                  <td class="label-r">建筑面积：</td>
+                  <td valign="top" class="text-r">{{this.houseInfo.area}}㎡</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+        </Col>
+        <Col span="12">
+        <div style="border: 1px solid #dcdee2;">
+          <div style="padding: 14px;height: 280px;overflow-y: scroll">
+            <h3>楼盘评论</h3>
+            <Form :model="formItem" :label-width="70">
+              <FormItem label="焦点网友:">
+                <span>在园中植栽设计上，采用色彩丰富、复合种植、自然搭配的手法，树阵、花树搭配修剪成型的球类及绿篱错落有致，园中春夏秋冬，四季有景有保障中海项目，大企业，有保障中海项目，大企业，有保障中海项目，大企业，有保障</span>
+              </FormItem>
+            </Form>
+          </div>
+        </div>
+        </Col>
+      </Row>
+      <Card>
+        <div class="around">
+          <div class="title">
+            <p>{{houseName}}</p>
+          </div>
+          <ul>
+            <li v-for="(value,index) in orderList" :key="index" @click="selectTimer(index,value)" :class="timeIndex === index ? 'default-active' : 'default' ">{{ value.name }}</li>
+          </ul>
+          <Row>
+            <Col span="17">
+            <div class="map" style="height: 540px;width: 100%;">
+              <routerView ref="routerView" v-if="map"></routerView>
+            </div>
+            </Col>
+            <Col span="7">
+            <div class="list" id="mapListContainer">
+              <div class="name">{{listName}}</div>
+              <div class="ul-box">
+                <div class="around-no-info">
+                  <ul>
+                    <item v-for="(item,id) in listData" :key="item.id" :data="item" :id="id+1" @on-item-click="onItemClick" />
+                  </ul>
+                </div>
+              </div>
+              <div class="page-footer" v-show="list.length>10">
+                <Page :total="list.length" :page-size="pageSize" size="small" @on-change="onPageChange"></Page>
+              </div>
+            </div>
+            </Col>
+          </Row>
+        </div>
+      </Card>
     </div>
+  </div>
 </template>
 
 <script>
@@ -213,13 +207,15 @@ import housueName from "@/vuex/store";
 import companyName from "@/vuex/store";
 export default {
   mounted() {
+    // comment();
     this.getimg();
     setTimeout(() => {
       this.getData();
     }, 600);
     setTimeout(() => {
       this.getmapdata();
-    }, 600);
+    }, 700);
+    comment();
   },
   data() {
     return {
@@ -351,6 +347,20 @@ export default {
       }).then(rsp => {
         if (rsp.status === 1) {
           _this.detailList = rsp.imageData;
+        }
+      });
+    },
+    comment() {
+      var _this = this;
+      Server.get({
+        url: services.getcomments,
+        params: {
+          houseName: this.houseInfo.name
+        }
+      }).then(rsp => {
+        if (rsp.status === 1) {
+          debugger;
+          alert(123);
         }
       });
     }
