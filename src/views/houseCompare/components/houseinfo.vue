@@ -36,8 +36,8 @@
                                         <span>{{this.houseInfo.houseType}}</span>
                                     </FormItem>
                                     <FormItem label="楼盘高度:">
-                                    <span>{{this.houseInfo.houseHeight}}</span>
-                                </FormItem>
+                                        <span>{{this.houseInfo.houseHeight}}</span>
+                                    </FormItem>
                                     <FormItem label="主力户型:">
                                         <span>{{this.detailList[0].imagename}}</span>
                                     </FormItem>
@@ -200,7 +200,6 @@
 </template>
 
 <script>
-import $ from "jquery";
 import routerView from "@/map/components/routerView";
 import Server from "@/core/server";
 import { services } from "@/core/config/services";
@@ -211,6 +210,7 @@ import aroundInfo from "@/vuex/store";
 import userMessage from "@/vuex/store";
 import housueName from "@/vuex/store";
 import companyName from "@/vuex/store";
+import housePoint from "@/vuex/store";
 export default {
   mounted() {
     this.getimg();
@@ -223,6 +223,7 @@ export default {
   },
   data() {
     return {
+      houseName: "",
       detailList: [],
       formItem: "",
       Id: [],
@@ -276,10 +277,28 @@ export default {
       this.$refs.routerView.addStop(data);
     },
     getmapdata() {
-      this.houseName = this.houseInfo.name;
-      this.list = aroundInfo.state.list;
-      this.total = aroundInfo.state.length;
-      this.onPageChange(1);
+      debugger;
+      this.houseName = houseInfoId.state.houseInforA.name;
+      Server.get({
+        url: services.road,
+        params: {
+          name: this.houseName,
+          tableName: value.type
+        }
+      }).then(rsp => {
+        var _this = this;
+        if (rsp.status === 1) {
+          _this.list = rsp.data;
+          _this.total = rsp.length;
+          _this.onPageChange(1);
+          //   this.total = aroundInfo.state.length;
+          //   aroundInfo.commit("aroundInfo", rsp);
+          //   aroundInfo.commit("housueName", this.houseName);
+        }
+      });
+
+      //   this.list = aroundInfo.state.list;
+      //   this.total = aroundInfo.state.length;
     },
     selectTimer(index, value) {
       this.timeIndex = index;
@@ -329,8 +348,9 @@ export default {
     getData() {
       debugger;
       var _this = this;
-      this.Id = houseInfoId.state.houseId;
-      console.log(houseInfoId.state.houseId);
+      this.Id = houseInfoId.state.houseInforA.houseId;
+      console.log(houseInfoId.state.houseInforA);
+    //   housePoint.commit("housePoint", this.houseShape);
       Server.get({
         url: services.compareHouseDetails,
         params: {

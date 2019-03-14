@@ -17,7 +17,7 @@ export default new Vuex.Store({
         length: "",
         housueName: "",
         companyName: "",
-        houseId: [],
+        houseInforA: {},
         HouseOne: [],
         HouseTwo: [],
         HouseThree: [],
@@ -61,7 +61,8 @@ export default new Vuex.Store({
             state.companyName = company
         },
         houseInfoId(state, rsp) {
-            state.houseId = rsp.data.houseId;
+            debugger;
+            state.houseInforA = rsp.data;
         },
         dataRap(state, data) {
             state.dataDeatil = data
