@@ -302,6 +302,7 @@ export default {
       });
     },
     addPoint(value) {
+      debugger;
       var firstpoint = mapApi.convert.toGeometryByWKT.parse({
         wkt: value.Shape,
         spatialReference: window.mapview.spatialReference

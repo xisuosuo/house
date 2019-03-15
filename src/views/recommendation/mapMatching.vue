@@ -1,109 +1,109 @@
 <template>
-    <div>
-        <Row>
-            <Col span="18">
-            <div class="map" style="height: 612px;width: 100%;margin-top: 55px">
-                <smallMapView v-if="map"></smallMapView>
+  <div>
+    <Row>
+      <Col span="18">
+      <div class="map" style="height: 612px;width: 100%;margin-top: 55px">
+        <smallMapView v-if="map"></smallMapView>
+      </div>
+      </Col>
+      <Col span="6">
+      <div class="aside" style="margin-top: 55px">
+        <div class="filter">
+          <ul class="clear">
+            <li class="li-filter fl" data-role="li-filter" data-type="filter" data-xftrack="10145" @click="changeStyle">
+              <span>筛选条件</span>
+              <i id="drop" class="drop-i"></i>
+            </li>
+            <li class="li-filter fl" @click="showOrder">
+              <span>{{this.order}}</span>
+              <i id="drop2" class="drop-i"></i>
+              <ul id="drop-list" style="display: none;">
+                <li v-for="(value,index) in orderList" :key="index" @click="giveOrder(value)">{{ value.name }}
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <div class="list-wrap1">
+          <div class="hd" id="part" style="display: none">
+            为您推荐
+            <span class="ret">5</span>
+            <span>个楼盘</span>
+            <Badge :count=this.count style="float: right;margin-right: 10px">
+              <Icon title="楼盘对比" @click="addComapre" type="ios-notifications-outline" size="26"></Icon>
+            </Badge>
+            <img title="我的收藏夹" @click="jumpCollect" src="../../assets/img/sumcollect.png" alt="" style="float: right;height: 20px;width: 20px;margin-top: 7px;margin-right: 10px">
+          </div>
+        </div>
+        <div class="list-wrap">
+        </div>
+        <div class="list-wrap3" style="overflow: auto;height:580px">
+          <choice v-if="showChoice" />
+          <div v-for="(value,index) in information" :key="index">
+            <div @click="location(index,value)" style="margin: 10px;border-bottom:1px solid #999">
+              <Row>
+                <Col span="12">
+                <div class="left mend_img">
+                  <img style="width: 150px;height: 100px" v-bind:src="value.image" />
+                </div>
+                </Col>
+                <Col span="12">
+                <div class="left name" style="margin-top: 5px">
+                  <h3 style="display:inline-block;width:140px">{{value.name}}</h3>
+                  <Icon @click="detail(index,value)" type="ios-information-circle" color="#2d8cf0" size="17" title="小区信息详情" style="margin-bottom:8px;" />
+                  <img v-if="value.collected == '0'" :src=uncollect alt="" title="收藏" @click="Collection(index,value)" id="index" style="width: 15px;height: 15px;margin-left: 5px">
+                  <img v-else-if="value.collected == '1'" :src=collect alt="" title="取消收藏" @click="Collection(index,value)" style="width: 15px;height: 15px;margin-left: 5px">
+                  <p style="margin-top: 5px">
+                    <span>建面：</span>{{value.area}}/m2</p>
+                  <div style="margin-top: 5px;color: red">
+                    <span>均价：</span>{{value.price}}元
+                    <Button @click="add(index,value)" size="small" style="float: right">加入对比
+                    </Button>
+                  </div>
+                  <a @click="getInfo(index,value)" style="font-size: 10px">查看小区周边详情>></a>
+                </div>
+                </Col>
+              </Row>
             </div>
-            </Col>
-            <Col span="6">
-            <div class="aside" style="margin-top: 55px">
-                <div class="filter">
-                    <ul class="clear">
-                        <li class="li-filter fl" data-role="li-filter" data-type="filter" data-xftrack="10145" @click="changeStyle">
-                            <span>筛选条件</span>
-                            <i id="drop" class="drop-i"></i>
-                        </li>
-                        <li class="li-filter fl" @click="showOrder">
-                            <span>{{this.order}}</span>
-                            <i id="drop2" class="drop-i"></i>
-                            <ul id="drop-list" style="display: none;">
-                                <li v-for="(value,index) in orderList" :key="index" @click="giveOrder(value)">{{ value.name }}
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-                <div class="list-wrap1">
-                    <div class="hd" id="part" style="display: none">
-                       为您推荐
-                        <span class="ret">5</span>
-                        <span>个楼盘</span>
-                        <Badge :count=this.count style="float: right;margin-right: 10px">
-                            <Icon title="楼盘对比" @click="addComapre" type="ios-notifications-outline" size="26"></Icon>
-                        </Badge>
-                        <img title="我的收藏夹" @click="jumpCollect" src="../../assets/img/sumcollect.png" alt="" style="float: right;height: 20px;width: 20px;margin-top: 7px;margin-right: 10px">
-                    </div>
-                </div>
-                <div class="list-wrap">
-                </div>
-                <div class="list-wrap3" style="overflow: auto;height:580px">
-                    <choice v-if="showChoice" />
-                    <div v-for="(value,index) in information" :key="index">
-                        <div @click="location(index,value)" style="margin: 10px;border-bottom:1px solid #999">
-                            <Row>
-                                <Col span="12">
-                                <div class="left mend_img">
-                                    <img style="width: 150px;height: 100px" v-bind:src="value.image" />
-                                </div>
-                                </Col>
-                                <Col span="12">
-                                <div class="left name" style="margin-top: 5px">
-                                    <h3 style="display:inline-block;width:140px">{{value.name}}</h3>
-                                    <Icon @click="detail(index,value)" type="ios-information-circle" color="#2d8cf0" size="17" title="小区信息详情" style="margin-bottom:8px;" />
-                                    <img v-if="value.collected == '0'" :src=uncollect alt="" title="收藏" @click="Collection(index,value)" id="index" style="width: 15px;height: 15px;margin-left: 5px">
-                                    <img v-else-if="value.collected == '1'" :src=collect alt="" title="取消收藏" @click="Collection(index,value)" style="width: 15px;height: 15px;margin-left: 5px">
-                                    <p style="margin-top: 5px">
-                                        <span>建面：</span>{{value.area}}/m2</p>
-                                    <div style="margin-top: 5px;color: red">
-                                        <span>均价：</span>{{value.price}}元
-                                        <Button @click="add(index,value)" size="small" style="float: right">加入对比
-                                        </Button>
-                                    </div>
-                                    <a @click="getInfo(index,value)" style="font-size: 10px">查看小区周边详情>></a>
-                                </div>
-                                </Col>
-                            </Row>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <Drawer title="安邦花园" :closable="false" v-model="info" width="23%">
-                <div style="overflow: hidden;">
-                    <div style="width: 140px;height: 100px;float:left;">
-                        <img v-bind:src="currentImg" style="width: 150px;height: 110px">
-                    </div>
-                    <div style="float:right;height: 100px;width: 160px;margin-top:8px">
-                        <ul>
-                            <li>
-                                <span style="font-weight:bold; font-size:14px">小区高度类型:</span>{{houseHeight}}
-                            </li>
-                            <li>
-                                <span style="font-weight:bold; font-size:14px">小区类型:</span>{{houseType}}
-                            </li>
-                            <li>
-                                <span style="font-weight:bold; font-size:14px">绿化率:</span>{{greeningRate}}
-                            </li>
-                            <li>
-                                <span style="font-weight:bold; font-size:14px">停车位:</span>{{parkingSpace}}
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+          </div>
+        </div>
+      </div>
+      <Drawer title="安邦花园" :closable="false" v-model="info" width="23%">
+        <div style="overflow: hidden;">
+          <div style="width: 140px;height: 100px;float:left;">
+            <img v-bind:src="currentImg" style="width: 150px;height: 110px">
+          </div>
+          <div style="float:right;height: 100px;width: 160px;margin-top:8px">
+            <ul>
+              <li>
+                <span style="font-weight:bold; font-size:14px">小区高度类型:</span>{{houseHeight}}
+              </li>
+              <li>
+                <span style="font-weight:bold; font-size:14px">小区类型:</span>{{houseType}}
+              </li>
+              <li>
+                <span style="font-weight:bold; font-size:14px">绿化率:</span>{{greeningRate}}
+              </li>
+              <li>
+                <span style="font-weight:bold; font-size:14px">停车位:</span>{{parkingSpace}}
+              </li>
+            </ul>
+          </div>
+        </div>
 
-                <div v-for="(value,index) in detailList" style="margin-top:20px;border-bottom:1px solid #999;">
-                    <img v-bind:src="value.image" style="width: 150px;height: 100px;">
-                    <div style="width:130px;height:40px;float:right;margin-right:25px;">
-                        <p style="font-weight:bold; font-size:14px;text-align:center;margin-top:5px">
-                            {{value.imagename}}</p>
-                        <span style="font-weight:bold;margin-bottom:30px">特点:</span>
-                        <span>{{value.charact}}</span>
-                    </div>
-                </div>
-            </Drawer>
-            </Col>
-        </Row>
-    </div>
+        <div v-for="(value,index) in detailList" style="margin-top:20px;border-bottom:1px solid #999;">
+          <img v-bind:src="value.image" style="width: 150px;height: 100px;">
+          <div style="width:130px;height:40px;float:right;margin-right:25px;">
+            <p style="font-weight:bold; font-size:14px;text-align:center;margin-top:5px">
+              {{value.imagename}}</p>
+            <span style="font-weight:bold;margin-bottom:30px">特点:</span>
+            <span>{{value.charact}}</span>
+          </div>
+        </div>
+      </Drawer>
+      </Col>
+    </Row>
+  </div>
 </template>
 
 <script>
@@ -276,6 +276,7 @@ export default {
     },
     getInfo(index, value) {
       this.houseName = value.name;
+      debugger;
       this.houseShape = value.Shape;
       housePoint.commit("housePoint", this.houseShape);
       Server.get({
@@ -336,7 +337,7 @@ export default {
         params: {
           userId: userId,
           sorting: this_.type,
-          column: this_.type2,
+          column: this_.type2
         }
       }).then(rsp => {
         if (rsp.status === 1) {
