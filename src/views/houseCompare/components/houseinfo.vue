@@ -148,11 +148,41 @@
         <div style="border: 1px solid #dcdee2;">
           <div style="padding: 14px;height: 280px;overflow-y: scroll">
             <h3>楼盘评论</h3>
-            <Form :model="formItem" :label-width="70">
-              <FormItem label="焦点网友:">
-                <span>在园中植栽设计上，采用色彩丰富、复合种植、自然搭配的手法，树阵、花树搭配修剪成型的球类及绿篱错落有致，园中春夏秋冬，四季有景有保障中海项目，大企业，有保障中海项目，大企业，有保障中海项目，大企业，有保障</span>
-              </FormItem>
-            </Form>
+            <Row>
+              <Col span="6">
+              <div style="width:80px">
+                {{this.commentList[0].userNickName}}
+              </div>
+              </Col>
+              <Col span="6">
+              <div>
+                <Rate show-text v-model="valueText" /> 
+                {{this.commentList[0].houseComments}}
+              </div>
+              </Col>
+            </Row>
+            <Row>
+              <Col span="6">
+              <div>{{this.commentList[1].userNickName}}</div>
+              </Col>
+              <Col span="6">
+              <Rate show-text v-model="valueText" /> 
+              <div>{{this.commentList[1].houseComments}}</div>
+              </Col>
+            </Row>
+            <!-- <table>
+              <tbody>
+                <tr>
+                  <td class="label-l">{{this.commentList[0].userNickName}}</td>:
+                  <td valign="top" class="text-l">{{this.commentList[0].houseComments}}</td>
+                </tr>
+                <tr>
+                  <td class="label-l">{{this.commentList[1].userNickName}}</td>:
+                  <td valign="top" class="text-l">{{this.commentList[1].houseComments}}</td>
+                </tr>
+
+              </tbody> -->
+            </table>
           </div>
         </div>
         </Col>
@@ -213,12 +243,16 @@ export default {
       this.getData();
     }, 600);
     setTimeout(() => {
+      this.comment();
+    }, 700);
+    setTimeout(() => {
       this.getmapdata();
     }, 700);
-    comment();
   },
   data() {
     return {
+      valueText: 3,
+      commentList: [],
       detailList: [],
       formItem: "",
       Id: [],
@@ -323,7 +357,6 @@ export default {
       });
     },
     getData() {
-      debugger;
       var _this = this;
       this.Id = houseInfoId.state.houseId;
       console.log(houseInfoId.state.houseId);
@@ -351,16 +384,18 @@ export default {
       });
     },
     comment() {
+      debugger;
       var _this = this;
       Server.get({
         url: services.getcomments,
         params: {
-          houseName: this.houseInfo.name
+          houseName: "东水银庄"
+          // this.houseInfo.name
         }
       }).then(rsp => {
         if (rsp.status === 1) {
           debugger;
-          alert(123);
+          _this.commentList = rsp.data;
         }
       });
     }
