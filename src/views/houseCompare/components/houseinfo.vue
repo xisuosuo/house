@@ -1,54 +1,26 @@
 <template>
-    <div style="margin: 100px">
-        <div style="margin-top: 55px">
-            <Row :gutter="30">
-                <Col span="12">
-                <div style="border: 1px solid #dcdee2;">
-                    <Row>
-                        <Col span="12">
-                        <div style="padding: 5px">
-                            <span style="font-size: 14px">
-                                <strong>楼盘首页:</strong>
-                            </span>
-                            <span style="font-size: 14px">
-                                <strong>{{this.houseInfo.name}}</strong>
-                            </span>
-                            <img style="height: 250px;width: 300px;margin: 10px" v-bind:src="this.houseInfo.image" alt="">
-                        </div>
-                        </Col>
-                        <Col span="12">
-                        <div style="margin-top:40px;margin-left: 10px">
-                            <div>
-                                <div class="key">
-                                    <strong>楼盘最低价:</strong>
-                                </div>
-                                <div class="value light">
-                                    <span class="price">{{this.houseInfo.price}}</span> 元/平方米
-                                </div>
-                                <Form :model="formItem" :label-width="70">
-                                    <FormItem label="价格说明:">
-                                        <span>价格说明：</span>在{{this.houseInfo.minPrice}}元/㎡ ~ {{this.houseInfo.maxPrice}}元/㎡之间
-                                    </FormItem>
-                                    <FormItem label="建筑类型:">
-                                        <span>{{this.houseInfo.houseFeature}}</span>
-                                    </FormItem>
-                                    <FormItem label="物业类型:">
-                                        <span>{{this.houseInfo.houseType}}</span>
-                                    </FormItem>
-                                    <FormItem label="楼盘高度:">
-                                        <span>{{this.houseInfo.houseHeight}}</span>
-                                    </FormItem>
-                                    <FormItem label="主力户型:">
-                                        <span>{{this.detailList[0].imagename}}</span>
-                                    </FormItem>
-                                    <FormItem label="楼盘位置:">
-                                        <span>{{this.houseInfo.address}}</span>
-                                    </FormItem>
-                                </Form>
-                            </div>
-                        </div>
-                        </Col>
-                    </Row>
+  <div style="margin: 100px">
+    <div style="margin-top: 55px">
+      <Row :gutter="30">
+        <Col span="12">
+        <div style="border: 1px solid #dcdee2;">
+          <Row>
+            <Col span="12">
+            <div style="padding: 5px">
+              <span style="font-size: 14px">
+                <strong>楼盘首页:</strong>
+              </span>
+              <span style="font-size: 14px">
+                <strong>{{this.houseInfo.name}}</strong>
+              </span>
+              <img style="height: 250px;width: 300px;margin: 10px" v-bind:src="this.houseInfo.image" alt="">
+            </div>
+            </Col>
+            <Col span="12">
+            <div style="margin-top:40px;margin-left: 10px">
+              <div>
+                <div class="key">
+                  <strong>楼盘最低价:</strong>
                 </div>
                 </Col>
                 <Col span="12">
@@ -142,6 +114,73 @@
                         </table>
                     </div>
 
+        </div>
+        </Col>
+        <Col span="12">
+        <div style="border: 1px solid #dcdee2;">
+          <div style="padding: 14px;height: 280px;overflow-y: scroll">
+            <h3>楼盘评论</h3>
+            <Row>
+              <Col span="6">
+              <div style="width:80px">
+                {{this.commentList[0].userNickName}}
+              </div>
+              </Col>
+              <Col span="6">
+              <div>
+                <Rate show-text v-model="valueText" /> 
+                {{this.commentList[0].houseComments}}
+              </div>
+              </Col>
+            </Row>
+            <Row>
+              <Col span="6">
+              <div>{{this.commentList[1].userNickName}}</div>
+              </Col>
+              <Col span="6">
+              <Rate show-text v-model="valueText" /> 
+              <div>{{this.commentList[1].houseComments}}</div>
+              </Col>
+            </Row>
+            <!-- <table>
+              <tbody>
+                <tr>
+                  <td class="label-l">{{this.commentList[0].userNickName}}</td>:
+                  <td valign="top" class="text-l">{{this.commentList[0].houseComments}}</td>
+                </tr>
+                <tr>
+                  <td class="label-l">{{this.commentList[1].userNickName}}</td>:
+                  <td valign="top" class="text-l">{{this.commentList[1].houseComments}}</td>
+                </tr>
+
+              </tbody> -->
+            </table>
+          </div>
+        </div>
+        </Col>
+      </Row>
+      <Card>
+        <div class="around">
+          <div class="title">
+            <p>{{houseName}}</p>
+          </div>
+          <ul>
+            <li v-for="(value,index) in orderList" :key="index" @click="selectTimer(index,value)" :class="timeIndex === index ? 'default-active' : 'default' ">{{ value.name }}</li>
+          </ul>
+          <Row>
+            <Col span="17">
+            <div class="map" style="height: 540px;width: 100%;">
+              <routerView ref="routerView" v-if="map"></routerView>
+            </div>
+            </Col>
+            <Col span="7">
+            <div class="list" id="mapListContainer">
+              <div class="name">{{listName}}</div>
+              <div class="ul-box">
+                <div class="around-no-info">
+                  <ul>
+                    <item v-for="(item,id) in listData" :key="item.id" :data="item" :id="id+1" @on-item-click="onItemClick" />
+                  </ul>
                 </div>
                 </Col>
                 <Col span="12">
@@ -218,12 +257,16 @@ export default {
       this.getData();
     }, 600);
     setTimeout(() => {
+      this.comment();
+    }, 700);
+    setTimeout(() => {
       this.getmapdata();
-    }, 600);
+    }, 700);
   },
   data() {
     return {
-      houseName: "",
+      valueText: 3,
+      commentList: [],
       detailList: [],
       formItem: "",
       Id: [],
@@ -346,7 +389,6 @@ export default {
       });
     },
     getData() {
-      debugger;
       var _this = this;
       this.Id = houseInfoId.state.houseInforA.houseId;
       console.log(houseInfoId.state.houseInforA);
@@ -371,6 +413,22 @@ export default {
       }).then(rsp => {
         if (rsp.status === 1) {
           _this.detailList = rsp.imageData;
+        }
+      });
+    },
+    comment() {
+      debugger;
+      var _this = this;
+      Server.get({
+        url: services.getcomments,
+        params: {
+          houseName: "东水银庄"
+          // this.houseInfo.name
+        }
+      }).then(rsp => {
+        if (rsp.status === 1) {
+          debugger;
+          _this.commentList = rsp.data;
         }
       });
     }
