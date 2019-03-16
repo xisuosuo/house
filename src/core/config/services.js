@@ -38,5 +38,5 @@ export const services = {
   getcomments: `http://${IP}/chzuHouse/user/commentsHouse`,
   addHouseComments:`http://${IP}/chzuHouse/user/addHouseComments`,
   personalComments:`http://${IP}/chzuHouse/user/userHouseComments`,
-  userHouseComments:`http://${IP}/chzuHouse/user/userHouseComments`
+  delUserComments:`http://${IP}//chzuHouse/user/delUserComments`
 };
