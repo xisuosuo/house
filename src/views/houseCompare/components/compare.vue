@@ -8,13 +8,13 @@
                         <col span="4" class="value" data-cur-column="0">
                     </colgroup>
                     <tbody>
-                        <tr>
+                        <!-- <tr>
                             <td class="compare" colspan="5">
                                 <span class="label">楼盘对比</span>
                                 <input type="text" class="query" node-type="input-query" data-cityid="139">
                                 <span class="btn compare-btn" node-type="compare-btn">+对比</span>
                             </td>
-                        </tr>
+                        </tr> -->
                         <tr class="normal loupan-info" node-type="loupan-info">
                             <td class="key">楼盘名称</td>
                             <td id="value-name-1">
@@ -173,8 +173,8 @@
             </div>
         </Card>
         <!-- <Modal v-model="mapModel" fullscreen footer-hide header-hide title="Fullscreen Modal">
-            <!-- <mapCompare/> -->
-        </Modal> -->
+            <! <mapCompare/> -->
+        </Modal> 
     </div>
 
 </template>
@@ -182,7 +182,7 @@
 <script>
 import Server from "@/core/server";
 import { services } from "@/core/config/services";
-import mapCompare from "./mapCompare";
+// import mapCompare from "./mapCompare";
 import compareHouseOne from "@/vuex/store";
 import compareHouseTwo from "@/vuex/store";
 import compareHouseThree from "@/vuex/store";
@@ -198,7 +198,7 @@ export default {
   },
   data() {
     return {
-      mapModel: false,
+      // mapModel: false,
       HouseOne: {},
       HouseTwo: {},
       HouseThree: {},
@@ -278,7 +278,7 @@ export default {
     }
   },
   components: {
-    mapCompare
+    // mapCompare
   }
 };
 </script>

@@ -11,18 +11,6 @@
               </a>
             </li>
           </router-link>
-          <router-link to="/infoSearch/infoDeatil ">
-            <li class="menu-item ">
-              <a class="nav-item ">
-                <div class="icon-wrap ">
-                  <span class="menu-icon icon-search "></span>
-                </div>
-                <div class="div-label ">
-                  <span>信息查询</span>
-                </div>
-              </a>
-            </li>
-          </router-link>
           <li class="menu-item " @click="siteSelect ">
             <a class="nav-item ">
               <div class="icon-wrap ">
@@ -55,7 +43,7 @@
           <li class="menu-item " @click="controlAnlayse">
             <a class="nav-item ">
               <div class="icon-wrap ">
-                <span class="menu-icon icon-collision "></span>
+                <span class="menu-icon icon-search "></span>
               </div>
               <div class="div-label ">
                 <span>周边设施</span>
