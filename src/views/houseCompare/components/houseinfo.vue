@@ -273,11 +273,9 @@ export default {
       this.getData();
     }, 600);
     setTimeout(() => {
-      this.comment();
-    }, 700);
-    setTimeout(() => {
       this.getmapdata();
     }, 700);
+    this.comment();
   },
   data() {
     return {
@@ -395,11 +393,18 @@ export default {
       this.showGraphics();
     },
     showGraphics() {
-      window.mapview.graphics.removeAll();
-      if (this.list === 0) return;
-      onemap.pubsub.publish("drawMarkerByList", {
-        list: this.listData
-      });
+      debugger;
+      if (window.mapview.graphics.length == 0) {
+        onemap.pubsub.publish("drawMarkerByList", {
+          list: this.listData
+        });
+      } else {
+        window.mapview.graphics.removeAll();
+        if (this.list === 0) return;
+        onemap.pubsub.publish("drawMarkerByList", {
+          list: this.listData
+        });
+      }
     },
     getData() {
       var _this = this;
@@ -473,6 +478,7 @@ export default {
   padding: 0;
   margin: 0;
   width: 100%;
+  height: 100%;
 }
 .value {
   display: inline-block;
