@@ -153,9 +153,34 @@
               <Button type="primary" style="float:right" @click="write">写评论</Button>
             </div>
             <Modal v-model="modal1" title="你的评价" @on-ok="ok">
-              <Input v-model="value1" type="textarea" :autosize="{minRows: 5,maxRows: 10}" placeholder="评价字数100-120字" />
+              <Input v-model="form.houseComments" type="textarea" :autosize="{minRows: 5,maxRows: 10}" placeholder="评价字数100-120字" />
+              <Rate v-model="form.houseScore" />
             </Modal>
-            <Row style="margin-top:15px;border-bottom:1px solid #dcdee2;">
+            <Row v-for="(v,k) in commentList" :key="k">
+              <Col span="6">
+              <div class="avatar" style="text-align:center;">
+                <img style="width: 60px;height: 60px;border-radius: 50%;" src="../../../assets/img/u=3085477210,754180516&fm=11&gp=0.jpg" />
+              </div>
+              <div style="width:140px;text-align:center;">
+                <span style="font-weight:bold;font-size: 1.17em;"> 系统用户:</span> {{v.userNickName}}
+              </div>
+              </Col>
+              <Col span="8">
+              <div style="width:450px;background-color:#f9f9f9">
+                <Rate disabled v-model="valueText2" />
+                <div>{{v.houseComments}}</div>
+                <div style="margin-top:5px;text-align:right">
+                  <span style="font-weight:bold;"> 评论时间：</span>{{v.commentTime}}
+                </div>
+              </div>
+              </Col>
+            </Row>
+            <!-- <ul v-for="(toolBar,index) in toolsBarList" :key="index">
+              <li v-for="(tool,index1) in toolBar.children" :key="index1" @click="onToolEvent(tool)">
+                <span class="icon" :class="[tool.icon || tool.toolKey,{active:tool.toolKey===toolKey}]" :title="tool.name"></span>
+              </li>
+            </ul> -->
+            <!-- <Row style="margin-top:15px;border-bottom:1px solid #dcdee2;">
               <Col span="6">
               <div class="avatar" style="text-align:center;">
                 <img style="width: 60px;height: 60px;border-radius: 50%;" src="../../../assets/img/u=3085477210,754180516&fm=11&gp=0.jpg" />
@@ -164,7 +189,6 @@
                 <span style="font-weight:bold;font-size: 1.17em;"> 系统用户:</span> {{this.commentList[0].userNickName}}
               </div>
               </Col>
-
               <Col span="8">
               <div style="width:450px;background-color:#f9f9f9">
                 <Rate v-model="valueText1" />
@@ -173,11 +197,10 @@
                   <span style="font-weight:bold;"> 评论时间：</span>{{this.commentList[1].commentTime}}
                 </div>
               </div>
-
               </Col>
-            </Row>
+            </Row> -->
 
-            <Row style="margin-top:15px;border-bottom:1px solid #dcdee2;">
+            <!-- <Row style="margin-top:15px;border-bottom:1px solid #dcdee2;">
               <Col span="6">
               <div class="avatar" style="text-align:center;">
                 <img style="width: 60px;height: 60px;border-radius: 50%;" src="../../../assets/img/u=3085477210,754180516&fm=11&gp=0.jpg" />
@@ -197,7 +220,7 @@
               </div>
 
               </Col>
-            </Row>
+            </Row> -->
 
             <!-- <table>
               <tbody>
@@ -268,6 +291,7 @@ import companyName from "@/vuex/store";
 import housePoint from "@/vuex/store";
 export default {
   mounted() {
+    this.form.userId = JSON.parse(sessionStorage.getItem("userId"));
     this.getimg();
     setTimeout(() => {
       this.getData();
@@ -288,9 +312,14 @@ export default {
         commentsTime:""
       },
       modal1: false,
+      form: {
+        houseComments: "",
+        houseScore: 0,
+        houseName: "",
+        userId: ""
+      },
       value1: "",
-      valueText1: 3,
-      valueText2: 4,
+      valueText2: 0,
       commentList: [],
       detailList: [],
       formItem: "",
@@ -347,6 +376,7 @@ export default {
     getmapdata() {
       debugger;
       this.houseName = houseInfoId.state.houseInforA.name;
+      this.form.houseName = houseInfoId.state.houseInforA.name;
       this.list = aroundInfo.state.list;
       this.total = aroundInfo.state.length;
       this.onPageChange(1);
@@ -442,12 +472,13 @@ export default {
       Server.get({
         url: services.addHouseComments,
         params: {
-          userComments: JSON.stringify(this.list1)
+          userComments: JSON.stringify(this.form)
         }
       }).then(rsp => {
         debugger;
         if (rsp.data.status === 1) {
           this.$Message.success("评论成功");
+          this.comment();
         }
       });
     },
