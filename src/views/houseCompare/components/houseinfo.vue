@@ -281,6 +281,14 @@ export default {
   },
   data() {
     return {
+      List1:{
+        userId:"",
+        houseName:"",
+        houseScore:"",
+        houseCommnets:"",
+        commentsId:"",
+        commentsTime:""
+      },
       modal1: false,
       value1: "",
       valueText1: 3,
@@ -425,12 +433,14 @@ export default {
       this.modal1 = true;
     },
     ok() {
+      debugger;
       Server.get({
         url: services.addHouseComments,
         params: {
-          userComments: JSON.stringify(this.value1)
+          userComments: JSON.stringify(this.list1)
         }
       }).then(rsp => {
+        debugger;
         if (rsp.data.status === 1) {
           this.$Message.success("评论成功");
         }

@@ -62,11 +62,16 @@
                                 <router-link to="/personal">
                                     <Button style="margin-left: 50%">更新基本信息</Button>
                                 </router-link>
-                                <Button style="margin-left: 50%" onclick="personalComments">查看个人评论</Button>
+                                <Button style="margin-left: 50%" @click="personalComments">查看个人评论</Button>
                             </FormItem>
                         </Form>
                     </Card>
                     </Col>
+                    <Modal v-model="modal2" title="个人评论记录" @on-ok="ok">
+                        <div>
+                            <Table height="200" stripe :columns="columns2" :data="data2"></Table>
+                        </div>
+                    </Modal>
                     <Col span="16">
                     <Card>
                         <strong>
@@ -128,6 +133,39 @@ export default {
   data() {
     return {
       modal1: false,
+      modal2: false,
+      columns2: [
+        {
+          type: "index",
+          width: 121,
+          align: "center",
+          title: "小区名称"
+        },
+        {
+          type: "index",
+          width: 121,
+          align: "center",
+          title: "评论内容"
+        },
+        {
+          type: "index",
+          width: 121,
+          align: "center",
+          title: "分数"
+        },
+        {
+          type: "index",
+          width: 121,
+          align: "center",
+          title: "评论时间"
+        },
+        {
+          type: "index",
+          width: 121,
+          align: "center",
+          title: "评论时间"
+        }
+      ],
       columns1: [
         {
           type: "index",
@@ -205,6 +243,7 @@ export default {
         }
       ],
       data1: [],
+      data2: [],
       userInfo: [],
       user: ""
     };
@@ -242,9 +281,6 @@ export default {
         this_.data1 = rsp.data;
       });
     },
-    personalComments(){
-        
-    },
 
     onCancel() {
       this.modal1 = false;
@@ -257,6 +293,21 @@ export default {
     },
     show() {
       this.$router.push("/collection");
+    },
+    personalComments() {
+      this.modal2 = true;
+      debugger;
+      var userId = JSON.parse(sessionStorage.getItem("userId"));
+      Server.get({
+        url: services.personalComments,
+        params: {
+          userId: userId
+        }
+      }).then(rsp => {
+        if (rsp.status === 1) {
+          this.data2 = rsp.data;
+        }
+      });
     },
     remove(currentRow, index) {
       var userId = JSON.parse(sessionStorage.getItem("userId"));
