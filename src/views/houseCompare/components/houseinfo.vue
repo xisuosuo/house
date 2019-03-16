@@ -303,6 +303,14 @@ export default {
   },
   data() {
     return {
+      List1:{
+        userId:"",
+        houseName:"",
+        houseScore:"",
+        houseCommnets:"",
+        commentsId:"",
+        commentsTime:""
+      },
       modal1: false,
       form: {
         houseComments: "",
@@ -467,6 +475,7 @@ export default {
           userComments: JSON.stringify(this.form)
         }
       }).then(rsp => {
+        debugger;
         if (rsp.data.status === 1) {
           this.$Message.success("评论成功");
           this.comment();
