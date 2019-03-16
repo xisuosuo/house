@@ -48,6 +48,7 @@ export default new Vuex.Store({
             state.information = rsp.data;
         },
         aroundInfo(state, rsp) {
+            debugger;
             state.list = rsp.data;
             state.length = rsp.length;
         },
@@ -61,7 +62,7 @@ export default new Vuex.Store({
             state.companyName = company
         },
         houseInfoId(state, rsp) {
-            debugger;
+
             state.houseInforA = rsp.data;
         },
         dataRap(state, data) {

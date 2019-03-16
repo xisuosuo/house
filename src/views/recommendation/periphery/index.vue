@@ -97,6 +97,7 @@ export default {
       this.$refs.routerView.addStop(data);
     },
     getdata() {
+      debugger;
       this.houseName = housueName.state.housueName;
       this.list = aroundInfo.state.list;
       this.total = aroundInfo.state.length;

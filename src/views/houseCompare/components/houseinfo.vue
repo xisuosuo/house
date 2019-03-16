@@ -219,7 +219,7 @@
       <Card>
         <div class="around">
           <div class="title">
-            <p>{{houseName}}</p>
+            <p>周边设施</p>
           </div>
           <ul>
             <li v-for="(value,index) in orderList" :key="index" @click="selectTimer(index,value)" :class="timeIndex === index ? 'default-active' : 'default' ">{{ value.name }}</li>
@@ -341,23 +341,9 @@ export default {
     getmapdata() {
       debugger;
       this.houseName = houseInfoId.state.houseInforA.name;
-      Server.get({
-        url: services.road,
-        params: {
-          name: this.houseName,
-          tableName: value.type
-        }
-      }).then(rsp => {
-        var _this = this;
-        if (rsp.status === 1) {
-          _this.list = rsp.data;
-          _this.total = rsp.length;
-          _this.onPageChange(1);
-          //   this.total = aroundInfo.state.length;
-          //   aroundInfo.commit("aroundInfo", rsp);
-          //   aroundInfo.commit("housueName", this.houseName);
-        }
-      });
+      this.list = aroundInfo.state.list;
+      this.total = aroundInfo.state.length;
+      this.onPageChange(1);
 
       //   this.list = aroundInfo.state.list;
       //   this.total = aroundInfo.state.length;
@@ -442,11 +428,11 @@ export default {
       Server.get({
         url: services.addHouseComments,
         params: {
-          userComments:JSON.stringify(this.value1)
+          userComments: JSON.stringify(this.value1)
         }
       }).then(rsp => {
         if (rsp.data.status === 1) {
-            this.$Message.success("评论成功");
+          this.$Message.success("评论成功");
         }
       });
     },

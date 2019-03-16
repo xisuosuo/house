@@ -76,7 +76,7 @@
               </Row>
 
               <Divider orientation="right">小区筛选</Divider>
-              <p>邻里特征</p>
+              <p>周边设施</p>
               <Row>
                 <Col span="10">
                 <FormItem label="教育">

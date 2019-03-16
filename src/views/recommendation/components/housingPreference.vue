@@ -93,12 +93,14 @@ import { services } from "@/core/config/services";
 import houseInfoId from "@/vuex/store";
 import userMessage from "@/vuex/store";
 import dataRap from "@/vuex/store";
+import aroundInfo from "@/vuex/store";
 import housePoint from "@/vuex/store";
 export default {
   computed: {},
   data() {
     return {
       information2: [],
+      houseName: "",
       collect: require(`.././../../assets/img/collect.png`),
       uncollect: require(`.././../../assets/img/uncollect.png`)
     };
@@ -108,7 +110,7 @@ export default {
   },
   methods: {
     getInfo(index, value) {
-      debugger;
+      this.houseName = value.name;
       this.houseId = value.houseId;
       this.houseShape = value.Shape;
       housePoint.commit("housePoint", this.houseShape);
@@ -117,25 +119,28 @@ export default {
         params: {
           houseId: this.houseId
         }
-      }).then(rsp => {
-        if (rsp.status === 1) {
-          houseInfoId.commit("houseInfoId", rsp);
-        }
-      });
-      Server.get({
-        url: services.road,
-        params: {
-          name: value.name,
-          tableName: "BUSSTATION"
-        }
-      }).then(rsp => {
-        var _this = this;
-        if (rsp.status === 1) {
-          aroundInfo.commit("aroundInfo", rsp);
-          aroundInfo.commit("housueName", this.houseName);
-        }
-      });
-
+      })
+        .then(rsp => {
+          if (rsp.status === 1) {
+            houseInfoId.commit("houseInfoId", rsp);
+          }
+        })
+        .then(
+          Server.get({
+            url: services.road,
+            params: {
+              name: value.name,
+              tableName: "BUSSTATION"
+            }
+          }).then(rsp => {
+            debugger;
+            var _this = this;
+            if (rsp.status === 1) {
+              aroundInfo.commit("aroundInfo", rsp);
+              aroundInfo.commit("housueName", this.houseName);
+            }
+          })
+        );
       this.$router.push("/houseinfo");
     },
     getdata() {
