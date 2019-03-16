@@ -152,7 +152,9 @@
               <h3 style="display:inline-block">楼盘评论</h3>
               <Button type="primary" style="float:right" @click="write">写评论</Button>
             </div>
-
+            <Modal v-model="modal1" title="你的评价" @on-ok="ok">
+              <Input v-model="value1" type="textarea" :autosize="{minRows: 5,maxRows: 10}" placeholder="评价字数100-120字" />
+            </Modal>
             <Row style="margin-top:15px;border-bottom:1px solid #dcdee2;">
               <Col span="6">
               <div class="avatar" style="text-align:center;">
@@ -196,6 +198,7 @@
 
               </Col>
             </Row>
+
             <!-- <table>
               <tbody>
                 <tr>
@@ -278,6 +281,8 @@ export default {
   },
   data() {
     return {
+      modal1: false,
+      value1: "",
       valueText1: 3,
       valueText2: 4,
       commentList: [],
@@ -431,29 +436,21 @@ export default {
       });
     },
     write() {
-      this.$Modal.confirm({
-        render: h => {
-          return h("textarea", {
-            props: {
-              value: this.value,
-              autofocus: true,
-              placeholder: "请输入你的评价..."
-            },
-            style: {
-              width:"380px",
-              height:"150px"
-            },
-            on: {
-              input: val => {
-                this.value = val;
-              }
-            }
-          });
+      this.modal1 = true;
+    },
+    ok() {
+      Server.get({
+        url: services.addHouseComments,
+        params: {
+          userComments:JSON.stringify(this.value1)
+        }
+      }).then(rsp => {
+        if (rsp.data.status === 1) {
+            this.$Message.success("评论成功");
         }
       });
     },
     comment() {
-      debugger;
       var _this = this;
       Server.get({
         url: services.getcomments,
@@ -463,7 +460,6 @@ export default {
         }
       }).then(rsp => {
         if (rsp.status === 1) {
-          debugger;
           _this.commentList = rsp.data;
         }
       });
