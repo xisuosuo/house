@@ -202,7 +202,7 @@ export default {
       HouseOne: {},
       HouseTwo: {},
       HouseThree: {},
-      HouseFour: {}
+      HouseFour: {},
     };
   },
   mounted() {

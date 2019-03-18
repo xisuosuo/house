@@ -156,7 +156,7 @@
               <Input v-model="form.houseComments" type="textarea" :autosize="{minRows: 5,maxRows: 10}" placeholder="评价字数100-120字" />
               <Rate v-model="form.houseScore" />
             </Modal>
-            <Row v-for="(v,k) in commentList" :key="k">
+            <Row v-for="(v,k) in commentList" :key="k" style="margin-top:20px">
               <Col span="6">
               <div class="avatar" style="text-align:center;">
                 <img style="width: 60px;height: 60px;border-radius: 50%;" src="../../../assets/img/u=3085477210,754180516&fm=11&gp=0.jpg" />
@@ -167,7 +167,7 @@
               </Col>
               <Col span="8">
               <div style="width:450px;background-color:#f9f9f9">
-                <Rate disabled v-model="valueText2" />
+                <Rate disabled v-model="v.houseScore" />
                 <div>{{v.houseComments}}</div>
                 <div style="margin-top:5px;text-align:right">
                   <span style="font-weight:bold;"> 评论时间：</span>{{v.commentTime}}
@@ -175,65 +175,6 @@
               </div>
               </Col>
             </Row>
-            <!-- <ul v-for="(toolBar,index) in toolsBarList" :key="index">
-              <li v-for="(tool,index1) in toolBar.children" :key="index1" @click="onToolEvent(tool)">
-                <span class="icon" :class="[tool.icon || tool.toolKey,{active:tool.toolKey===toolKey}]" :title="tool.name"></span>
-              </li>
-            </ul> -->
-            <!-- <Row style="margin-top:15px;border-bottom:1px solid #dcdee2;">
-              <Col span="6">
-              <div class="avatar" style="text-align:center;">
-                <img style="width: 60px;height: 60px;border-radius: 50%;" src="../../../assets/img/u=3085477210,754180516&fm=11&gp=0.jpg" />
-              </div>
-              <div style="width:140px;text-align:center;">
-                <span style="font-weight:bold;font-size: 1.17em;"> 系统用户:</span> {{this.commentList[0].userNickName}}
-              </div>
-              </Col>
-              <Col span="8">
-              <div style="width:450px;background-color:#f9f9f9">
-                <Rate v-model="valueText1" />
-                <div>{{this.commentList[1].houseComments}}</div>
-                <div style="margin-top:5px;text-align:right">
-                  <span style="font-weight:bold;"> 评论时间：</span>{{this.commentList[1].commentTime}}
-                </div>
-              </div>
-              </Col>
-            </Row> -->
-
-            <!-- <Row style="margin-top:15px;border-bottom:1px solid #dcdee2;">
-              <Col span="6">
-              <div class="avatar" style="text-align:center;">
-                <img style="width: 60px;height: 60px;border-radius: 50%;" src="../../../assets/img/u=3085477210,754180516&fm=11&gp=0.jpg" />
-              </div>
-              <div style="width:140px;text-align:center;">
-                <span style="font-weight:bold;font-size: 1.17em;"> 系统用户:</span> {{this.commentList[1].userNickName}}
-              </div>
-              </Col>
-
-              <Col span="8">
-              <div style="width:450px;background-color:#f9f9f9">
-                <Rate v-model="valueText2" />
-                <div>{{this.commentList[0].houseComments}}</div>
-                <div style="margin-top:5px;text-align:right">
-                  <span style="font-weight:bold;"> 评论时间：</span>{{this.commentList[1].commentTime}}
-                </div>
-              </div>
-
-              </Col>
-            </Row> -->
-
-            <!-- <table>
-              <tbody>
-                <tr>
-                  <td class="label-l">{{this.commentList[0].userNickName}}</td>:
-                  <td valign="top" class="text-l">{{this.commentList[0].houseComments}}</td>
-                </tr>
-                <tr>
-                  <td class="label-l">{{this.commentList[1].userNickName}}</td>:
-                  <td valign="top" class="text-l">{{this.commentList[1].houseComments}}</td>
-                </tr>
-
-              </tbody> -->
             </table>
           </div>
         </div>
@@ -299,17 +240,19 @@ export default {
     setTimeout(() => {
       this.getmapdata();
     }, 700);
-    this.comment();
+    setTimeout(() => {
+      this.comment();
+    }, 800);
   },
   data() {
     return {
-      List1:{
-        userId:"",
-        houseName:"",
-        houseScore:"",
-        houseCommnets:"",
-        commentsId:"",
-        commentsTime:""
+      List1: {
+        userId: "",
+        houseName: "",
+        houseScore: "",
+        houseCommnets: "",
+        commentsId: "",
+        commentsTime: ""
       },
       modal1: false,
       form: {
@@ -380,9 +323,6 @@ export default {
       this.list = aroundInfo.state.list;
       this.total = aroundInfo.state.length;
       this.onPageChange(1);
-
-      //   this.list = aroundInfo.state.list;
-      //   this.total = aroundInfo.state.length;
     },
     selectTimer(index, value) {
       this.timeIndex = index;
@@ -423,7 +363,6 @@ export default {
       this.showGraphics();
     },
     showGraphics() {
-      debugger;
       if (window.mapview.graphics.length == 0) {
         onemap.pubsub.publish("drawMarkerByList", {
           list: this.listData
@@ -455,6 +394,7 @@ export default {
       });
     },
     getimg() {
+      this.houseName = housueName.state.housueName;
       var _this = this;
       Server.get({
         url: services.getImageToCommunity
@@ -468,14 +408,12 @@ export default {
       this.modal1 = true;
     },
     ok() {
-      debugger;
       Server.get({
         url: services.addHouseComments,
         params: {
           userComments: JSON.stringify(this.form)
         }
       }).then(rsp => {
-        debugger;
         if (rsp.data.status === 1) {
           this.$Message.success("评论成功");
           this.comment();
@@ -484,10 +422,11 @@ export default {
     },
     comment() {
       var _this = this;
+      this.houseName = housueName.state.housueName;
       Server.get({
         url: services.getcomments,
         params: {
-          houseName: "东水银庄"
+          houseName: this.houseName
           // this.houseInfo.name
         }
       }).then(rsp => {
