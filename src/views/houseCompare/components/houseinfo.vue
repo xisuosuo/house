@@ -212,6 +212,30 @@
           </Row>
         </div>
       </Card>
+      <Card>
+        <div>
+          <Row>
+            <Col>
+            <span style="font-size: 14px">
+              <strong>相似小区:</strong>
+            </span>
+            <div class="map" style="height: 200px;width: 100%;">
+              <div v-for="(value,index) in BaseOnHouse" :key="index">
+                <Col span="4">
+                <img style="width: 200px;height: 160px;margin: 5px" v-bind:src="value.image" alt="">
+                <strong>
+                  <span>{{value.name}}</span>
+                </strong>
+                <a>
+                  <span style="margin: 20px">{{value.price}}元/㎡</span>
+                </a>
+                </Col>
+              </div>
+            </div>
+            </Col>
+          </Row>
+        </div>
+      </Card>
     </div>
   </div>
 </template>
@@ -243,6 +267,7 @@ export default {
     setTimeout(() => {
       this.comment();
     }, 800);
+    this.getBaseOnHouseData();
   },
   data() {
     return {
@@ -264,6 +289,7 @@ export default {
       value1: "",
       valueText2: 0,
       commentList: [],
+      BaseOnHouse: [],
       detailList: [],
       formItem: "",
       Id: [],
@@ -390,6 +416,25 @@ export default {
           console.log(rsp);
           _this.houseInfo = rsp.data;
           console.log(_this.houseInfo);
+        }
+      });
+    },
+    getBaseOnHouseData() {
+      debugger;
+      var _this = this;
+      this.houseName = houseInfoId.state.houseInforA.name;
+      var userId = JSON.parse(sessionStorage.getItem("userId"));
+      Server.get({
+        url: services.recommendedBaseOnHouse,
+        params: {
+          houseName: _this.houseName,
+          userId: userId
+        }
+      }).then(function(rsp) {
+        if (rsp.status === 1) {
+          console.log(rsp);
+          _this.BaseOnHouse = rsp.data;
+          console.log(_this.BaseOnHouse);
         }
       });
     },
