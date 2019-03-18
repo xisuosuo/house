@@ -67,7 +67,7 @@
                         </Form>
                     </Card>
                     </Col>
-                    <Modal v-model="modal2" title="个人评论记录" @on-ok="ok">
+                    <Modal v-model="modal2" width="1000" title="个人评论记录" @on-ok="ok">
                         <div>
                             <Table height="200" stripe :columns="columns2" :data="data2"></Table>
                         </div>
@@ -78,7 +78,7 @@
                             <div style="margin-bottom: 10px">我的收藏夹</div>
                         </strong>
                         <div>
-                            <Table height="311" stripe :columns="columns1" :data="data1"></Table>
+                            <Table height="349" stripe :columns="columns1" :data="data1"></Table>
                         </div>
                         <Divider dashed="true" />
                         <strong>
@@ -136,34 +136,53 @@ export default {
       modal2: false,
       columns2: [
         {
-          type: "index",
           width: 121,
           align: "center",
-          title: "小区名称"
+          title: "小区名称",
+          key: "name"
         },
         {
-          type: "index",
-          width: 121,
+          width: 500,
           align: "center",
-          title: "评论内容"
+          title: "评论内容",
+          key: "houseComments"
         },
         {
-          type: "index",
           width: 121,
           align: "center",
-          title: "分数"
+          title: "分数",
+          key: "houseScore"
         },
         {
-          type: "index",
           width: 121,
           align: "center",
-          title: "评论时间"
+          title: "评论时间",
+          key: "commentTime"
         },
         {
-          type: "index",
-          width: 121,
+          title: "操作",
+          key: "action",
+          width: 150,
           align: "center",
-          title: "评论时间"
+          render: (h, params) => {
+            return h("div", [
+              h(
+                "Button",
+                {
+                  props: {
+                    type: "error",
+                    size: "small"
+                  },
+                  on: {
+                    click: () => {
+                      this.removecomment(params.row, params.index);
+                    }
+                  }
+                },
+                "删除"
+              )
+            ]);
+          }
         }
       ],
       columns1: [
@@ -288,6 +307,9 @@ export default {
     onRefresh() {
       this.getTable();
     },
+    onRefresh1() {
+      this.personalComments();
+    },
     onSubmit() {
       this.$refs.changepsd.onSubmit();
     },
@@ -295,6 +317,7 @@ export default {
       this.$router.push("/collection");
     },
     personalComments() {
+      var this_ = this;
       this.modal2 = true;
       debugger;
       var userId = JSON.parse(sessionStorage.getItem("userId"));
@@ -305,7 +328,7 @@ export default {
         }
       }).then(rsp => {
         if (rsp.status === 1) {
-          this.data2 = rsp.data;
+          this_.data2 = rsp.data;
         }
       });
     },
@@ -334,6 +357,40 @@ export default {
               if (rsp.status == 1) {
                 this.$Message.success(rsp.message);
                 this.onRefresh();
+              } else {
+                this.$Message.error(rsp.message);
+              }
+            });
+          },
+          onCancel: () => {}
+        });
+      }
+    },
+    removecomment(currentRow, index) {
+      var userId = JSON.parse(sessionStorage.getItem("userId"));
+      currentRow.Index = index;
+      this.selectedRow = currentRow;
+      var row = this.selectedRow;
+      if (!row) {
+        this.$Message.warning("请选择需要删除的行");
+      } else {
+        this.$Modal.confirm({
+          title: "提示",
+          content: "是否永久删除此数据?",
+          onOk: () => {
+            debugger;
+            // var id = row.houseId;
+            var name = row.name;
+            Server.get({
+              url: services.delUserComments,
+              params: {
+                userId: userId,
+                houseName: name
+              }
+            }).then(rsp => {
+              if (rsp.data.status == 1) {
+                this.$Message.success(rsp.message);
+                this.onRefresh1();
               } else {
                 this.$Message.error(rsp.message);
               }
