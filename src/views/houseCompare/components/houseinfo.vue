@@ -263,11 +263,13 @@ export default {
     }, 600);
     setTimeout(() => {
       this.getmapdata();
-    }, 700);
+    }, 800);
     setTimeout(() => {
       this.comment();
     }, 800);
-    this.getBaseOnHouseData();
+    setTimeout(() => {
+      this.getBaseOnHouseData();
+    }, 800);
   },
   data() {
     return {
