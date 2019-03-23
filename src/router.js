@@ -38,12 +38,7 @@ export default new Router({
           component: () =>
             import('@/views/recommendation/components/Details.vue'),
         },
-        {
-          name: "对比",
-          path: "/compare",
-          component: () =>
-            import('@/views/houseCompare/components/compare.vue'),
-        },
+
         {
           name: "楼盘详情",
           path: "/houseinfo",
@@ -87,7 +82,7 @@ export default new Router({
         },
         {
           path: '/data',
-          name:"数据展示",
+          name: "数据展示",
           redirect: '/',
           component: () =>
             import('@/views/account/index.vue'),
@@ -116,24 +111,14 @@ export default new Router({
           component: () =>
             import('@/views/infoSearch/index.vue'),
           children: [{
-              path: '/',
-              name: '信息查询',
-              meta: {
-                auth: true
-              },
-              component: () =>
-                import('@/views/infoSearch/home/index.vue')
-            }]
-          //   {
-          //     path: '/infoSearch/infoDeatil',
-          //     name: '详细查询',
-          //     meta: {
-          //       auth: true
-          //     },
-          //     component: () =>
-          //       import('@/views/infoSearch/home')
-          //   },
-          // ]
+            path: '/',
+            name: '信息查询',
+            meta: {
+              auth: true
+            },
+            component: () =>
+              import('@/views/infoSearch/home/index.vue')
+          }]
         },
         {
           path: '/3dmap',
@@ -155,15 +140,14 @@ export default new Router({
           name: '房源对比',
           component: () =>
             import('@/views/houseCompare/index.vue'),
-          children: [{
-            path: '/',
-            name: '房源对比',
-            meta: {
-              auth: true
+          children: [
+            {
+              name: "对比",
+              path: "/houseCompare/compare",
+              component: () =>
+                import('@/views/houseCompare/components/compare.vue'),
             },
-            component: () =>
-              import('@/views/houseCompare/index.vue'),
-          }]
+          ]
         },
         {
           path: '/recommendation',
@@ -295,12 +279,11 @@ export default new Router({
             import('@/views/userManager/index.vue'),
           children: [{
             path: '/',
-            name: '用户管理',
             meta: {
               auth: true
             },
             component: () =>
-              import('@/views/userManager/index.vue'),
+              import('@/views/userManager/components/userIndex.vue'),
           }, ]
         }
       ]
