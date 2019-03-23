@@ -82,6 +82,23 @@
           <Icon type="ios-settings"></Icon>
           <span>周边设施</span>
           </MenuItem>
+          <Submenu name="1">
+            <template slot="title">
+              <Icon type="ios-settings"></Icon>
+              <span>Option 2</span>
+            </template>
+            <MenuItem :style="{margin: '0 -20px'}" name="1-1">
+            <Icon type="ios-settings"></Icon>
+            <span>Option 3</span>
+            </MenuItem>
+            <MenuItem name="1-2">
+            <span>Option 3</span>
+            </MenuItem>
+            <MenuItem name="1-3">
+            <Icon type="ios-settings"></Icon>
+            <span>Option 3</span>
+            </MenuItem>
+          </Submenu>
         </Menu>
         <!-- <MenuItem name="1-4">
         <Icon @click.native="collapsedSider" :class="rotateIcon" :style="{margin: '0 20px'}" type="md-menu" size="24"></Icon>
@@ -212,9 +229,11 @@ export default {
   },
   computed: {
     rotateIcon() {
+      debugger;
       return ["menu-icon", this.isCollapsed ? "rotate-icon" : ""];
     },
     menuitemClasses() {
+      debugger;
       return ["menu-item", this.isCollapsed ? "collapsed-menu" : ""];
     }
   },
