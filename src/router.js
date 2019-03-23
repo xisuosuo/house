@@ -51,12 +51,7 @@ export default new Router({
           component: () =>
             import('@/views/personal/component/personal.vue'),
         },
-        {
-          name: "用户中心",
-          path: "/personalcenter",
-          component: () =>
-            import('@/views/personalcenter/component/personalCenter.vue'),
-        },
+
         {
           name: "test",
           path: "/test",
@@ -140,14 +135,12 @@ export default new Router({
           name: '房源对比',
           component: () =>
             import('@/views/houseCompare/index.vue'),
-          children: [
-            {
-              name: "对比",
-              path: "/houseCompare/compare",
-              component: () =>
-                import('@/views/houseCompare/components/compare.vue'),
-            },
-          ]
+          children: [{
+            name: "对比",
+            path: "/houseCompare/compare",
+            component: () =>
+              import('@/views/houseCompare/components/compare.vue'),
+          }, ]
         },
         {
           path: '/recommendation',
@@ -285,7 +278,22 @@ export default new Router({
             component: () =>
               import('@/views/userManager/components/userIndex.vue'),
           }, ]
+        },
+        {
+          name: "用户中心",
+          path: "/personalcenter",
+          component: () =>
+            import('@/views/personalcenter/component/personalCenter.vue'),
+          children: [{
+            path: '/',
+            meta: {
+              auth: true
+            },
+            component: () =>
+              import('@/views/userManager/components/userIndex.vue'),
+          }, ]
         }
+ 
       ]
     }
   ]
