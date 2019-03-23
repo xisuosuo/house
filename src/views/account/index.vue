@@ -74,10 +74,12 @@
               <Icon type="ios-navigate"></Icon>
               数据查询
             </template>
-            <!--<router-link to="/data">-->
+            <router-link to="/data">
             <MenuItem name="1-1">数据统计</MenuItem>
-            <!--</router-link>-->
+            </router-link>
+            <router-link to="/data/dataDeatils">
             <MenuItem name="1-2">数据查询</MenuItem>
+            </router-link>
           </Submenu>
           <Submenu name="2">
             <template slot="title">
