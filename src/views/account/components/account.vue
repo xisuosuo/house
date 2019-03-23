@@ -9,7 +9,7 @@
             </div>
             <Row :gutter="30">
                 <Col  span="12">
-                    <card title="滁州市管理边界" style="margin-left: 10%">
+                    <card title="滁州市管理边界" style="margin-left: 5%">
                         <span class="chartImage">
                               <span @click="onDownChartImg('chartMap')"><Icon type="ios-download-outline" :size="22"></Icon></span>
                              </span>
@@ -17,7 +17,7 @@
                     </card>
                 </Col>
                 <Col span="12">
-                    <card title="滁州市房价走势" style="margin-right: 10%">
+                    <card title="滁州市房价走势" style="margin-right: 5%">
                              <span class="chartImage"  >
                               <span @click="onDownChartImg('trend')"><Icon type="ios-download-outline" :size="22"></Icon></span>
                              </span>
@@ -28,7 +28,7 @@
             <br>
             <Row :gutter="30">
                 <Col span="12">
-                    <card  title="滁州市城区房价对比" style="margin-left: 10%">
+                    <card  title="滁州市城区房价对比" style="margin-left: 5%">
                              <span class="chartImage"  >
                               <span @click="onDownChartImg('comprise')"><Icon type="ios-download-outline" :size="22"></Icon></span>
                              </span>
@@ -36,7 +36,7 @@
                     </card>
                 </Col>
                 <Col span="12">
-                    <card title="滁州市城区公服设施数量" style="margin-right: 10%">
+                    <card title="滁州市城区公服设施数量" style="margin-right: 5%">
                               <span class="chartImage"  >
                               <span @click="onDownChartImg('chart')"><Icon type="ios-download-outline" :size="22"></Icon></span>
                              </span>
@@ -328,13 +328,13 @@
         &.blue {
             .panel-title {
                 background: #2d8cf0;
-                margin-left: 5%;
-                margin-right: 5%
+                margin-left: 3%;
+                margin-right: 3%
         }
             .panel-line {
                 background: #2d8cf0;
-                margin-left: 5%;
-                margin-right: 5%
+                margin-left: 3%;
+                margin-right: 3%
             }
         }
         .panel-title {
@@ -368,7 +368,6 @@
         width: 600px;
     }
     .data-view {
-        padding: 20px;
         .group-header {
             height: 20px;
         }

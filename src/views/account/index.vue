@@ -3,7 +3,13 @@
     <Layout :style="{height:'100%'}">
     <Sider ref="side1" :width='180'>
       <Menu active-name="" theme="dark" width="auto" :open-names="['']">
-          <Submenu name="1">
+        <router-link to="/menu">
+          <MenuItem name="8-1">
+            <Icon type="ios-navigate"></Icon>
+            <span>首页</span>
+          </MenuItem>
+        </router-link>
+        <Submenu name="1">
             <template slot="title">
               <Icon type="ios-navigate"></Icon>
               数据展示
