@@ -1,5 +1,5 @@
 <template>
-    <Card style="margin: 10px;margin-top: 60px;">
+    <Card style="margin: 10px;">
         <div title="数据详情">
             <div class="group-panel-box blue">
                 <div class="panel-title">数据统计</div>
