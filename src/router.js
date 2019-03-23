@@ -88,6 +88,7 @@ export default new Router({
         },
         {
           path: '/data',
+          name:"数据展示",
           redirect: '/',
           component: () =>
             import('@/views/account/index.vue'),
@@ -171,7 +172,7 @@ export default new Router({
           component: () =>
             import('@/views/recommendation/index.vue'),
           children: [{
-            name: '房源推荐',
+            name: '住房推荐',
             path: '/recommendation/housingPreference',
             meta: {
               auth: true
@@ -180,7 +181,7 @@ export default new Router({
               import('@/views/recommendation/components/housingPreference.vue'),
           }, {
             path: '/recommendation/factor',
-            name: '房源选择',
+            name: '住房选择',
             meta: {
               auth: true
             },
