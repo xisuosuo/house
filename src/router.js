@@ -26,10 +26,12 @@ export default new Router({
     // },
     {
       path: '/main',
+      name: '首页',
       component: main,
       children: [{
           path: '/',
-          redirect: "/menu"
+          redirect: "/menu",
+          name: '首页',
         },
         {
           name: "可达性数据",

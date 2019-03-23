@@ -41,10 +41,12 @@
     <Layout :style="{height:'100%'}">
       <Sider ref="side1" hide-trigger collapsible :collapsed-width="78" v-model="isCollapsed">
         <Menu active-name="1-2" theme="dark" width="auto" :class="menuitemClasses">
+                <router-link to="/data/dataDeatils">
           <MenuItem name="1-1">
           <Icon type="ios-navigate"></Icon>
           <span>Option 1</span>
           </MenuItem>
+              </router-link>
           <MenuItem name="1-2">
           <Icon type="ios-search"></Icon>
           <span>Option 2</span>
