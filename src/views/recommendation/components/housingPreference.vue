@@ -1,7 +1,7 @@
 <template>
   <Layout>
     <Content>
-      <div id="preference" style="margin-top: 100px;margin-left: 5%;display: block">
+      <div id="preference" style="margin-left: 5%;display: block">
         <h1 style="text-align: center;margin: 50px;">楼盘推荐</h1>
         <Row :gutter="30">
           <Col span="8">

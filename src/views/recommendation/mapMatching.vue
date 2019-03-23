@@ -2,12 +2,12 @@
   <div>
     <Row>
       <Col span="18">
-      <div class="map" style="height: 612px;width: 100%;margin-top: 55px">
+      <div class="map" style="height: 100%;width: 100%;">
         <smallMapView v-if="map"></smallMapView>
       </div>
       </Col>
       <Col span="6">
-      <div class="aside" style="margin-top: 55px">
+      <div class="aside">
         <div class="filter">
           <ul class="clear">
             <li class="li-filter fl" data-role="li-filter" data-type="filter" data-xftrack="10145" @click="changeStyle">

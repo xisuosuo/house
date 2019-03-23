@@ -464,7 +464,7 @@ export default {
             this.tableData.data[1].name,
             this.tableData.data[2].name,
             this.tableData.data[3].name,
-            this.tableData.data[4].name,
+            this.tableData.data[4].name
           ]
         },
         series: [
@@ -472,7 +472,7 @@ export default {
             name: "教育资源可达性",
             type: "bar",
             stack: "总量",
-            barMaxWidth:50,
+            barMaxWidth: 50,
             label: {
               normal: {
                 show: false,
@@ -484,14 +484,14 @@ export default {
               this.tableData.data[1].educationLevel,
               this.tableData.data[2].educationLevel,
               this.tableData.data[3].educationLevel,
-              this.tableData.data[4].educationLevel,
+              this.tableData.data[4].educationLevel
             ]
           },
           {
             name: "医疗资源可达性",
             type: "bar",
             stack: "总量",
-              barMaxWidth:50,
+            barMaxWidth: 50,
             label: {
               normal: {
                 show: false,
@@ -503,14 +503,14 @@ export default {
               this.tableData.data[1].medicalLevel,
               this.tableData.data[2].medicalLevel,
               this.tableData.data[3].medicalLevel,
-              this.tableData.data[4].medicalLevel,
+              this.tableData.data[4].medicalLevel
             ]
           },
           {
             name: "交通资源可达性",
             type: "bar",
             stack: "总量",
-              barMaxWidth:50,
+            barMaxWidth: 50,
             label: {
               normal: {
                 show: false,
@@ -522,14 +522,14 @@ export default {
               this.tableData.data[1].trafficLevel,
               this.tableData.data[2].trafficLevel,
               this.tableData.data[3].trafficLevel,
-              this.tableData.data[4].trafficLevel,
+              this.tableData.data[4].trafficLevel
             ]
           },
           {
             name: "休闲娱乐可达性",
             type: "bar",
             stack: "总量",
-              barMaxWidth:50,
+            barMaxWidth: 50,
             label: {
               normal: {
                 show: false,
@@ -541,7 +541,7 @@ export default {
               this.tableData.data[1].entertainmentLevel,
               this.tableData.data[2].entertainmentLevel,
               this.tableData.data[3].entertainmentLevel,
-              this.tableData.data[4].entertainmentLevel,
+              this.tableData.data[4].entertainmentLevel
             ]
           }
         ]
@@ -564,7 +564,7 @@ export default {
             this.tableData.data[1].name,
             this.tableData.data[2].name,
             this.tableData.data[3].name,
-            this.tableData.data[4].name,
+            this.tableData.data[4].name
           ]
         },
         series: [
@@ -621,7 +621,7 @@ export default {
   border: 1px solid #2b85e4;
   text-align: center;
   padding: 3px 7px 2px 7px;
-  width:350px
+  width: 350px;
 }
 #customers th {
   font-size: 1.2em;

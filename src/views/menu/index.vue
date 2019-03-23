@@ -30,6 +30,6 @@ export default {
 .home {
   height: 650px;
   background: url("../../assets/img/logo/home_bg.png");
-  margin-top: 55px;
+  // margin-top: 55px;
 }
 </style>

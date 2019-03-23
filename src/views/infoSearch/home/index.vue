@@ -260,7 +260,7 @@ export default {
                   visible: true,
                   visibilityMode: "independent",
                   layers: [USALayer, censusLayer]
-                  // 
+                  //
                 });
 
                 var map = new Map({
@@ -430,7 +430,7 @@ export default {
 }
 .search {
   position: absolute;
-  top: 62px;
+  top: 2px;
   left: 40px;
 }
 .wrapperBox {
@@ -442,8 +442,17 @@ export default {
   overflow-y: auto;
 }
 .esri-layer-list__item-title {
-  margin-left: -5px;
-  padding-left: -5px;
+  margin-left: 5px;
+  padding-left: 5px;
+  margin-top: 5px;
+}
+.esri-layer-list {
+  color: #323232;
+  background-color: #f5f5f5;
+  padding: 6px 7px;
+  overflow-y: auto;
+  margin-top: 17px;
+  margin-right: 75px;
 }
 #switchbasemap {
   float: left;

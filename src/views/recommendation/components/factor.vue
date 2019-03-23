@@ -1,7 +1,7 @@
 <template>
   <Layout>
     <Content>
-      <div style="margin: 0 auto;margin-top: 65px;width:1100px;">
+      <div style="margin: 0 auto;margin-top: 5px;width:1100px;">
         <Row>
           <Col span="20">
           <Card>
