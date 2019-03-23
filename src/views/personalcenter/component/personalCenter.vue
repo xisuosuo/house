@@ -67,7 +67,7 @@
                         </Form>
                     </Card>
                     </Col>
-                    <Modal v-model="modal2" width="1000" title="个人评论记录" @on-ok="ok">
+                    <Modal v-model="modal2" width="750" title="个人评论记录" @on-ok="ok">
                         <div>
                             <Table height="200" stripe :columns="columns2" :data="data2"></Table>
                         </div>
@@ -136,19 +136,19 @@ export default {
       modal2: false,
       columns2: [
         {
-          width: 121,
+          width: 110,
           align: "center",
           title: "小区名称",
           key: "name"
         },
         {
-          width: 500,
+          width: 246,
           align: "center",
           title: "评论内容",
           key: "houseComments"
         },
         {
-          width: 121,
+          width: 100,
           align: "center",
           title: "分数",
           key: "houseScore"
@@ -162,7 +162,7 @@ export default {
         {
           title: "操作",
           key: "action",
-          width: 150,
+          width: 140,
           align: "center",
           render: (h, params) => {
             return h("div", [
