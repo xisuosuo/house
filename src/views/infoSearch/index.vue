@@ -1,44 +1,89 @@
 <template>
   <div>
     <Layout :style="{height:'100%'}">
-      <Sider ref="side1" hide-trigger collapsible :collapsed-width="78" v-model="isCollapsed">
-        <Menu active-name="1-2" theme="dark" width="auto" :class="menuitemClasses">
-          <router-link to="/data/dataDeatils">
-            <MenuItem name="1-1">
-            <Icon type="ios-navigate"></Icon>
-            <span>Option 1</span>
-            </MenuItem>
-          </router-link>
-          <MenuItem name="1-2">
-          <Icon type="ios-search"></Icon>
-          <span>Option 2</span>
-          </MenuItem>
-          <MenuItem name="1-3">
-          <Icon type="ios-settings"></Icon>
-          <span>Option 3</span>
-          </MenuItem>
+      <Sider ref="side1" :width='180'>
+        <Menu active-name="" theme="dark" width="auto" :open-names="['']">
           <Submenu name="1">
             <template slot="title">
-              <Icon type="ios-settings"></Icon>
-              <span>Option 2</span>
+              <Icon type="ios-navigate"></Icon>
+              数据展示
             </template>
-            <MenuItem :style="{margin: '0 -20px'}" name="1-1">
-            <Icon type="ios-settings"></Icon>
-            <span>Option 3</span>
+            <router-link to="/data">
+              <MenuItem name="1-1">数据统计</MenuItem>
+            </router-link>
+            <router-link to="/data/dataDeatils">
+              <MenuItem name="1-2">数据查询</MenuItem>
+            </router-link>
+          </Submenu>
+          <Submenu name="2">
+            <template slot="title">
+              <Icon type="ios-keypad"></Icon>
+              房源推荐
+            </template>
+            <router-link to="/recommendation/housingPreference">
+              <MenuItem name="2-1">住房推荐</MenuItem>
+            </router-link>
+            <router-link to="/recommendation/factor">
+              <MenuItem name="2-2">住房选择</MenuItem>
+            </router-link>
+          </Submenu>
+
+          <Submenu name="3">
+            <template slot="title">
+              <Icon type="ios-navigate"></Icon>
+              信息查询
+            </template>
+            <MenuItem name="3-1">
+            <span @click="siteSelect">条件选房</span>
             </MenuItem>
-            <MenuItem name="1-2">
-            <span>Option 3</span>
-            </MenuItem>
-            <MenuItem name="1-3">
-            <Icon type="ios-settings"></Icon>
-            <span>Option 3</span>
+            <Submenu name="3-1-1">
+              <template slot="title">
+                数据统计
+              </template>
+              <MenuItem name="3-1-1-1">
+              <span @click="selectHouse() ">公共设施</span>
+              </MenuItem>
+              <MenuItem name="3-1-1-2">
+              <span @click="selectBuffer() ">缓冲区分析</span>
+              </MenuItem>
+            </Submenu>
+            <MenuItem name="3-3">
+            <span @click="controlAnlayse">周边设施</span>
             </MenuItem>
           </Submenu>
-        </Menu>
-        <!-- <MenuItem name="1-4">
-        <Icon @click.native="collapsedSider" :class="rotateIcon" :style="{margin: '0 20px'}" type="md-menu" size="24"></Icon>
-        <span>Option 4</span>
-        </MenuItem> -->
+          <!-- <router-link to="/infoSearch">
+              <MenuItem name="4-1">
+                <Icon type="ios-navigate"></Icon>
+                <span>信息查询</span>
+              </MenuItem>
+            </router-link> -->
+          <router-link to="/userManager">
+            <MenuItem name="4-1">
+            <Icon type="ios-navigate"></Icon>
+            <span>用户管理</span>
+            </MenuItem>
+          </router-link>
+          <router-link to="/personalcenter">
+            <MenuItem name="5-1">
+            <Icon type="ios-navigate"></Icon>
+            <span>个人中心</span>
+            </MenuItem>
+          </router-link>
+          <Submenu name="6">
+            <template slot="title">
+              <Icon type="ios-navigate"></Icon>
+              用户手册
+            </template>
+            <router-link to="/auDecision/usersManual">
+              <MenuItem name="6-1">用户手册</MenuItem>
+            </router-link>
+            <router-link to="/auDecision/livablemodel">
+              <MenuItem name="6-2">宜居模型</MenuItem>
+            </router-link>
+            <router-link to="/auDecision/model">
+              <MenuItem name="6-3">引力模型</MenuItem>
+            </router-link>
+          </Submenu>
         </Menu>
       </Sider>
       <Content>
@@ -48,6 +93,24 @@
             <BreadcrumbItem v-for="(item,idx) in $route.matched" :key="idx" :to="(item.path)">{{item.name}}</BreadcrumbItem>
           </Breadcrumb>
         </Header>
+        <siteSelection v-if="site " v-on:change="getfalse($event) " :site="site " />
+        <tool-form/>
+        <buffer/>
+        <Modal v-model="dialog3" :mask-closable="false" width="400" title="周边设施" draggable>
+          <Form :label-width="60">
+            <FormItem label="小区名：" prop="zoning">
+              <Input v-model="houseTitle" placeholder="" clearable></Input>
+            </FormItem>
+            <FormItem label="周边设施" prop="zoning">
+              <Select v-model="publicsheshi">
+                <Option v-for="item in orderList" :value="item.type" :key="item.name">{{ item.name }}</Option>
+              </Select>
+            </FormItem>
+          </Form>
+          <div slot="footer">
+            <Button type="primary" size="large" long @click="gethousePoint">查询</Button>
+          </div>
+        </Modal>
         <router-view/>
       </Content>
     </Layout>
@@ -247,6 +310,7 @@ export default {
 };
 </script>
 <style lang="less" scoped>
+
 .ivu-form-item {
   margin-bottom: 12px;
   vertical-align: top;
@@ -307,4 +371,54 @@ export default {
   vertical-align: middle;
   font-size: 22px;
 }
+.layout {
+  border: 1px solid #d7dde4;
+  background: #f5f7f9;
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.layout-header-bar {
+  background: #fff;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+.layout-logo-left {
+  width: 90%;
+  height: 30px;
+  background: #5b6270;
+  border-radius: 3px;
+  margin: 15px auto;
+}
+.menu-icon {
+  transition: all 0.3s;
+}
+.rotate-icon {
+  transform: rotate(-90deg);
+}
+.menu-item span {
+  display: inline-block;
+  overflow: hidden;
+  width: 69px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  vertical-align: bottom;
+  transition: width 0.2s ease 0.2s;
+}
+.menu-item i {
+  transform: translateX(0px);
+  transition: font-size 0.2s ease, transform 0.2s ease;
+  vertical-align: middle;
+  font-size: 16px;
+}
+.collapsed-menu span {
+  width: 0px;
+  transition: width 0.2s ease;
+}
+.collapsed-menu i {
+  transform: translateX(5px);
+  transition: font-size 0.2s ease 0.2s, transform 0.2s ease 0.2s;
+  vertical-align: middle;
+  font-size: 22px;
+}
+
 </style>
