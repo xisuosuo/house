@@ -68,11 +68,11 @@
         <!--</Menu>-->
       <!--</Sider>-->
     <Sider ref="side1" hide-trigger collapsible :collapsed-width="78" v-model="isCollapsed">
-      <Menu active-name="1-2" theme="dark" width="auto" :open-names="['1']">
+      <Menu active-name="" theme="dark" width="auto" :open-names="['']">
           <Submenu name="1">
             <template slot="title">
               <Icon type="ios-navigate"></Icon>
-              数据查询
+              数据展示
             </template>
             <router-link to="/data">
             <MenuItem name="1-1">数据统计</MenuItem>
@@ -86,17 +86,46 @@
               <Icon type="ios-keypad"></Icon>
              房源推荐
             </template>
-            <MenuItem name="2-1">Option 1</MenuItem>
-            <MenuItem name="2-2">Option 2</MenuItem>
+            <router-link to="/recommendation/housingPreference">
+            <MenuItem name="2-1">住房推荐</MenuItem>
+            </router-link>
+              <router-link to="/recommendation/factor">
+              <MenuItem name="2-2">住房选择</MenuItem>
+              </router-link>
           </Submenu>
-          <Submenu name="3">
-            <template slot="title">
-              <Icon type="ios-analytics"></Icon>
-            用户管理
-            </template>
-            <MenuItem name="3-1">Option 1</MenuItem>
-            <MenuItem name="3-2">Option 2</MenuItem>
-          </Submenu>
+            <router-link to="/infoSearch">
+              <MenuItem name="4-1">
+                <Icon type="ios-navigate"></Icon>
+                <span>信息查询</span>
+              </MenuItem>
+            </router-link>
+        <router-link to="/userManager">
+        <MenuItem name="4-1">
+          <Icon type="ios-navigate"></Icon>
+          <span>用户管理</span>
+        </MenuItem>
+        </router-link>
+        <router-link to="/personalcenter">
+          <MenuItem name="5-1">
+            <Icon type="ios-navigate"></Icon>
+            <span>个人中心</span>
+          </MenuItem>
+        </router-link>
+        <Submenu name="6">
+          <template slot="title">
+            <Icon type="ios-navigate"></Icon>
+            用户手册
+          </template>
+          <router-link to="/auDecision/usersManual">
+            <MenuItem name="6-1">用户手册</MenuItem>
+          </router-link>
+          <router-link to="/auDecision/livablemodel">
+            <MenuItem name="6-2">宜居模型</MenuItem>
+          </router-link>
+          <router-link to="/auDecision/model">
+            <MenuItem name="6-3">引力模型</MenuItem>
+          </router-link>
+        </Submenu>
         </Menu>
       </Sider>
       <Content>
