@@ -1,73 +1,7 @@
 <template>
   <div>
-
-    <!-- <Sider hide-trigger :width="70">
-      <div class="layout-menu">
-        <ul>
-          <router-link to="/menu">
-            <li class="menu-home">
-              <a>
-                <span class="icon-home"></span>
-              </a>
-            </li>
-          </router-link>
-          <router-link to="/data">
-            <li class="menu-item">
-              <a class="nav-item">
-                <div class="icon-wrap">
-                  <span class="menu-icon icon-database"></span>
-                </div>
-                <div class="div-label">
-                  <span>数据台账</span>
-                </div>
-              </a>
-            </li>
-          </router-link>
-          <router-link to="/data/dataDeatils">
-            <li class="menu-item">
-              <a class="nav-item">
-                <div class="icon-wrap">
-                  <span class="menu-icon icon-ctxtjh"></span>
-                </div>
-                <div class="div-label">
-                  <span>数据统计</span>
-                </div>
-              </a>
-            </li>
-          </router-link>
-        </ul>
-      </div>
-    </Sider> -->
     <Layout :style="{height:'100%'}">
-      <!--<Sider ref="side1" hide-trigger collapsible :collapsed-width="78" v-model="isCollapsed">-->
-        <!--<Menu  theme="dark" width="auto" :class="menuitemClasses">-->
-
-          <!--<router-link to="/menu">-->
-          <!--<MenuItem name="1-1">-->
-          <!--<Icon type="ios-navigate"></Icon>-->
-          <!--<span>首页</span>-->
-          <!--</MenuItem>-->
-            <!--<MenuItem name="1-1">Option 1</MenuItem>-->
-            <!--<MenuItem name="1-2">Option 2</MenuItem>-->
-            <!--<MenuItem name="1-3">Option 3</MenuItem>-->
-          <!--</router-link>-->
-
-          <!--<router-link to="/data">-->
-            <!--<MenuItem name="1-2">-->
-          <!--<Icon type="ios-search"></Icon>-->
-          <!--<span>数据查询</span>-->
-          <!--</MenuItem>-->
-          <!--</router-link>-->
-
-          <!--<router-link to="/data/dataDeatils">-->
-          <!--<MenuItem name="1-3">-->
-          <!--<Icon type="ios-settings"></Icon>-->
-          <!--<span>数据统计</span>-->
-          <!--</MenuItem>-->
-          <!--</router-link>-->
-        <!--</Menu>-->
-      <!--</Sider>-->
-    <Sider ref="side1" hide-trigger collapsible :collapsed-width="78" v-model="isCollapsed">
+    <Sider ref="side1" :width='180'>
       <Menu active-name="" theme="dark" width="auto" :open-names="['']">
         <router-link to="/menu">
         <MenuItem name="7-1">
@@ -137,7 +71,7 @@
       <Content>
         <Header :style="{padding: 0}" class="layout-header-bar">
           <Breadcrumb>
-            <Icon @click.native="collapsedSider" :class="rotateIcon" :style="{margin: '0 5px'}" type="md-menu" size="25"></Icon>
+            <Icon :class="rotateIcon" :style="{margin: '0 5px'}" type="md-menu" size="25"></Icon>
             <BreadcrumbItem v-for="(item,idx) in $route.matched" :key="idx" :to="(item.path)">{{item.name}}</BreadcrumbItem>
           </Breadcrumb>
         </Header>
@@ -170,9 +104,6 @@ export default {
       this.path = this.$route.matched;
       console.log(this.path);
     },
-    collapsedSider() {
-      this.$refs.side1.toggleCollapse();
-    }
   }
 };
 </script>
