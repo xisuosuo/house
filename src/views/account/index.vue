@@ -69,12 +69,6 @@
       <!--</Sider>-->
     <Sider ref="side1" hide-trigger collapsible :collapsed-width="78" v-model="isCollapsed">
       <Menu active-name="" theme="dark" width="auto" :open-names="['']">
-        <router-link to="/menu">
-        <MenuItem name="7-1">
-          <Icon type="ios-navigate"></Icon>
-             <span>首页</span>
-          </MenuItem>
-        </router-link>
           <Submenu name="1">
             <template slot="title">
               <Icon type="ios-navigate"></Icon>
