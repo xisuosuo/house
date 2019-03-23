@@ -36,7 +36,8 @@ export const services = {
   getSimilarUserInfo: `http://${IP}/chzuHouse/passiveRecommended/getSimilarUserInfo`,
   preserve: `http://${IP}/chzuHouse/user/updateUserInfo`,
   getcomments: `http://${IP}/chzuHouse/user/commentsHouse`,
-  addHouseComments:`http://${IP}/chzuHouse/user/addHouseComments`,
-  personalComments:`http://${IP}/chzuHouse/user/userHouseComments`,
-  delUserComments:`http://${IP}//chzuHouse/user/delUserComments`
+  addHouseComments: `http://${IP}/chzuHouse/user/addHouseComments`,
+  personalComments: `http://${IP}/chzuHouse/user/userHouseComments`,
+  delUserComments: `http://${IP}//chzuHouse/user/delUserComments`,
+  recommendedBaseOnHouse: `http://${IP}//chzuHouse/passiveRecommended/recommendedBaseOnHouse`
 };
