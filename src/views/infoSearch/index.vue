@@ -3,6 +3,12 @@
     <Layout :style="{height:'100%'}">
       <Sider ref="side1" :width='180'>
         <Menu active-name="" theme="dark" width="auto" :open-names="['']">
+          <router-link to="/menu">
+            <MenuItem name="8-1">
+            <Icon type="ios-navigate"></Icon>
+            <span>首页</span>
+            </MenuItem>
+          </router-link>
           <Submenu name="1">
             <template slot="title">
               <Icon type="ios-navigate"></Icon>
@@ -310,7 +316,6 @@ export default {
 };
 </script>
 <style lang="less" scoped>
-
 .ivu-form-item {
   margin-bottom: 12px;
   vertical-align: top;
@@ -421,5 +426,4 @@ export default {
   vertical-align: middle;
   font-size: 22px;
 }
-
 </style>
