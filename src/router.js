@@ -20,10 +20,10 @@ export default new Router({
         auth: false,
       }
     },
-    {
-      path: '/test',
-      component: test,
-    },
+    // {
+    //   path: '/test',
+    //   component: test,
+    // },
     {
       path: '/main',
       component: main,

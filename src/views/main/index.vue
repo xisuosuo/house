@@ -63,8 +63,8 @@
           </Col>
         </Row>
       </Header>
-      <Content :style="{minHeight: 'w_height-55', background: '#fff'}">
-        <router-view v-if="isRouterAlive" />
+      <Content :style="{minHeight: 'w_height-55', margin: '55px 0px 0px 0px', background: '#fff'}">
+        <router-view />
       </Content>
     </Layout>
   </div>

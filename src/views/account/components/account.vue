@@ -1,6 +1,6 @@
 <template>
     <Content>
-        <div class="data-view" style="margin-top: 55px;overflow: hidden;">
+        <div class="data-view" style="overflow: hidden;">
             <div title="数据台账">
                 <div class="group-panel-box blue">
                     <div class="panel-title">数据台账</div>
