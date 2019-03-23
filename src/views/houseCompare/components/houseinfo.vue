@@ -220,7 +220,7 @@
               <strong>相似小区:</strong>
             </span>
             <div class="map" style="height: 200px;width: 100%;">
-              <div v-for="(value,index) in BaseOnHouse" :key="index">
+              <div v-for="(value,index) in BaseOnHouse" :key="index" @click="onHouseclick">
                 <Col span="4">
                 <img style="width: 200px;height: 160px;margin: 5px" v-bind:src="value.image" alt="">
                 <strong>
@@ -322,6 +322,10 @@ export default {
     }
   },
   methods: {
+    onHouseclick() {
+      debugger
+      // this.$router.push("/houseinfo");
+    },
     onItemClick(data) {
       for (var i = 0, g; (g = window.mapview.graphics.items[i]); i++) {
         if (g.attributes.id === data.pIndex) {
