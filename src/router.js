@@ -112,7 +112,7 @@ export default new Router({
         {
           path: '/infoSearch',
           name: '信息查询',
-          redirect: '/',
+          // redirect: '/',
           component: () =>
             import('@/views/infoSearch/index.vue'),
           children: [{
@@ -123,17 +123,17 @@ export default new Router({
               },
               component: () =>
                 import('@/views/infoSearch/home/index.vue')
-            },
-            {
-              path: '/infoSearch/infoDeatil',
-              name: '详细查询',
-              meta: {
-                auth: true
-              },
-              component: () =>
-                import('@/views/infoSearch/home')
-            },
-          ]
+            }]
+          //   {
+          //     path: '/infoSearch/infoDeatil',
+          //     name: '详细查询',
+          //     meta: {
+          //       auth: true
+          //     },
+          //     component: () =>
+          //       import('@/views/infoSearch/home')
+          //   },
+          // ]
         },
         {
           path: '/3dmap',
