@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="layout">
     <Layout :style="{height:'100%'}">
       <Sider ref="side1" :width='180'>
         <Menu active-name="" theme="dark" width="auto" :open-names="['']">
@@ -323,6 +323,7 @@ export default {
   padding-left: 28px;
 }
 .layout {
+  height: 800px;
   border: 1px solid #d7dde4;
   background: #f5f7f9;
   position: relative;
