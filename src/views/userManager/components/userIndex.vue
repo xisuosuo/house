@@ -1,5 +1,5 @@
 <template>
-  <div class="page-style">
+  <div class="page-style" style="margin: 10px">
     <div class="userHeader">
       <span style="margin-left:5px">账号：</span>
       <Input class="control search-input-default" style="width: 200px" clearable v-model="username" @on-enter="onSearch" />
@@ -244,7 +244,7 @@ export default {
 <style lang="less" scoped>
 .userHeader {
   height: 50px;
-  margin-top: 70px;
+  margin-top: 15px;
 }
 .search-input-default {
   margin-right: 10px;
