@@ -1,5 +1,5 @@
 <template>
-    <Layout :height="w_height-55">
+    <!-- <Layout :height="w_height-55">
         <Sider hide-trigger :width="70">
             <div class="layout-menu">
                 <ul>
@@ -10,16 +10,6 @@
                             </a>
                         </li>
                     </router-link>
-                    <!-- <li class="menu-item" @click="siteSelect">
-                        <a class="nav-item">
-                            <div class="icon-wrap">
-                                <span class="menu-icon icon-collision"></span>
-                            </div>
-                            <div class="div-label">
-                                <span>条件选房</span>
-                            </div>
-                        </a>
-                    </li> -->
                     <router-link to="/compare">
                         <li class="menu-item">
                             <a class="nav-item">
@@ -48,10 +38,48 @@
         </Sider>
         <Content>
             <!-- <siteSelection v-if="site" v-on:change="getfalse($event)" :site="site" /> -->
-            <MapView v-if="map"></MapView>
+    <!-- <MapView v-if="map"></MapView>
             <Calculator></Calculator>
-        </Content>
-    </Layout>
+        </Content> -->
+    <!-- </Layout> -->
+    <div>
+        <Layout :style="{height:'100%'}">
+            <Sider ref="side1" hide-trigger collapsible :collapsed-width="78" v-model="isCollapsed">
+                <Menu active-name="1-2" theme="dark" width="auto" :class="menuitemClasses">
+                    <router-link to="/data/dataDeatils">
+                        <MenuItem name="1-1">
+                        <Icon type="ios-navigate"></Icon>
+                        <span>Option 1</span>
+                        </MenuItem>
+                    </router-link>
+                    <MenuItem name="1-2">
+                    <Icon type="ios-search"></Icon>
+                    <span>Option 2</span>
+                    </MenuItem>
+                    <MenuItem name="1-3">
+                    <Icon type="ios-settings"></Icon>
+                    <span>Option 3</span>
+                    </MenuItem>
+                </Menu>
+                <!-- <MenuItem name="1-4">
+        <Icon @click.native="collapsedSider" :class="rotateIcon" :style="{margin: '0 20px'}" type="md-menu" size="24"></Icon>
+        <span>Option 4</span>
+        </MenuItem> -->
+                </Menu>
+            </Sider>
+
+            <Content>
+                <Header :style="{padding: 0}" class="layout-header-bar">
+                    <Breadcrumb>
+                        <Icon @click.native="collapsedSider" :class="rotateIcon" :style="{margin: '0 5px'}" type="md-menu" size="25"></Icon>
+                        <BreadcrumbItem v-for="(item,idx) in $route.matched" :key="idx" :to="(item.path)">{{item.name}}</BreadcrumbItem>
+                    </Breadcrumb>
+                </Header>
+                <router-view/>
+            </Content>
+        </Layout>
+    </div>
+
 </template>
 <script>
 import Calculator from "./components/Calculator";

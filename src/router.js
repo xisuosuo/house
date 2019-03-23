@@ -26,7 +26,6 @@ export default new Router({
     // },
     {
       path: '/main',
-      name: '首页',
       component: main,
       children: [{
           path: '/',
