@@ -155,7 +155,7 @@ export default {
 
 <style lang="less" scoped>
 .layout {
-  border: 1px solid #d7dde4;
+//   border: 1px solid #d7dde4;
   background: #f5f7f9;
   position: relative;
   border-radius: 4px;
