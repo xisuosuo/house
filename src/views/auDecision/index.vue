@@ -1,64 +1,72 @@
 <template>
     <Layout>
-        <Sider hide-trigger :width="70">
-            <div class="layout-menu">
-                <ul>
-                    <router-link to="/menu">
-                        <li class="menu-home">
-                            <a>
-                                <span class="icon-home"></span>
-                            </a>
-                        </li>
-                    </router-link>
-                    <router-link to="/auDecision/usersManual">
-                        <li class="menu-item">
-                            <a class="nav-item">
-                                <div class="icon-wrap">
-                                    <span class="menu-icon icon-chart"></span>
-                                </div>
-                                <div class="div-label">
-                                    <span>用户手册</span>
-                                </div>
-                            </a>
-                        </li>
-                    </router-link>
-                    <router-link to="/auDecision/livablemodel">
-                        <li class="menu-item">
-                            <a class="nav-item">
-                                <div class="icon-wrap">
-                                    <span class="menu-icon icon-chart"></span>
-                                </div>
-                                <div class="div-label">
-                                    <span>宜居模型</span>
-                                </div>
-                            </a>
-                            <ul class="sub-menu-item">
-                                <li>
-                                    <a @click="openCompare()">房源对比</a>
-                                </li>
-                                <li>
-                                    <router-link to="/auDecision/livablemodel">
-                                        模型介绍
-                                    </router-link>
-                                </li>
-                            </ul>
-                        </li>
-                    </router-link>
-                    <router-link to="/auDecision/model">
-                        <li class="menu-item">
-                            <a class="nav-item">
-                                <div class="icon-wrap">
-                                    <span class="menu-icon icon-xmsc"></span>
-                                </div>
-                                <div class="div-label">
-                                    <span>引力模型</span>
-                                </div>
-                            </a>
-                        </li>
-                    </router-link>
-                </ul>
-            </div>
-        </Sider>
+            <Sider ref="side1" :width='180'>
+      <Menu active-name="" theme="dark" width="auto" :open-names="['']">
+        <router-link to="/menu">
+          <MenuItem name="8-1">
+            <Icon type="ios-navigate"></Icon>
+            <span>首页</span>
+          </MenuItem>
+        </router-link>
+        <Submenu name="1">
+            <template slot="title">
+              <Icon type="ios-navigate"></Icon>
+              数据展示
+            </template>
+            <router-link to="/data">
+            <MenuItem name="1-1">数据统计</MenuItem>
+            </router-link>
+            <router-link to="/data/dataDeatils">
+            <MenuItem name="1-2">数据查询</MenuItem>
+            </router-link>
+          </Submenu>
+          <Submenu name="2">
+            <template slot="title">
+              <Icon type="ios-keypad"></Icon>
+             房源推荐
+            </template>
+            <router-link to="/recommendation/housingPreference">
+            <MenuItem name="2-1">住房推荐</MenuItem>
+            </router-link>
+              <router-link to="/recommendation/factor">
+              <MenuItem name="2-2">住房选择</MenuItem>
+              </router-link>
+          </Submenu>
+            <router-link to="/infoSearch">
+              <MenuItem name="4-1">
+                <Icon type="ios-navigate"></Icon>
+                <span>信息查询</span>
+              </MenuItem>
+            </router-link>
+        <router-link to="/userManager">
+        <MenuItem name="4-1">
+          <Icon type="ios-navigate"></Icon>
+          <span>用户管理</span>
+        </MenuItem>
+        </router-link>
+        <router-link to="/personalcenter">
+          <MenuItem name="5-1">
+            <Icon type="ios-navigate"></Icon>
+            <span>个人中心</span>
+          </MenuItem>
+        </router-link>
+        <Submenu name="6">
+          <template slot="title">
+            <Icon type="ios-navigate"></Icon>
+            用户手册
+          </template>
+          <router-link to="/auDecision/usersManual">
+            <MenuItem name="6-1">用户手册</MenuItem>
+          </router-link>
+          <router-link to="/auDecision/livablemodel">
+            <MenuItem name="6-2">宜居模型</MenuItem>
+          </router-link>
+          <router-link to="/auDecision/model">
+            <MenuItem name="6-3">引力模型</MenuItem>
+          </router-link>
+        </Submenu>
+        </Menu>
+      </Sider>
         <Content>
             <houseCompare></houseCompare>
             <router-view/>
