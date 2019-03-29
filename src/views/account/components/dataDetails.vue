@@ -25,7 +25,7 @@
                 columns5: [
                     {
                         title: '小区',
-                        key: 'houseName',
+                        key: 'name',
                         align:'center'
                     },
                     {
