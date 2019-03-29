@@ -1,8 +1,8 @@
 <template>
-  <div>
+  <div style="overflow-y: hidden;">
     <Row>
       <Col span="18">
-     <div class="map" style="height: 1000px;width: 100%;"> 
+     <div class="map" style="height: 670px;width: 100%;">
         <smallMapView></smallMapView>
     </div>
       </Col>
@@ -34,8 +34,6 @@
             </Badge>
             <img title="我的收藏夹" @click="jumpCollect" src="../../assets/img/sumcollect.png" alt="" style="float: right;height: 20px;width: 20px;margin-top: 7px;margin-right: 10px">
           </div>
-        </div>
-        <div class="list-wrap">
         </div>
         <div class="list-wrap3" style="overflow: auto;height:580px">
           <choice v-if="showChoice" />
@@ -532,7 +530,7 @@ ul {
   position: absolute;
   left: 0;
   right: 0;
-  top: 142px;
+  top: 87px;
   bottom: 0;
   height: 675px;
   background: #fff;
