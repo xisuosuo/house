@@ -15,11 +15,11 @@ export default new Router({
     {
       path: '/login',
       component: login,
-
       meta: {
         auth: false,
       }
     },
+
     // {
     //   path: '/test',
     //   component: test,
@@ -31,6 +31,12 @@ export default new Router({
           path: '/',
           redirect: "/menu",
           name: '首页',
+        },
+        {
+          path: '/mapMatching',
+          name: '地图匹配',
+          component: () =>
+            import('@/views/recommendation/mapMatching.vue'),
         },
         {
           name: "可达性数据",
@@ -178,20 +184,7 @@ export default new Router({
               import('@/views/recommendation/recommendHousing.vue'),
           }, ]
         },
-        {
-          path: '/mapMatching',
-          redirect: '/',
-          name: '地图匹配',
-          component: () =>
-            import('@/views/recommendation/mapMatching.vue'),
-          children: [{
-            path: '/',
 
-            name: '地图匹配',
-            component: () =>
-              import('@/views/recommendation/mapMatching.vue')
-          }, ]
-        },
         {
           path: '/periphery',
           redirect: '/',
@@ -293,7 +286,7 @@ export default new Router({
               import('@/views/userManager/components/userIndex.vue'),
           }, ]
         }
- 
+
       ]
     }
   ]
