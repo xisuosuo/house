@@ -9,18 +9,6 @@
                         <span>首页</span>
                         </MenuItem>
                     </router-link>
-                    <Submenu name="1">
-                        <template slot="title">
-                            <Icon type="ios-navigate"></Icon>
-                            数据展示
-                        </template>
-                        <router-link to="/data">
-                            <MenuItem name="1-1">数据统计</MenuItem>
-                        </router-link>
-                        <router-link to="/data/dataDeatils">
-                            <MenuItem name="1-2">数据查询</MenuItem>
-                        </router-link>
-                    </Submenu>
                     <Submenu name="2">
                         <template slot="title">
                             <Icon type="ios-keypad"></Icon>
@@ -33,28 +21,39 @@
                             <MenuItem name="2-2">住房选择</MenuItem>
                         </router-link>
                     </Submenu>
+                    <Submenu name="1">
+                        <template slot="title">
+                            <Icon type="md-analytics" /> 数据展示
+                        </template>
+                        <router-link to="/data">
+                            <MenuItem name="1-1">数据统计</MenuItem>
+                        </router-link>
+                        <router-link to="/data/dataDeatils">
+                            <MenuItem name="1-2">数据查询</MenuItem>
+                        </router-link>
+                    </Submenu>
+
                     <router-link to="/infoSearch">
                         <MenuItem name="4-1">
-                        <Icon type="ios-navigate"></Icon>
+                        <Icon type="md-search" />
                         <span>信息查询</span>
                         </MenuItem>
                     </router-link>
                     <router-link to="/userManager">
                         <MenuItem name="4-1">
-                        <Icon type="ios-navigate"></Icon>
+                        <Icon type="md-contact" />
                         <span>用户管理</span>
                         </MenuItem>
                     </router-link>
                     <router-link to="/personalcenter">
                         <MenuItem name="5-1">
-                        <Icon type="ios-navigate"></Icon>
+                        <Icon type="md-person" />
                         <span>个人中心</span>
                         </MenuItem>
                     </router-link>
                     <Submenu name="6">
                         <template slot="title">
-                            <Icon type="ios-navigate"></Icon>
-                            用户手册
+                            <Icon type="md-paper" /> 用户手册
                         </template>
                         <router-link to="/auDecision/usersManual">
                             <MenuItem name="6-1">用户手册</MenuItem>
@@ -156,7 +155,7 @@ export default {
 //   /*background: url(../../assets/img/house.jpg)  no-repeat ;*/
 // }
 .layout {
-  border: 1px solid #d7dde4;
+//   border: 1px solid #d7dde4;
   background: #f5f7f9;
   position: relative;
   border-radius: 4px;

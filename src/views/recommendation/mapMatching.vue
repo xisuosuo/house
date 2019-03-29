@@ -4,7 +4,7 @@
       <Col span="18">
      <div class="map" style="height: 670px;width: 100%;">
         <smallMapView></smallMapView>
-    </div>
+      </div>
       </Col>
       <Col span="6">
       <div class="aside">
@@ -117,14 +117,14 @@ import compareHouseOne from "@/vuex/store";
 import compareHouseTwo from "@/vuex/store";
 import compareHouseThree from "@/vuex/store";
 import compareHouseFour from "@/vuex/store";
-import Add from  "@/views/main/index.vue";
+import Add from "@/views/main/index.vue";
 
 export default {
   mounted() {
     // setTimeout(() => {
     //   this.getdata();
     // }, 100);
-     this.getdata();
+    this.getdata();
     setTimeout(() => {
       this.showGraphics();
     }, 3000);
@@ -242,7 +242,7 @@ export default {
     getdata() {
       debugger;
       var self = this;
-      this.map=true;
+      this.map = true;
       Server.get({
         url: services.getrecommendHouse
       }).then(function(rsp) {
