@@ -113,7 +113,7 @@ export default new Router({
             import('@/views/infoSearch/index.vue'),
           children: [{
             path: '/',
-            name: '信息查询',
+            name: '基础信息查询',
             meta: {
               auth: true
             },
@@ -265,6 +265,7 @@ export default new Router({
             import('@/views/userManager/index.vue'),
           children: [{
             path: '/',
+            name: '用户信息管理',
             meta: {
               auth: true
             },
