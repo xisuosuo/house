@@ -8,10 +8,15 @@
                         <span>首页</span>
                     </MenuItem>
                 </router-link>
+                <router-link to="/personalcenter">
+                    <MenuItem name="5-1">
+                        <Icon type="md-person" />
+                        <span>个人中心</span>
+                    </MenuItem>
+                </router-link>
                 <Submenu name="1">
                     <template slot="title">
-                        <Icon type="ios-navigate"></Icon>
-                        数据展示
+                        <Icon type="md-analytics" /> 数据展示
                     </template>
                     <router-link to="/data">
                         <MenuItem name="1-1">数据统计</MenuItem>
@@ -34,31 +39,25 @@
                 </Submenu>
                 <router-link to="/infoSearch">
                     <MenuItem name="4-1">
-                        <Icon type="ios-navigate"></Icon>
+                        <Icon type="md-search" />
                         <span>信息查询</span>
                     </MenuItem>
                 </router-link>
                 <router-link to="/userManager">
                     <MenuItem name="4-1">
-                        <Icon type="ios-navigate"></Icon>
+                        <Icon type="md-contact" />
                         <span>用户管理</span>
                     </MenuItem>
                 </router-link>
-                <router-link to="/personalcenter">
-                    <MenuItem name="5-1">
-                        <Icon type="ios-navigate"></Icon>
-                        <span>个人中心</span>
-                    </MenuItem>
-                </router-link>
+
                 <Submenu name="6">
                     <template slot="title">
-                        <Icon type="ios-navigate"></Icon>
-                        用户手册
+                        <Icon type="md-paper" /> 用户手册
                     </template>
                     <router-link to="/auDecision/usersManual">
                         <MenuItem name="6-1">用户手册</MenuItem>
                     </router-link>
-                    <router-link to="/auDecision/livablemodel">
+                    <router-link to="/auDecisionvablemodel">
                         <MenuItem name="6-2">宜居模型</MenuItem>
                     </router-link>
                     <router-link to="/auDecision/model">
@@ -67,6 +66,7 @@
                 </Submenu>
             </Menu>
         </Sider>
+
         <Content>
             <Header :style="{padding: 0}" class="layout-header-bar">
                 <Breadcrumb>
