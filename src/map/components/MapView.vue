@@ -170,7 +170,7 @@ export default {
                 dom,
                 on
               ]) => {
-                esriConfig.request.corsEnabledServers.push("192.168.1.102/");
+                // esriConfig.request.corsEnabledServers.push("192.168.1.102/");
 
                 var activeWidget = null;
                 var layer = new TileLayer({
@@ -245,9 +245,7 @@ export default {
 </script>
 
 <style >
-.esri-component esri-layer-list esri-widget esri-widget--panel {
-  display: none;
-}
+
 .main .container-fluid {
   padding: 0 0px;
 }

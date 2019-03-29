@@ -11,7 +11,7 @@
       <div class="wrapper">
         <div class="logo">
           <img src="../../assets/img/logo/gh_logo.png" width="60" />
-          <span class="title">滁州市“商品住宅选择推荐 ”系统
+          <span class="title">城市商品住宅选择推荐系统（“购房无忧”）
           </span>
         </div>
       </div>

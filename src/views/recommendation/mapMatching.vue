@@ -2,9 +2,9 @@
   <div>
     <Row>
       <Col span="18">
-      <div class="map" style="height: 100%;width: 100%;">
-        <smallMapView v-if="map"></smallMapView>
-      </div>
+     <div class="map" style="height: 1000px;width: 100%;"> 
+        <smallMapView></smallMapView>
+    </div>
       </Col>
       <Col span="6">
       <div class="aside">
@@ -112,7 +112,6 @@ import recommendHose from "./components/recommendHose.vue";
 import choice from "./components/choice.vue";
 import Server from "@/core/server";
 import { services } from "@/core/config/services";
-// import userMessage from "@/vuex/store";
 import aroundInfo from "@/vuex/store";
 import housueName from "@/vuex/store";
 import housePoint from "@/vuex/store";
@@ -120,14 +119,14 @@ import compareHouseOne from "@/vuex/store";
 import compareHouseTwo from "@/vuex/store";
 import compareHouseThree from "@/vuex/store";
 import compareHouseFour from "@/vuex/store";
-// import Add from  "@/views/main/index.vue";
+import Add from  "@/views/main/index.vue";
 
 export default {
   mounted() {
     // setTimeout(() => {
     //   this.getdata();
     // }, 100);
-    this.getdata();
+     this.getdata();
     setTimeout(() => {
       this.showGraphics();
     }, 3000);
@@ -245,6 +244,7 @@ export default {
     getdata() {
       debugger;
       var self = this;
+      this.map=true;
       Server.get({
         url: services.getrecommendHouse
       }).then(function(rsp) {
