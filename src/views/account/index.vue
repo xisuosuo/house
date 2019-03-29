@@ -11,7 +11,7 @@
         </router-link>
         <Submenu name="1">
             <template slot="title">
-              <Icon type="ios-navigate"></Icon>
+              <Icon type="md-analytics" />
               数据展示
             </template>
             <router-link to="/data">
@@ -35,25 +35,25 @@
           </Submenu>
             <router-link to="/infoSearch">
               <MenuItem name="4-1">
-                <Icon type="ios-navigate"></Icon>
+                <Icon type="md-search" />
                 <span>信息查询</span>
               </MenuItem>
             </router-link>
         <router-link to="/userManager">
         <MenuItem name="4-1">
-          <Icon type="ios-navigate"></Icon>
+          <Icon type="md-contact" />
           <span>用户管理</span>
         </MenuItem>
         </router-link>
         <router-link to="/personalcenter">
           <MenuItem name="5-1">
-            <Icon type="ios-navigate"></Icon>
+            <Icon type="md-person" />
             <span>个人中心</span>
           </MenuItem>
         </router-link>
         <Submenu name="6">
           <template slot="title">
-            <Icon type="ios-navigate"></Icon>
+            <Icon type="md-paper" />
             用户手册
           </template>
           <router-link to="/auDecision/usersManual">
