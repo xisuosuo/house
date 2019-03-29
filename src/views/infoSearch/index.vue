@@ -9,10 +9,31 @@
             <span>首页</span>
             </MenuItem>
           </router-link>
+          <Submenu name="3">
+            <template slot="title">
+              <Icon type="md-search" /> 信息查询
+            </template>
+            <MenuItem name="3-1">
+            <span @click="siteSelect">条件选房</span>
+            </MenuItem>
+            <Submenu name="3-1-1">
+              <template slot="title">
+                数据统计
+              </template>
+              <MenuItem name="3-1-1-1">
+              <span @click="selectHouse() ">公共设施</span>
+              </MenuItem>
+              <MenuItem name="3-1-1-2">
+              <span @click="selectBuffer() ">缓冲区分析</span>
+              </MenuItem>
+            </Submenu>
+            <MenuItem name="3-3">
+            <span @click="controlAnlayse">周边设施</span>
+            </MenuItem>
+          </Submenu>
           <Submenu name="1">
             <template slot="title">
-              <Icon type="ios-navigate"></Icon>
-              数据展示
+              <Icon type="md-analytics" /> 数据展示
             </template>
             <router-link to="/data">
               <MenuItem name="1-1">数据统计</MenuItem>
@@ -33,52 +54,21 @@
               <MenuItem name="2-2">住房选择</MenuItem>
             </router-link>
           </Submenu>
-
-          <Submenu name="3">
-            <template slot="title">
-              <Icon type="ios-navigate"></Icon>
-              信息查询
-            </template>
-            <MenuItem name="3-1">
-            <span @click="siteSelect">条件选房</span>
-            </MenuItem>
-            <Submenu name="3-1-1">
-              <template slot="title">
-                数据统计
-              </template>
-              <MenuItem name="3-1-1-1">
-              <span @click="selectHouse() ">公共设施</span>
-              </MenuItem>
-              <MenuItem name="3-1-1-2">
-              <span @click="selectBuffer() ">缓冲区分析</span>
-              </MenuItem>
-            </Submenu>
-            <MenuItem name="3-3">
-            <span @click="controlAnlayse">周边设施</span>
-            </MenuItem>
-          </Submenu>
-          <!-- <router-link to="/infoSearch">
-              <MenuItem name="4-1">
-                <Icon type="ios-navigate"></Icon>
-                <span>信息查询</span>
-              </MenuItem>
-            </router-link> -->
           <router-link to="/userManager">
             <MenuItem name="4-1">
-            <Icon type="ios-navigate"></Icon>
+            <Icon type="md-contact" />
             <span>用户管理</span>
             </MenuItem>
           </router-link>
           <router-link to="/personalcenter">
             <MenuItem name="5-1">
-            <Icon type="ios-navigate"></Icon>
+            <Icon type="md-person" />
             <span>个人中心</span>
             </MenuItem>
           </router-link>
           <Submenu name="6">
             <template slot="title">
-              <Icon type="ios-navigate"></Icon>
-              用户手册
+              <Icon type="md-paper" /> 用户手册
             </template>
             <router-link to="/auDecision/usersManual">
               <MenuItem name="6-1">用户手册</MenuItem>
@@ -343,7 +333,7 @@ export default {
   overflow: hidden;
 }
 .layout-header-bar {
-  background: #FCF9F2;
+  background: #fcf9f2;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
 }
 .layout-logo-left {

@@ -5,14 +5,19 @@
                 <Menu active-name="" theme="dark" width="auto" :open-names="['']">
                     <router-link to="/menu">
                         <MenuItem name="8-1">
-                            <Icon type="ios-navigate"></Icon>
-                            <span>首页</span>
+                        <Icon type="ios-navigate"></Icon>
+                        <span>首页</span>
+                        </MenuItem>
+                    </router-link>
+                    <router-link to="/userManager">
+                        <MenuItem name="4-1">
+                        <Icon type="md-contact" />
+                        <span>用户管理</span>
                         </MenuItem>
                     </router-link>
                     <Submenu name="1">
                         <template slot="title">
-                            <Icon type="ios-navigate"></Icon>
-                            数据展示
+                            <Icon type="md-analytics" /> 数据展示
                         </template>
                         <router-link to="/data">
                             <MenuItem name="1-1">数据统计</MenuItem>
@@ -35,26 +40,20 @@
                     </Submenu>
                     <router-link to="/infoSearch">
                         <MenuItem name="4-1">
-                            <Icon type="ios-navigate"></Icon>
-                            <span>信息查询</span>
+                        <Icon type="md-search" />
+                        <span>信息查询</span>
                         </MenuItem>
                     </router-link>
-                    <router-link to="/userManager">
-                        <MenuItem name="4-1">
-                            <Icon type="ios-navigate"></Icon>
-                            <span>用户管理</span>
-                        </MenuItem>
-                    </router-link>
+
                     <router-link to="/personalcenter">
                         <MenuItem name="5-1">
-                            <Icon type="ios-navigate"></Icon>
-                            <span>个人中心</span>
+                        <Icon type="md-person" />
+                        <span>个人中心</span>
                         </MenuItem>
                     </router-link>
                     <Submenu name="6">
                         <template slot="title">
-                            <Icon type="ios-navigate"></Icon>
-                            用户手册
+                            <Icon type="md-paper" /> 用户手册
                         </template>
                         <router-link to="/auDecision/usersManual">
                             <MenuItem name="6-1">用户手册</MenuItem>
