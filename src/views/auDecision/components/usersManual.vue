@@ -1,4 +1,5 @@
 <template>
+    
     <Card style="margin: 0 auto;margin-top: 55px;width: 80%">
         <h2 style="text-align: center"> 用户手册</h2>
         <h3>欢迎使用滁州市“商品住宅”选择推荐系统</h3>
