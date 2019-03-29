@@ -1,8 +1,7 @@
 <template>
-    
-    <Card style="margin: 0 auto;margin-top: 55px;width: 80%">
+    <Card style="margin: 0 auto;margin-top: 20px;width: 80%">
         <h2 style="text-align: center"> 用户手册</h2>
-        <h3>欢迎使用滁州市“商品住宅”选择推荐系统</h3>
+        <h3>欢迎使用城市商品住宅选择推荐系统（“购房无忧”）</h3>
         <Collapse v-model="value2" accordion>
             <Panel name="1">
                 数据台账
@@ -132,8 +131,6 @@
                 </div>
             </Panel>
         </Collapse>
-
-
     </Card>
 </template>
 

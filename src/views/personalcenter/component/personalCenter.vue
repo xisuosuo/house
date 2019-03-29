@@ -74,7 +74,7 @@
                     <BreadcrumbItem v-for="(item,idx) in $route.matched" :key="idx" :to="(item.path)">{{item.name}}</BreadcrumbItem>
                 </Breadcrumb>
             </Header>
-            <div style="margin: 15px; width: 100%;height: 700px;overflow-y: auto">
+            <div style="margin: 15px; width: 100%;overflow-y: auto">
                 <Row>
                     <Col span="8">
                         <Card>
@@ -136,16 +136,10 @@
                                     <router-link to="/personal">
                                         <Button style="margin-left: 50%">更新基本信息</Button>
                                     </router-link>
-                                    <Button style="margin-left: 50%" @click="personalComments">查看个人评论</Button>
                                 </FormItem>
                             </Form>
                         </Card>
                     </Col>
-                    <Modal v-model="modal2" width="750" title="个人评论记录" @on-ok="ok">
-                        <div>
-                            <Table height="200" stripe :columns="columns2" :data="data2"></Table>
-                        </div>
-                    </Modal>
                     <Col span="16">
                         <Card>
                             <strong>
@@ -156,40 +150,10 @@
                             </div>
                             <Divider dashed="true"/>
                             <strong>
-                                <div>安全设置：</div>
+                                <div>我的评论：</div>
                             </strong>
-                            <div style="font-size: 13px">
-                                <div style="margin-left: 10%">
-                                    <div>账户密码</div>
-                                    <span>当前密码强度：
-                                    <span style="color: green">强</span>
-                                </span>
-                                    <a @click="modal1 = true" name="changePsd"
-                                       style="color: #2d8cf0;float: right">修改密码</a>
-                                    <Modal v-model="modal1" title="修改密码" width="400">
-                                        <change-psd ref="changepsd" @on-modal-close="modal1=false"
-                                                    v-if="modal1"></change-psd>
-                                        <div class="modal-footer" slot="footer" v-if="modal1">
-                                            <Button type="text" @click="onCancel">取消</Button>
-                                            <Button type="primary" @click="onSubmit">确定</Button>
-                                        </div>
-                                    </Modal>
-                                    <Divider dashed="true"/>
-                                </div>
-                                <div style="margin-left: 10%">
-                                    <div>密保手机</div>
-                                    <span>已绑定手机：
-                                    <span>183****6526</span>
-                                </span>
-                                    <a style="color: #2d8cf0;float: right">修改手机</a>
-                                    <Divider dashed="true"/>
-                                </div>
-                                <div style="margin-left: 10%">
-                                    <div>绑定邮箱</div>
-                                    <span>已绑定邮箱：183****6526@qq.com</span>
-                                    <a style="color: #2d8cf0;float: right">修改邮箱</a>
-                                    <Divider dashed="true"/>
-                                </div>
+                            <div>
+                                <Table height="170" width="100%"  stripe :columns="columns2" :data="data2"></Table>
                             </div>
                         </Card>
                     </Col>
@@ -210,28 +174,23 @@
         data() {
             return {
                 modal1: false,
-                modal2: false,
                 columns2: [
                     {
-                        width: 110,
                         align: "center",
                         title: "小区名称",
                         key: "name"
                     },
                     {
-                        width: 246,
                         align: "center",
                         title: "评论内容",
                         key: "houseComments"
                     },
                     {
-                        width: 100,
                         align: "center",
                         title: "分数",
                         key: "houseScore"
                     },
                     {
-                        width: 121,
                         align: "center",
                         title: "评论时间",
                         key: "commentTime"
@@ -239,7 +198,6 @@
                     {
                         title: "操作",
                         key: "action",
-                        width: 140,
                         align: "center",
                         render: (h, params) => {
                             return h("div", [
@@ -347,6 +305,7 @@
         mounted() {
             this.getTable();
             this.getInfo();
+            this.personalComments();
         },
         methods: {
             getInfo() {
@@ -383,8 +342,6 @@
             },
             onRefresh() {
                 this.getTable();
-            },
-            onRefresh1() {
                 this.personalComments();
             },
             onSubmit() {
@@ -395,8 +352,6 @@
             },
             personalComments() {
                 var this_ = this;
-                this.modal2 = true;
-                debugger;
                 var userId = JSON.parse(sessionStorage.getItem("userId"));
                 Server.get({
                     url: services.personalComments,

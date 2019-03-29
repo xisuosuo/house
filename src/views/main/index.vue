@@ -7,7 +7,7 @@
           <Icon type="md-globe" size='40' color='white' />
           </Col>
           <Col span="17">
-          <span style='margin-left: 10px; font-size: 24px;color: white;font-family: sans-serif;'>滁州市“商品住宅”选择推荐系统</span>
+          <span style='margin-left: 10px; font-size: 24px;color: white;font-family: sans-serif;'>城市商品住宅选择推荐系统（“购房无忧”）</span>
           <span class="sub-title">
             <span>({{this.name}})</span>
           </span>
