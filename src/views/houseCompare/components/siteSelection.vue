@@ -191,7 +191,7 @@ export default {
   position: absolute;
   background: white;
   z-index: 1;
-  top: 55px;
+  top: 42px;
   bottom: 0;
   width: 320px;
   border-right: 1px solid #d2d2d2;
