@@ -127,7 +127,7 @@ export default {
       } else {
         this.$Message.warning("用户不是管理员，没有权限使用该功能");
       }
-    }
+    },
   }
 };
 </script>

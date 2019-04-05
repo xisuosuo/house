@@ -6,7 +6,7 @@
         <Row :gutter="30">
           <Col span="8">
           <Card style="width:385px;padding: 0;">
-            <div style="text-align:center">
+            <div  style="text-align:center">
               <img style="width: 350px;height: 250px" v-bind:src="this.information2[0].image" alt="">
               <div style="overflow: hidden">
                 <h2 style="float: left">{{this.information2[0].name}}</h2>
@@ -106,7 +106,7 @@ export default {
     };
   },
   mounted() {
-    // this.getdata();
+    this.getdata();
   },
   methods: {
     getInfo(index, value) {
@@ -144,41 +144,10 @@ export default {
       this.$router.push("/houseinfo");
     },
     getdata() {
-      this.$Spin.show({
-        render: h => {
-          return h("div", [
-            h("Icon", {
-              class: "demo-spin-icon-load",
-              props: {
-                type: "ios-loading",
-                size: 35
-              }
-            }),
-            h(
-              "div",
-              {
-                style: {
-                  fontSize: "20px"
-                }
-              },
-              "正在为您推荐"
-            )
-          ]);
-        }
-      });
-      var this_ = this;
-      var userId = JSON.parse(sessionStorage.getItem("userId"));
-      Server.get({
-        url: services.getSimilarUserInfo,
-        params: {
-          userId: userId
-        }
-      }).then(function(rsp) {
-        if (rsp.status === 1) {
-          this_.information2 = rsp.data;
-          this_.$Spin.hide();
-        }
-      });
+        debugger;
+        var information = JSON.parse(sessionStorage.getItem("information2"));
+        this.information2 = information;
+
     },
     moreInfo() {
       document.getElementById("preference").style.display = "none";
