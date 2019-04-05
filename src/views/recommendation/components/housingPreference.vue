@@ -4,39 +4,19 @@
       <div id="preference" style="margin-left: 5%;display: block">
         <h1 style="text-align: center;margin: 50px;">楼盘推荐</h1>
         <Row :gutter="30">
-          <Col span="8">
-          <Card style="width:385px;padding: 0;">
-            <div  style="text-align:center">
-              <img style="width: 350px;height: 250px" v-bind:src="this.information2[0].image" alt="">
-              <div style="overflow: hidden">
-                <h2 style="float: left">{{this.information2[0].name}}</h2>
-                <span style="float: right">{{this.information2[0].price}}元/㎡</span>
-              </div>
-            </div>
-          </Card>
-          </Col>
-          <Col span="8">
-          <Card style="width:385px;padding: 0;">
-            <div style="text-align:center">
-              <img style="width: 350px;height: 250px" v-bind:src="this.information2[1].image" alt="">
-              <div style="overflow: hidden">
-                <h2 style="float: left">{{this.information2[1].name}}</h2>
-                <span style="float: right">{{this.information2[1].price}}元/㎡</span>
-              </div>
-            </div>
-          </Card>
-          </Col>
-          <Col span="8">
-          <Card style="width:385px;padding: 0;">
-            <div style="text-align:center">
-              <img style="width: 350px;height: 250px" v-bind:src="this.information2[2].image" alt="">
-              <div style="overflow: hidden">
-                <h2 style="float: left">{{this.information2[2].name}}</h2>
-                <span style="float: right">{{this.information2[2].price}}元/㎡</span>
-              </div>
-            </div>
-          </Card>
-          </Col>
+          <div v-for="(value,index) in information1">
+            <Col span="8">
+              <Card style="width:385px;padding: 0;">
+                <div  style="text-align:center" @click="getInfo(index,value)">
+                  <img style="width: 350px;height: 250px" v-bind:src="value.image" alt="">
+                  <div style="overflow: hidden">
+                    <h2 style="float: left">{{value.name}}</h2>
+                    <span style="float: right">{{value.price}}元/㎡</span>
+                  </div>
+                </div>
+              </Card>
+            </Col>
+          </div>
         </Row>
         <div style="padding: 20px;float: right;">
           <a @click="moreInfo">点击查看更多小区>></a>
@@ -100,6 +80,7 @@ export default {
   data() {
     return {
       information2: [],
+      information1: [],
       houseName: "",
       collect: require(`.././../../assets/img/collect.png`),
       uncollect: require(`.././../../assets/img/uncollect.png`)
@@ -147,7 +128,7 @@ export default {
         debugger;
         var information = JSON.parse(sessionStorage.getItem("information2"));
         this.information2 = information;
-
+        this.information1.push(information[0],information[1],information[2])
     },
     moreInfo() {
       document.getElementById("preference").style.display = "none";
