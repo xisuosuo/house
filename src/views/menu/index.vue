@@ -22,8 +22,21 @@ export default {
   data() {
     return {
       IsMenu: false,
-      IsMenu1: true
+      IsMenu1: false
     };
+  },
+
+  mounted() {
+    debugger;
+    this.roleid = JSON.parse(sessionStorage.getItem("roleId"));
+    var target = document.getElementsByClassName("home-body");
+    if (this.roleid == "R0002") {
+      this.IsMenu = true;
+    } else {
+      this.IsMenu1 = true;
+      target[0].style.display = "none";
+    }
+    console.log(this.user);
   },
   components: {
     Menu,

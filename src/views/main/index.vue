@@ -16,7 +16,9 @@
             <div class="ivu-poptip-arrow"></div>
             <span class="poupTitle">
               <Navigation v-if="nav" class="nav" />
-              <Navigation1 v-if="nav1" class="nav1" />
+            </span>
+            <span class="poupTitle1">
+              <Navigation1 v-if="nav1" class="nav" />
             </span>
           </span>
           </Col>
@@ -90,14 +92,22 @@ export default {
     return {
       name: "首页",
       nav: false,
-      nav1: true,
+      nav1: false,
       user: "",
       modal: false,
-      isRouterAlive: true
+      isRouterAlive: true,
+      roleid: ""
     };
   },
   mounted() {
+    debugger;
     this.user = JSON.parse(sessionStorage.getItem("userAccount"));
+    this.roleid = JSON.parse(sessionStorage.getItem("roleId"));
+    if ((this.roleid == "R0002")) {
+      this.nav = true;
+    } else {
+      this.nav1 = true;
+    }
     console.log(this.user);
   },
   methods: {
@@ -198,6 +208,9 @@ export default {
 .toggle:hover .poupTitle {
   display: block;
 }
+.toggle:hover .poupTitle1 {
+  display: block;
+}
 .sub-title {
   margin-left: 10px;
   font-size: 18px;
@@ -211,6 +224,9 @@ export default {
 }
 
 .poupTitle:hover {
+  display: block;
+}
+.poupTitle1:hover {
   display: block;
 }
 .demo-badge {
@@ -228,6 +244,18 @@ export default {
   display: none;
   will-change: top, left;
   width: 800px;
+  background: white;
+  z-index: 8;
+  padding: 10px 0px 0px 20px;
+}
+
+.poupTitle1 {
+  position: absolute;
+  top: 55px;
+  left: 90px;
+  display: none;
+  will-change: top, left;
+  width: 680px;
   background: white;
   z-index: 8;
   padding: 10px 0px 0px 20px;
