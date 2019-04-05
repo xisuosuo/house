@@ -52,7 +52,7 @@
           </MenuItem>
         </router-link>
         <router-link to="/userManager">
-          <MenuItem name="4-1">
+          <MenuItem name="4-1" v-if="show">
           <Icon type="md-contact" />
           <span>用户管理</span>
           </MenuItem>
@@ -80,6 +80,19 @@
 <script>
 import houseCompare from "./components/houseCompare";
 export default {
+  data() {
+    return {
+      show: true
+    };
+  },
+  mounted() {
+    var roleid = JSON.parse(sessionStorage.getItem("roleId"));
+    if (roleid === "R0001" || roleid === "R0002") {
+      this.show = true;
+    } else {
+      this.show = false;
+    }
+  },
   methods: {
     openCompare() {
       this.$root.Bus.$emit("eventCompare");

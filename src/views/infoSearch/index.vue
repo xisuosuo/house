@@ -55,7 +55,7 @@
             </router-link>
           </Submenu>
           <router-link to="/userManager">
-            <MenuItem name="4-1">
+            <MenuItem name="4-1" v-if="show">
             <Icon type="md-contact" />
             <span>用户管理</span>
             </MenuItem>
@@ -111,7 +111,6 @@
       </Content>
     </Layout>
   </div>
-
   <!-- <div class="screen" style="width:w_height"> -->
   <!-- <Layout :height="w_height-55">
     <Sider hide-trigger :width=" 70 " :height=" w_height ">
@@ -199,8 +198,17 @@ import Server from "@/core/server";
 import { services } from "@/core/config/services";
 export default {
   mixins: [computeh],
+  mounted() {
+    var roleid = JSON.parse(sessionStorage.getItem("roleId"));
+    if (roleid ==="R0001"||roleid ==="R0002") {
+      this.show =true;
+    }else{
+      this.show =false;
+    }
+  },
   data() {
     return {
+      show: true,
       isCollapsed: false,
       path: "",
       site: false,
@@ -222,11 +230,9 @@ export default {
   },
   computed: {
     rotateIcon() {
-      debugger;
       return ["menu-icon", this.isCollapsed ? "rotate-icon" : ""];
     },
     menuitemClasses() {
-      debugger;
       return ["menu-item", this.isCollapsed ? "collapsed-menu" : ""];
     }
   },
@@ -249,7 +255,6 @@ export default {
           tableName: this.publicsheshi
         }
       }).then(rsp => {
-        debugger;
         var _this = this;
         if (rsp.status === 1) {
           _this.list = rsp.data;
@@ -258,7 +263,6 @@ export default {
       });
     },
     showGraphics() {
-      debugger;
       if (window.mapview.graphics.length == 0) {
         onemap.pubsub.publish("drawHouseByList", {
           list: this.list,
@@ -319,14 +323,12 @@ export default {
 }
 .layout {
   height: 800px;
-
   background: #f5f7f9;
   position: relative;
   border-radius: 4px;
   overflow: hidden;
 }
 .layout {
-
   background: #f5f7f9;
   position: relative;
   border-radius: 4px;

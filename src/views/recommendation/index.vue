@@ -40,7 +40,7 @@
                         </MenuItem>
                     </router-link>
                     <router-link to="/userManager">
-                        <MenuItem name="4-1">
+                        <MenuItem name="4-1" v-if="show">
                         <Icon type="md-contact" />
                         <span>用户管理</span>
                         </MenuItem>
@@ -129,14 +129,19 @@ import factor from "./components/factor.vue";
 
 export default {
   mounted() {
-    debugger;
+    var roleid = JSON.parse(sessionStorage.getItem("roleId"));
+    if (roleid === "R0001" || roleid === "R0002") {
+      this.show = true;
+    } else {
+      this.show = false;
+    }
     this.w_height = window.innerHeight;
     window.onresize = () => {
       this.w_height = window.innerHeight;
     };
   },
   data() {
-    return {};
+    return { show: true };
   },
   components: {
     factor
@@ -155,7 +160,7 @@ export default {
 //   /*background: url(../../assets/img/house.jpg)  no-repeat ;*/
 // }
 .layout {
-//   border: 1px solid #d7dde4;
+  //   border: 1px solid #d7dde4;
   background: #f5f7f9;
   position: relative;
   border-radius: 4px;
