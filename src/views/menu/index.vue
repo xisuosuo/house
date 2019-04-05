@@ -6,19 +6,28 @@
         <router-view/>
       </Content>
     </div>
+    <div class="home-body1">
+      <Menu1 v-if="IsMenu1"></Menu1>
+      <Content>
+        <router-view/>
+      </Content>
+    </div>
   </div>
 
 </template>
 <script>
 import Menu from "./components";
+import Menu1 from "./components/userIndex";
 export default {
   data() {
     return {
-      IsMenu: true
+      IsMenu: false,
+      IsMenu1: true
     };
   },
   components: {
-    Menu
+    Menu,
+    Menu1
   }
   // mounted() {
   //   this.IsMenu = true;

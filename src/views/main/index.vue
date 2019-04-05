@@ -15,7 +15,8 @@
             <Icon type="ios-arrow-down"></Icon>
             <div class="ivu-poptip-arrow"></div>
             <span class="poupTitle">
-              <Navigation class="nav" />
+              <Navigation v-if="nav" class="nav" />
+              <Navigation1 v-if="nav1" class="nav1" />
             </span>
           </span>
           </Col>
@@ -73,6 +74,7 @@
 import Server from "@/core/server";
 import { services } from "@/core/config/services";
 import Navigation from "@/views/menu/components";
+import Navigation1 from "@/views/menu/components/userIndex";
 import { login } from "@/views/login/js/login.js";
 import ChangePsd from "@/views/login/components/changepsd";
 import { computeh } from "@/core/computeh";
@@ -87,6 +89,8 @@ export default {
   data() {
     return {
       name: "首页",
+      nav: false,
+      nav1: true,
       user: "",
       modal: false,
       isRouterAlive: true
@@ -147,6 +151,7 @@ export default {
   },
   components: {
     Navigation,
+    Navigation1,
     ChangePsd
   }
 };
