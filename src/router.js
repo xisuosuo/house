@@ -56,6 +56,15 @@ export default new Router({
           path: "/personal",
           component: () =>
             import('@/views/personal/component/personal.vue'),
+          children: [{
+            path: '/',
+            name: '个人中心',
+            meta: {
+              auth: true
+            },
+            component: () =>
+              import('@/views/personal/component/personal.vue'),
+          }, ]
         },
 
         {
@@ -280,6 +289,7 @@ export default new Router({
             import('@/views/personalcenter/component/personalCenter.vue'),
           children: [{
             path: '/',
+            name: "用户中心",
             meta: {
               auth: true
             },
