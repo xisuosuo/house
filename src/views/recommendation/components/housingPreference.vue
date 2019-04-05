@@ -106,7 +106,7 @@ export default {
     };
   },
   mounted() {
-    this.getdata();
+    // this.getdata();
   },
   methods: {
     getInfo(index, value) {

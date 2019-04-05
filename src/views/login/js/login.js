@@ -7,6 +7,7 @@ export const login = {
   data() {
     return {
       accountName: "",
+      information2:[],
       user: {
         userAccount: "admin",
         userPwd: "123456",
@@ -79,6 +80,7 @@ export const login = {
           sessionStorage.setItem("userId", JSON.stringify(rsp.data.userId));
           sessionStorage.setItem("nickName", JSON.stringify(rsp.data.nickName));
           sessionStorage.setItem("userName", JSON.stringify(rsp.data.userName));
+          sessionStorage.setItem("roleId", JSON.stringify(rsp.data.roleId));
           this.$router.push({
             path: `/menu`
           });
@@ -86,6 +88,18 @@ export const login = {
           this.$Message.error(rsp.message);
         }
       });
+        var this_ = this;
+        var userId = JSON.parse(sessionStorage.getItem("userId"));
+        Server.get({
+            url: services.getSimilarUserInfo,
+            params: {
+                userId: userId
+            }
+        }).then(function(rsp) {
+            if (rsp.status === 1) {
+                this_.information2 = rsp.data;
+            }
+        });
     }
   }
 };
