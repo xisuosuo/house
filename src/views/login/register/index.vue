@@ -21,9 +21,6 @@
           <form-item label="确认密码" prop="pwdCheck">
             <i-input type="password" v-model="formValidate.pwdCheck" placeholder="输入至少6位数密码" />
           </form-item>
-          <!-- <form-item label="注册号码" prop="userMobile">
-            <i-input v-model="formValidate.userMobile" placeholder="输入手机号码" />
-          </form-item> -->
           <FormItem label="年龄" prop="age">
             <Select v-model="ageModel">
               <Option v-for="item in age" :value="item.value" :key="item.value">{{ item.label }}</Option>

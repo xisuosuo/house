@@ -259,7 +259,8 @@ export default {
         educationRate: "",
         medicalRate: "",
         entertainmentRate: "",
-        trafficRate: ""
+        trafficRate: "",
+        userId: ""
       },
       cityList: [
         {
@@ -412,6 +413,8 @@ export default {
       this.formItem.markets = (this.formItem.market / sum * 100).toFixed(2);
     },
     showTable() {
+      var userid = JSON.parse(sessionStorage.getItem("userId"));
+      this.form.userId =userid;
       if (typeof this.education1[0] === "undefined") {
         this.education1[0] = "";
         this.form.educationGrade1 = this.education1[0];

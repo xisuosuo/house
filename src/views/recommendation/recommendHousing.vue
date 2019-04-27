@@ -222,10 +222,12 @@ export default {
     },
     education() {
       this.modal1 = true;
+      var userId = JSON.parse(sessionStorage.getItem("userId"));
       Server.get({
         url: services.processData,
         params: {
-          serviceType: "education"
+          serviceType: "education",
+          userId: userId
         }
       }).then(rsp => {
         if (rsp.status === 1) {
@@ -271,10 +273,12 @@ export default {
     },
     Medical() {
       this.modal2 = true;
+      var userId = JSON.parse(sessionStorage.getItem("userId"));
       Server.get({
         url: services.processData,
         params: {
-          serviceType: "medical"
+          serviceType: "medical",
+          userId: userId
         }
       }).then(rsp => {
         if (rsp.status === 1) {
@@ -320,10 +324,12 @@ export default {
     },
     traffic() {
       this.modal3 = true;
+      var userId = JSON.parse(sessionStorage.getItem("userId"));
       Server.get({
         url: services.processData,
         params: {
-          serviceType: "station"
+          serviceType: "station",
+          userId: userId
         }
       }).then(rsp => {
         if (rsp.status === 1) {
@@ -369,10 +375,12 @@ export default {
     },
     entertainment() {
       this.modal4 = true;
+      var userId = JSON.parse(sessionStorage.getItem("userId"));
       Server.get({
         url: services.processData,
         params: {
-          serviceType: "entertainment"
+          serviceType: "entertainment",
+          userId: userId
         }
       }).then(rsp => {
         if (rsp.status === 1) {

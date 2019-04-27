@@ -15,4 +15,4 @@ export const MapAPI = {
 // };  //天翔
 
 export const IP = "122.112.216.247:8080"; //正式
-// export const IP = "192.168.1.109:8080"; //测试
+// export const IP = "192.168.1.101:8080"; //测试
