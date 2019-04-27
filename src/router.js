@@ -163,7 +163,7 @@ export default new Router({
           component: () =>
             import('@/views/recommendation/index.vue'),
           children: [{
-            name: '住房推荐',
+            name: '购房推荐',
             path: '/recommendation/housingPreference',
             meta: {
               auth: true
@@ -172,7 +172,7 @@ export default new Router({
               import('@/views/recommendation/components/housingPreference.vue'),
           }, {
             path: '/recommendation/factor',
-            name: '住房选择',
+            name: '购房选址',
             meta: {
               auth: true
             },

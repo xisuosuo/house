@@ -31,10 +31,10 @@
                         房源推荐
                     </template>
                     <router-link to="/recommendation/housingPreference">
-                        <MenuItem name="2-1">住房推荐</MenuItem>
+                        <MenuItem name="2-1">购房推荐</MenuItem>
                     </router-link>
                     <router-link to="/recommendation/factor">
-                        <MenuItem name="2-2">住房选择</MenuItem>
+                        <MenuItem name="2-2">购房选址</MenuItem>
                     </router-link>
                 </Submenu>
                 <router-link to="/infoSearch">

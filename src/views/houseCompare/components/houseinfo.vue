@@ -485,6 +485,7 @@ export default {
       }
     },
     getData() {
+        debugger
       var _this = this;
       this.Id = houseInfoId.state.houseInforA.houseId;
       console.log(houseInfoId.state.houseInforA);

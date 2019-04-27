@@ -22,7 +22,7 @@
                             </ul>
                         </div>
                     </div>
-                <!--<Button type="primary" @click="next">下一步</Button>-->
+                <!--<Button type="primary" @click="next"></Button>-->
             </div>
         </div>
         <div id="part2"
