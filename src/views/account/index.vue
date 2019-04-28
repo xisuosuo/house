@@ -14,24 +14,28 @@
               <Icon type="md-analytics" /> 数据展示
             </template>
             <router-link to="/data">
-              <MenuItem name="1-1">数据统计</MenuItem>
+              <MenuItem name="1-1">
+                <span style="font-size: 13px">数据统计</span>
+              </MenuItem>
             </router-link>
             <router-link to="/data/dataDeatils">
-              <MenuItem name="1-2">数据查询</MenuItem>
+              <MenuItem name="1-2">
+                <span style="font-size: 13px">数据查询</span>
+              </MenuItem>
             </router-link>
           </Submenu>
-          <Submenu name="2">
-            <template slot="title">
-              <Icon type="ios-keypad"></Icon>
-              房源推荐
-            </template>
             <router-link to="/recommendation/housingPreference">
-              <MenuItem name="2-1">购房推荐</MenuItem>
+              <MenuItem name="2-1">
+                <Icon type="md-thumbs-up" />
+                <span>房源推荐</span>
+                </MenuItem>
             </router-link>
             <router-link to="/recommendation/factor">
-              <MenuItem name="2-2">购房选址</MenuItem>
+              <MenuItem name="2-2">
+                <Icon type="md-pin" />
+                <span>购房选址</span>
+                </MenuItem>
             </router-link>
-          </Submenu>
           <router-link to="/infoSearch">
             <MenuItem name="4-1">
             <Icon type="md-search" />
@@ -39,8 +43,8 @@
             </MenuItem>
           </router-link>
           <router-link to="/userManager">
-            <MenuItem name="4-1" v-if="show">
-            <Icon type="md-contact" />
+            <MenuItem name="4-2" v-if="show">
+              <Icon type="md-contacts" />
             <span>用户管理</span>
             </MenuItem>
           </router-link>
@@ -55,13 +59,19 @@
               <Icon type="md-paper" /> 用户手册
             </template>
             <router-link to="/auDecision/usersManual">
-              <MenuItem name="6-1">用户手册</MenuItem>
+              <MenuItem name="6-1">
+                <span style="font-size: 13px">用户手册</span>
+              </MenuItem>
             </router-link>
             <router-link to="/auDecision/livablemodel">
-              <MenuItem name="6-2">宜居模型</MenuItem>
+              <MenuItem name="6-2">
+                <span style="font-size: 13px">宜居模型</span>
+              </MenuItem>
             </router-link>
             <router-link to="/auDecision/model">
-              <MenuItem name="6-3">引力模型</MenuItem>
+              <MenuItem name="6-3">
+                <span style="font-size: 13px">引力模型</span>
+              </MenuItem>
             </router-link>
           </Submenu>
         </Menu>
