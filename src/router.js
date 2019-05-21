@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import main from '@/views/main/index.vue'
 import login from './views/login/index.vue'
-import test from './views/test/sort'
+import test from './views/test/heattest.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -20,10 +20,10 @@ export default new Router({
       }
     },
 
-    // {
-    //   path: '/test',
-    //   component: test,
-    // },
+    {
+      path: '/test',
+      component: test,
+    },
     {
       path: '/main',
       component: main,
@@ -296,8 +296,21 @@ export default new Router({
             component: () =>
               import('@/views/userManager/components/userIndex.vue'),
           }, ]
+        }, {
+          name: "房价分析",
+          path: "/priceAnalysis",
+          component: () =>
+            import('@/views/priceAnalysis/index.vue'),
+          // children: [{
+          //   path: '/',
+          //   name: "用户中心",
+          //   meta: {
+          //     auth: true
+          //   },
+          //   component: () =>
+          //     import('@/views/userManager/components/userIndex.vue'),
+          // }, ]
         }
-
       ]
     }
   ]

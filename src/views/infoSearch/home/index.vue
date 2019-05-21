@@ -225,9 +225,9 @@ export default {
 
                 var activeWidget = null;
 
-                var layer = new TileLayer({
+                var layer = new MapImageLayer({
                   url:
-                    "http://122.112.216.247:6080/arcgis/rest/services/CHUZHOU/chuzhouServer/MapServer"
+                    "http://122.112.216.247:6080/arcgis/rest/services/Server/MAP/MapServer"
                 });
                 this.baseLayer = layer;
 
@@ -238,34 +238,34 @@ export default {
                 // });
 
                 // this.street = street;
-                var USALayer = new MapImageLayer({
-                  url:
-                    "http://122.112.216.247:6080/arcgis/rest/services/CHUZHOU/odqllj/MapServer",
-                  title: "od成本",
-                  visible: false
-                });
+                // var USALayer = new MapImageLayer({
+                //   url:
+                //     "http://122.112.216.247:6080/arcgis/rest/services/CHUZHOU/odqllj/MapServer",
+                //   title: "od成本",
+                //   visible: false
+                // });
 
-                var censusLayer = new MapImageLayer({
-                  url:
-                    "http://122.112.216.247:6080/arcgis/rest/services/CHUZHOU/zhonguexuequ/MapServer",
-                  title: "学区数据",
-                  opacity: 0.8,
-                  visible: false
-                });
+                // var censusLayer = new MapImageLayer({
+                //   url:
+                //     "http://122.112.216.247:6080/arcgis/rest/services/CHUZHOU/zhonguexuequ/MapServer",
+                //   title: "学区数据",
+                //   opacity: 0.8,
+                //   visible: false
+                // });
                 var baseMap = new Basemap({
                   baseLayers: [layer]
                 });
-                var demographicGroupLayer = new GroupLayer({
-                  title: "专题图层",
-                  visible: true,
-                  visibilityMode: "independent",
-                  layers: [USALayer, censusLayer]
-                  //
-                });
+                // var demographicGroupLayer = new GroupLayer({
+                //   title: "专题图层",
+                //   visible: true,
+                //   visibilityMode: "independent",
+                //   layers: [USALayer, censusLayer]
+                //   //
+                // });
 
                 var map = new Map({
                   basemap: baseMap,
-                  layers: [demographicGroupLayer]
+                  // layers: [demographicGroupLayer]
                 });
                 var ext = String(this.defaultMapExtent).split(",");
 
@@ -287,12 +287,12 @@ export default {
                 });
                 this.mapview.ui.remove(["attribution", "zoom"]);
                 var view = this.mapview;
-                view.when(function() {
-                  var layerList = new LayerList({
-                    view: view
-                  });
-                  view.ui.add(layerList, "top-right");
-                });
+                // view.when(function() {
+                //   var layerList = new LayerList({
+                //     view: view
+                //   });
+                //   view.ui.add(layerList, "top-right");
+                // });
 
                 this.mapview.initExtent = {
                   center: center,

@@ -8,6 +8,13 @@ class GEsriApi {
       });
     });
   }
+  GetGeoprocessor() {
+    return new Promise(resolve => {
+      esriLoader.loadModules(["esri/tasks/Geoprocessor"]).then(([Geoprocessor]) => {
+        resolve(Geoprocessor);
+      });
+    });
+  }
   //layers
   GetTileLayer() {
     return new Promise(resolve => {
@@ -84,8 +91,27 @@ class GEsriApi {
       );
     });
   }
+  GetImageParameters() {
+    return new Promise(resolve => {
+      esriLoader.loadModules(
+        ["esri/layers/support/ImageParameters"]).then(
+        ([ImageParameters]) => {
+          resolve(ImageParameters);
+        }
+      );
+    });
+  }
 
-
+  GetHeatmapRenderer() {
+    return new Promise(resolve => {
+      esriLoader.loadModules(
+        ["esri/renderers/HeatmapRenderer"]).then(
+        ([HeatmapRenderer]) => {
+          resolve(HeatmapRenderer);
+        }
+      );
+    });
+  }
 
   GetColor() {
     return new Promise(resolve => {

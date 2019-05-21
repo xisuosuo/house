@@ -308,7 +308,7 @@ export default {
       });
       var _this = this;
       firstpoint.then(data => {
-        mapApi.esriApi.GetGraphic().then(Graphic => {
+        mapApi.esriApi.GetGraphic().then(Graphic => {`  `
           var stop = new Graphic({
             geometry: data,
             symbol: this.stopSymbol
