@@ -1,174 +1,174 @@
 <template>
-    <Layout :style="{height:'100%'}">
-        <Sider ref="side1" :width='180'>
-            <Menu active-name="" theme="dark" width="auto" :open-names="['']">
-                <router-link to="/menu">
-                    <MenuItem name="8-1">
-                    <Icon type="ios-navigate"></Icon>
-                    <span>首页</span>
-                    </MenuItem>
-                </router-link>
-                <router-link to="/personalcenter">
-                    <MenuItem name="5-1">
-                    <Icon type="md-person" />
-                    <span>个人中心</span>
-                    </MenuItem>
-                </router-link>
-                <Submenu name="1">
-                    <template slot="title">
-                        <Icon type="md-analytics" /> 数据展示
-                    </template>
-                    <router-link to="/data">
-                        <MenuItem name="1-1">
-                            <span style="font-size: 13px">数据统计</span>
-                        </MenuItem>
-                    </router-link>
-                    <router-link to="/data/dataDeatils">
-                        <MenuItem name="1-2">
-                            <span style="font-size: 13px">数据查询</span>
-                        </MenuItem>
-                    </router-link>
-                </Submenu>
-                <router-link to="/recommendation/housingPreference">
-                    <MenuItem name="2-1">
-                        <Icon type="md-thumbs-up" />
-                        <span>房源推荐</span>
-                    </MenuItem>
-                </router-link>
-                <router-link to="/recommendation/factor">
-                    <MenuItem name="2-2">
-                        <Icon type="md-pin" />
-                        <span>购房选址</span>
-                    </MenuItem>
-                </router-link>
-                <router-link to="/infoSearch">
-                    <MenuItem name="4-1">
-                    <Icon type="md-search" />
-                    <span>信息查询</span>
-                    </MenuItem>
-                </router-link>
-                <router-link to="/userManager">
-                    <MenuItem name="4-2" v-if="show">
-                    <Icon type="md-contacts" />
-                    <span>用户管理</span>
-                    </MenuItem>
-                </router-link>
-                <Submenu name="6">
-                    <template slot="title">
-                        <Icon type="md-paper" /> 用户手册
-                    </template>
-                    <router-link to="/auDecision/usersManual">
-                        <MenuItem name="6-1">
-                            <span style="font-size: 13px">用户手册</span>
-                        </MenuItem>
-                    </router-link>
-                    <router-link to="/auDecision/livablemodel">
-                        <MenuItem name="6-2">
-                            <span style="font-size: 13px">宜居模型</span>
-                        </MenuItem>
-                    </router-link>
-                    <router-link to="/auDecision/model">
-                        <MenuItem name="6-3">
-                            <span style="font-size: 13px">引力模型</span>
-                        </MenuItem>
-                    </router-link>
-                </Submenu>
-            </Menu>
-        </Sider>
+  <Layout :style="{height:'100%'}">
+    <Sider ref="side1" :width='180'>
+      <Menu active-name="" theme="dark" width="auto" :open-names="['']">
+        <router-link to="/menu">
+          <MenuItem name="8-1">
+          <Icon type="ios-navigate"></Icon>
+          <span>首页</span>
+          </MenuItem>
+        </router-link>
+        <router-link to="/personalcenter">
+          <MenuItem name="5-1">
+          <Icon type="md-person" />
+          <span>个人中心</span>
+          </MenuItem>
+        </router-link>
+        <Submenu name="1">
+          <template slot="title">
+            <Icon type="md-analytics" /> 数据展示
+          </template>
+          <router-link to="/data">
+            <MenuItem name="1-1">
+            <span style="font-size: 13px">数据统计</span>
+            </MenuItem>
+          </router-link>
+          <router-link to="/data/dataDeatils">
+            <MenuItem name="1-2">
+            <span style="font-size: 13px">数据查询</span>
+            </MenuItem>
+          </router-link>
+        </Submenu>
+        <router-link to="/recommendation/housingPreference">
+          <MenuItem name="2-1">
+          <Icon type="md-thumbs-up" />
+          <span>房源推荐</span>
+          </MenuItem>
+        </router-link>
+        <router-link to="/recommendation/factor">
+          <MenuItem name="2-2">
+          <Icon type="md-pin" />
+          <span>购房选址</span>
+          </MenuItem>
+        </router-link>
+        <router-link to="/infoSearch">
+          <MenuItem name="4-1">
+          <Icon type="md-search" />
+          <span>信息查询</span>
+          </MenuItem>
+        </router-link>
+        <router-link to="/userManager">
+          <MenuItem name="4-2" v-if="show">
+          <Icon type="md-contacts" />
+          <span>用户管理</span>
+          </MenuItem>
+        </router-link>
+        <Submenu name="6">
+          <template slot="title">
+            <Icon type="md-paper" /> 用户手册
+          </template>
+          <router-link to="/auDecision/usersManual">
+            <MenuItem name="6-1">
+            <span style="font-size: 13px">用户手册</span>
+            </MenuItem>
+          </router-link>
+          <router-link to="/auDecision/livablemodel">
+            <MenuItem name="6-2">
+            <span style="font-size: 13px">宜居模型</span>
+            </MenuItem>
+          </router-link>
+          <router-link to="/auDecision/model">
+            <MenuItem name="6-3">
+            <span style="font-size: 13px">引力模型</span>
+            </MenuItem>
+          </router-link>
+        </Submenu>
+      </Menu>
+    </Sider>
 
-        <Content>
-            <Header :style="{padding: 0}" class="layout-header-bar">
-                <Breadcrumb>
-                    <Icon :class="rotateIcon" :style="{margin: '0 5px'}" type="md-menu" size="25"></Icon>
-                    <BreadcrumbItem v-for="(item,idx) in $route.matched" :key="idx" :to="(item.path)">{{item.name}}</BreadcrumbItem>
-                </Breadcrumb>
-            </Header>
-            <div style="margin: 15px; width: 100%;overflow-y: auto">
-                <Row>
-                    <Col span="8">
-                    <Card>
-                        <div class="avatar">
-                            <img style="width: 100px;height: 100px;border-radius: 50%;margin: 20px" src="../../../assets/img/u=3085477210,754180516&fm=11&gp=0.jpg" />
-                        </div>
-                        <div style="text-align: left;margin-left: 10%;font-size: 12px">
-                            <div>
-                                <span>昵称：</span>
-                                <span style="margin-left: 5px">{{this.user}}</span>
-                            </div>
-                            <div>
-                                <span>地址：</span>
-                                <span style="margin-left: 5px">安徽滁州市</span>
-                            </div>
-                            <div>
-                                <span>个性签名：</span>
-                                <span style="margin-left: 5px">这个人很懒，什么都没有留下</span>
-                            </div>
-                        </div>
-                        <Divider dashed="true" />
-                        <strong>
-                            <div style="margin-bottom: 10px;">标签</div>
-                        </strong>
-                        <div>
-                            <Tag checkable color="error">有房</Tag>
-                            <Tag checkable color="success">有车</Tag>
-                            <Tag checkable color="primary">有存款</Tag>
-                            <Tag checkable color="warning">长得漂亮</Tag>
-                        </div>
-                        <Divider dashed="true" />
-                        <strong>
-                            <div>详细信息:</div>
-                        </strong>
-                        <Form style="margin-left: 10%" :model="formItem" :label-width="80">
-                            <FormItem label="昵称:">
-                                <span>{{this.user}}</span>
-                            </FormItem>
-                            <FormItem label="年龄:">
-                                <span>{{this.userInfo.age}}</span>
-                            </FormItem>
-                            <FormItem label="工作类型:">
-                                <span>程序猿</span>
-                            </FormItem>
-                            <FormItem label="注册时间:">
-                                <span>{{this.userInfo.createTime}}</span>
-                            </FormItem>
-                            <FormItem label="资金:">
-                                <span>{{this.userInfo.userMoney}}元</span>
-                            </FormItem>
-                            <FormItem label="购房类型:">
-                                <span>投资型</span>
-                            </FormItem>
-                            <FormItem label="用户类型:">
-                                <span>{{this.userInfo.roleName}}</span>
-                            </FormItem>
-                            <FormItem>
-                                <router-link to="/personal">
-                                    <Button style="margin-left: 50%">更新基本信息</Button>
-                                </router-link>
-                            </FormItem>
-                        </Form>
-                    </Card>
-                    </Col>
-                    <Col span="16">
-                    <Card>
-                        <strong>
-                            <div style="margin-bottom: 10px">我的收藏夹</div>
-                        </strong>
-                        <div>
-                            <Table height="349" stripe :columns="columns1" :data="data1"></Table>
-                        </div>
-                        <Divider dashed="true" />
-                        <strong>
-                            <div>我的评论：</div>
-                        </strong>
-                        <div>
-                            <Table height="170" width="100%" stripe :columns="columns2" :data="data2"></Table>
-                        </div>
-                    </Card>
-                    </Col>
-                </Row>
+    <Content>
+      <Header :style="{padding: 0}" class="layout-header-bar">
+        <Breadcrumb>
+          <Icon :class="rotateIcon" :style="{margin: '0 5px'}" type="md-menu" size="25"></Icon>
+          <BreadcrumbItem v-for="(item,idx) in $route.matched" :key="idx" :to="(item.path)">{{item.name}}</BreadcrumbItem>
+        </Breadcrumb>
+      </Header>
+      <div style="margin: 15px; width: 100%;overflow-y: auto">
+        <Row>
+          <Col span="8">
+          <Card>
+            <div class="avatar">
+              <img style="width: 100px;height: 100px;border-radius: 50%;margin: 20px" src="../../../assets/img/u=3085477210,754180516&fm=11&gp=0.jpg" />
             </div>
-        </Content>
-    </Layout>
+            <div style="text-align: left;margin-left: 10%;font-size: 12px">
+              <div>
+                <span>昵称：</span>
+                <span style="margin-left: 5px">{{this.user}}</span>
+              </div>
+              <div>
+                <span>地址：</span>
+                <span style="margin-left: 5px">安徽滁州市</span>
+              </div>
+              <div>
+                <span>个性签名：</span>
+                <span style="margin-left: 5px">这个人很懒，什么都没有留下</span>
+              </div>
+            </div>
+            <Divider dashed="true" />
+            <strong>
+              <div style="margin-bottom: 10px;">标签</div>
+            </strong>
+            <div>
+              <Tag checkable color="error">有房</Tag>
+              <Tag checkable color="success">有车</Tag>
+              <Tag checkable color="primary">有存款</Tag>
+              <Tag checkable color="warning">长得漂亮</Tag>
+            </div>
+            <Divider dashed="true" />
+            <strong>
+              <div>详细信息:</div>
+            </strong>
+            <Form style="margin-left: 10%" :model="formItem" :label-width="80">
+              <FormItem label="昵称:">
+                <span>{{this.user}}</span>
+              </FormItem>
+              <FormItem label="年龄:">
+                <span>{{this.userInfo.age}}</span>
+              </FormItem>
+              <FormItem label="工作类型:">
+                <span>程序猿</span>
+              </FormItem>
+              <FormItem label="注册时间:">
+                <span>{{this.userInfo.createTime}}</span>
+              </FormItem>
+              <FormItem label="资金:">
+                <span>{{this.userInfo.userMoney}}元</span>
+              </FormItem>
+              <FormItem label="购房类型:">
+                <span>投资型</span>
+              </FormItem>
+              <FormItem label="用户类型:">
+                <span>{{this.userInfo.roleName}}</span>
+              </FormItem>
+              <FormItem>
+                <router-link to="/personal">
+                  <Button style="margin-left: 50%">更新基本信息</Button>
+                </router-link>
+              </FormItem>
+            </Form>
+          </Card>
+          </Col>
+          <Col span="16">
+          <Card>
+            <strong>
+              <div style="margin-bottom: 10px">我的收藏夹</div>
+            </strong>
+            <div>
+              <Table height="349" stripe :columns="columns1" :data="data1"></Table>
+            </div>
+            <Divider dashed="true" />
+            <strong>
+              <div>我的评论：</div>
+            </strong>
+            <div>
+              <Table height="170" width="100%" stripe :columns="columns2" :data="data2"></Table>
+            </div>
+          </Card>
+          </Col>
+        </Row>
+      </div>
+    </Content>
+  </Layout>
 </template>
 <script>
 import Server from "@/core/server";
@@ -403,7 +403,7 @@ export default {
             }).then(rsp => {
               if (rsp.status == 1) {
                 this.$Message.success(rsp.message);
-                this.onRefresh();
+                this.personalComments();
               } else {
                 this.$Message.error(rsp.message);
               }
@@ -432,12 +432,12 @@ export default {
               url: services.delUserComments,
               params: {
                 userId: userId,
-                houseName: name
+                commentsId:commentsId
               }
             }).then(rsp => {
               if (rsp.data.status == 1) {
                 this.$Message.success(rsp.message);
-                this.onRefresh1();
+                this.onRefresh();
               } else {
                 this.$Message.error(rsp.message);
               }

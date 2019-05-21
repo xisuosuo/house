@@ -185,7 +185,7 @@ var echarts = require("echarts");
 export default {
   data() {
     return {
-      Model: "",
+      Model: false,
       model1: "",
       model2: "",
       model3: "",

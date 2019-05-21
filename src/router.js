@@ -310,7 +310,22 @@ export default new Router({
           //   component: () =>
           //     import('@/views/userManager/components/userIndex.vue'),
           // }, ]
+        },{
+          name: "模型分析",
+          path: "/modelAnalysis",
+          component: () =>
+            import('@/views/modelAnalysis/index.vue'),
+          // children: [{
+          //   path: '/',
+          //   name: "用户中心",
+          //   meta: {
+          //     auth: true
+          //   },
+          //   component: () =>
+          //     import('@/views/userManager/components/userIndex.vue'),
+          // }, ]
         }
+
       ]
     }
   ]
