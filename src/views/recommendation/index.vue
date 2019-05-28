@@ -83,7 +83,6 @@
                         <BreadcrumbItem v-for="(item,idx) in $route.matched" :key="idx" :to="(item.path)">{{item.name}}</BreadcrumbItem>
                     </Breadcrumb>
                 </Header>
-                <router-view/>
             </Content>
         </Layout>
     </div>
