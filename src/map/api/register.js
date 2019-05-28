@@ -36,11 +36,13 @@ export default class Register {
   }
 
   mapAPI() {
+    debugger;
     onemap.pubsub.subscribe("drawMarkerByList", arg => {
       arg.mapView = this.mapView;
       gDrawGraphic.markersByList(arg);
     });
     onemap.pubsub.subscribe("drawHouseByList", arg => {
+      debugger;
       arg.mapView = this.mapView;
       gDrawGraphic.housesByList(arg);
     }); // 绘制小气泡列表

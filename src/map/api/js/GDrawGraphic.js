@@ -1,7 +1,6 @@
 import GMapSymbol from "./GMapSymbol";
 class GDrawGraphic {
   markersByList(args, layer = null) {
-
     var list = args.list || [];
     var marker = args.marker || false;
     var name = args.name || null;
@@ -20,7 +19,6 @@ class GDrawGraphic {
             spatialReference: mapView.spatialReference
           })
         );
-
       });
       Promise.all(geometryParse).then(geometries => {
 
