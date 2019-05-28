@@ -1,6 +1,6 @@
 <template>
-  <div style="margin: 100px">
-    <div style="margin-top: 55px">
+  <div style="margin: 50px 100px 0 100px;">
+    <div>
       <Row :gutter="30">
         <Col span="12">
         <div style="border: 1px solid #dcdee2;">

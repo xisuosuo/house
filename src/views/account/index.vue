@@ -54,6 +54,12 @@
             <span>个人中心</span>
             </MenuItem>
           </router-link>
+          <router-link to="/locationResources">
+            <MenuItem name="2-2">
+              <Icon type="md-pin" />
+              <span>区位资源</span>
+            </MenuItem>
+          </router-link>
           <Submenu name="6">
             <template slot="title">
               <Icon type="md-paper" /> 用户手册

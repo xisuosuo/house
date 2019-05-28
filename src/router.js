@@ -38,6 +38,12 @@ export default new Router({
           component: () =>
             import('@/views/recommendation/mapMatching.vue'),
         },
+          {
+              path: '/locationResources',
+              name: '区位资源',
+              component: () =>
+                  import('@/views/locationResources/components/locationResources.vue'),
+          },
         {
           name: "可达性数据",
           path: "/Details",
@@ -51,6 +57,12 @@ export default new Router({
           component: () =>
             import('@/views/houseCompare/components/houseinfo.vue'),
         },
+          {
+              path: '/locationResources',
+              name: '区位资源',
+              component: () =>
+                  import('@/views/locationResources/components/locationResources.vue'),
+          },
         {
           name: "个人中心",
           path: "/personal",
