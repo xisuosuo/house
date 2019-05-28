@@ -6,7 +6,7 @@
     <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no" />
     <title>滁州市房价变化分析</title>
     <link rel="stylesheet"
-        href="http://localhost/arcgis_js_v410_sdk/arcgis_js_api/library/4.10/esri/themes/dark/main.css">
+        href="https://js.arcgis.com/4.10/esri/themes/dark/main.css">
     <style>
         html,
         body,
@@ -46,7 +46,7 @@
             }]
         };
     </script>
-    <script src="http://localhost/arcgis_js_v410_sdk/arcgis_js_api/library/4.10/init.js"></script>
+    <script src="https://js.arcgis.com/4.10/init.js"></script>
     <script src="jquery-3.1.1.min.js"></script>
     <script>
         var map;
@@ -113,7 +113,6 @@
                                 price: data[i].value,
                                 name: data[i].name,
                                 value: geoCoord.concat(data[i].value),
-                               
                             });
                         }
                     }
@@ -178,14 +177,14 @@
                             name: '房价',
                             type: 'scatter',
                             coordinateSystem: 'geo',
-                            data: convertData(data),
+                            data:data,
                             symbolSize: function (val) {
                                 debugger
                                 return val[2] / 10;
                             },
                             label: {
                                 normal: {
-                                    formatter: '{c}',
+                                    formatter: '{a}',
                                     position: 'right',
                                     show: true
                                 },
@@ -204,6 +203,7 @@
                             type: 'effectScatter',
                             coordinateSystem: 'geo',
                             data: convertData(data.sort(function (a, b) {
+                                debugger;
                                 return b.value - a.value;
                             }).slice(0, 6)),
                             symbolSize: function (val) {
