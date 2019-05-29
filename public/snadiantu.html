@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no" />
+    <title>滁州市房价变化分析</title>
+    <link rel="stylesheet"
+        href="https://js.arcgis.com/4.10/esri/themes/dark/main.css">
+    <style>
+        html,
+        body,
+        #map {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #FFF;
+            overflow: hidden;
+            font-family: "Trebuchet MS", sans-serif;
+        }
+
+        #del {
+            position: absolute;
+            top: 20px;
+            left: 80px;
+            font-size: 16px;
+            z-index: 10
+        }
+    </style>
+</head>
+
+<body>
+    <button id="del">清除渲染</button>
+    <div id="map"></div>
+    <script src="ArcGISEcharts4.js"></script>
+    <script>
+        var dojoConfig = {
+            parseOnLoad: true,
+            packages: [{
+                name: "src",
+                location: location.pathname.replace(/\/[^/]+$/, "") + "/src"
+            }]
+        };
+    </script>
+    <script src="https://js.arcgis.com/4.10/init.js"></script>
+    <script src="jquery-3.1.1.min.js"></script>
+    <script>
+        var map;
+        require(["esri/Basemap", "esri/layers/TileLayer", "esri/Map", "esri/views/MapView", "src/EchartsLayer4",
+            "dojo/domReady!"
+        ], function (Basemap, TileLayer, Map, MapView, EchartsLayer) {
+            var layer = new TileLayer({
+                url: "http://map.geoq.cn/ArcGIS/rest/services/ChinaOnlineStreetPurplishBlue/MapServer"
+            });
+            var customBasemap = new Basemap({
+                baseLayers: [layer],
+                title: "Custom Basemap",
+                id: "myBasemap"
+            });
+            var map = new Map({
+                basemap: customBasemap
+            });
+            var mapView = new MapView({
+                center: [118.337731, 32.299211],
+                container: 'map',
+                map: map,
+                zoom: 13
+            });
+            mapView.when(function () {
+                var overlay = new EchartsLayer(mapView, echarts);
+                var chartsContainer = overlay.getEchartsContainer();
+                var myChart = overlay.initECharts(chartsContainer);
+                var data = [{
+                        name: '山水人家',
+                        value: 193
+                    },
+                    {
+                        name: '菏泽',
+                        value: 194
+                    },
+                    {
+                        name: '合肥',
+                        value: 229
+                    },
+                    {
+                        name: '武汉',
+                        value: 273
+                    },
+                    {
+                        name: '大庆',
+                        value: 279
+                    }
+                ];
+                var geoCoordMap = {
+                    '山水人家': ["118.326907", "32.352524"],
+                    '菏泽': ["118.332237", "32.299211"],
+                    '合肥': ["118.337731", "32.312873"],
+                    '武汉': ["118.317752", "32.296954"],
+                    '大庆': ["118.315102", "32.30044"],
+                };
+
+                var convertData = function (data) {
+                    debugger;
+                    var res = [];
+                    for (var i = 0; i < data.length; i++) {
+                        var geoCoord = geoCoordMap[data[i].name];
+                        if (geoCoord) {
+                            res.push({
+                                price: data[i].value,
+                                name: data[i].name,
+                                value: geoCoord.concat(data[i].value),
+                            });
+                        }
+                    }
+                    return res;
+                };
+
+                option = {
+                    title: {
+                        text: '滁州市房价变化分析',
+                        // subtext: 'Data from 房价',
+                        left: 'center',
+                        textStyle: {
+                            color: '#fff'
+                        }
+                    },
+                    tooltip: {
+                        trigger: 'item'
+                    },
+                    legend: {
+                        orient: 'vertical',
+                        top: '50px',
+                        right: '50px',
+                        data: ['房价', 'Top 5'],
+                        textStyle: {
+                            color: '#fff'
+                        }
+                    },
+                    visualMap: {
+                        min: 0,
+                        max: 180,
+                        calculable: true,
+                        inRange: {
+                            color: ['#800026', '#BD0026', '#E31A1C', '#FC4E2A', '#FEB24C',
+                                '#FED976', '#FFFFCC'
+                            ],
+                            symbolSize: [1, 20]
+                        },
+
+                        textStyle: {
+                            color: '#fff'
+                        }
+                    },
+                    geo: {
+                        map: '',
+                        label: {
+                            emphasis: {
+                                show: false
+                            }
+                        },
+                        roam: true,
+                        itemStyle: {
+                            normal: {
+                                areaColor: '#323c48',
+                                borderColor: '#111'
+                            },
+                            emphasis: {
+                                areaColor: '#2a333d'
+                            }
+                        }
+                    },
+                    series: [{
+                            name: '房价',
+                            type: 'scatter',
+                            coordinateSystem: 'geo',
+                            data:data,
+                            symbolSize: function (val) {
+                                debugger
+                                return val[2] / 10;
+                            },
+                            label: {
+                                normal: {
+                                    formatter: '{a}',
+                                    position: 'right',
+                                    show: true
+                                },
+                                emphasis: {
+                                    show: true
+                                }
+                            },
+                            itemStyle: {
+                                normal: {
+                                    color: '#ddb926'
+                                }
+                            }
+                        },
+                        {
+                            name: 'Top 5',
+                            type: 'effectScatter',
+                            coordinateSystem: 'geo',
+                            data: convertData(data.sort(function (a, b) {
+                                debugger;
+                                return b.value - a.value;
+                            }).slice(0, 6)),
+                            symbolSize: function (val) {
+                                return val[2] / 10;
+                            },
+                            showEffectOn: 'render',
+                            rippleEffect: {
+                                brushType: 'stroke'
+                            },
+                            hoverAnimation: true,
+                            label: {
+                                normal: {
+                                    formatter: '{b}',
+                                    position: 'right',
+                                    show: true
+                                }
+                            },
+                            itemStyle: {
+                                normal: {
+                                    color: '#f4e925',
+                                    shadowBlur: 10,
+                                    shadowColor: '#333'
+                                }
+                            },
+                            zlevel: 1
+                        }
+                    ]
+                };
+                // 使用刚指定的配置项和数据显示图表。
+                overlay.setOption(option);
+                $("#del").click(function () {
+                    overlay.deleteECharts()
+                })
+            });
+        });
+    </script>
+</body>
+
+</html>

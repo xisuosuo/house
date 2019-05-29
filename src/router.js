@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import main from '@/views/main/index.vue'
 import login from './views/login/index.vue'
-import test from './views/test/index.vue'
+import test from './views/test/heat.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -38,12 +38,6 @@ export default new Router({
           component: () =>
             import('@/views/recommendation/mapMatching.vue'),
         },
-          {
-              path: '/locationResources',
-              name: '区位资源',
-              component: () =>
-                  import('@/views/locationResources/components/locationResources.vue'),
-          },
         {
           name: "可达性数据",
           path: "/Details",
@@ -57,12 +51,6 @@ export default new Router({
           component: () =>
             import('@/views/houseCompare/components/houseinfo.vue'),
         },
-          {
-              path: '/locationResources',
-              name: '区位资源',
-              component: () =>
-                  import('@/views/locationResources/components/locationResources.vue'),
-          },
         {
           name: "个人中心",
           path: "/personal",

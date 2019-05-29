@@ -6,7 +6,6 @@
 import axios from "axios";
 import esriLoader from "esri-loader";
 import { MapAPI } from "@/core/config/const";
-import { debug } from "util";
 export default {
   data() {
     return {
@@ -82,7 +81,7 @@ export default {
                   map: map
                 });
                 var gwrPOint =
-                  "http://122.112.216.247:6080/arcgis/rest/services/Server/KLJCHAZHI/MapServer/0";
+                  "http://122.112.216.247:6080/arcgis/rest/services/Server/FEATURELAYE/FeatureServer/0";
 
                 var queryTask = new QueryTask({
                   url: gwrPOint
@@ -90,7 +89,7 @@ export default {
                 var query = new Query();
                 query.returnGeometry = true;
                 query.outFields = ["*"];
-                query.where = "OBSERVED>='3946'";
+                query.where = "PRICE>='8000'";
                 // queryTask.execute(query, this.doGP);
                 // queryTask.execute(query).then(function(results) {
                 //   this.doGP(results);
@@ -101,22 +100,16 @@ export default {
         });
     },
     doGP(featureSet) {
-      debugger;
       var gpUrl =
-        "http://122.112.216.247:6080/arcgis/rest/services/Server/testKing/GPServer/kingTest";
-      mapApi.esriApi.GetGeoprocessor().then(Geoprocessor => {
+        "http://122.112.216.247:6080/arcgis/rest/services/Server/noRaster/GPServer/Model1";
+      mapApi.esriApi.GetGeoprocessor().then(Geoprocessor => {  
+        alert("任务失败");
         var Kriging_GP = new Geoprocessor(gpUrl);
-        this.krigingGP = Kriging_GP;
         var parms = {
-          SDE_DJGWR: featureSet,
-          Z_value_field: "LocalR2"
-          //传入的几何对象
+          SDE_GWRTEST: featureSet //传入的几何对象
         };
-        Kriging_GP.outSpatialReference = { wkid: 102100 };
-        Kriging_GP.processSpatialReference = { wkid: 102100 };
-
         console.log(parms);
-        Kriging_GP.submitJob(parms).then(this.gpJobComplete);
+        Kriging_GP.execute(parms).then(this.gpJobComplete);
       });
 
       //   Kriging_GP.submitJob(params).then(this.gpJobComplete);
@@ -124,22 +117,23 @@ export default {
     gpJobComplete(jobinfo) {
       console.log(jobinfo);
       debugger;
-      if (jobinfo.jobStatus == "job-succeeded") {
-        mapApi.esriApi.GetImageParameters().then(ImageParameters => {
-          var imageParams = new ImageParameters({
-            format: "png32",
-            imageSpatialReference: 102100  
-          });
-          var layer = this.krigingGP.getResultMapImageLayer(jobinfo.jobId);
-          layer.opacity = 0.7;
-          layer.title = "克里金插值";
-          this.myMap.layers.add(layer);
-        });
+      // if (jobinfo.jobStatus == "job-succeeded") {
+      //   // var imageParam = new ImageParameters();
+      //   // imageParam.imageSpatialReference = new SpatialReference(102100);
+      //   // imageParam.transparent = true;
+      //   var imageParams = new ImageParameters({
+      //     format: "png32",
+      //     imageSpatialReference: spatialReference_ID
+      //   });
 
-        // Kriging_GP.getResultImage(jobinfo.jobId, "fx", imageParam, getResultImaLayer);
-      } else {
-        alert("任务失败");
-      }
+      //   // Kriging_GP.getResultImage(jobinfo.jobId, "fx", imageParam, getResultImaLayer);
+      //   var layer = Kriging_GP.getResultMapImageLayer(jobinfo.jobId);
+      //   layer.opacity = 0.7;
+      //   layer.title = "克里金插值";
+      //   this.myMap.layers.add(layer);
+      // } else {
+      //   alert("任务失败");
+      // }
     }
   },
   data() {

@@ -164,10 +164,14 @@ export default {
                 esriConfig.request.corsEnabledServers.push("192.168.1.102/");
 
                 var activeWidget = null;
-                var layer = new TileLayer({
+                var layer = new MapImageLayer({
                   url:
-                    "http://122.112.216.247:6080/arcgis/rest/services/CHUZHOU/chuzhouServer/MapServer"
+                    "http://122.112.216.247:6080/arcgis/rest/services/Server/MAP/MapServer"
                 });
+                // var layer = new TileLayer({
+                //   url:
+                //     "http://122.112.216.247:6080/arcgis/rest/services/CHUZHOU/chuzhouServer/MapServer"
+                // });
                 this.baseLayer = layer;
                 // var street = new TileLayer({
                 //   url:

@@ -161,7 +161,7 @@ export default {
       //clear
       onemap.pubsub.subscribe("clear", arg => {
         this.visible = false;
-        this.pa;
+        // this.pa;
         this.data = [];
       });
     },
@@ -225,9 +225,9 @@ export default {
 
                 var activeWidget = null;
 
-                var layer = new MapImageLayer({
+                var layer = new TileLayer({
                   url:
-                    "http://122.112.216.247:6080/arcgis/rest/services/Server/MAP/MapServer"
+                  "http://122.112.216.247:6080/arcgis/rest/services/Servers/Map/MapServer"
                 });
                 this.baseLayer = layer;
 
@@ -264,7 +264,7 @@ export default {
                 // });
 
                 var map = new Map({
-                  basemap: baseMap,
+                  basemap: baseMap
                   // layers: [demographicGroupLayer]
                 });
                 var ext = String(this.defaultMapExtent).split(",");
@@ -503,9 +503,9 @@ export default {
   right: 0;
   z-index: 3;
 }
-.esri-popup--is-docked-top-right .esri-popup__main-container {
+/* .esri-popup--is-docked-top-right .esri-popup__main-container {
   max-height: 80%;
   margin-top: 40px;
   margin-right: 45px;
-}
+} */
 </style>
