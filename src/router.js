@@ -51,6 +51,7 @@ export default new Router({
           component: () =>
             import('@/views/houseCompare/components/houseinfo.vue'),
         },
+
         {
           name: "个人中心",
           path: "/personal",
@@ -310,12 +311,13 @@ export default new Router({
           //   component: () =>
           //     import('@/views/userManager/components/userIndex.vue'),
           // }, ]
-        },{
+        },
+        {
           name: "模型分析",
           path: "/modelAnalysis",
           component: () =>
             import('@/views/modelAnalysis/index.vue'),
-          // children: [{
+          // children: [{z
           //   path: '/',
           //   name: "用户中心",
           //   meta: {
@@ -324,7 +326,13 @@ export default new Router({
           //   component: () =>
           //     import('@/views/userManager/components/userIndex.vue'),
           // }, ]
-        }
+        },
+        {
+          path: '/locationResources',
+          name: '区位资源',
+          component: () =>
+            import('@/views/locationResources/components/locationResources.vue'),
+        },
 
       ]
     }
