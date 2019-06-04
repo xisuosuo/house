@@ -36,6 +36,7 @@
 <body>
     <button id="del">清除渲染</button>
     <div id="map"></div>
+    <div id="showdata" style="width: 500px;height: 200px;position: fixed;right:30px;top: 100px;"></div>
     <script src="ArcGISEcharts4.js"></script>
     <script>
         var dojoConfig = {
@@ -54,7 +55,7 @@
             "dojo/domReady!"
         ], function (Basemap, TileLayer, Map, MapView, EchartsLayer) {
             var layer = new TileLayer({
-                url: "http://map.geoq.cn/ArcGIS/rest/services/ChinaOnlineStreetPurplishBlue/MapServer"
+                url: "http://map.geoq.cn/ArcGIS/rest/services/ChinaOnlineCommunity/MapServer"
             });
             var customBasemap = new Basemap({
                 baseLayers: [layer],
@@ -74,26 +75,12 @@
                 var overlay = new EchartsLayer(mapView, echarts);
                 var chartsContainer = overlay.getEchartsContainer();
                 var myChart = overlay.initECharts(chartsContainer);
-                var data = [{
-                        name: '山水人家',
-                        value: 193
-                    },
-                    {
-                        name: '菏泽',
-                        value: 194
-                    },
-                    {
-                        name: '合肥',
-                        value: 229
-                    },
-                    {
-                        name: '武汉',
-                        value: 273
-                    },
-                    {
-                        name: '大庆',
-                        value: 279
-                    }
+                var data = [
+                    {name: '山水人家', value: 193,pricedata:[265,635,452]},
+                    {name: '菏泽', value: 194,pricedata:[265,535,453]},
+                    {name: '合肥', value: 229,pricedata:[365,435,454]},
+                    {name: '武汉', value: 273,pricedata:[165,335,455]},
+                    {name: '大庆', value: 279,pricedata:[465,135,456]}
                 ];
                 var geoCoordMap = {
                     '山水人家': ["118.326907", "32.352524"],
@@ -104,15 +91,15 @@
                 };
 
                 var convertData = function (data) {
-                    debugger;
                     var res = [];
                     for (var i = 0; i < data.length; i++) {
                         var geoCoord = geoCoordMap[data[i].name];
                         if (geoCoord) {
                             res.push({
-                                price: data[i].value,
                                 name: data[i].name,
-                                value: geoCoord.concat(data[i].value),
+                                price:data[i].value,
+                                pricedata:data[i].pricedata,
+                                value: geoCoord.concat(data[i].value)
                             });
                         }
                     }
@@ -129,7 +116,10 @@
                         }
                     },
                     tooltip: {
-                        trigger: 'item'
+                        trigger: 'item',
+                        formatter: function(params) {
+                            return data[params.dataIndex].name+"："+data[params.dataIndex].value+"元";
+                        }
                     },
                     legend: {
                         orient: 'vertical',
@@ -146,7 +136,7 @@
                         calculable: true,
                         inRange: {
                             color: ['#800026', '#BD0026', '#E31A1C', '#FC4E2A', '#FEB24C',
-                                '#FED976', '#FFFFCC'
+                                '#BD0026', '#BD0026'
                             ],
                             symbolSize: [1, 20]
                         },
@@ -159,7 +149,7 @@
                         map: '',
                         label: {
                             emphasis: {
-                                show: false
+                                show: true
                             }
                         },
                         roam: true,
@@ -173,20 +163,20 @@
                             }
                         }
                     },
-                    series: [{
+                    series: [
+                        {
                             name: '房价',
                             type: 'scatter',
                             coordinateSystem: 'geo',
-                            data:data,
+                            data:convertData(data),
                             symbolSize: function (val) {
-                                debugger
                                 return val[2] / 10;
                             },
                             label: {
                                 normal: {
-                                    formatter: '{a}',
+                                    formatter: '{b}',
                                     position: 'right',
-                                    show: true
+                                    show: false
                                 },
                                 emphasis: {
                                     show: true
@@ -203,7 +193,6 @@
                             type: 'effectScatter',
                             coordinateSystem: 'geo',
                             data: convertData(data.sort(function (a, b) {
-                                debugger;
                                 return b.value - a.value;
                             }).slice(0, 6)),
                             symbolSize: function (val) {
@@ -216,7 +205,7 @@
                             hoverAnimation: true,
                             label: {
                                 normal: {
-                                    formatter: '{b}',
+                                    formatter:'{b}',
                                     position: 'right',
                                     show: true
                                 }
@@ -225,7 +214,7 @@
                                 normal: {
                                     color: '#f4e925',
                                     shadowBlur: 10,
-                                    shadowColor: '#333'
+                                    shadowColor: '#BD0026'
                                 }
                             },
                             zlevel: 1
@@ -234,6 +223,51 @@
                 };
                 // 使用刚指定的配置项和数据显示图表。
                 overlay.setOption(option);
+                myChart.on('click', function (parmas) {
+                    var myChart = echarts.init(document.getElementById('showdata'));
+                    var that = this;
+                    console.log(parmas);
+                    option = {
+                        title: {
+                            text: `滁州市${parmas.data.name}近三年房价走向`,
+                        },
+                        trigger: 'axis',
+                        axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+                            type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                        },
+                        xAxis: {
+                            axisLabel: {
+                                formatter: '{value} 年'
+                            },
+                            type: 'category',
+                            data: ['2017', '2018', '2019']
+                        },
+                        yAxis: {
+                            axisLabel: {
+                                formatter: '{value} 元'
+                            },
+                            color:'#fff',
+                            type: 'value'
+                        },
+                        grid: {
+                            left: '1%',
+                            right: '1%',
+                            bottom: '1%',
+                            containLabel: true
+                        },
+                        series: [{
+                            label: {
+                                normal: {
+                                    show: true
+                                }
+                            },
+                            data: parmas.data.pricedata,
+                            type: 'line',
+                            smooth: true
+                        }]
+                    };
+                    myChart.setOption(option);
+                });
                 $("#del").click(function () {
                     overlay.deleteECharts()
                 })
