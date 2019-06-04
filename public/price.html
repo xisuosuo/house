@@ -112,7 +112,7 @@
                         // subtext: 'Data from 房价',
                         left: 'center',
                         textStyle: {
-                            color: '#fff'
+                            color: '#111'
                         }
                     },
                     tooltip: {
@@ -223,17 +223,21 @@
                 };
                 // 使用刚指定的配置项和数据显示图表。
                 overlay.setOption(option);
+                var count = 0;
                 myChart.on('click', function (parmas) {
                     var myChart = echarts.init(document.getElementById('showdata'));
-                    var that = this;
-                    console.log(parmas);
+                        count++;
+                        if (count%2==0){
+                            console.log(count);
+                            myChart.dispose();
+                        }
                     option = {
                         title: {
                             text: `滁州市${parmas.data.name}近三年房价走向`,
                         },
                         trigger: 'axis',
-                        axisPointer : {            // 坐标轴指示器，坐标轴触发有效
-                            type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                        axisPointer : {
+                            type : 'shadow'
                         },
                         xAxis: {
                             axisLabel: {
