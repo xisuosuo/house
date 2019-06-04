@@ -42,6 +42,7 @@ export default {
     },
     methods: {
         getHouse() {
+            debugger;
             Server.post({
                 url: services.getHouse,
                 params: {
