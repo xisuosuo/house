@@ -14,10 +14,10 @@
             <span class="icon baseLayerImg"></span>
             <span>影像</span>
           </li>
-          <!-- <li class="btn" @click="onToggleLayer">
+          <li class="btn" @click="onToggleLayer">
             <span class="icon layerView"></span>
             <span>图层</span>
-          </li> -->
+          </li>
         </ul>
       </div>
     </div>
@@ -117,6 +117,7 @@ export default {
       }
     },
     onToggleLayer() {
+      debugger;
       if (document.getElementsByClassName) {
         var target = document.getElementsByClassName("esri-layer-list");
         var targetName = target[0];
@@ -164,46 +165,46 @@ export default {
                 esriConfig.request.corsEnabledServers.push("192.168.1.102/");
 
                 var activeWidget = null;
-                var layer = new MapImageLayer({
+                // var layer = new MapImageLayer({
+                //   url:
+                //     "http://122.112.216.247:6080/arcgis/rest/services/Servers/Map/MapServer"
+                // });
+                var layer = new TileLayer({
                   url:
-                    "http://122.112.216.247:6080/arcgis/rest/services/Server/MAP/MapServer"
+                    "http://122.112.216.247:6080/arcgis/rest/services/Servers/Map/MapServer"
                 });
-                // var layer = new TileLayer({
-                //   url:
-                //     "http://122.112.216.247:6080/arcgis/rest/services/CHUZHOU/chuzhouServer/MapServer"
-                // });
                 this.baseLayer = layer;
-                // var street = new TileLayer({
-                //   url:
-                //     "	https://localhost:6443/arcgis/rest/services/ChuZhou/ChuZhouYX/MapServer",
+                var street = new TileLayer({
+                  url:
+                    "	https://localhost:6443/arcgis/rest/services/ChuZhou/ChuZhouYX/MapServer",
 
-                //   visible: false
-                // });
+                  visible: false
+                });
 
                 // this.street = street;
-                // var USALayer = new MapImageLayer({
-                //   url:
-                //     "	https://localhost:6443/arcgis/rest/services/ChuZhou/XZQH/MapServer",
-                //   title: "行政规划",
-                //   visible: false
-                // });
+                var USALayer = new MapImageLayer({
+                  url:
+                    "	https://localhost:6443/arcgis/rest/services/ChuZhou/XZQH/MapServer",
+                  title: "行政规划",
+                  visible: false
+                });
 
-                // var censusLayer = new MapImageLayer({
-                //   url:
-                //     "https://localhost:6443/arcgis/rest/services/ChuZhou/yeWuData/MapServer",
-                //   title: "业务数据",
-                //   visible: false
-                // });
+                var censusLayer = new MapImageLayer({
+                  url:
+                    "https://localhost:6443/arcgis/rest/services/ChuZhou/yeWuData/MapServer",
+                  title: "业务数据",
+                  visible: false
+                });
                 var baseMap = new Basemap({
                   baseLayers: [layer]
                 });
-                // var demographicGroupLayer = new GroupLayer({
-                //   title: "专题图层",
-                //   visible: true,
-                //   visibilityMode: "independent",
-                //   layers: [USALayer, censusLayer]
-                //   // opacity: 0.75
-                // });
+                var demographicGroupLayer = new GroupLayer({
+                  title: "专题图层",
+                  visible: true,
+                  visibilityMode: "independent",
+                  layers: [USALayer, censusLayer]
+                  // opacity: 0.75
+                });
 
                 var map = new Map({
                   // basemap: baseMap,
@@ -269,7 +270,13 @@ export default {
 <style >
 .esri-component esri-layer-list esri-widget esri-widget--panel {
   display: none;
+  margin-right: -20px;
+  max-height: 240px;
+  width: 210px;
+  /* margin-left: px; */
+  margin-top: 15px;
 }
+
 .main .container-fluid {
   padding: 0 0px;
 }

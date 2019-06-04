@@ -89,7 +89,7 @@
                             <div class="map">
                                 <smallMapView></smallMapView>
                             </div>
-                            <div style="padding-top: 50px;position: absolute;right: 10px; z-index: 9999;">
+                            <!-- <div style="padding-top: 50px;position: absolute;right: 10px; z-index: 9999;">
                                 <CheckboxGroup  v-model="checkAllGroup" @on-change="checkAllGroupChange">
                                     <Checkbox label="幼儿园">幼儿园</Checkbox>
                                     <br>
@@ -101,7 +101,7 @@
                                     <br>
                                     <Checkbox label="大专院校"></Checkbox>
                                 </CheckboxGroup>
-                            </div>
+                            </div> -->
                         </TabPane>
                         <TabPane label="服务区">
                             <div class="map">

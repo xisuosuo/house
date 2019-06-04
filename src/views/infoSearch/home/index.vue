@@ -48,10 +48,10 @@
           <span class="icon baseLayerImg"></span>
           <span>影像</span>
         </li>
-        <li class="btn" @click="onToggleLayer">
+        <!-- <li class="btn" @click="onToggleLayer">
           <span class="icon layerView"></span>
           <span>图层</span>
-        </li>
+        </li> -->
         <!-- <map-layer-view ref="layerView" style="margin-left:35px;" :mapView="mapView" :layerOpt="layerList" :isOut="true"></map-layer-view> -->
       </ul>
     </div>
