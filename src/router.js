@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import main from '@/views/main/index.vue'
 import login from './views/login/index.vue'
-import test from './views/test/heat.vue'
+import test from './views/test/heattest.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -312,27 +312,57 @@ export default new Router({
           //     import('@/views/userManager/components/userIndex.vue'),
           // }, ]
         },
-          {
-              name: "模型分析",
-              path: "/modelAnalysis",
-              component: () =>
-                  import('@/views/modelAnalysis/index.vue'),
-              // children: [{z
-              //   path: '/',
-              //   name: "用户中心",
-              //   meta: {
-              //     auth: true
-              //   },
-              //   component: () =>
-              //     import('@/views/userManager/components/userIndex.vue'),
-              // }, ]
-          },
-          {
-              path: '/locationResources',
-              name: '区位资源',
-              component: () =>
-                  import('@/views/locationResources/components/locationResources.vue'),
-          },
+        {
+          name: "模型分析",
+          path: "/modelAnalysis",
+          component: () =>
+            import('@/views/modelAnalysis/index.vue'),
+          // children: [{z
+          //   path: '/',
+          //   name: "用户中心",
+          //   meta: {
+          //     auth: true
+          //   },
+          //   component: () =>
+          //     import('@/views/userManager/components/userIndex.vue'),
+          // }, ]
+        },
+        {
+          name: "热力图分析",
+          path: "/heatMap",
+          component: () =>
+            import('@/views/heatMap/index.vue'),
+          // children: [{z
+          //   path: '/',
+          //   name: "用户中心",
+          //   meta: {
+          //     auth: true
+          //   },
+          //   component: () =>
+          //     import('@/views/userManager/components/userIndex.vue'),
+          // }, ]
+        },
+        {
+          path: '/locationResources',
+          name: '区位资源',
+          component: () =>
+            import('@/views/locationResources/components/locationResources.vue'),
+        },
+        {
+          name: "二维热力图",
+          path: "/heatMap2d",
+          component: () =>
+            import('@/views/heatMap/2d.vue'),
+          // children: [{z
+          //   path: '/',
+          //   name: "用户中心",
+          //   meta: {
+          //     auth: true
+          //   },
+          //   component: () =>
+          //     import('@/views/userManager/components/userIndex.vue'),
+          // }, ]
+        },
 
       ]
     }
