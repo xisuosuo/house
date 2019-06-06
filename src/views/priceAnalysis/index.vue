@@ -9,6 +9,26 @@
                         <span>首页</span>
                         </MenuItem>
                     </router-link>
+                    <Submenu name="8">
+                        <template slot="title">
+                            <Icon type="ios-radio" /> 房价分析
+                        </template>
+                        <router-link to="/priceAnalysis">
+                            <MenuItem name="8-2">
+                            <span style="font-size: 13px">价格分析</span>
+                            </MenuItem>
+                        </router-link>
+                        <router-link to="/heatMap2d">
+                            <MenuItem name="8-1">
+                            <span style="font-size: 13px">二维热力图</span>
+                            </MenuItem>
+                        </router-link>
+                        <router-link to="/heatMap">
+                            <MenuItem name="8-1">
+                            <span style="font-size: 13px">三维热力图</span>
+                            </MenuItem>
+                        </router-link>
+                    </Submenu>
                     <Submenu name="1">
                         <template slot="title">
                             <Icon type="md-analytics" /> 数据展示
@@ -40,6 +60,12 @@
                         <MenuItem name="4-1">
                         <Icon type="md-search" />
                         <span>信息查询</span>
+                        </MenuItem>
+                    </router-link>
+                    <router-link to="/locationResources">
+                        <MenuItem name="2-2">
+                        <Icon type="md-pin" />
+                        <span>区位资源</span>
                         </MenuItem>
                     </router-link>
                     <router-link to="/userManager">
@@ -79,7 +105,7 @@
             <Content>
                 <Header :style="{padding: 0}" class="layout-header-bar">
                     <Breadcrumb>
-                         <Icon :class="rotateIcon" :style="{margin: '0 5px'}" type="md-menu" size="25"></Icon>    
+                        <Icon :class="rotateIcon" :style="{margin: '0 5px'}" type="md-menu" size="25"></Icon>
                         <BreadcrumbItem v-for="(item,idx) in $route.matched" :key="idx" :to="(item.path)">{{item.name}}</BreadcrumbItem>
                     </Breadcrumb>
                 </Header>
