@@ -41,10 +41,36 @@
           <span>购房选址</span>
           </MenuItem>
         </router-link>
+        <Submenu name="8">
+          <template slot="title">
+            <Icon type="ios-radio" /> 房价分析
+          </template>
+          <router-link to="/priceAnalysis">
+            <MenuItem name="8-2">
+            <span style="font-size: 13px">价格分析</span>
+            </MenuItem>
+          </router-link>
+          <router-link to="/heatMap2d">
+            <MenuItem name="8-1">
+            <span style="font-size: 13px">二维热力图</span>
+            </MenuItem>
+          </router-link>
+          <router-link to="/heatMap">
+            <MenuItem name="8-1">
+            <span style="font-size: 13px">三维热力图</span>
+            </MenuItem>
+          </router-link>
+        </Submenu>
         <router-link to="/infoSearch">
           <MenuItem name="4-1">
           <Icon type="md-search" />
           <span>信息查询</span>
+          </MenuItem>
+        </router-link>
+        <router-link to="/locationResources">
+          <MenuItem name="2-2">
+          <Icon type="md-pin" />
+          <span>区位资源</span>
           </MenuItem>
         </router-link>
         <router-link to="/userManager">
@@ -432,7 +458,7 @@ export default {
               url: services.delUserComments,
               params: {
                 userId: userId,
-                commentsId:commentsId
+                commentsId: commentsId
               }
             }).then(rsp => {
               if (rsp.data.status == 1) {

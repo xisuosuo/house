@@ -302,7 +302,7 @@ export default new Router({
               import('@/views/userManager/components/userIndex.vue'),
           }, ]
         }, {
-          name: "房价分析",
+          name: "价格分析",
           path: "/priceAnalysis",
           component: () =>
             import('@/views/priceAnalysis/index.vue'),

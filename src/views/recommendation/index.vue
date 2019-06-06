@@ -11,28 +11,48 @@
                     </router-link>
                     <router-link to="/recommendation/housingPreference">
                         <MenuItem name="2-1">
-                            <Icon type="md-thumbs-up" />
-                            <span>房源推荐</span>
+                        <Icon type="md-thumbs-up" />
+                        <span>房源推荐</span>
                         </MenuItem>
                     </router-link>
                     <router-link to="/recommendation/factor">
                         <MenuItem name="2-2">
-                            <Icon type="md-pin" />
-                            <span>购房选址</span>
+                        <Icon type="md-pin" />
+                        <span>购房选址</span>
                         </MenuItem>
                     </router-link>
+                    <Submenu name="8">
+                        <template slot="title">
+                            <Icon type="ios-radio" /> 房价分析
+                        </template>
+                        <router-link to="/priceAnalysis">
+                            <MenuItem name="8-2">
+                            <span style="font-size: 13px">价格分析</span>
+                            </MenuItem>
+                        </router-link>
+                        <router-link to="/heatMap2d">
+                            <MenuItem name="8-1">
+                            <span style="font-size: 13px">二维热力图</span>
+                            </MenuItem>
+                        </router-link>
+                        <router-link to="/heatMap">
+                            <MenuItem name="8-1">
+                            <span style="font-size: 13px">三维热力图</span>
+                            </MenuItem>
+                        </router-link>
+                    </Submenu>
                     <Submenu name="1">
                         <template slot="title">
                             <Icon type="md-analytics" /> 数据展示
                         </template>
                         <router-link to="/data">
                             <MenuItem name="1-1">
-                                <span style="font-size: 13px">数据统计</span>
+                            <span style="font-size: 13px">数据统计</span>
                             </MenuItem>
                         </router-link>
                         <router-link to="/data/dataDeatils">
                             <MenuItem name="1-2">
-                                <span style="font-size: 13px">数据查询</span>
+                            <span style="font-size: 13px">数据查询</span>
                             </MenuItem>
                         </router-link>
                     </Submenu>
@@ -40,6 +60,12 @@
                         <MenuItem name="4-1">
                         <Icon type="md-search" />
                         <span>信息查询</span>
+                        </MenuItem>
+                    </router-link>
+                    <router-link to="/locationResources">
+                        <MenuItem name="2-2">
+                        <Icon type="md-pin" />
+                        <span>区位资源</span>
                         </MenuItem>
                     </router-link>
                     <router-link to="/userManager">
@@ -60,17 +86,17 @@
                         </template>
                         <router-link to="/auDecision/usersManual">
                             <MenuItem name="6-1">
-                                <span style="font-size: 13px">用户手册</span>
+                            <span style="font-size: 13px">用户手册</span>
                             </MenuItem>
                         </router-link>
                         <router-link to="/auDecision/livablemodel">
                             <MenuItem name="6-2">
-                                <span style="font-size: 13px">宜居模型</span>
+                            <span style="font-size: 13px">宜居模型</span>
                             </MenuItem>
                         </router-link>
                         <router-link to="/auDecision/model">
                             <MenuItem name="6-3">
-                                <span style="font-size: 13px">引力模型</span>
+                            <span style="font-size: 13px">引力模型</span>
                             </MenuItem>
                         </router-link>
                     </Submenu>
