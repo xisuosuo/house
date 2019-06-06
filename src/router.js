@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import main from '@/views/main/index.vue'
 import login from './views/login/index.vue'
 import test from './views/test/heattest.vue'
+import server from '@/map/components/serverArea'
 Vue.use(Router)
 
 export default new Router({
@@ -19,7 +20,10 @@ export default new Router({
         auth: false,
       }
     },
-
+    {
+      path: '/server',
+      component: server,
+    },
     {
       path: '/test',
       component: test,
