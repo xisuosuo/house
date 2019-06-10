@@ -145,6 +145,7 @@ class GDrawGraphic {
   }
 
   polygonsByList(args, layer = null) {
+    debugger;
     var mapView = args.mapView;
     var list = args.list;
     var extent = args.extent && args.extent === true ? true : false;
@@ -208,8 +209,10 @@ class GDrawGraphic {
   }
 
   polygonsByGeoJson(args, layer = null) {
+    debugger;
     var mapView = args.mapView;
     var geojson = args.geojson;
+    var list = args.list;
     var extent = args.extent && args.extent === true ? true : false;
     mapApi.esriApi.GetGraphic().then(Graphic => {
       var geometryParse = [];
@@ -237,13 +240,13 @@ class GDrawGraphic {
           layer.graphics.addMany(graphics);
         }
 
-        if (extent) {
-          setTimeout(() => {
-            mapApi.geometryUtils.getMaxExtent(geometries).then(extent => {
-              mapView.extent = extent.expand(2);
-            });
-          }, 100);
-        }
+        // if (extent) {
+        //   setTimeout(() => {
+        //     mapApi.geometryUtils.getMaxExtent(geometries).then(extent => {
+        //       mapView.extent = extent.expand(2);
+        //     });
+        //   }, 100);
+        // }
       });
     });
   }
