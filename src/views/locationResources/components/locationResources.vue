@@ -127,8 +127,8 @@
                 </Header>
                 <div style="width: 80%; margin: 0 auto;margin-top: 30px;border: 1px solid #dcdee2">
                     <Tabs>
-                        <TabPane label="学区">
-                            <div class="map">
+                         <TabPane label="学区">
+                            <div id="map1">
                                 <smallMapView></smallMapView>
                             </div>
                             <!-- <div style="padding-top: 50px;position: absolute;right: 10px; z-index: 9999;">
@@ -144,12 +144,12 @@
                                     <Checkbox label="大专院校"></Checkbox>
                                 </CheckboxGroup>
                             </div> -->
-                        </TabPane>
+                        </TabPane> 
                         <TabPane label="服务区">
-                            <div class="map">
-                                <smallMapView></smallMapView>
+                            <div id="map2">
+                                <serverArea></serverArea>
                             </div>
-                            <div style="position: relative;float: right; width: 250px;margin: 10px;padding-top: 400px;z-index: 9999">
+                            <!-- <div style="position: relative;float: right; width: 250px;margin: 10px;padding-top: 400px;z-index: 9999">
                                 <Col span="2">
                                 <p style="margin: 7px">0</p>
                                 </Col>
@@ -159,11 +159,11 @@
                                 <Col span="4">
                                 <p style="margin: 7px">分钟</p>
                                 </Col>
-                            </div>
+                            </div> -->
                         </TabPane>
                         <TabPane label="缓冲区">
-                            <div class="map">
-                                <smallMapView></smallMapView>
+                            <div class="map3">
+                                <!-- <smallMapView></smallMapView> -->
                             </div>
                             <div style="position: relative;float: right; width: 250px;margin: 10px;padding-top: 400px;z-index: 9999">
                                 <Col span="2">
@@ -178,8 +178,8 @@
                             </div>
                         </TabPane>
                         <TabPane label="可达性">
-                            <div class="map">
-                                <smallMapView></smallMapView>
+                            <div class="map4">
+                                <!-- <smallMapView></smallMapView> -->
                             </div>
                             <div style="padding-top: 50px;position: relative;float: right; z-index: 9999;">
                                 <CheckboxGroup v-model="checkAllGroup" @on-change="checkAllGroupChange">
@@ -202,7 +202,7 @@
 
 <script>
 import smallMapView from "@/map/components/smallMapView";
-
+import serverArea from "@/map/components/serverArea";
 export default {
   data() {
     return {
@@ -214,7 +214,8 @@ export default {
 
   methods: {},
   components: {
-    smallMapView
+    smallMapView,
+    serverArea
   }
 };
 </script>

@@ -114,11 +114,9 @@ export default {
         };
         Kriging_GP.outSpatialReference = { wkid: 102100 };
         Kriging_GP.processSpatialReference = { wkid: 102100 };
-
         console.log(parms);
         Kriging_GP.submitJob(parms).then(this.gpJobComplete);
       });
-
       //   Kriging_GP.submitJob(params).then(this.gpJobComplete);
     },
     gpJobComplete(jobinfo) {

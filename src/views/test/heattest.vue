@@ -34,108 +34,106 @@ export default {
     addLayerL() {
       esriLoader
         .loadScript({
-          url: MapAPI.js,
-          css: MapAPI.css
+          url: "https://js.arcgis.com/3.23/init.js",
+          css: "https://js.arcgis.com/3.23/esri/css/esri.css"
         })
         .then(r => {
           esriLoader
             .loadModules([
-              "esri/Map",
-              "esri/Basemap",
-              "esri/views/MapView",
-              "esri/layers/MapImageLayer",
-              "esri/layers/support/Field",
-              "esri/layers/FeatureLayer",
-              "esri/tasks/QueryTask",
-              "esri/tasks/support/Query",
-              "esri/tasks/Geoprocessor",
-              "esri/tasks/support/FeatureSet"
+              "esri/map",
+              "esri/renderers/HeatmapRenderer",
+              // "esri/views/HeatmapRenderer",
+              "dojo/domReady!"
+              // "esri/layers/support/Field",
+              // "esri/layers/FeatureLayer",
+              // "esri/tasks/QueryTask",
+              // "esri/tasks/support/Query",
+              // "esri/tasks/Geoprocessor",
+              // "esri/tasks/support/FeatureSet"
             ])
-            .then(
-              ([
-                Map,
-                Basemap,
-                MapView,
-                MapImageLayer,
-                Field,
-                FeatureLayer,
-                QueryTask,
-                Query,
-                Geoprocessor,
-                dom,
-                on
-              ]) => {
-                var activeWidget = null;
+            .then(([Map, HeatmapRenderer, // MapImageLayer,
+              // Field,
+              // FeatureLayer,
+              // QueryTask,
+              // Query,
+              // Geoprocessor,
+              dom, on]) => {
+              map = new Map("map", {
+                zoom: 8,
+                // maxZoom: 8,
+                // minZoom: 8,
+                center: [120.243, 29.056],
+                logo: false
+              });
 
-                var street = new MapImageLayer({
-                  url:
-                    "http://122.112.216.247:6080/arcgis/rest/services/Server/MAP/MapServer"
-                });
+              var tiledUrl =
+                "http://map.geoq.cn/ArcGIS/rest/services/ChinaOnlineCommunity/MapServer";
 
-                var baseMap = new Basemap({
-                  baseLayers: [street]
-                });
-                var map = new Map({
-                  basemap: baseMap
-                  // layers: [layer]
-                });
-                this.myMap = map;
+              var TiledLayer = new esri.layers.ArcGISTiledMapServiceLayer(
+                tiledUrl
+              );
 
-                this.mapViewL = new MapView({
-                  center: [118.2358, 32.26102],
-                  container: "viewDiv",
-                  map: map,
-                  zoom: 13
-                });
-                const renderer = {
-                  type: "heatmap",
-                  field: "PRICE",
-                  colorStops: [
-                    { ratio: 0, color: "rgba(255, 255, 255, 0)" },
-                    { ratio: 0.2, color: "rgba(255, 255, 255, 1)" },
-                    { ratio: 0.5, color: "rgba(255, 140, 0, 1)" },
-                    { ratio: 0.8, color: "rgba(255, 140, 0, 1)" },
-                    { ratio: 1, color: "rgba(255, 0, 0, 1)" }
-                  ],
-                  minPixelIntensity: 0,
-                  maxPixelIntensity: 5000
-                };
-                var featureLayer = new FeatureLayer({
-                  url:
-                    "http://122.112.216.247:6080/arcgis/rest/services/Server/FEATURELAYE/FeatureServer/0", //点数据集
-                  // title: "热力图",
+              map.addLayer(TiledLayer);
+
+              var layerDefinition = {
+                geometryType: "esriGeometryPoint",
+                fields: [
+                  {
+                    name: "num",
+                    type: "esriFieldTypeInteger",
+                    alias: "num"
+                  }
+                ]
+              };
+              var featureCollection = {
+                layerDefinition: layerDefinition,
+                featureSet: null
+              };
+              //创建FeatureLayer图层
+              var featureLayer = new esri.layers.FeatureLayer(
+                featureCollection,
+                {
+                  mode: esri.layers.FeatureLayer.MODE_SNAPSHOT,
                   outFields: ["*"],
-                  renderer: renderer //渲染器
-                });
+                  opacity: 1
+                }
+              );
+              debugger;
+              var heatmapRenderer = new HeatmapRenderer({
+                field: "num",
+                colors: [
+                  "rgba(255, 0, 0, 0)",
+                  "rgb(0, 255, 0)",
+                  "rgb(255, 255, 0)",
+                  "rgb(255, 0, 0)"
+                ],
+                blurRadius: 12
+                // maxPixelIntensity: 20,
+                // minPixelIntensity: 2
+              });
+              featureLayer.setRenderer(heatmapRenderer); //heatmapRendererhtml中创建的渲染器
+              map.addLayer(featureLayer);
 
-                map.add(featureLayer);
-
-                // mapApi.esriApi.GetHeatmapRenderer().then(HeatmapRenderer => {
-                //   var heatmapRenderer = new HeatmapRenderer({
-                //     //设置渲染器
-                //     // field: "PRICE ",
-                //     colorStops: [
-                //       { ratio: 0.4, color: "rgba(0, 255, 0, 0)" },
-                //       { ratio: 0.75, color: "rgba(255, 140, 0, 1)" },
-                //       { ratio: 0.9, color: "rgba(255, 0,   0, 1)" }
-                //     ],
-                //     blurRadius: 8,
-                //     maxPixelIntensity: 230,
-                //     minPixelIntensity: 10
-                //   });
-                //   debugger;
-                //   var featureLayer = new FeatureLayer({
-                //     url:
-                //       "http://122.112.216.247:6080/arcgis/rest/services/Server/FEATURELAYE/FeatureServer/0", //点数据集
-                //     // title: "热力图",
-                //     outFields: ["*"],
-                //     renderer: heatmapRenderer //渲染器
-                //   });
-
-                //   map.add(featureLayer);
-                // });
-              }
-            );
+              var heatDataUrl = "https://lxqjss.github.io/data/heatJson2.json";
+              $.getJSON(heatDataUrl, {}, function(data, textStatus, jqXHR) {
+                for (var i = 0; i < data.heatData.length; i++) {
+                  var x = data.heatData[i].lng;
+                  var y = data.heatData[i].lat;
+                  var point = new esri.geometry.Point(
+                    x,
+                    y,
+                    new esri.SpatialReference({
+                      wkid: 4326
+                    })
+                  ); //初始化起点
+                  var graphic = new esri.Graphic(point);
+                  graphic.setAttributes({
+                    num: Number(data.heatData[i].num)
+                  });
+                  featureLayer.add(graphic);
+                }
+              });
+            });
         });
     }
   },
