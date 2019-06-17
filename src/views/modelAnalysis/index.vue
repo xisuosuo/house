@@ -58,7 +58,7 @@
                 <router-link to="/infoSearch">
                     <MenuItem name="4-1">
                     <Icon type="md-search" />
-                    <!-- <span>信息查询</span> -->
+                    <span>信息查询</span>
                     </MenuItem>
                 </router-link>
                 <router-link to="/locationResources">
