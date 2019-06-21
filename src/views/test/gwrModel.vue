@@ -96,7 +96,7 @@ export default {
                 var query = new Query();
                 query.returnGeometry = true;
                 query.outFields = ["*"];
-                query.where = "PRICE>='8000'";
+                query.where = "PRICE>='3946'";
                 // queryTask.execute(query, this.doGP);
                 // queryTask.execute(query).then(function(results) {
                 //   this.doGP(results);
@@ -107,23 +107,84 @@ export default {
         });
     },
     doGP(featureSet) {
+      debugger;
+      console.log(this.mapViewL);
       var gpUrl =
         "http://122.112.216.247:6080/arcgis/rest/services/Servers/GwrResulr/GPServer/Model";
       mapApi.esriApi.GetGeoprocessor().then(Geoprocessor => {
+        var _this = this;
+        console.log(_this.mapViewL);
         var Kriging_GP = new Geoprocessor(gpUrl);
         var parms = {
           Export_Output_6_shp: featureSet //传入的几何对象
         };
         Kriging_GP.submitJob(parms).then(jobinfo => {
-          debugger;
           if (jobinfo.jobStatus == "job-succeeded") {
-            debugger;
             Kriging_GP.getResultData(
               jobinfo.jobId,
               "GeographicallyWeightedRegression10"
             ).then(function(results) {
               console.log("projected points: ", results.value);
-              this.results = results.value;
+              var GwrPoint = results.value.features;
+              var Pointsymbol = {
+                type: "simple-marker", // autocasts as new SimpleMarkerSymbol()
+                style: "square",
+                color: "blue",
+                size: "8px", // pixels
+                outline: {
+                  // autocasts as new SimpleLineSymbol()
+                  color: [255, 255, 0],
+                  width: 3 // points
+                }
+              };
+              GwrPoint.forEach((GwrPoint, index) => {
+                // var symbol = GMapSymbol.getSymbol(geometry);
+
+                mapApi.esriApi.GetGraphic().then(Graphic => {
+                  var graphics = [];
+                  var graphic = new Graphic({
+                    geometry: GwrPoint.geometry,
+                    symbol: Pointsymbol
+                  });
+                  graphics.push(graphic);
+                  _this.mapViewL.graphics.addMany(graphics);
+                });
+                debugger;
+
+                // var graphic = new Graphic({
+                //   geometry: GwrPoint.geometry,
+                //   symbol: Pointsymbol
+                // });
+                // graphics.push(graphic);
+                // this.mapViewL.graphics.addMany(graphics);
+              });
+              // this.results = results.value;
+              // for (
+              //   var i = 0, length = results.value.features.length;
+              //   i != length;
+              //   ++i
+              // ) {
+              //   debugger;
+              //   var feature = features[i];
+              //   mapApi.esriApi
+              //     .GetSimpleMarkerSymbol()
+              //     .then(SimpleMarkerSymbol => {
+              //       var symbol = {
+              //         type: "simple-marker", // autocasts as new SimpleMarkerSymbol()
+              //         style: "square",
+              //         color: "blue",
+              //         size: "8px", // pixels
+              //         outline: {
+              //           // autocasts as new SimpleLineSymbol()
+              //           color: [255, 255, 0],
+              //           width: 3 // points
+              //         }
+              //       };
+
+              //       feature.setSymbol(symbol);
+              //       this.myMap.graphics.add(feature);
+              //     });
+              // }
             });
           }
         });
