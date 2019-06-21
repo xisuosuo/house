@@ -22,7 +22,8 @@ export default {
       left: "-100px",
       top: "-100px",
       width: 0,
-      feature: ""
+      feature: "",
+      results: ""
     };
   },
   mounted() {
@@ -42,6 +43,7 @@ export default {
               "esri/Basemap",
               "esri/views/MapView",
               "esri/layers/MapImageLayer",
+              "esri/layers/TileLayer",
               "esri/layers/FeatureLayer",
               "esri/tasks/QueryTask",
               "esri/tasks/support/Query",
@@ -54,6 +56,7 @@ export default {
                 Basemap,
                 MapView,
                 MapImageLayer,
+                TileLayer,
                 FeatureLayer,
                 QueryTask,
                 Query,
@@ -63,11 +66,14 @@ export default {
               ]) => {
                 var activeWidget = null;
 
-                var street = new MapImageLayer({
+                // var street = new MapImageLayer({
+                //   url:
+                //     "http://122.112.216.247:6080/arcgis/rest/services/Server/MAP/MapServer"
+                // });
+                var street = new TileLayer({
                   url:
-                    "http://122.112.216.247:6080/arcgis/rest/services/Server/MAP/MapServer"
+                    "http://122.112.216.247:6080/arcgis/rest/services/Servers/Map/MapServer"
                 });
-
                 var baseMap = new Basemap({
                   baseLayers: [street]
                 });
@@ -116,7 +122,8 @@ export default {
               jobinfo.jobId,
               "GeographicallyWeightedRegression10"
             ).then(function(results) {
-              console.log("projected points: ", results);
+              console.log("projected points: ", results.value);
+              this.results = results.value;
             });
           }
         });
