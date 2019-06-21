@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import main from '@/views/main/index.vue'
 import login from './views/login/index.vue'
-import test from './views/test/heattest.vue'
+import test from './views/test/gwrModel.vue'
 import server from '@/map/components/serverArea'
 Vue.use(Router)
 

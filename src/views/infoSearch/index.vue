@@ -73,7 +73,7 @@
               </MenuItem>
             </router-link>
             <router-link to="/heatMap">
-              <MenuItem name="8-1">
+              <MenuItem name="8-3">
               <span style="font-size: 13px">三维热力图</span>
               </MenuItem>
             </router-link>
