@@ -1,118 +1,135 @@
 <template>
-    <div class="layout">
-        <Layout :style="{height:'100%'}">
-            <Sider ref="side1" :width='180' :style="{height:'100%'}">
-                <Menu active-name="" theme="dark" width="auto" :open-names="['']">
-                    <router-link to="/menu">
-                        <MenuItem name="8-1">
-                        <Icon type="ios-navigate"></Icon>
-                        <span>首页</span>
-                        </MenuItem>
-                    </router-link>
-                    <router-link to="/recommendation/housingPreference">
-                        <MenuItem name="2-1">
-                        <Icon type="md-thumbs-up" />
-                        <span>房源推荐</span>
-                        </MenuItem>
-                    </router-link>
-                    <router-link to="/recommendation/factor">
-                        <MenuItem name="2-2">
-                        <Icon type="md-pin" />
-                        <span>购房选址</span>
-                        </MenuItem>
-                    </router-link>
-                    <Submenu name="8">
-                        <template slot="title">
-                            <Icon type="ios-radio" /> 房价分析
-                        </template>
-                        <router-link to="/priceAnalysis">
-                            <MenuItem name="8-2">
-                            <span style="font-size: 13px">价格分析</span>
-                            </MenuItem>
-                        </router-link>
-                        <router-link to="/heatMap2d">
-                            <MenuItem name="8-1">
-                            <span style="font-size: 13px">二维热力图</span>
-                            </MenuItem>
-                        </router-link>
-                        <router-link to="/heatMap">
-                            <MenuItem name="8-1">
-                            <span style="font-size: 13px">三维热力图</span>
-                            </MenuItem>
-                        </router-link>
-                    </Submenu>
-                    <Submenu name="1">
-                        <template slot="title">
-                            <Icon type="md-analytics" /> 数据展示
-                        </template>
-                        <router-link to="/data">
-                            <MenuItem name="1-1">
-                            <span style="font-size: 13px">数据统计</span>
-                            </MenuItem>
-                        </router-link>
-                        <router-link to="/data/dataDeatils">
-                            <MenuItem name="1-2">
-                            <span style="font-size: 13px">数据查询</span>
-                            </MenuItem>
-                        </router-link>
-                    </Submenu>
-                    <router-link to="">
-                        <MenuItem name="4-1">
-                        <Icon type="md-search" />
-                        <span>信息查询</span>
-                        </MenuItem>
-                    </router-link>
-                    <router-link to="/locationResources">
-                        <MenuItem name="2-2">
-                        <Icon type="md-pin" />
-                        <span>区位资源</span>
-                        </MenuItem>
-                    </router-link>
-                    <router-link to="/userManager">
-                        <MenuItem name="4-2" v-if="show">
-                        <Icon type="md-contacts" />
-                        <span>用户管理</span>
-                        </MenuItem>
-                    </router-link>
-                    <router-link to="/personalcenter">
-                        <MenuItem name="5-1">
-                        <Icon type="md-person" />
-                        <span>个人中心</span>
-                        </MenuItem>
-                    </router-link>
-                    <Submenu name="6">
-                        <template slot="title">
-                            <Icon type="md-paper" /> 用户手册
-                        </template>
-                        <router-link to="/auDecision/usersManual">
-                            <MenuItem name="6-1">
-                            <span style="font-size: 13px">用户手册</span>
-                            </MenuItem>
-                        </router-link>
-                        <router-link to="/auDecision/livablemodel">
-                            <MenuItem name="6-2">
-                            <span style="font-size: 13px">宜居模型</span>
-                            </MenuItem>
-                        </router-link>
-                        <router-link to="/auDecision/model">
-                            <MenuItem name="6-3">
-                            <span style="font-size: 13px">引力模型</span>
-                            </MenuItem>
-                        </router-link>
-                    </Submenu>
-                </Menu>
-            </Sider>
-            <Content>
-                <Header :style="{padding: 0}" class="layout-header-bar">
-                    <Breadcrumb>
-                        <Icon :class="rotateIcon" :style="{margin: '0 5px'}" type="md-menu" size="25"></Icon>
-                        <BreadcrumbItem v-for="(item,idx) in $route.matched" :key="idx" :to="(item.path)">{{item.name}}</BreadcrumbItem>
-                    </Breadcrumb>
-                </Header>
-                <router-view/>
-            </Content>
-        </Layout>
-    </div>
+        <!--<Layout :style="{height:'100%'}">-->
+            <!--<Sider ref="side1" :width='180' :style="{height:'100%'}">-->
+                <!--<Menu active-name="" theme="dark" width="auto" :open-names="['']">-->
+                    <!--<router-link to="/menu">-->
+                        <!--<MenuItem name="8-1">-->
+                        <!--<Icon type="ios-navigate"></Icon>-->
+                        <!--<span>首页</span>-->
+                        <!--</MenuItem>-->
+                    <!--</router-link>-->
+                    <!--<router-link to="/recommendation/housingPreference">-->
+                        <!--<MenuItem name="2-1">-->
+                        <!--<Icon type="md-thumbs-up" />-->
+                        <!--<span>房源推荐</span>-->
+                        <!--</MenuItem>-->
+                    <!--</router-link>-->
+                    <!--<router-link to="/recommendation/factor">-->
+                        <!--<MenuItem name="2-2">-->
+                        <!--<Icon type="md-pin" />-->
+                        <!--<span>购房选址</span>-->
+                        <!--</MenuItem>-->
+                    <!--</router-link>-->
+                    <!--<Submenu name="8">-->
+                        <!--<template slot="title">-->
+                            <!--<Icon type="ios-radio" /> 房价分析-->
+                        <!--</template>-->
+                        <!--<router-link to="/priceAnalysis">-->
+                            <!--<MenuItem name="8-2">-->
+                            <!--<span style="font-size: 13px">价格分析</span>-->
+                            <!--</MenuItem>-->
+                        <!--</router-link>-->
+                        <!--<router-link to="/heatMap2d">-->
+                            <!--<MenuItem name="8-1">-->
+                            <!--<span style="font-size: 13px">二维热力图</span>-->
+                            <!--</MenuItem>-->
+                        <!--</router-link>-->
+                        <!--<router-link to="/heatMap">-->
+                            <!--<MenuItem name="8-1">-->
+                            <!--<span style="font-size: 13px">三维热力图</span>-->
+                            <!--</MenuItem>-->
+                        <!--</router-link>-->
+                    <!--</Submenu>-->
+                    <!--<Submenu name="1">-->
+                        <!--<template slot="title">-->
+                            <!--<Icon type="md-analytics" /> 数据展示-->
+                        <!--</template>-->
+                        <!--<router-link to="/data">-->
+                            <!--<MenuItem name="1-1">-->
+                            <!--<span style="font-size: 13px">数据统计</span>-->
+                            <!--</MenuItem>-->
+                        <!--</router-link>-->
+                        <!--<router-link to="/data/dataDeatils">-->
+                            <!--<MenuItem name="1-2">-->
+                            <!--<span style="font-size: 13px">数据查询</span>-->
+                            <!--</MenuItem>-->
+                        <!--</router-link>-->
+                    <!--</Submenu>-->
+                    <!--<router-link to="">-->
+                        <!--<MenuItem name="4-1">-->
+                        <!--<Icon type="md-search" />-->
+                        <!--<span>信息查询</span>-->
+                        <!--</MenuItem>-->
+                    <!--</router-link>-->
+                    <!--<Submenu name="2">-->
+                        <!--<template slot="title">-->
+                            <!--<Icon type="md-analytics" /> 区位资源-->
+                        <!--</template>-->
+                        <!--<router-link to="/locationResources/studyArea">-->
+                            <!--<MenuItem name="1-1">-->
+                                <!--<span style="font-size: 13px">学区</span>-->
+                            <!--</MenuItem>-->
+                        <!--</router-link>-->
+                        <!--<router-link to="/locationResources/buffer">-->
+                            <!--<MenuItem name="1-2">-->
+                                <!--<span style="font-size: 13px">缓冲区</span>-->
+                            <!--</MenuItem>-->
+                        <!--</router-link>-->
+                        <!--<router-link to="/locationResources/accessibility">-->
+                            <!--<MenuItem name="1-2">-->
+                                <!--<span style="font-size: 13px">可达性</span>-->
+                            <!--</MenuItem>-->
+                        <!--</router-link>-->
+                        <!--<router-link to="/locationResources/serviceArea">-->
+                            <!--<MenuItem name="1-2">-->
+                                <!--<span style="font-size: 13px">服务区</span>-->
+                            <!--</MenuItem>-->
+                        <!--</router-link>-->
+                    <!--</Submenu>-->
+                    <!--<router-link to="/userManager">-->
+                        <!--<MenuItem name="4-2" v-if="show">-->
+                        <!--<Icon type="md-contacts" />-->
+                        <!--<span>用户管理</span>-->
+                        <!--</MenuItem>-->
+                    <!--</router-link>-->
+                    <!--<router-link to="/personalcenter">-->
+                        <!--<MenuItem name="5-1">-->
+                        <!--<Icon type="md-person" />-->
+                        <!--<span>个人中心</span>-->
+                        <!--</MenuItem>-->
+                    <!--</router-link>-->
+                    <!--<Submenu name="6">-->
+                        <!--<template slot="title">-->
+                            <!--<Icon type="md-paper" /> 用户手册-->
+                        <!--</template>-->
+                        <!--<router-link to="/auDecision/usersManual">-->
+                            <!--<MenuItem name="6-1">-->
+                            <!--<span style="font-size: 13px">用户手册</span>-->
+                            <!--</MenuItem>-->
+                        <!--</router-link>-->
+                        <!--<router-link to="/auDecision/livablemodel">-->
+                            <!--<MenuItem name="6-2">-->
+                            <!--<span style="font-size: 13px">宜居模型</span>-->
+                            <!--</MenuItem>-->
+                        <!--</router-link>-->
+                        <!--<router-link to="/auDecision/model">-->
+                            <!--<MenuItem name="6-3">-->
+                            <!--<span style="font-size: 13px">引力模型</span>-->
+                            <!--</MenuItem>-->
+                        <!--</router-link>-->
+                    <!--</Submenu>-->
+                <!--</Menu>-->
+            <!--</Sider>-->
+            <!--<Content>-->
+                <!--<Header :style="{padding: 0}" class="layout-header-bar">-->
+                    <!--<Breadcrumb>-->
+                        <!--<Icon :class="rotateIcon" :style="{margin: '0 5px'}" type="md-menu" size="25"></Icon>-->
+                        <!--<BreadcrumbItem v-for="(item,idx) in $route.matched" :key="idx" :to="(item.path)">{{item.name}}</BreadcrumbItem>-->
+                    <!--</Breadcrumb>-->
+                <!--</Header>-->
+                <!--<router-view/>-->
+            <!--</Content>-->
+        <!--</Layout>-->
 </template>
 
 <script>

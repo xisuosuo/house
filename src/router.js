@@ -301,7 +301,8 @@ export default new Router({
             component: () =>
               import('@/views/userManager/components/userIndex.vue'),
           }, ]
-        }, {
+        },
+          {
           name: "价格分析",
           path: "/priceAnalysis",
           component: () =>
@@ -346,12 +347,12 @@ export default new Router({
           //     import('@/views/userManager/components/userIndex.vue'),
           // }, ]
         },
-        {
-          path: '/locationResources',
-          name: '区位资源',
-          component: () =>
-            import('@/views/locationResources/components/locationResources.vue'),
-        },
+          {
+              path: '/locationResources',
+              name: '区位资源',
+              component: () =>
+                  import('@/views/locationResources/components/locationResources.vue'),
+          },
         {
           name: "二维热力图",
           path: "/heatMap2d",
