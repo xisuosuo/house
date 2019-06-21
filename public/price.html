@@ -438,7 +438,8 @@
                     tooltip: {
                         trigger: 'item',
                         formatter: function(params) {
-                            return data[params.dataIndex].name+"："+data[params.dataIndex].value+"元";
+                            console.log(params)
+                            return params.name+"："+params.value[2]+"元";
                         }
                     },
                     legend: {
@@ -494,7 +495,6 @@
                             },
                             label: {
                                 normal: {
-                                    formatter: '{b}',
                                     position: 'right',
                                     show: false
                                 },
@@ -546,10 +546,10 @@
                 var count = 0;
                 myChart.on('click', function (parmas) {
                     var myChart = echarts.init(document.getElementById('showdata'));
-                        count++;
-                        if (count%2==0){
-                            myChart.dispose();
-                        }
+                        // count++;
+                        // if (count%2==0){
+                        //     myChart.dispose();
+                        // }
                     option = {
                         title: {
                             text: `滁州市${parmas.data.name}近三年房价走向`,
