@@ -125,7 +125,7 @@
                         <BreadcrumbItem v-for="(item,idx) in $route.matched" :key="idx" :to="(item.path)">{{item.name}}</BreadcrumbItem>
                     </Breadcrumb>
                 </Header>
-                <div style="width: 80%; margin: 0 auto;margin-top: 30px;border: 1px solid #dcdee2">
+                <div style="width: 90%; margin: 0 auto;margin-top: 30px;border: 1px solid #dcdee2">
                     <Tabs>
                          <TabPane label="学区">
                              <div id="map1" style="width:100%;height: 100%;border: 1px solid #dcdee2; position: absolute;">
@@ -146,8 +146,8 @@
                             </div> -->
                         </TabPane>
                         <TabPane label="服务区">
-                            <div id="map2" style="width:100%;height: 100%;position: absolute;"></div>
-                             <div style="position: relative;float: right; width: 250px;margin: 10px;top: 300px;z-index: 9999;border: 1px solid #dcdee2;">
+                            <div id="map2" style="width:100%;height: 800px;position: absolute;"></div>
+                             <div style="position: relative;float: right; width: 250px;top: 340px; z-index: 9999;">
                                 <Col span="20">
                                     <Slider v-model="break1"  max="500" show-input input-size="small" @on-change="getArea"></Slider>
                                 </Col>
@@ -169,7 +169,7 @@
                             </div>
                         </TabPane>
                         <TabPane label="缓冲区">
-                            <div id="map3" style="width:100%;height: 100%;position: absolute;"></div>
+                            <div id="map3" style="width:100%;height: 800px;position: absolute;"></div>
                             <div style="position: relative;float: right; width: 250px;margin: 10px;padding-top: 400px;z-index: 9999">
                                 <Col span="2">
                                 <p style="margin: 7px">0</p>
