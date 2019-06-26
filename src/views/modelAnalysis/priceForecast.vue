@@ -105,10 +105,25 @@
                         </MenuItem>
                     </router-link>
                 </Submenu>
+                <Submenu name="9">
+                    <template slot="title">
+                        <Icon type="md-analytics" /> 房价预测
+                    </template>
+                    <router-link to="/priceForecast">
+                        <MenuItem name="1-1">
+                        <span style="font-size: 13px">房价预测</span>
+                        </MenuItem>
+                    </router-link>
+                    <router-link to="/GWR">
+                        <MenuItem name="1-2">
+                        <span style="font-size: 13px">GWR模型</span>
+                        </MenuItem>
+                    </router-link>
+                </Submenu>
             </Menu>
         </Sider>
         <Content>
-            <div style="margin: 0 auto;margin-top: 5px;width:1000px;">
+            <div style="margin: 0 auto;margin-top: 5px;width:1000px;height:650px">
                 <Button type="primary" @click="impor" style="margin-bottom:3px">导入数据</Button>
                 <Table :columns="columns1" :data="nowData1"></Table>
                 <Page :total="dataCount1" :page-size="pageSize1" @on-change="changepage1" @on-page-size-change="_nowPageSize1" show-total show-elevator/>
@@ -142,11 +157,6 @@ export default {
 };
 </script>
 <style>
-#viewDiv {
-  padding: 0;
-  margin: 0;
-  height: 800px;
-  width: 100%;
-}
+
 </style>
 

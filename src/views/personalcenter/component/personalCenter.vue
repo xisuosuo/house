@@ -99,6 +99,21 @@
             </MenuItem>
           </router-link>
         </Submenu>
+        <Submenu name="9">
+          <template slot="title">
+            <Icon type="md-analytics" /> 房价预测
+          </template>
+          <router-link to="/priceForecast">
+            <MenuItem name="1-1">
+            <span style="font-size: 13px">房价预测</span>
+            </MenuItem>
+          </router-link>
+          <router-link to="/GWR">
+            <MenuItem name="1-2">
+            <span style="font-size: 13px">GWR模型</span>
+            </MenuItem>
+          </router-link>
+        </Submenu>
       </Menu>
     </Sider>
 
