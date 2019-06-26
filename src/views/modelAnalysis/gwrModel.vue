@@ -50,6 +50,7 @@ export default {
         }
       ],
       data1: [],
+      data2: [],
       mapTileLayerLayers: "",
       TileLayerStreets: "",
       MapImageLayer: "",
@@ -174,22 +175,36 @@ export default {
               "GeographicallyWeightedRegression10"
             ).then(function(results) {
               console.log("projected points: ", results.value.features.length);
-              for (let i = 0; i < results.value.features.length; i++) {
-                _this.data1.push(results.value.features[i].attributes);
-                _this.dataCount = results.value.features.length;
+                let GwrPoint = results.value.features;
+                function objSort(prop1,prop2){
+                    return function (obj1, obj2) {
+                        var val1 = obj1[prop1][prop2];
+                        var val2 = obj2[prop1][prop2];
+                        if (!isNaN(Number(val1)) && !isNaN(Number(val2))) {
+                            val1 = Number(val1);
+                            val2 = Number(val2);
+                        }
+                        if (val1 < val2) {
+                            return -1;
+                        } else if (val1 > val2) {
+                            return 1;
+                        } else {
+                            return 0;
+                        }
+                    }
+                }
+                GwrPoint.sort(objSort('attributes','C1_DJ'));
+                console.log(GwrPoint);
+                for (let i = 0; i <GwrPoint.length; i++) {
+                _this.data1.push(GwrPoint[i].attributes);
+                _this.dataCount = GwrPoint.length;
               }
               for (let i = 0; i < _this.pageSize; i++) {
-                _this.nowData.push(results.value.features[i].attributes);
+                _this.nowData.push(GwrPoint[i].attributes);
               }
 
               debugger;
-              // for (let j = 0; j < 10; j++) {
-              //   _this.nowData.push(results.value.features[j].attributes);
-              // }
-
-              var GwrPoint = results.value.features;
               var length = GwrPoint.length % 7;
-              console.log(length);
               let length2 = (GwrPoint.length - length) / 7;
               console.log(length2);
               let colors = [
