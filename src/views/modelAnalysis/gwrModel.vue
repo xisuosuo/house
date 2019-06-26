@@ -155,12 +155,12 @@ export default {
       model1: [],
       cityList: [
         {
-          value: "",
-          label: ""
+          value: "C1_DJ",
+          label: "地价"
         },
         {
-          value: "",
-          label: ""
+          value: "C2_RJL",
+          label: "容积率"
         }
       ],
       columns1: [
