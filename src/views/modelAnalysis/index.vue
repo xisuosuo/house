@@ -105,6 +105,21 @@
                         </MenuItem>
                     </router-link>
                 </Submenu>
+                <Submenu name="9">
+                    <template slot="title">
+                        <Icon type="md-analytics" /> 房价预测
+                    </template>
+                    <router-link to="/priceForecast">
+                        <MenuItem name="1-1">
+                        <span style="font-size: 13px">房价预测</span>
+                        </MenuItem>
+                    </router-link>
+                    <router-link to="/GWR">
+                        <MenuItem name="1-2">
+                        <span style="font-size: 13px">GWR模型</span>
+                        </MenuItem>
+                    </router-link>
+                </Submenu>
             </Menu>
         </Sider>
         <Content>
@@ -199,11 +214,11 @@
                                             住宅条件
                                         </p>
                                         <CheckboxGroup v-model="zztj" style="margin-bottom:15px">
-                                        <Checkbox label="装修情况"></Checkbox>
-                                        <Checkbox label="住宅类型"></Checkbox>
-                                        <Checkbox label="户型"></Checkbox>
-                                        <Checkbox label="层高"></Checkbox>
-                                        <Checkbox label="面积"></Checkbox>
+                                            <Checkbox label="装修情况"></Checkbox>
+                                            <Checkbox label="住宅类型"></Checkbox>
+                                            <Checkbox label="户型"></Checkbox>
+                                            <Checkbox label="层高"></Checkbox>
+                                            <Checkbox label="面积"></Checkbox>
                                         </CheckboxGroup>
                                     </Card>
                                 </Panel>

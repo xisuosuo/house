@@ -105,11 +105,26 @@
             </MenuItem>
           </router-link>
         </Submenu>
+        <Submenu name="9">
+          <template slot="title">
+            <Icon type="md-analytics" /> 房价预测
+          </template>
+          <router-link to="/priceForecast">
+            <MenuItem name="1-1">
+            <span style="font-size: 13px">房价预测</span>
+            </MenuItem>
+          </router-link>
+          <router-link to="/GWR">
+            <MenuItem name="1-2">
+            <span style="font-size: 13px">GWR模型</span>
+            </MenuItem>
+          </router-link>
+        </Submenu>
       </Menu>
     </Sider>
     <Content>
-      <div style="margin: 0 auto;margin-top: 5px;width:1000px;">
-        <Card style="height:1500px">
+      <div style="margin: 0 auto;margin-top: 5px;width:1000px;height:680px">
+        <Card style="height:100%">
           <Tabs type="card">
             <TabPane label="表">
               <Table :columns="columns1" :data="nowData"></Table>
@@ -123,7 +138,7 @@
               </div>
             </TabPane>
           </Tabs>
-          <Button type="primary" @click="onSubmit" style="float:right;margin-top:20px">保存</Button>
+          <Button type="primary" @click="onSubmit" style="float:right;margin-top:10px">保存</Button>
         </Card>
       </div>
 

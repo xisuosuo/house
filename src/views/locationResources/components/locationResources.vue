@@ -20,7 +20,7 @@
                             <Icon type="md-search" /> 信息查询
                         </template>
                         <MenuItem name="3-1">
-                        <span >条件选房</span>
+                        <span>条件选房</span>
                         </MenuItem>
                         <Submenu name="3-1-1">
                             <template slot="title">
@@ -116,6 +116,21 @@
                             </MenuItem>
                         </router-link>
                     </Submenu>
+                    <Submenu name="9">
+                        <template slot="title">
+                            <Icon type="md-analytics" /> 房价预测
+                        </template>
+                        <router-link to="/priceForecast">
+                            <MenuItem name="1-1">
+                            <span style="font-size: 13px">房价预测</span>
+                            </MenuItem>
+                        </router-link>
+                        <router-link to="/GWR">
+                            <MenuItem name="1-2">
+                            <span style="font-size: 13px">GWR模型</span>
+                            </MenuItem>
+                        </router-link>
+                    </Submenu>
                 </Menu>
             </Sider>
             <Content>
@@ -127,10 +142,10 @@
                 </Header>
                 <div style="width: 90%; margin: 0 auto;margin-top: 30px;border: 1px solid #dcdee2">
                     <Tabs>
-                         <TabPane label="学区">
-                             <div id="map1" style="width:100%;height: 100%;border: 1px solid #dcdee2; position: absolute;">
-                                 <smallMapView></smallMapView>
-                             </div>
+                        <TabPane label="学区">
+                            <div id="map1" style="width:100%;height: 100%;border: 1px solid #dcdee2; position: absolute;">
+                                <smallMapView></smallMapView>
+                            </div>
                             <!-- <div style="padding-top: 50px;position: absolute;right: 10px; z-index: 9999;">
                                 <CheckboxGroup  v-model="checkAllGroup" @on-change="checkAllGroupChange">
                                     <Checkbox label="幼儿园">幼儿园</Checkbox>
@@ -146,26 +161,26 @@
                             </div> -->
                         </TabPane>
                         <TabPane label="服务区">
-                            <div id="map2" style="width:100%;height: 800px;position: absolute;background-color: #FCF9F2"></div>
-                             <div style="position: relative;float: right; width: 250px;top: 340px; z-index: 9999;">
+                            <div id="map2" style="width:100%;height: 800px;position: absolute;"></div>
+                            <div style="position: relative;float: right; width: 250px;top: 340px; z-index: 9999;">
                                 <Col span="20">
-                                    <Slider v-model="break1"  max="500" show-input input-size="small" @on-change="getArea"></Slider>
+                                <Slider v-model="break1" max="500" show-input input-size="small" @on-change="getArea"></Slider>
                                 </Col>
                                 <Col span="4">
                                 <p style="margin: 7px">米</p>
                                 </Col>
-                                 <Col span="20">
-                                     <Slider v-model="break2"  max="1000" show-input input-size="small" @on-change="getArea"></Slider>
-                                 </Col>
-                                 <Col span="4">
-                                     <p style="margin: 7px">米</p>
-                                 </Col>
-                                 <Col span="20">
-                                     <Slider v-model="break3"  max="1500"  show-input input-size="small" @on-change="getArea"></Slider>
-                                 </Col>
-                                 <Col span="4">
-                                     <p style="margin: 7px">米</p>
-                                 </Col>
+                                <Col span="20">
+                                <Slider v-model="break2" max="1000" show-input input-size="small" @on-change="getArea"></Slider>
+                                </Col>
+                                <Col span="4">
+                                <p style="margin: 7px">米</p>
+                                </Col>
+                                <Col span="20">
+                                <Slider v-model="break3" max="1500" show-input input-size="small" @on-change="getArea"></Slider>
+                                </Col>
+                                <Col span="4">
+                                <p style="margin: 7px">米</p>
+                                </Col>
                             </div>
                         </TabPane>
                         <TabPane label="缓冲区">
@@ -231,363 +246,363 @@ export default {
     };
   },
   mounted() {
-      this.addLayer2();
-      this.addLayer3();
+    this.addLayer2();
+    this.addLayer3();
   },
 
   methods: {
-      addLayer2() {
+    addLayer2() {
+      esriLoader
+        .loadScript({
+          url: MapAPI.js,
+          css: MapAPI.css
+        })
+        .then(r => {
           esriLoader
-              .loadScript({
-                  url: MapAPI.js,
-                  css: MapAPI.css
-              })
-              .then(r => {
-                  esriLoader
-                      .loadModules([
-                          "esri/config",
-                          "esri/Map",
-                          "esri/layers/GroupLayer",
-                          "esri/Basemap",
-                          "esri/views/MapView",
-                          "esri/layers/MapImageLayer",
-                          "esri/layers/TileLayer",
-                          "esri/tasks/ServiceAreaTask",
-                          "esri/layers/FeatureLayer",
-                          "esri/tasks/support/DataLayer",
-                          "esri/tasks/support/ServiceAreaParameters",
-                          "esri/tasks/support/ServiceAreaSolveResult",
-                          "esri/symbols/SimpleLineSymbol",
-                          "esri/symbols/SimpleFillSymbol",
-                          "esri/Color",
-                          "esri/layers/GraphicsLayer",
-                          "esri/geometry/Extent",
-                          "esri/widgets/LayerList",
-                          "esri/Graphic",
-                          "esri/tasks/support/FeatureSet",
-                          "dojo/on"
-                      ])
-                      .then(
-                          ([
-                               esriConfig,
-                               Map,
-                               GroupLayer,
-                               Basemap,
-                               MapView,
-                               MapImageLayer,
-                               TileLayer,
-                               ServiceAreaTask,
-                               FeatureLayer,
-                               DataLayer,
-                               ServiceAreaParameters,
-                               ServiceAreaSolveResult,
-                               SimpleLineSymbol,
-                               SimpleFillSymbol,
-                               Color,
-                               GraphicsLayer,
-                               Extent,
-                               LayerList,
-                               Graphic,
-                               FeatureSet,
-                               dom,
-                               on
-                           ]) => {
-                              esriConfig.request.corsEnabledServers.push(
-                                  "http://122.112.216.247:6080"
-                              );
-                              var activeWidget = null;
+            .loadModules([
+              "esri/config",
+              "esri/Map",
+              "esri/layers/GroupLayer",
+              "esri/Basemap",
+              "esri/views/MapView",
+              "esri/layers/MapImageLayer",
+              "esri/layers/TileLayer",
+              "esri/tasks/ServiceAreaTask",
+              "esri/layers/FeatureLayer",
+              "esri/tasks/support/DataLayer",
+              "esri/tasks/support/ServiceAreaParameters",
+              "esri/tasks/support/ServiceAreaSolveResult",
+              "esri/symbols/SimpleLineSymbol",
+              "esri/symbols/SimpleFillSymbol",
+              "esri/Color",
+              "esri/layers/GraphicsLayer",
+              "esri/geometry/Extent",
+              "esri/widgets/LayerList",
+              "esri/Graphic",
+              "esri/tasks/support/FeatureSet",
+              "dojo/on"
+            ])
+            .then(
+              ([
+                esriConfig,
+                Map,
+                GroupLayer,
+                Basemap,
+                MapView,
+                MapImageLayer,
+                TileLayer,
+                ServiceAreaTask,
+                FeatureLayer,
+                DataLayer,
+                ServiceAreaParameters,
+                ServiceAreaSolveResult,
+                SimpleLineSymbol,
+                SimpleFillSymbol,
+                Color,
+                GraphicsLayer,
+                Extent,
+                LayerList,
+                Graphic,
+                FeatureSet,
+                dom,
+                on
+              ]) => {
+                esriConfig.request.corsEnabledServers.push(
+                  "http://122.112.216.247:6080"
+                );
+                var activeWidget = null;
 
-                              var tilelayer = new TileLayer({
-                                url:
-                                  "http://122.112.216.247:6080/arcgis/rest/services/Servers/Map/MapServer"
-                              });
-                              var layer = new FeatureLayer({
-                                  url:
-                                      "http://122.112.216.247:6080/arcgis/rest/services/serverTest/MapServer/8"
-                              });
-                              this.baseLayer = tilelayer;
+                var tilelayer = new TileLayer({
+                  url:
+                    "http://122.112.216.247:6080/arcgis/rest/services/Servers/Map/MapServer"
+                });
+                var layer = new FeatureLayer({
+                  url:
+                    "http://122.112.216.247:6080/arcgis/rest/services/serverTest/MapServer/8"
+                });
+                this.baseLayer = tilelayer;
 
-                              var baseMap = new Basemap({
-                                  baseLayers: [tilelayer]
-                              });
+                var baseMap = new Basemap({
+                  baseLayers: [tilelayer]
+                });
 
-                              var map = new Map({
-                                  basemap: baseMap,
-                                  layers: [tilelayer,layer]
-                              });
-                              this.map = map;
-                              this.mapview = new MapView({
-                                  container: "map2",
-                                  map: map
-                              });
+                var map = new Map({
+                  basemap: baseMap,
+                  layers: [tilelayer, layer]
+                });
+                this.map = map;
+                this.mapview = new MapView({
+                  container: "map2",
+                  map: map
+                });
 
-                              this.mapview.ui.remove(["attribution", "zoom"]);
-                              var view = this.mapview;
-                              var stops = new DataLayer();
-                              stops.geometry = view.extent;
-                              stops.name = "Hospitals";
-                              console.log(map);
-                              // var houseSymbol = GMapSymbol.gethousePointSymbol({});
-                              // this.houseSymbol = houseSymbol;
-                              // var stopSymbol = {
-                              //   type: "simple-marker",
-                              //   style: "cross",
-                              //   size: 15,
-                              //   outline: {
-                              //     width: 4
-                              //   }
-                              // };
-                              // this.stopSymbol = stopSymbol;
-                              // var routeSymbol = {
-                              //   type: "simple-line",
+                this.mapview.ui.remove(["attribution", "zoom"]);
+                var view = this.mapview;
+                var stops = new DataLayer();
+                stops.geometry = view.extent;
+                stops.name = "Hospitals";
+                console.log(map);
+                // var houseSymbol = GMapSymbol.gethousePointSymbol({});
+                // this.houseSymbol = houseSymbol;
+                // var stopSymbol = {
+                //   type: "simple-marker",
+                //   style: "cross",
+                //   size: 15,
+                //   outline: {
+                //     width: 4
+                //   }
+                // };
+                // this.stopSymbol = stopSymbol;
+                // var routeSymbol = {
+                //   type: "simple-line",
 
-                              //   color: [82, 152, 255, 1],
-                              //   width: 5
-                              // };
-                              // this.routeSymbol = routeSymbol;
-                              var serverParams = new ServiceAreaParameters({
-                                  facilities: {
-                                      type: "layer",
-                                      layerName: "Hospitals"
-                                      // where: "BEDS > 100"
-                                  },
-                                  defaultBreaks: [this.break1, this.break2, this.break3]
-                                  // outSpatialReference: {
-                                  //   wkid: 3857
-                                  // }
-                              });
-
-                              var serviceAreaTask = new ServiceAreaTask({
-                                  url:
-                                      "http://122.112.216.247:6080/arcgis/rest/services/serverTest/NAServer/ServiceArea"
-                              });
-                              serviceAreaTask.solve(serverParams).then(
-                                  solveResult => {
-                                      // console.log(solveResult.serviceAreaPolygons);
-                                      var AreaPolygons = solveResult.serviceAreaPolygons;
-                                      console.log(AreaPolygons);
-                                      var polygonSymbol = new SimpleFillSymbol(
-                                          "solid",
-                                          new SimpleLineSymbol("solid", new Color([232, 104, 80])),
-                                          new Color([232, 104, 80, 0.25])
-                                      );
-                                      AreaPolygons.forEach((AreaPolygons, index) => {
-                                          // var symbol = GMapSymbol.getSymbol(geometry);
-                                          var graphics = [];
-                                          var graphic = new Graphic({
-                                              geometry: AreaPolygons.geometry,
-                                              symbol: polygonSymbol
-                                          });
-                                          graphics.push(graphic);
-                                          view.graphics.addMany(graphics);
-                                      });
-                                      // AreaPolygons.forEach(function(e) {
-                                      //   var polygonSymbol = new SimpleFillSymbol(
-                                      //     "solid",
-                                      //     new SimpleLineSymbol(
-                                      //       "solid",
-                                      //       new Color([232, 104, 80])
-                                      //     ),
-                                      //     new Color([232, 104, 80, 0.25])
-                                      //   );
-                                      //   e.setSymbol(polygonSymbol);
-                                      //   console.log(e);
-                                      //   debugger;
-                                      //   // var graphic = new Graphic({
-                                      //   //   geometry: e
-                                      //   // });
-                                      //   // graphic.setSymbol(polygonSymbol);
-                                      //   map.graphics.add(graphic);
-                                      //   console.log(map);
-                                      // });
-                                      // AreaPolygons.forEach(
-                                      //   solveResult.serviceAreaPolygons,
-                                      //   function(serviceArea) {
-                                      //     debugger;
-                                      //     serviceArea.setSymbol(polygonSymbol);
-                                      //     this.map.graphics.add(serviceArea);
-                                      //   }
-                                      // );
-                                  },
-                                  function(err) {
-                                      console.log(err.message);
-                                  }
-                              );
-
-                              // onemap.pubsub.publish("drawPolygonByGeoJson", {
-                              //   list: this.serverPolygon,
-                              //   extent: true
-                              // });
-                          }
-                      );
-
-                  // this.routeTask = routeTask;
-                  // var ext = String(this.defaultMapExtent).split(",");
-                  // if (ext.length > 3) {
-                  //   console.log("extent 配置有误");
-                  //   return false;
+                //   color: [82, 152, 255, 1],
+                //   width: 5
+                // };
+                // this.routeSymbol = routeSymbol;
+                var serverParams = new ServiceAreaParameters({
+                  facilities: {
+                    type: "layer",
+                    layerName: "Hospitals"
+                    // where: "BEDS > 100"
+                  },
+                  defaultBreaks: [this.break1, this.break2, this.break3]
+                  // outSpatialReference: {
+                  //   wkid: 3857
                   // }
-                  // var zoom = parseInt(ext[2]);
-                  // var center = {
-                  //   x: parseFloat(ext[0]),
-                  //   y: parseFloat(ext[1]),
-                  //   spatialReference: this.spatialReference
-                  // };
+                });
 
-                  // view.when(function() {
-                  //   var layerList = new LayerList({
-                  //     view: view
-                  //   });
-                  //   view.ui.add(layerList, "top-right");
-                  // });
-                  // this.mapview.initExtent = {
-                  //   center: center,
-                  //   zoom: zoom
-                  // };
-                  window.mapview = this.mapview;
-                  // callback(this.mapview);
-                  this.IsMapToolsView = true;
-              });
-      },
-       getArea(){
-         this.addLayer2()
-      },
-      getDis(){
-         this.addLayer3()
-      },
-      addLayer3() {
-          esriLoader
-              .loadScript({
-                  url: MapAPI.js,
-                  css: MapAPI.css
-              })
-              .then(r => {
-                  esriLoader
-                      .loadModules([
-                          "esri/Map",
-                          "esri/Basemap",
-                          "esri/views/MapView",
-                          "esri/layers/MapImageLayer",
-                          "esri/layers/TileLayer",
-                          "esri/tasks/support/LinearUnit",
-                          "esri/layers/FeatureLayer",
-                          "esri/tasks/QueryTask",
-                          "esri/tasks/support/Query",
-                          "esri/tasks/Geoprocessor",
-                          "esri/tasks/support/FeatureSet"
-                      ])
-                      .then(
-                          ([
-                               Map,
-                               Basemap,
-                               MapView,
-                               MapImageLayer,
-                               TileLayer,
-                               LinearUnit,
-                               FeatureLayer,
-                               QueryTask,
-                               Query,
-                               Geoprocessor,
-                               dom,
-                               on
-                           ]) => {
-                              var activeWidget = null;
-
-                              // var street = new MapImageLayer({
-                              //   url:
-                              //     "http://122.112.216.247:6080/arcgis/rest/services/Server/MAP/MapServer"
-                              // });
-                              var street = new TileLayer({
-                                  url:
-                                      "http://122.112.216.247:6080/arcgis/rest/services/Servers/Map/MapServer"
-                              });
-                              var dis = new LinearUnit({
-                                  distance: this.value1,
-                                  units: "esriMeters"
-                              });
-                              this.distance = dis;
-                              var baseMap = new Basemap({
-                                  baseLayers: [street]
-                              });
-                              var map = new Map({
-                                  basemap: baseMap
-                                  // layers: [layer]
-                              });
-                              this.myMap = map;
-
-                              this.mapViewL = new MapView({
-                                  container: "map3",
-                                  map: map
-                              });
-                              var gwrPOint =
-                                  "http://122.112.216.247:6080/arcgis/rest/services/Servers/gwrfeature/MapServer/0";
-
-                              var queryTask = new QueryTask({
-                                  url: gwrPOint
-                              });
-                              var query = new Query();
-                              query.returnGeometry = true;
-                              query.outFields = ["*"];
-                              query.where = "PRICE>='3946'";
-                              // queryTask.execute(query, this.doGP);
-                              // queryTask.execute(query).then(function(results) {
-                              //   this.doGP(results);
-                              // });
-
-                              queryTask.execute(query).then(this.doGP);
-                          }
-                      );
-              });
-      },
-      doGP(featureSet) {
-          var gpUrl =
-              "http://122.112.216.247:6080/arcgis/rest/services/Servers/buffer/GPServer/buffer";
-          mapApi.esriApi.GetGeoprocessor().then(Geoprocessor => {
-              var _this = this;
-              var Kriging_GP = new Geoprocessor(gpUrl);
-              var parms = {
-                  SDE_DJGWR: featureSet,
-                  Distance__value_or_field_: this.distance
-              };
-              Kriging_GP.submitJob(parms).then(jobinfo => {
-                  if (jobinfo.jobStatus == "job-succeeded") {
-                      Kriging_GP.getResultData(
-                          jobinfo.jobId,
-                          "Output_Feature_Class"
-                      ).then(function(results) {
-                          console.log("projected points: ", results.value);
-                          var GwrPoint = results.value.features;
-                          var polygonSymbol = {
-                              type: "simple-fill", // autocasts as new SimpleFillSymbol()
-                              color: [51, 51, 204, 0.9],
-                              style: "solid",
-                              outline: {
-                                  // autocasts as new SimpleLineSymbol()
-                                  color: "blue",
-                                  width: 1
-                              }
-                          };
-                          GwrPoint.forEach((GwrPoint, index) => {
-                              mapApi.esriApi.GetGraphic().then(Graphic => {
-                                  let graphics = [];
-                                  let graphic = new Graphic({
-                                      geometry: GwrPoint.geometry,
-                                      symbol: polygonSymbol
-                                  });
-                                  graphics.push(graphic);
-                                  console.log(graphics);
-                                  _this.mapViewL.graphics.addMany(graphics);
-                              });
-                          });
-
-                          console.log(GwrPoints);
+                var serviceAreaTask = new ServiceAreaTask({
+                  url:
+                    "http://122.112.216.247:6080/arcgis/rest/services/serverTest/NAServer/ServiceArea"
+                });
+                serviceAreaTask.solve(serverParams).then(
+                  solveResult => {
+                    // console.log(solveResult.serviceAreaPolygons);
+                    var AreaPolygons = solveResult.serviceAreaPolygons;
+                    console.log(AreaPolygons);
+                    var polygonSymbol = new SimpleFillSymbol(
+                      "solid",
+                      new SimpleLineSymbol("solid", new Color([232, 104, 80])),
+                      new Color([232, 104, 80, 0.25])
+                    );
+                    AreaPolygons.forEach((AreaPolygons, index) => {
+                      // var symbol = GMapSymbol.getSymbol(geometry);
+                      var graphics = [];
+                      var graphic = new Graphic({
+                        geometry: AreaPolygons.geometry,
+                        symbol: polygonSymbol
                       });
+                      graphics.push(graphic);
+                      view.graphics.addMany(graphics);
+                    });
+                    // AreaPolygons.forEach(function(e) {
+                    //   var polygonSymbol = new SimpleFillSymbol(
+                    //     "solid",
+                    //     new SimpleLineSymbol(
+                    //       "solid",
+                    //       new Color([232, 104, 80])
+                    //     ),
+                    //     new Color([232, 104, 80, 0.25])
+                    //   );
+                    //   e.setSymbol(polygonSymbol);
+                    //   console.log(e);
+                    //   debugger;
+                    //   // var graphic = new Graphic({
+                    //   //   geometry: e
+                    //   // });
+                    //   // graphic.setSymbol(polygonSymbol);
+                    //   map.graphics.add(graphic);
+                    //   console.log(map);
+                    // });
+                    // AreaPolygons.forEach(
+                    //   solveResult.serviceAreaPolygons,
+                    //   function(serviceArea) {
+                    //     debugger;
+                    //     serviceArea.setSymbol(polygonSymbol);
+                    //     this.map.graphics.add(serviceArea);
+                    //   }
+                    // );
+                  },
+                  function(err) {
+                    console.log(err.message);
                   }
-              });
-          });
+                );
 
-          //   Kriging_GP.submitJob(params).then(this.gpJobComplete);
-      },
+                // onemap.pubsub.publish("drawPolygonByGeoJson", {
+                //   list: this.serverPolygon,
+                //   extent: true
+                // });
+              }
+            );
+
+          // this.routeTask = routeTask;
+          // var ext = String(this.defaultMapExtent).split(",");
+          // if (ext.length > 3) {
+          //   console.log("extent 配置有误");
+          //   return false;
+          // }
+          // var zoom = parseInt(ext[2]);
+          // var center = {
+          //   x: parseFloat(ext[0]),
+          //   y: parseFloat(ext[1]),
+          //   spatialReference: this.spatialReference
+          // };
+
+          // view.when(function() {
+          //   var layerList = new LayerList({
+          //     view: view
+          //   });
+          //   view.ui.add(layerList, "top-right");
+          // });
+          // this.mapview.initExtent = {
+          //   center: center,
+          //   zoom: zoom
+          // };
+          window.mapview = this.mapview;
+          // callback(this.mapview);
+          this.IsMapToolsView = true;
+        });
+    },
+    getArea() {
+      this.addLayer2();
+    },
+    getDis() {
+      this.addLayer3();
+    },
+    addLayer3() {
+      esriLoader
+        .loadScript({
+          url: MapAPI.js,
+          css: MapAPI.css
+        })
+        .then(r => {
+          esriLoader
+            .loadModules([
+              "esri/Map",
+              "esri/Basemap",
+              "esri/views/MapView",
+              "esri/layers/MapImageLayer",
+              "esri/layers/TileLayer",
+              "esri/tasks/support/LinearUnit",
+              "esri/layers/FeatureLayer",
+              "esri/tasks/QueryTask",
+              "esri/tasks/support/Query",
+              "esri/tasks/Geoprocessor",
+              "esri/tasks/support/FeatureSet"
+            ])
+            .then(
+              ([
+                Map,
+                Basemap,
+                MapView,
+                MapImageLayer,
+                TileLayer,
+                LinearUnit,
+                FeatureLayer,
+                QueryTask,
+                Query,
+                Geoprocessor,
+                dom,
+                on
+              ]) => {
+                var activeWidget = null;
+
+                // var street = new MapImageLayer({
+                //   url:
+                //     "http://122.112.216.247:6080/arcgis/rest/services/Server/MAP/MapServer"
+                // });
+                var street = new TileLayer({
+                  url:
+                    "http://122.112.216.247:6080/arcgis/rest/services/Servers/Map/MapServer"
+                });
+                var dis = new LinearUnit({
+                  distance: this.value1,
+                  units: "esriMeters"
+                });
+                this.distance = dis;
+                var baseMap = new Basemap({
+                  baseLayers: [street]
+                });
+                var map = new Map({
+                  basemap: baseMap
+                  // layers: [layer]
+                });
+                this.myMap = map;
+
+                this.mapViewL = new MapView({
+                  container: "map3",
+                  map: map
+                });
+                var gwrPOint =
+                  "http://122.112.216.247:6080/arcgis/rest/services/Servers/gwrfeature/MapServer/0";
+
+                var queryTask = new QueryTask({
+                  url: gwrPOint
+                });
+                var query = new Query();
+                query.returnGeometry = true;
+                query.outFields = ["*"];
+                query.where = "PRICE>='3946'";
+                // queryTask.execute(query, this.doGP);
+                // queryTask.execute(query).then(function(results) {
+                //   this.doGP(results);
+                // });
+
+                queryTask.execute(query).then(this.doGP);
+              }
+            );
+        });
+    },
+    doGP(featureSet) {
+      var gpUrl =
+        "http://122.112.216.247:6080/arcgis/rest/services/Servers/buffer/GPServer/buffer";
+      mapApi.esriApi.GetGeoprocessor().then(Geoprocessor => {
+        var _this = this;
+        var Kriging_GP = new Geoprocessor(gpUrl);
+        var parms = {
+          SDE_DJGWR: featureSet,
+          Distance__value_or_field_: this.distance
+        };
+        Kriging_GP.submitJob(parms).then(jobinfo => {
+          if (jobinfo.jobStatus == "job-succeeded") {
+            Kriging_GP.getResultData(
+              jobinfo.jobId,
+              "Output_Feature_Class"
+            ).then(function(results) {
+              console.log("projected points: ", results.value);
+              var GwrPoint = results.value.features;
+              var polygonSymbol = {
+                type: "simple-fill", // autocasts as new SimpleFillSymbol()
+                color: [51, 51, 204, 0.9],
+                style: "solid",
+                outline: {
+                  // autocasts as new SimpleLineSymbol()
+                  color: "blue",
+                  width: 1
+                }
+              };
+              GwrPoint.forEach((GwrPoint, index) => {
+                mapApi.esriApi.GetGraphic().then(Graphic => {
+                  let graphics = [];
+                  let graphic = new Graphic({
+                    geometry: GwrPoint.geometry,
+                    symbol: polygonSymbol
+                  });
+                  graphics.push(graphic);
+                  console.log(graphics);
+                  _this.mapViewL.graphics.addMany(graphics);
+                });
+              });
+
+              console.log(GwrPoints);
+            });
+          }
+        });
+      });
+
+      //   Kriging_GP.submitJob(params).then(this.gpJobComplete);
+    }
   },
   components: {
     smallMapView,
@@ -597,39 +612,38 @@ export default {
 </script>
 
 <style lang="less">
-    .ivu-tabs-bar {
-        margin-bottom: 0;
-    }
-    #tab {
-        width: 80%;
-        border: 1px solid #dcdee2;
-        margin: 0 auto;
-    }
-    #tab h3 {
-        margin: 0;
-        padding: 0;
-        font-size: 14px;
-        float: left;
-        right: 5px;
-        width: 60px;
-        height: 24px;
-        line-height: 24px;
-        text-align: center;
-    }
-    #tab div {
-        clear: both;
-        font-size: 14px;
-        /*padding: 20px 0 0 20px;*/
-        display: none;
-    }
-    #tab h3.active {
-        /*background: #cccc00;*/
-    }
-    #tab div.content {
-        display: block;
-        /*background: #cccc00;*/
-    }
-
+.ivu-tabs-bar {
+  margin-bottom: 0;
+}
+#tab {
+  width: 80%;
+  border: 1px solid #dcdee2;
+  margin: 0 auto;
+}
+#tab h3 {
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  float: left;
+  right: 5px;
+  width: 60px;
+  height: 24px;
+  line-height: 24px;
+  text-align: center;
+}
+#tab div {
+  clear: both;
+  font-size: 14px;
+  /*padding: 20px 0 0 20px;*/
+  display: none;
+}
+#tab h3.active {
+  /*background: #cccc00;*/
+}
+#tab div.content {
+  display: block;
+  /*background: #cccc00;*/
+}
 
 .layout {
   //   border: 1px solid #d7dde4;
