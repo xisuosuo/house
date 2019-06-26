@@ -123,8 +123,8 @@
       </Menu>
     </Sider>
     <Content>
-      <div style="margin: 0 auto;margin-top: 5px;width:1000px;">
-        <Card style="height:1500px">
+      <div style="margin: 0 auto;margin-top: 5px;width:1000px;height:680px">
+        <Card style="height:100%">
           <Tabs type="card">
             <TabPane label="表">
               <Table :columns="columns1" :data="nowData"></Table>
@@ -138,7 +138,7 @@
               </div>
             </TabPane>
           </Tabs>
-          <Button type="primary" @click="onSubmit" style="float:right;margin-top:20px">保存</Button>
+          <Button type="primary" @click="onSubmit" style="float:right;margin-top:10px">保存</Button>
         </Card>
       </div>
 
