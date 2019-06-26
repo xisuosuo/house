@@ -188,8 +188,9 @@ export default {
               // }
 
               var GwrPoint = results.value.features;
+
               var length = GwrPoint.length % 7;
-              console.log(length);
+              console.log(GwrPoint);
               let length2 = (GwrPoint.length - length) / 7;
               console.log(length2);
               let colors = [
