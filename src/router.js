@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import main from '@/views/main/index.vue'
 import login from './views/login/index.vue'
 import test from './views/test/gwrModel.vue'
+import buffer from './views/test/buffer.vue'
 import server from '@/map/components/serverArea'
 Vue.use(Router)
 
@@ -23,6 +24,10 @@ export default new Router({
     {
       path: '/server',
       component: server,
+    },
+    {
+      path: '/buffer',
+      component: buffer,
     },
     {
       path: '/test',
@@ -302,7 +307,7 @@ export default new Router({
               import('@/views/userManager/components/userIndex.vue'),
           }, ]
         },
-          {
+        {
           name: "价格分析",
           path: "/priceAnalysis",
           component: () =>
@@ -347,12 +352,12 @@ export default new Router({
           //     import('@/views/userManager/components/userIndex.vue'),
           // }, ]
         },
-          {
-              path: '/locationResources',
-              name: '区位资源',
-              component: () =>
-                  import('@/views/locationResources/components/locationResources.vue'),
-          },
+        {
+          path: '/locationResources',
+          name: '区位资源',
+          component: () =>
+            import('@/views/locationResources/components/locationResources.vue'),
+        },
         {
           name: "二维热力图",
           path: "/heatMap2d",
