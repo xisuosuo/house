@@ -338,7 +338,7 @@ export default {
               "GeographicallyWeightedRegression10"
             ).then(function(results) {
               console.log("projected points: ", results.value.features.length);
-                let GwrPoint = results.value.features;
+                var GwrPoint = results.value.features;
                 function objSort(prop1,prop2){
                     return function (obj1, obj2) {
                         var val1 = obj1[prop1][prop2];
