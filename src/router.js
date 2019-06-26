@@ -341,6 +341,21 @@ export default new Router({
       // }, ]
     },
     {
+      name: "房价预测",
+      path: "/priceForecast",
+      component: () =>
+        import('@/views/modelAnalysis/priceForecast.vue'),
+      // children: [{z
+      //   path: '/',
+      //   name: "用户中心",
+      //   meta: {
+      //     auth: true
+      //   },
+      //   component: () =>
+      //     import('@/views/userManager/components/userIndex.vue'),
+      // }, ]
+    },
+    {
       name: "热力图分析",
       path: "/heatMap",
       component: () =>
