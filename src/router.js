@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import main from '@/views/main/index.vue'
 import login from './views/login/index.vue'
 import test from './views/test/gwrModel.vue'
+import buffer from './views/test/buffer.vue'
 import server from '@/map/components/serverArea'
 Vue.use(Router)
 
@@ -50,10 +51,12 @@ export default new Router({
     },
 
     {
-      name: "楼盘详情",
-      path: "/houseinfo",
-      component: () =>
-        import('@/views/houseCompare/components/houseinfo.vue'),
+      path: '/buffer',
+      component: buffer,
+    },
+    {
+      path: '/test',
+      component: test,
     },
 
     {
