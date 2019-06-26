@@ -1,5 +1,5 @@
 <template>
-    <div id="viewDiv">
+    <div id="viewDiv" style="overflow-x: auto;overflow-y: auto;position: fixed">
     </div>
 </template>
 <script>
@@ -126,7 +126,13 @@
                                 "GeographicallyWeightedRegression10"
                             ).then(function (results) {
                                 console.log("projected points: ", results.value);
-                                var GwrPoint = results.value.features;
+                                let GwrPoint = results.value.features;
+                                function sortNumber(a,b)
+                                {
+                                    return a - b
+                                }
+                                GwrPoint.sort(sortNumber);
+                                console.log(GwrPoint);
                                 var length = GwrPoint.length % 7;
                                 console.log(length);
                                 let length2 = (GwrPoint.length - length) / 7;
@@ -160,7 +166,6 @@
                                     });
                                 }
                                 console.log(GwrPoints);
-
                                 // this.results = results.value;
                                 // for (
                                 //   var i = 0, length = results.value.features.length;

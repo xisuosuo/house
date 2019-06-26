@@ -146,7 +146,7 @@
                             </div> -->
                         </TabPane>
                         <TabPane label="服务区">
-                            <div id="map2" style="width:100%;height: 800px;position: absolute;"></div>
+                            <div id="map2" style="width:100%;height: 800px;position: absolute;background-color: #FCF9F2"></div>
                              <div style="position: relative;float: right; width: 250px;top: 340px; z-index: 9999;">
                                 <Col span="20">
                                     <Slider v-model="break1"  max="500" show-input input-size="small" @on-change="getArea"></Slider>
@@ -169,7 +169,7 @@
                             </div>
                         </TabPane>
                         <TabPane label="缓冲区">
-                            <div id="map3" style="width:100%;height: 800px;position: absolute;"></div>
+                            <div id="map3" style="width:100%;height: 800px;position: absolute;background-color: #FCF9F2"></div>
                             <div style="position: relative;float: right; width: 250px;margin: 10px;padding-top: 400px;z-index: 9999">
                                 <Col span="2">
                                 <p style="margin: 7px">0</p>
