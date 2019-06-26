@@ -117,7 +117,7 @@
             </TabPane>
             <TabPane label="图">
               <div id="viewDiv">
-                <Select v-model="model1" style="width:200px;position:absolute;top:2px;right:2px">
+                <Select v-model="model1" placeholder="地价"  @on-change="changeAttributes" style="width:200px;position:absolute;top:2px;right:2px">
                   <Option v-for="item in cityList" :value="item.value" :key="item.value">{{ item.label }}</Option>
                 </Select>
               </div>
@@ -152,7 +152,7 @@ export default {
       pageSize: 10, //每页显示多少条
       dataCount: 0, //总条数
       pageCurrent: 1, //当前页
-      model1: [],
+      model1: 'C1_DJ',
       cityList: [
         {
           value: "C1_DJ",
@@ -292,6 +292,10 @@ export default {
             );
         });
     },
+      changeAttributes(){
+        this.addLayerL();
+        this.doGP()
+      },
     changepage(index) {
       var _start = (index - 1) * this.pageSize;
       var _end = index * this.pageSize;
@@ -337,7 +341,7 @@ export default {
                         }
                     }
                 }
-                GwrPoint.sort(objSort('attributes','C1_DJ'));
+                GwrPoint.sort(objSort('attributes',_this.model1));
                 console.log(GwrPoint);
                 for (let i = 0; i <GwrPoint.length; i++) {
                 _this.data1.push(GwrPoint[i].attributes);
