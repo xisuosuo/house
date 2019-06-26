@@ -74,9 +74,9 @@ export default {
       mapview: null,
       serverPolygon: "",
       IsMapToolsView: false,
-      break1: 600,
-      break2: 800,
-      break3: 1000
+      break1: 500,
+      break2: 1000,
+      break3: 1500
     };
   },
   computed: {
@@ -202,10 +202,10 @@ export default {
                 );
                 var activeWidget = null;
 
-                // var tilelayer = new TileLayer({
-                //   url:
-                //     "http://122.112.216.247:6080/arcgis/rest/services/Servers/Map/MapServer"
-                // });
+                var tilelayer = new TileLayer({
+                  url:
+                    "http://122.112.216.247:6080/arcgis/rest/services/Servers/Map/MapServer"
+                });
                 var layer = new FeatureLayer({
                   url:
                     "http://122.112.216.247:6080/arcgis/rest/services/serverTest/MapServer/8"
@@ -218,7 +218,7 @@ export default {
 
                 var map = new Map({
                   basemap: baseMap,
-                  layers: [layer]
+                  layers: [layer,tilelayer]
                 });
                 this.map = map;
                 this.mapview = new MapView({
@@ -253,7 +253,8 @@ export default {
                 var serverParams = new ServiceAreaParameters({
                   facilities: {
                     type: "layer",
-                    layerName: "Hospitals"
+                    layerName: "Hospitals",
+                    impedanceAttribute:"Time"
                     // where: "BEDS > 100"
                   },
                   defaultBreaks: [this.break1, this.break2, this.break3]
