@@ -49,7 +49,6 @@ export default new Router({
       component: () =>
         import('@/views/recommendation/components/Details.vue'),
     },
-
     {
       path: '/buffer',
       component: buffer,
@@ -200,7 +199,7 @@ export default new Router({
         component: () =>
           import('@/views/recommendation/recommendHousing.vue'),
       },]
-    }, 
+    },
     {
       path: '/GWR',
       name: 'GWR',
@@ -372,26 +371,34 @@ export default new Router({
     },
     {
       path: '/locationResources',
-      name: '区位资源',
+      name: '学区资源',
       component: () =>
         import('@/views/locationResources/components/locationResources.vue'),
+    },
+    {
+      path: '/medicalResources',
+      name: '医疗资源',
+      component: () =>
+        import('@/views/locationResources/components/medicalResources.vue'),
+    },
+    {
+      path: '/greenlResources',
+      name: '绿地资源',
+      component: () =>
+        import('@/views/locationResources/components/greenlResources.vue'),
+    },
+    {
+      path: '/businessResources',
+      name: '商业资源',
+      component: () =>
+        import('@/views/locationResources/components/businessResources.vue'),
     },
     {
       name: "二维热力图",
       path: "/heatMap2d",
       component: () =>
         import('@/views/heatMap/2d.vue'),
-      // children: [{z
-      //   path: '/',
-      //   name: "用户中心",
-      //   meta: {
-      //     auth: true
-      //   },
-      //   component: () =>
-      //     import('@/views/userManager/components/userIndex.vue'),
-      // }, ]
     },
-
     ]
   }
   ]
