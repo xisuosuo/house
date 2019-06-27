@@ -126,18 +126,24 @@
       <div style="margin: 0 auto;margin-top: 5px;width:1000px;height:680px">
         <Card style="height:100%">
           <Tabs type="card">
-            <TabPane label="表">
+            <TabPane label="GWR模型分析数据">
               <Table :columns="columns1" :data="nowData"></Table>
               <Page :total="dataCount" :page-size="pageSize" @on-change="changepage" @on-page-size-change="_nowPageSize" show-total show-elevator/>
             </TabPane>
-            <TabPane label="图">
+            <TabPane label="GWR模型分析图">
               <div id="viewDiv">
-                <Select v-model="model1" placeholder="地价"  @on-change="changeAttributes" style="width:200px;position:absolute;top:2px;right:2px">
+                <Select v-model="model1" placeholder="地价" @on-change="changeAttributes" style="width:200px;position:absolute;top:2px;right:2px">
                   <Option v-for="item in cityList" :value="item.value" :key="item.value">{{ item.label }}</Option>
                 </Select>
               </div>
             </TabPane>
+            <TabPane label="克里金插值图">
+              <Table :columns="columns1" :data="nowData"></Table>
+             
+              <!-- <Page :total="dataCount" :page-size="pageSize" @on-change="changepage" @on-page-size-change="_nowPageSize" show-total show-elevator/> -->
+            </TabPane>
           </Tabs>
+          <Button type="primary" @click="ongo" style="float:right;margin-top:10px;margin-left:10px;">房价预测</Button>
           <Button type="primary" @click="onSubmit" style="float:right;margin-top:10px">保存</Button>
         </Card>
       </div>
@@ -167,7 +173,7 @@ export default {
       pageSize: 10, //每页显示多少条
       dataCount: 0, //总条数
       pageCurrent: 1, //当前页
-      model1: 'C1_DJ',
+      model1: "C1_DJ",
       cityList: [
         {
           value: "C1_DJ",
@@ -307,10 +313,10 @@ export default {
             );
         });
     },
-      changeAttributes(){
-        this.addLayerL();
-        this.doGP()
-      },
+    changeAttributes() {
+      this.addLayerL();
+      this.doGP();
+    },
     changepage(index) {
       var _start = (index - 1) * this.pageSize;
       var _end = index * this.pageSize;
@@ -337,28 +343,29 @@ export default {
               jobinfo.jobId,
               "GeographicallyWeightedRegression10"
             ).then(function(results) {
-              console.log("projected points: ", results.value.features.length);
-                var GwrPoint = results.value.features;
-                function objSort(prop1,prop2){
-                    return function (obj1, obj2) {
-                        var val1 = obj1[prop1][prop2];
-                        var val2 = obj2[prop1][prop2];
-                        if (!isNaN(Number(val1)) && !isNaN(Number(val2))) {
-                            val1 = Number(val1);
-                            val2 = Number(val2);
-                        }
-                        if (val1 < val2) {
-                            return -1;
-                        } else if (val1 > val2) {
-                            return 1;
-                        } else {
-                            return 0;
-                        }
-                    }
-                }
-                GwrPoint.sort(objSort('attributes',_this.model1));
-                console.log(GwrPoint);
-                for (let i = 0; i <GwrPoint.length; i++) {
+              // console.log("projected points: ", results.value.features.length);
+              var GwrPoint = results.value.features;
+              // this.gwrPointP = GwrPoint;
+              function objSort(prop1, prop2) {
+                return function(obj1, obj2) {
+                  var val1 = obj1[prop1][prop2];
+                  var val2 = obj2[prop1][prop2];
+                  if (!isNaN(Number(val1)) && !isNaN(Number(val2))) {
+                    val1 = Number(val1);
+                    val2 = Number(val2);
+                  }
+                  if (val1 < val2) {
+                    return -1;
+                  } else if (val1 > val2) {
+                    return 1;
+                  } else {
+                    return 0;
+                  }
+                };
+              }
+              GwrPoint.sort(objSort("attributes", _this.model1));
+              console.log(GwrPoint);
+              for (let i = 0; i < GwrPoint.length; i++) {
                 _this.data1.push(GwrPoint[i].attributes);
                 _this.dataCount = GwrPoint.length;
               }
@@ -421,6 +428,17 @@ export default {
 
     addResult(results) {
       console.log(results);
+    },
+    onSubmit() {
+      const title = "保存成功";
+      const content = "<p>保存地理加权分析数据，可以进行预测。</p>";
+      this.$Modal.success({
+        title: title,
+        content: content
+      });
+    },
+    ongo() {
+      this.$router.push("/priceForecast");
     }
   }
 };
