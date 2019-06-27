@@ -9,12 +9,31 @@
                         <span>首页</span>
                         </MenuItem>
                     </router-link>
-                    <router-link to="/locationResources">
-                        <MenuItem name="2-2">
-                        <Icon type="md-pin" />
-                        <span>区位资源</span>
-                        </MenuItem>
-                    </router-link>
+                    <Submenu name="9">
+                        <template slot="title">
+                            <Icon type="md-analytics" /> 区位资源
+                        </template>
+                        <router-link to="/locationResources">
+                            <MenuItem name="9-1">
+                                <span>学区资源</span>
+                            </MenuItem>
+                        </router-link>
+                        <router-link to="/medicalResources">
+                            <MenuItem name="9-2">
+                                <span>医疗资源</span>
+                            </MenuItem>
+                        </router-link>
+                        <router-link to="/greenlResources">
+                            <MenuItem name="9-3">
+                                <span>绿地资源</span>
+                            </MenuItem>
+                        </router-link>
+                        <router-link to="/businessResources">
+                            <MenuItem name="9-4">
+                                <span>商业资源</span>
+                            </MenuItem>
+                        </router-link>
+                    </Submenu>
                     <Submenu name="3">
                         <template slot="title">
                             <Icon type="md-search" /> 信息查询
@@ -161,8 +180,8 @@
                             </div> -->
                         </TabPane>
                         <TabPane label="服务区">
-                            <div id="map2" style="width:100%;height: 800px;position: absolute;"></div>
-                            <div style="position: relative;float: right; width: 250px;top: 340px; z-index: 9999;">
+                            <div id="map2" style="width:100%;height: 800px;position: absolute;background-color: #FCF9F2"></div>
+                            <div style="position: relative;float: right; width: 250px;top: 340px;background-color: #FCF9F2;padding: 10px;opacity: 0.8">
                                 <Col span="20">
                                 <Slider v-model="break1" max="500" show-input input-size="small" @on-change="getArea"></Slider>
                                 </Col>
@@ -574,12 +593,12 @@ export default {
               var GwrPoint = results.value.features;
               var polygonSymbol = {
                 type: "simple-fill", // autocasts as new SimpleFillSymbol()
-                color: [51, 51, 204, 0.9],
+                color: [51, 51, 204, 0.3],
                 style: "solid",
                 outline: {
                   // autocasts as new SimpleLineSymbol()
                   color: "blue",
-                  width: 1
+                  width: 0.5
                 }
               };
               GwrPoint.forEach((GwrPoint, index) => {

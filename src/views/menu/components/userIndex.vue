@@ -1,4 +1,4 @@
- 
+
  <template>
     <div class="menu">
         <router-link to="/data">
@@ -68,7 +68,7 @@
                         <i class="icon-fzjc"></i>
                     </div>
                     <div class="label">
-                        <span>用户手册</span>
+                        <span>区位资源</span>
                     </div>
                 </div>
             </div>
@@ -89,4 +89,3 @@ export default {
 };
 </script>
 
-    
