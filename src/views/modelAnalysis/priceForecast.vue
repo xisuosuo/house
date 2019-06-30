@@ -68,7 +68,7 @@
                     </MenuItem>
                 </router-link>
                 <router-link to="/userManager">
-                    <MenuItem name="4-2" v-if="show">
+                    <MenuItem name="4-2">
                     <Icon type="md-contacts" />
                     <span>用户管理</span>
                     </MenuItem>
@@ -125,14 +125,13 @@
         <Content>
             <div style="margin: 0 auto;margin-top: 5px;width:1000px;height:650px">
                 <Button type="primary" @click="impor" style="margin-bottom:3px">导入数据</Button>
-                <Table :columns="columns1" :data="nowData1"></Table>
-                <Page :total="dataCount1" :page-size="pageSize1" @on-change="changepage1" @on-page-size-change="_nowPageSize1" show-total show-elevator/>
+                <Table :columns="columns1" :data="data1" @on-select="handleChange"></Table>
+                <!-- <Page :total="dataCount1" :page-size="pageSize1" show-total show-elevator/> -->
             </div>
             <router-view/>
         </Content>
-        <Modal v-model="modal1" title="选择需要预测的小区数据" @on-ok="ok" @on-cancel="cancel">
-            <Table :columns="columns2" :data="nowData2"></Table>
-            <Page :total="dataCount2" :page-size="pageSize2" @on-change="changepage2" @on-page-size-change="_nowPageSize2" show-total show-elevator/>
+        <Modal v-model="modal1" @on-ok="ok" :width="800" title="选择需要预测的小区数据">
+            <Table stripe ref="selection" :columns="columns2" :data="data2" @on-select="handleChange"></Table>
         </Modal>
     </layout>
 
@@ -140,23 +139,140 @@
 </template>
 <script>
 import axios from "axios";
+import Server from "@/core/server";
+import { services } from "@/core/config/services";
 import esriLoader from "esri-loader";
 import { MapAPI } from "@/core/config/const";
 import { constants } from "fs";
+import gwr from "@/vuex/store";
 export default {
   data() {
     return {
-      modal1: false
+      modal1: false,
+      columns1: [
+        {
+          title: "小区",
+          key: "name",
+          align: "center"
+        },
+        {
+          title: "地址",
+          key: "attribute",
+          align: "center"
+        },
+        {
+          title: "房屋类型",
+          key: "type"
+        },
+        {
+          title: "是否在售",
+          key: "buildingCharact",
+          align: "center"
+        },
+        {
+          title: "预测价格",
+          key: "price",
+          align: "center"
+        }
+      ],
+      data1: [
+      ],
+      columns2: [
+        {
+          type: "selection",
+          width: 60,
+          align: "center"
+        },
+        {
+          title: "小区",
+          key: "name",
+          align: "center"
+        },
+        {
+          title: "地址",
+          key: "attribute",
+          align: "center"
+        },
+        {
+          title: "房屋类型",
+          key: "type"
+        },
+        {
+          title: "是否在售",
+          key: "buildingCharact",
+          align: "center"
+        }
+      ],
+      data2: [],
+      data3: [],
+      newdata: "",
+      gwrPoint: ""
     };
+  },
+  created() {
+    // var gwrPoint = localStorage.getItem("GWRponit");
+    var gwrPoint = gwr.state.GwrData;
+    this.gwrPoint = gwrPoint;
+    debugger;
   },
   methods: {
     impor() {
       this.modal1 = true;
+      Server.get({
+        url: services.houseSelect,
+        params: {}
+      }).then(rsp => {
+        var _this = this;
+        if (rsp.status === 1) {
+          _this.data2 = rsp.data;
+        }
+      });
+    },
+    handleChange(selection, row) {
+      var _this = this;
+      _this.data3 = selection;
+      var pushData = [];
+      for (let i = 0; i < _this.data3.length; i++)
+        pushData.push(_this.data3[i].name);
+      _this.newdata = pushData.join(",");
+      console.log(_this.newdata);
+    },
+    ok() {
+      var _this = this;
+      _this.data1 = _this.data3;
+      Server.get({
+        url: services.housePrice,
+        params: {
+          houseName: _this.newdata
+        }
+      }).then(rsp => {
+        var _this = this;
+        var gwrPoint = _this.gwrPoint;
+        console.log(gwrPoint);
+        if (rsp.status === 1) {
+          debugger;
+          gwrPoint.forEach(itemData => {
+            rsp.data.forEach((itemArr, index) => {
+              if (itemArr.objectId === itemData.attributes.OBJECTID) {
+                var arr1 = [];
+                arr1.push(
+                  itemData.attributes.C1_DJ,
+                  itemData.attributes.C2_RJL
+                );
+                // console.log(arr1[0] * 100 + arr1[1] * 100);
+                var arr2 = [];
+                arr2.push(arr1[0] * 100 + arr1[1] * 100);
+                console.log(arr2);
+              }
+            });
+          });
+        } else {
+        }
+      });
     }
   }
 };
 </script>
 <style>
-
 </style>
 

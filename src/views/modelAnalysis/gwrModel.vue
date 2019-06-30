@@ -139,7 +139,7 @@
             </TabPane>
             <TabPane label="克里金插值图">
               <Table :columns="columns1" :data="nowData"></Table>
-             
+
               <!-- <Page :total="dataCount" :page-size="pageSize" @on-change="changepage" @on-page-size-change="_nowPageSize" show-total show-elevator/> -->
             </TabPane>
           </Tabs>
@@ -166,6 +166,7 @@ import axios from "axios";
 import esriLoader from "esri-loader";
 import { MapAPI } from "@/core/config/const";
 import { constants } from "fs";
+import gwr from "@/vuex/store";
 export default {
   data() {
     return {
@@ -343,7 +344,7 @@ export default {
               jobinfo.jobId,
               "GeographicallyWeightedRegression10"
             ).then(function(results) {
-              // console.log("projected points: ", results.value.features.length);
+              console.log("projected points: ", results.value.features);
               var GwrPoint = results.value.features;
               // this.gwrPointP = GwrPoint;
               function objSort(prop1, prop2) {
@@ -379,7 +380,7 @@ export default {
               // }
 
               var GwrPoint = results.value.features;
-
+              gwr.commit("gwr", GwrPoint);
               var length = GwrPoint.length % 7;
               console.log(GwrPoint);
               let length2 = (GwrPoint.length - length) / 7;

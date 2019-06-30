@@ -23,7 +23,8 @@ export default new Vuex.Store({
         HouseThree: [],
         HouseFour: [],
         dataDeatil: {},
-        maphouseData: []
+        maphouseData: [],
+        GwrData: [],
     },
     /*
      * mutations里面规定的就是想要改变state(数据)的动作函数，
@@ -69,8 +70,11 @@ export default new Vuex.Store({
             state.dataDeatil = data
         },
         mapHouse(state, houseMap) {
-            debugger;
             state.maphouseData = houseMap
+        },
+        gwr(state, GWR) {
+            debugger;
+            state.GwrData = GWR
         }
     }
 })
