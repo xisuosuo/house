@@ -259,12 +259,13 @@ export default {
                   itemData.attributes.C1_DJ,
                   itemData.attributes.C2_RJL
                 );
-                // console.log(arr1[0] * 100 + arr1[1] * 100);
-                var arr2 = [];
-                arr2.push(arr1[0] * 100 + arr1[1] * 100);
-                console.log(arr2);
+                console.log(arr1);
+                // var arr2 = [];
+                // // arr2.push(arr1[0] * 100 + arr1[1] * 100);
+                // // console.log(arr2);
               }
-            });
+            }
+            );
           });
         } else {
         }
