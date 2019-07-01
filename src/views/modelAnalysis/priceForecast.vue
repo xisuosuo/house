@@ -153,6 +153,7 @@ export default {
   data() {
     return {
       modal1: false,
+      housePoint: "",
       columns1: [
         {
           title: "小区",
@@ -282,6 +283,8 @@ export default {
       }).then(rsp => {
         var _this = this;
         var gwrPoint = _this.gwrPoint;
+        this.housePoint = rsp.data;
+        console.log(this.housePoint);
         debugger;
         if (rsp.status === 1) {
           gwrPoint.forEach(itemData => {
@@ -303,6 +306,19 @@ export default {
         } else {
         }
       });
+    },
+    showGraphics() {
+      debugger;
+      onemap.pubsub.publish("drawHouseGWRBypriceList", {
+        list: this.housePoint
+        // popup: this.isPopup,
+        // pan: this.isPan
+      });
+      // onemap.pubsub.publish("drawHouseGWRByList", {
+      //   list: this.housePoint
+      //   // popup: this.isPopup,
+      //   // pan: this.isPan
+      // });
     }
   }
 };
