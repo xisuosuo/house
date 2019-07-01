@@ -123,12 +123,16 @@
             </Menu>
         </Sider>
         <Content>
-            <div style="margin: 0 auto;margin-top: 5px;width:1000px;height:650px">
+            <div style="border:1px solid red;margin: 0 auto;margin-top: 5px;width:1000px;">
                 <Button type="primary" @click="impor" style="margin-bottom:3px">导入数据</Button>
                 <Table :columns="columns1" :data="data1" @on-select="handleChange"></Table>
                 <!-- <Page :total="dataCount1" :page-size="pageSize1" show-total show-elevator/> -->
             </div>
+            <div style="border:1px solid red;margin: 0 auto;margin-top: 5px;width:1000px;height:500px">
+
+            </div>
             <router-view/>
+
         </Content>
         <Modal v-model="modal1" @on-ok="ok" :width="800" title="选择需要预测的小区数据">
             <Table stripe ref="selection" :columns="columns2" :data="data2" @on-select="handleChange"></Table>
@@ -175,8 +179,7 @@ export default {
           align: "center"
         }
       ],
-      data1: [
-      ],
+      data1: [],
       columns2: [
         {
           type: "selection",
@@ -206,14 +209,16 @@ export default {
       data2: [],
       data3: [],
       newdata: "",
+      newdata1: "",
       gwrPoint: ""
     };
   },
   created() {
-    // var gwrPoint = localStorage.getItem("GWRponit");
-    var gwrPoint = gwr.state.GwrData;
+    // var gwrPoint = localStorage.getItem("GWRponit");.
+    var optionss = localStorage.getItem("gwrPoint");
+    // console.log(JSON.parse(optionss));
+    var gwrPoint = JSON.parse(optionss);
     this.gwrPoint = gwrPoint;
-    debugger;
   },
   methods: {
     impor() {
@@ -227,6 +232,34 @@ export default {
           _this.data2 = rsp.data;
         }
       });
+
+      //   Server.get({
+      //     url: services.housePrice,
+      //     params: {
+      //       houseName: _this.newdata
+      //     }
+      //   }).then(rsp => {
+      //     var _this = this;
+      //     var gwrPoint = _this.gwrPoint;
+      //     // console.log(gwrPoint);
+      //     if (rsp.status === 1) {
+      //       gwrPoint.forEach(itemData => {
+      //         rsp.data.forEach((itemArr, index) => {
+      //           if (itemArr.objectId === itemData.attributes.OBJECTID) {
+      //             var arr1 = [];
+      //             arr1.push(
+      //               itemData.attributes.C1_DJ,
+      //               itemData.attributes.C2_RJL
+      //             );
+      //             _this.newdata1 = arr1.join(",");
+      //             console.log(newdata1);
+      //             // var arr2 = [];
+      //           }
+      //         });
+      //       });
+      //     } else {
+      //     }
+      //   });
     },
     handleChange(selection, row) {
       var _this = this;
@@ -235,11 +268,12 @@ export default {
       for (let i = 0; i < _this.data3.length; i++)
         pushData.push(_this.data3[i].name);
       _this.newdata = pushData.join(",");
-      console.log(_this.newdata);
+      //   console.log(_this.newdata);
     },
     ok() {
       var _this = this;
-      _this.data1 = _this.data3;
+      //   _this.data1 = _this.data3;
+
       Server.get({
         url: services.housePrice,
         params: {
@@ -248,24 +282,23 @@ export default {
       }).then(rsp => {
         var _this = this;
         var gwrPoint = _this.gwrPoint;
-        console.log(gwrPoint);
+        debugger;
         if (rsp.status === 1) {
-          debugger;
           gwrPoint.forEach(itemData => {
             rsp.data.forEach((itemArr, index) => {
               if (itemArr.objectId === itemData.attributes.OBJECTID) {
+                var _this = this;
                 var arr1 = [];
                 arr1.push(
+                  itemArr.calHouseName,
                   itemData.attributes.C1_DJ,
                   itemData.attributes.C2_RJL
                 );
-                console.log(arr1);
+                debugger;
+                _this.newdata1 = arr1.join(",");
                 // var arr2 = [];
-                // // arr2.push(arr1[0] * 100 + arr1[1] * 100);
-                // // console.log(arr2);
               }
-            }
-            );
+            });
           });
         } else {
         }
