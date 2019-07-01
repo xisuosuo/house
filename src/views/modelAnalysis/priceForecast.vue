@@ -232,34 +232,6 @@ export default {
           _this.data2 = rsp.data;
         }
       });
-
-      //   Server.get({
-      //     url: services.housePrice,
-      //     params: {
-      //       houseName: _this.newdata
-      //     }
-      //   }).then(rsp => {
-      //     var _this = this;
-      //     var gwrPoint = _this.gwrPoint;
-      //     // console.log(gwrPoint);
-      //     if (rsp.status === 1) {
-      //       gwrPoint.forEach(itemData => {
-      //         rsp.data.forEach((itemArr, index) => {
-      //           if (itemArr.objectId === itemData.attributes.OBJECTID) {
-      //             var arr1 = [];
-      //             arr1.push(
-      //               itemData.attributes.C1_DJ,
-      //               itemData.attributes.C2_RJL
-      //             );
-      //             _this.newdata1 = arr1.join(",");
-      //             console.log(newdata1);
-      //             // var arr2 = [];
-      //           }
-      //         });
-      //       });
-      //     } else {
-      //     }
-      //   });
     },
     handleChange(selection, row) {
       var _this = this;
@@ -303,23 +275,6 @@ export default {
         }).then(rsp => {
           var _this = this;
           _this.data1 = rsp.data;
-          debugger;
-          // var gwrPoint = _this.gwrPoint;
-          // if (rsp.status === 1) {
-          //   gwrPoint.forEach(itemData => {
-          //     rsp.data.forEach((itemArr, index) => {
-          //       if (itemArr.objectId === itemData.attributes.OBJECTID) {
-          //         var _this = this;
-          //         var arr1 = [];
-          //         arr1.push(
-          //           itemArr.calHouseName,
-          //           itemData.attributes.C1_DJ,
-          //           itemData.attributes.C2_RJL
-          //         );
-          //       }
-          //     });
-          //   });
-          // }
         });
       });
     }
