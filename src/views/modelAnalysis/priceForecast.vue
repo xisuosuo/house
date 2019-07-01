@@ -272,8 +272,6 @@ export default {
     },
     ok() {
       var _this = this;
-      //   _this.data1 = _this.data3;
-
       Server.get({
         url: services.housePrice,
         params: {
@@ -281,27 +279,48 @@ export default {
         }
       }).then(rsp => {
         var _this = this;
+        var arr1 = [];
         var gwrPoint = _this.gwrPoint;
-        debugger;
         if (rsp.status === 1) {
           gwrPoint.forEach(itemData => {
             rsp.data.forEach((itemArr, index) => {
               if (itemArr.objectId === itemData.attributes.OBJECTID) {
-                var _this = this;
-                var arr1 = [];
                 arr1.push(
-                  itemArr.calHouseName,
+                  itemArr.forecastHouseName,
                   itemData.attributes.C1_DJ,
                   itemData.attributes.C2_RJL
                 );
-                debugger;
                 _this.newdata1 = arr1.join(",");
-                // var arr2 = [];
               }
             });
           });
-        } else {
         }
+        Server.get({
+          url: services.houseShow,
+          params: {
+            houseValue: _this.newdata1
+          }
+        }).then(rsp => {
+          var _this = this;
+          _this.data1 = rsp.data;
+          debugger;
+          // var gwrPoint = _this.gwrPoint;
+          // if (rsp.status === 1) {
+          //   gwrPoint.forEach(itemData => {
+          //     rsp.data.forEach((itemArr, index) => {
+          //       if (itemArr.objectId === itemData.attributes.OBJECTID) {
+          //         var _this = this;
+          //         var arr1 = [];
+          //         arr1.push(
+          //           itemArr.calHouseName,
+          //           itemData.attributes.C1_DJ,
+          //           itemData.attributes.C2_RJL
+          //         );
+          //       }
+          //     });
+          //   });
+          // }
+        });
       });
     }
   }
