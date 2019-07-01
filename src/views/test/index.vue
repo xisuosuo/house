@@ -41,7 +41,7 @@ export default {
               "esri/Map",
               "esri/Basemap",
               "esri/views/MapView",
-              "esri/layers/MapImageLayer",
+              "esri/layers/TileLayer",
               "esri/layers/FeatureLayer",
               "esri/tasks/QueryTask",
               "esri/tasks/support/Query",
@@ -53,7 +53,7 @@ export default {
                 Map,
                 Basemap,
                 MapView,
-                MapImageLayer,
+                TileLayer,
                 FeatureLayer,
                 QueryTask,
                 Query,
@@ -62,10 +62,9 @@ export default {
                 on
               ]) => {
                 var activeWidget = null;
-
-                var street = new MapImageLayer({
+                var street = new TileLayer({
                   url:
-                    "http://122.112.216.247:6080/arcgis/rest/services/Server/MAP/MapServer"
+                    "http://122.112.216.247:6080/arcgis/rest/services/Servers/Map/MapServer"
                 });
 
                 var baseMap = new Basemap({
@@ -82,7 +81,7 @@ export default {
                   map: map
                 });
                 var gwrPOint =
-                  "http://122.112.216.247:6080/arcgis/rest/services/Server/KLJCHAZHI/MapServer/0";
+                  "http://122.112.216.247:6080/arcgis/rest/services/Servers/DJpoint/MapServer/0";
 
                 var queryTask = new QueryTask({
                   url: gwrPOint
@@ -103,7 +102,7 @@ export default {
     doGP(featureSet) {
       debugger;
       var gpUrl =
-        "http://122.112.216.247:6080/arcgis/rest/services/Server/testKing/GPServer/kingTest";
+        "http://122.112.216.247:6080/arcgis/rest/services/Servers/KING/GPServer/Model";
       mapApi.esriApi.GetGeoprocessor().then(Geoprocessor => {
         var Kriging_GP = new Geoprocessor(gpUrl);
         this.krigingGP = Kriging_GP;
@@ -126,7 +125,7 @@ export default {
         mapApi.esriApi.GetImageParameters().then(ImageParameters => {
           var imageParams = new ImageParameters({
             format: "png32",
-            imageSpatialReference: 102100  
+            imageSpatialReference: 102100
           });
           var layer = this.krigingGP.getResultMapImageLayer(jobinfo.jobId);
           layer.opacity = 0.7;
