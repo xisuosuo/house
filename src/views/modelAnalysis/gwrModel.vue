@@ -147,22 +147,18 @@
                     <Tabs type="card">
                         <TabPane label="GWR模型分析数据">
                             <Table :columns="columns1" :data="nowData"></Table>
-                            <Page :total="dataCount" :page-size="pageSize" @on-change="changepage"
-                                  @on-page-size-change="_nowPageSize" show-total show-elevator/>
+                            <Page :total="dataCount" :page-size="pageSize" @on-change="changepage" @on-page-size-change="_nowPageSize" show-total show-elevator/>
                         </TabPane>
                         <TabPane label="GWR模型分析图">
                             <div id="viewDiv">
-                                <Select v-model="model1" placeholder="地价" @on-change="changeAttributes"
-                                        style="width:200px;position:absolute;top:2px;right:2px">
-                                    <Option v-for="item in cityList" :value="item.value" :key="item.value">{{ item.label
-                                        }}
+                                <Select v-model="model1" placeholder="地价" @on-change="changeAttributes" style="width:200px;position:absolute;top:2px;right:2px">
+                                    <Option v-for="item in cityList" :value="item.value" :key="item.value">{{ item.label }}
                                     </Option>
                                 </Select>
                             </div>
                         </TabPane>
                         <TabPane label="克里金插值图">
-                            <div id="map2"
-                                 style=" padding: 0; margin: 0; height: 800px;width: 100%;;background-color: #FCF9F2"></div>
+                            <div id="map2" style=" padding: 0; margin: 0; height: 800px;width: 100%;;background-color: #FCF9F2"></div>
                         </TabPane>
                     </Tabs>
                     <Button type="primary" @click="ongo" style="float:right;margin-top:10px;margin-left:10px;">房价预测
@@ -179,8 +175,8 @@
 <script>
     import axios from "axios";
     import esriLoader from "esri-loader";
-    import {MapAPI} from "@/core/config/const";
-    import {constants} from "fs";
+    import { MapAPI } from "@/core/config/const";
+    import { constants } from "fs";
 
     export default {
         data() {
@@ -241,15 +237,14 @@
                 IsMapToolsView: false,
                 from: "",
                 Mymap: "",
-                myMapR:"",
+                myMapR: "",
                 mapViewL: null,
                 mapViewR: null,
                 left: "-100px",
                 top: "-100px",
                 width: 0,
                 feature: "",
-                res: [],
-
+                res: []
             };
         },
         mounted() {
@@ -363,13 +358,13 @@
                             Kriging_GP.getResultData(
                                 jobinfo.jobId,
                                 "GeographicallyWeightedRegression10"
-                            ).then(function (results) {
+                            ).then(function(results) {
                                 // console.log("projected points: ", results.value.features.length);
                                 var GwrPoint = results.value.features;
 
                                 // this.gwrPointP = GwrPoint;
                                 function objSort(prop1, prop2) {
-                                    return function (obj1, obj2) {
+                                    return function(obj1, obj2) {
                                         var val1 = obj1[prop1][prop2];
                                         var val2 = obj2[prop1][prop2];
                                         if (!isNaN(Number(val1)) && !isNaN(Number(val2))) {
@@ -388,6 +383,7 @@
 
                                 GwrPoint.sort(objSort("attributes", _this.model1));
                                 console.log(GwrPoint);
+
                                 for (let i = 0; i < GwrPoint.length; i++) {
                                     _this.data1.push(GwrPoint[i].attributes);
                                     _this.dataCount = GwrPoint.length;
@@ -402,11 +398,11 @@
                                 // }
 
                                 var GwrPoint = results.value.features;
-
+                                var str = JSON.stringify(GwrPoint);
+                                console.log(str);
+                                localStorage.setItem("gwrPoint", str);
                                 var length = GwrPoint.length % 7;
-                                console.log(GwrPoint);
                                 let length2 = (GwrPoint.length - length) / 7;
-                                console.log(length2);
                                 let colors = [
                                     "#38a800",
                                     "#6fc400",
@@ -545,8 +541,8 @@
                         Z_value_field: "LocalR2"
                         //传入的几何对象
                     };
-                    Kriging_GP.outSpatialReference = {wkid: 102100};
-                    Kriging_GP.processSpatialReference = {wkid: 102100};
+                    Kriging_GP.outSpatialReference = { wkid: 102100 };
+                    Kriging_GP.processSpatialReference = { wkid: 102100 };
                     console.log(parms);
                     Kriging_GP.submitJob(parms).then(this.gpJobComplete);
                 });
