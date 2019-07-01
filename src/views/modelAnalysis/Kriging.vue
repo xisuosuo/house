@@ -149,93 +149,173 @@
                         <BreadcrumbItem v-for="(item,idx) in $route.matched" :key="idx" :to="(item.path)">{{item.name}}</BreadcrumbItem>
                     </Breadcrumb>
                 </Header>
-                <router-view/>
+                <div style="width:100%;height:880px">
+                    <div id="viewDiv"
+                         style=" padding: 0; margin: 0; height: 860px;width: 100%;;background-color: #FCF9F2"></div>
+                    <Button type="primary" @click="ongo" style="float:right;margin-top:10px;margin-left:10px;">房价预测
+                    </Button>
+                    <Button type="primary" @click="onSubmit" style="float:right;margin-top:10px">保存</Button>
+                </div>
             </Content>
         </Layout>
     </div>
+
 </template>
-
 <script>
-export default {
-  mounted() {
-    var roleid = JSON.parse(sessionStorage.getItem("roleId"));
-    if (roleid === "R0001" || roleid === "R0002") {
-      this.show = true;
-    } else {
-      this.show = false;
-    }
-    this.w_height = window.innerHeight;
-    window.onresize = () => {
-      this.w_height = window.innerHeight;
-    };
-  },
-  data() {
-    return { show: true };
-  },
-  components: {
-    factor
-  }
-};
-</script>
+    import axios from "axios";
+    import esriLoader from "esri-loader";
+    import {MapAPI} from "@/core/config/const";
+    import {debug} from "util";
 
-<style lang="less" scoped>
-// .ivu-layout {
-//   height: 1024px;
-// }
-// .wripper {
-//   height: 100%;
-//   width: 100%;
-//   padding-top: 20px;
-//   /*background: url(../../assets/img/house.jpg)  no-repeat ;*/
-// }
-.layout {
-  //   border: 1px solid #d7dde4;
-  background: #f5f7f9;
-  position: relative;
-  border-radius: 4px;
-  overflow-y: hidden;
-  height: 1000px;
-}
-.layout-header-bar {
-  background: #fff;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
-}
-.layout-logo-left {
-  width: 90%;
-  height: 30px;
-  background: #5b6270;
-  border-radius: 3px;
-  margin: 15px auto;
-}
-.menu-icon {
-  transition: all 0.3s;
-}
-.rotate-icon {
-  transform: rotate(-90deg);
-}
-.menu-item span {
-  display: inline-block;
-  overflow: hidden;
-  width: 69px;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  vertical-align: bottom;
-  transition: width 0.2s ease 0.2s;
-}
-.menu-item i {
-  transform: translateX(0px);
-  transition: font-size 0.2s ease, transform 0.2s ease;
-  vertical-align: middle;
-  font-size: 16px;
-}
-.collapsed-menu span {
-  width: 0px;
-  transition: width 0.2s ease;
-}
-.collapsed-menu i {
-  transform: translateX(5px);
-  transition: font-size 0.2s ease 0.2s, transform 0.2s ease 0.2s;
-  vertical-align: middle;
-  font-size: 22px;
-}
+    export default {
+        data() {
+            return {
+                mapTileLayerLayers: "",
+                TileLayerStreets: "",
+                MapImageLayer: "",
+                view: null,
+                IsMapToolsView: false,
+                from: "",
+                Mymap: "",
+                mapViewL: null,
+                mapViewR: null,
+                left: "-100px",
+                top: "-100px",
+                width: 0,
+                feature: ""
+            };
+        },
+        mounted() {
+            this.addLayerL();
+        },
+        methods: {
+            addLayerL() {
+                esriLoader
+                    .loadScript({
+                        url: MapAPI.js,
+                        css: MapAPI.css
+                    })
+                    .then(r => {
+                        esriLoader
+                            .loadModules([
+                                "esri/Map",
+                                "esri/Basemap",
+                                "esri/views/MapView",
+                                "esri/layers/TileLayer",
+                                "esri/layers/FeatureLayer",
+                                "esri/tasks/QueryTask",
+                                "esri/tasks/support/Query",
+                                "esri/tasks/Geoprocessor",
+                                "esri/tasks/support/FeatureSet"
+                            ])
+                            .then(
+                                ([
+                                     Map,
+                                     Basemap,
+                                     MapView,
+                                     TileLayer,
+                                     FeatureLayer,
+                                     QueryTask,
+                                     Query,
+                                     Geoprocessor,
+                                     dom,
+                                     on
+                                 ]) => {
+                                    var activeWidget = null;
+                                    var street = new TileLayer({
+                                        url:
+                                            "http://122.112.216.247:6080/arcgis/rest/services/Servers/Map/MapServer"
+                                    });
+
+                                    var baseMap = new Basemap({
+                                        baseLayers: [street]
+                                    });
+                                    var map = new Map({
+                                        basemap: baseMap
+                                        // layers: [layer]
+                                    });
+                                    this.myMap = map;
+
+                                    this.mapViewL = new MapView({
+                                        container: "viewDiv",
+                                        map: map
+                                    });
+                                    var gwrPOint =
+                                        "http://122.112.216.247:6080/arcgis/rest/services/Servers/DJpoint/MapServer/0";
+
+                                    var queryTask = new QueryTask({
+                                        url: gwrPOint
+                                    });
+                                    var query = new Query();
+                                    query.returnGeometry = true;
+                                    query.outFields = ["*"];
+                                    query.where = "OBSERVED>='3946'";
+                                    // queryTask.execute(query, this.doGP);
+                                    // queryTask.execute(query).then(function(results) {
+                                    //   this.doGP(results);
+                                    // });
+                                    queryTask.execute(query).then(this.doGP);
+                                }
+                            );
+                    });
+            },
+            doGP(featureSet) {
+                debugger;
+                var gpUrl =
+                    "http://122.112.216.247:6080/arcgis/rest/services/Servers/KING/GPServer/Model";
+                mapApi.esriApi.GetGeoprocessor().then(Geoprocessor => {
+                    var Kriging_GP = new Geoprocessor(gpUrl);
+                    this.krigingGP = Kriging_GP;
+                    var parms = {
+                        SDE_DJGWR: featureSet,
+                        Z_value_field: "LocalR2"
+                        //传入的几何对象
+                    };
+                    Kriging_GP.outSpatialReference = {wkid: 102100};
+                    Kriging_GP.processSpatialReference = {wkid: 102100};
+                    console.log(parms);
+                    Kriging_GP.submitJob(parms).then(this.gpJobComplete);
+                });
+                //   Kriging_GP.submitJob(params).then(this.gpJobComplete);
+            },
+            gpJobComplete(jobinfo) {
+                console.log(jobinfo);
+                debugger;
+                if (jobinfo.jobStatus == "job-succeeded") {
+                    mapApi.esriApi.GetImageParameters().then(ImageParameters => {
+                        var imageParams = new ImageParameters({
+                            format: "png32",
+                            imageSpatialReference: 102100
+                        });
+                        var layer = this.krigingGP.getResultMapImageLayer(jobinfo.jobId);
+                        layer.opacity = 0.3;
+                        layer.title = "克里金插值";
+                        this.myMap.layers.add(layer);
+                    });
+
+                    // Kriging_GP.getResultImage(jobinfo.jobId, "fx", imageParam, getResultImaLayer);
+                } else {
+                    alert("任务失败");
+                }
+            }
+        },
+        data() {
+            return {
+                social: []
+            };
+        }
+    };
+</script>
+<style>
+    .layout-header-bar {
+        background: #fff;
+        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+    }
+    #viewDiv {
+        padding: 0;
+        margin: 0;
+        height: 800px;
+        width: 100%;
+    }
 </style>
+

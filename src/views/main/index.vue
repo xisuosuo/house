@@ -4,8 +4,9 @@
       <Header class='header'>
         <Row type="flex" justify="start" class="code-row-bg">
           <Col span="1">
-            <div style="margin-left: 15px">
-              <Icon type="md-globe" size='40' color='white' />
+            <div style="margin-left: 22px">
+              <img src="../../assets/img/logo.png" style="height: 30px;width:30px;margin-top: 10px" alt="logo">
+              <!--<Icon type="md-globe" size='40' color='white' />-->
             </div>
           </Col>
           <Col span="17">
