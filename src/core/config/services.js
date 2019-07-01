@@ -40,6 +40,6 @@ export const services = {
   personalComments: `http://${IP}/chzuHouse/user/userHouseComments`,
   delUserComments: `http://${IP}//chzuHouse/user/delUserComments`,
   recommendedBaseOnHouse: `http://${IP}//chzuHouse/passiveRecommended/recommendedBaseOnHouse`,
-  houseSelect:`http://${IP}/chzuHouse/house/queryForecastHouseInfo`,
+  houseSelect:`http://${IP}/chzuHouse/house/queryForeHouseInfoNoPrice`,
   housePrice:`http://${IP}/chzuHouse/house/houseForecast`,
 };
