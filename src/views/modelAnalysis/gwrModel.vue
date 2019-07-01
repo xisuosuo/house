@@ -547,7 +547,7 @@
                             imageSpatialReference: 102100
                         });
                         var layer = this.krigingGP.getResultMapImageLayer(jobinfo.jobId);
-                        layer.opacity = 0.7;
+                        layer.opacity = 0.5;
                         layer.title = "克里金插值";
                         this.myMapR.layers.add(layer);
                     });
