@@ -497,31 +497,6 @@ export default {
                 var queryTask = new QueryTask({
                   url: gwrPOint
                 });
-<<<<<<< HEAD
-                //   Kriging_GP.submitJob(params).then(this.gpJobComplete);
-            },
-            gpJobComplete(jobinfo) {
-                console.log(jobinfo);
-                debugger;
-                if (jobinfo.jobStatus == "job-succeeded") {
-                    mapApi.esriApi.GetImageParameters().then(ImageParameters => {
-                        var imageParams = new ImageParameters({
-                            format: "png32",
-                            imageSpatialReference: 102100
-                        });
-                        var layer = this.krigingGP.getResultMapImageLayer(jobinfo.jobId);
-                        layer.opacity = 0.5;
-                        layer.title = "克里金插值";
-                        this.myMapR.layers.add(layer);
-                    });
-                    // Kriging_GP.getResultImage(jobinfo.jobId, "fx", imageParam, getResultImaLayer);
-                } else {
-                    alert("任务失败");
-                }
-            }
-        }
-    };
-=======
                 var query = new Query();
                 query.returnGeometry = true;
                 query.outFields = ["*"];
@@ -575,7 +550,6 @@ export default {
     }
   }
 };
->>>>>>> 68185624968a6fc8b56c4f68ff06032fd207278b
 </script>
 <style>
 #viewDiv {
