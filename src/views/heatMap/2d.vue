@@ -144,7 +144,7 @@
                 </Menu>
             </Sider>
             <Content>
-                <Header :style="{padding: 0}" class="layout-header-bar">
+                <Header :style="{padding: 0}" class="-header-bar">
                     <Breadcrumb>
                         <Icon :style="{margin: '0 5px'}" type="md-menu" size="25"></Icon>
                         <BreadcrumbItem v-for="(item,idx) in $route.matched" :key="idx" :to="(item.path)">{{item.name}}</BreadcrumbItem>

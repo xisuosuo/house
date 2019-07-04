@@ -208,7 +208,7 @@ export default {
   background: #fff;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
 }
-.layout-logo-left {
+.-logo-left {
   width: 90%;
   height: 30px;
   background: #5b6270;
