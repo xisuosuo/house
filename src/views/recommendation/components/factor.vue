@@ -559,6 +559,7 @@ export default {
           // for(var i=0)
           // var s = recommend.reverse();
           dataRap.commit("dataRap", rsp);
+          console.log(dataRap)
           this.$Spin.hide();
           this.$router.push("/recommendHousing");
         } else {
