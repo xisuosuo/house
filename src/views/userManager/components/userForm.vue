@@ -40,19 +40,6 @@
         <Input v-model="form.tel" size="large" />
       </FormItem>
       </Col>
-      <!-- <Col span="11" offset="2">
-      <FormItem label="角色等级:">
-        <Input v-model="form.roleId " size="large" />
-      </FormItem>
-      </Col> -->
-      <!-- <Col span="11" offset="2">
-      <FormItem label="是否结婚:">
-        <RadioGroup v-model="form.getMarry ">
-          <Radio label="true">已婚</Radio>
-          <Radio label="false">未婚</Radio>
-        </RadioGroup>
-      </FormItem>
-      </Col> -->
     </Row>
     <Row>
       <Col span="11">
@@ -61,15 +48,6 @@
       </FormItem>
       </Col>
     </Row>
-    <!-- <Col span="11" offset="2">
-    <FormItem label="是否有房:">
-      <RadioGroup v-model="form.buyHouse ">
-        <Radio label="true">有房</Radio>
-        <Radio label="false">无房</Radio>
-      </RadioGroup>
-    </FormItem>
-    </Col> -->
-
   </Form>
 </template>
 <script>
@@ -145,19 +123,19 @@ export default {
     },
     //初始化新增
     getForm() {
-      debugger
+      debugger;
       return {
-        userId: this.form.userId||"",
-        userNickName: this.form.userNickName||"",
-        username: this.form.username||"",
-        password: this.form.password||"",
-        tel: this.form.tel||"",
-        email: this.form.email||"",
-        roleId: this.form.roleId||"R0001",
-        userAge: this.form.userAge||"",
-        userMoney: this.form.userMoney||"",
-        userStatus: this.form.userStatus||"",
-        userEducationLevel: this.form.userEducationLevel||""
+        userId: this.form.userId || "",
+        userNickName: this.form.userNickName || "",
+        username: this.form.username || "",
+        password: this.form.password || "",
+        tel: this.form.tel || "",
+        email: this.form.email || "",
+        roleId: this.form.roleId || "R0001",
+        userAge: this.form.userAge || "",
+        userMoney: this.form.userMoney || "",
+        userStatus: this.form.userStatus || "",
+        userEducationLevel: this.form.userEducationLevel || ""
       };
     }
   }
