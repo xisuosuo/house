@@ -491,7 +491,6 @@ export default {
           title: "提示",
           content: "是否永久删除此数据?",
           onOk: () => {
-            debugger;
             // var id = row.houseId;
             var name = row.name;
             Server.get({
@@ -501,6 +500,7 @@ export default {
                 commentsId: commentsId
               }
             }).then(rsp => {
+              debugger;
               if (rsp.data.status == 1) {
                 this.$Message.success(rsp.message);
                 this.onRefresh();

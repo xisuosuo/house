@@ -335,6 +335,7 @@ export default {
         var _this = this;
         if (rsp.status === 1) {
           _this.list = rsp.data;
+          debugger;
           this.showGraphics();
         }
       });
