@@ -93,4 +93,37 @@ export default class GMapSymbol {
       angle: 0
     };
   }
+
+  static getGWRPoiSymbol(opt) {
+    debugger
+    var w = opt.w || 21;
+    var h = opt.h || 33;
+    var x = opt.x || 0;
+    var y = opt.y || 10;
+    return {
+      type: "picture-marker",
+      url: "/img/poi/b_h.png",
+      width: w + "px",
+      height: h + "px",
+      xoffset: x,
+      yoffset: y,
+      angle: 0
+    };
+  }
+  static getdaishouHouse(opt) {
+    
+    var w = opt.w || 21;
+    var h = opt.h || 33;
+    var x = opt.x || 0;
+    var y = opt.y || 10;
+    return {
+      type: "picture-marker",
+      url: "/img/poi/r_h.png",
+      width: w + "px",
+      height: h + "px",
+      xoffset: x,
+      yoffset: y,
+      angle: 0
+    };
+  }
 }
