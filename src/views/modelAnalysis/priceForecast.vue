@@ -123,12 +123,12 @@
       </Menu>
     </Sider>
     <Content>
-      <div style="border:1px solid red;margin: 0 auto;margin-top: 5px;width:1000px;">
+      <div style=" margin: 0 auto;margin-top: 5px;width:1000px;">
         <Button type="primary" @click="impor" style="margin-bottom:3px">导入数据</Button>
         <Table :columns="columns1" :data="data1" @on-select="handleChange"></Table>
         <!-- <Page :total="dataCount1" :page-size="pageSize1" show-total show-elevator/> -->
       </div>
-      <div style="border:1px solid red;margin: 0 auto;margin-top: 5px;width:1000px;height:670px">
+      <div style=" margin: 0 auto;margin-top: 5px;width:1000px;height:670px">
         <gwRmap></gwRmap>
       </div>
       <router-view/>
@@ -159,7 +159,7 @@ export default {
         {
           title: "小区",
           key: "name",
-          align: "center",
+          align: "center"
         },
         {
           title: "地址",
@@ -198,7 +198,7 @@ export default {
           title: "预测价格",
           key: "price",
           align: "center",
-                    fixed: "right"
+          fixed: "right"
         }
       ],
       data1: [],
@@ -225,7 +225,7 @@ export default {
         {
           title: "是否在售",
           key: "buildingCharact",
-          align: "center",
+          align: "center"
         }
       ],
       data2: [],
@@ -263,6 +263,7 @@ export default {
       //   console.log(_this.newdata);
     },
     ok() {
+      debugger
       var _this = this;
       Server.get({
         url: services.housePrice,
@@ -285,7 +286,6 @@ export default {
                   itemData.attributes.C2_RJL
                 );
                 _this.newdata1 = arr1.join(",");
-
               }
             });
           });
@@ -306,7 +306,8 @@ export default {
       console.log(this.housePoint);
       debugger;
       onemap.pubsub.publish("drawforeHouseWKT", {
-        list: this.housePoint
+        list: this.housePoint,
+        popup: this.isPopup
       });
       onemap.pubsub.publish("drawHouseGWRByList", {
         list: this.housePoint,

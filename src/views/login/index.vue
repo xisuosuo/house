@@ -149,7 +149,7 @@
             width: 100%;
             .bg1 {
                 height: 500px;
-                background: url("../../assets/img/logo/banner2.jpg") center no-repeat;
+                background: url("../../assets/img/logo/banner2.png") center no-repeat;
                 background-color: #016fc3;
             }
             .bg2 {

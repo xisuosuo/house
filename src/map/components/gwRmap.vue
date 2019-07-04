@@ -106,7 +106,7 @@ export default {
     },
     mapLoaded(mapView) {
       new Register(mapView)
-        .mapEvent()
+        .mapEventfore()
         .mapAPI()
         .parentMapAPI();
       if (this.isIQuery) {
@@ -277,11 +277,11 @@ export default {
   margin-top: 15px;
 }
 #viewDiv1 {
-    padding: 0;
-    position: absolute;
-    height: 100%;
-    width: 1000px;  
-    background: #FCF9F2  
+  padding: 0;
+  position: absolute;
+  height: 670px;
+  width: 1000px;
+  background: #fcf9f2;
 }
 
 .main .container-fluid {
