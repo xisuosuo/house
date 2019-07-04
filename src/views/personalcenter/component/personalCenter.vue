@@ -660,6 +660,7 @@
         text-align: center;
     }
 
+<<<<<<< HEAD
     .layout {
         // border: 1px solid #d7dde4;
         background: #f5f7f9;
@@ -704,6 +705,102 @@
         transition: font-size 0.2s ease, transform 0.2s ease;
         vertical-align: middle;
         font-size: 16px;
+=======
+    onCancel() {
+      this.modal1 = false;
+    },
+    onRefresh() {
+      this.getTable();
+      this.personalComments();
+    },
+    onSubmit() {
+      this.$refs.changepsd.onSubmit();
+    },
+    show() {
+      this.$router.push("/collection");
+    },
+    personalComments() {
+      var this_ = this;
+      var userId = JSON.parse(sessionStorage.getItem("userId"));
+      Server.get({
+        url: services.personalComments,
+        params: {
+          userId: userId
+        }
+      }).then(rsp => {
+        if (rsp.status === 1) {
+          this_.data2 = rsp.data;
+        }
+      });
+    },
+    remove(currentRow, index) {
+      var userId = JSON.parse(sessionStorage.getItem("userId"));
+      currentRow.Index = index;
+      this.selectedRow = currentRow;
+      var row = this.selectedRow;
+      if (!row) {
+        this.$Message.warning("请选择需要删除的行");
+      } else {
+        this.$Modal.confirm({
+          title: "提示",
+          content: "是否永久删除此数据?",
+          onOk: () => {
+            debugger;
+            // var id = row.houseId;
+            var name = row.name;
+            Server.get({
+              url: services.delCollectHouse,
+              params: {
+                userId: userId,
+                houseName: name
+              }
+            }).then(rsp => {
+              if (rsp.status == 1) {
+                this.$Message.success(rsp.message);
+                this.personalComments();
+              } else {
+                this.$Message.error(rsp.message);
+              }
+            });
+          },
+          onCancel: () => {}
+        });
+      }
+    },
+    removecomment(currentRow, index) {
+      var userId = JSON.parse(sessionStorage.getItem("userId"));
+      currentRow.Index = index;
+      this.selectedRow = currentRow;
+      var row = this.selectedRow;
+      if (!row) {
+        this.$Message.warning("请选择需要删除的行");
+      } else {
+        this.$Modal.confirm({
+          title: "提示",
+          content: "是否永久删除此数据?",
+          onOk: () => {
+            // var id = row.houseId;
+            var name = row.name;
+            Server.get({
+              url: services.delUserComments,
+              params: {
+                userId: userId,
+                commentsId: commentsId
+              }
+            }).then(rsp => {
+              debugger;
+              if (rsp.data.status == 1) {
+                this.$Message.success(rsp.message);
+                this.onRefresh();
+              } else {
+                this.$Message.error(rsp.message);
+              }
+            });
+          },
+          onCancel: () => {}
+        });
+      }
+>>>>>>> d501cc9f0c24848dadfd2f04aff6e62517b182ab
     }
 
     .collapsed-menu span {

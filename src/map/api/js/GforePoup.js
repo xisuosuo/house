@@ -1,7 +1,7 @@
 class PopupHtmlPrice {
     static render(res) {
         let html = ["<div class='v-popup-content'>"];
-        var attr = res.attribute;
+        var attr = res.foreattribute;
         for (var key in attr) {
             html.push("<div class='ivu-row'>")
             html.push("<div class='ivu-col ivu-col-span-7' style='text-align: right;'>" + key.split("$")[0] + "：</div>");
@@ -25,16 +25,18 @@ class PopupHtmlPrice {
         return html.join("");
     }
 }
-class GPopupPrice {
+class GforePoup {
+    ;
     // api4
     show(opt) {
+        debugger
         var mapView = opt.mapView;
         var res = opt.res;
         var centerPt = opt.centerPt;
         var pan = opt.pan || false;
 
         mapView.popup.open({
-            title: res.name,
+            title: res.name1,
             content: PopupHtmlPrice.render(res),
             location: centerPt
         });
@@ -44,4 +46,4 @@ class GPopupPrice {
     }
 }
 
-export const popup = new GPopupPrice();
+export const forePoup = new GforePoup();

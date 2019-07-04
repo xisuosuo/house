@@ -63,6 +63,7 @@ class GDrawGraphic {
         }
 
         if (popup && list.length > 0) {
+          debugger
           mapApi.popup.show({
             mapView: mapView,
             res: list[0],
@@ -252,7 +253,6 @@ class GDrawGraphic {
   }
   housesGWRByList(args, layer = null) {
     debugger
-
     var list = args.list || [];
     var marker = args.marker || false;
     var name = args.name || null;
@@ -311,7 +311,7 @@ class GDrawGraphic {
         }
 
         if (popup && list.length > 0) {
-          mapApi.popup.show({
+          mapApi.forePoup.show({
             mapView: mapView,
             res: list[0],
             centerPt: pts[0],

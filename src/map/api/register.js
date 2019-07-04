@@ -35,6 +35,30 @@ export default class Register {
     return this;
   }
 
+  mapEventfore() {
+    debugger;
+    this.mapView.on("click", e => {
+      e.stopPropagation();
+      this.mapView.hitTest(e).then(rsp => {
+        if (rsp.results[0].graphic.attributes.attr.name1 === 0) {
+          return false;
+        }
+        let graphic = rsp.results[0].graphic;
+        if (graphic) {
+          var attributes = graphic.attributes;
+          if (attributes && attributes.popup === true) {
+            mapApi.forePoup.show({
+              mapView: this.mapView,
+              res: attributes.attr,
+              centerPt: attributes.centerPt
+            });
+          }
+        }
+      });
+    });
+    return this;
+  }
+
   mapAPI() {
 
     onemap.pubsub.subscribe("drawMarkerByList", arg => {
