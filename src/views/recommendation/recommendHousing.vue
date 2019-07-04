@@ -141,7 +141,6 @@
       </router-link>
     </Menu>
   </Sider>
-
   <Content>
     <div style="margin:65px auto;width:1000px;">
       <table id="customers">
@@ -325,7 +324,6 @@
 import $ from "jquery";
 import Server from "@/core/server";
 import { services } from "@/core/config/services";
-import userMessage from "@/vuex/store";
 import dataRap from "@/vuex/store";
 import mapHouse from "@/vuex/store";
 var echarts = require("echarts");

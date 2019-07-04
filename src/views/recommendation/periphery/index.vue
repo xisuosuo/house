@@ -37,7 +37,6 @@ import { MapAPI } from "@/core/config/const";
 import { services } from "@/core/config/services";
 import Item from "./components/item";
 import aroundInfo from "@/vuex/store";
-import userMessage from "@/vuex/store";
 import housueName from "@/vuex/store";
 import companyName from "@/vuex/store";
 export default {
