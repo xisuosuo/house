@@ -2,7 +2,6 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import main from '@/views/main/index.vue'
 import login from './views/login/index.vue'
-import test from './views/test/img.vue'
 import buffer from './views/test/buffer.vue'
 import server from '@/map/components/serverArea'
 Vue.use(Router)
@@ -25,10 +24,10 @@ export default new Router({
     path: '/server',
     component: server,
   },
-  {
-    path: '/test',
-    component: test,
-  },
+  // {
+  //   path: '/test',
+  //   component: test,
+  // },
   {
     path: '/main',
     component: main,
