@@ -374,10 +374,10 @@ export default new Router({
         import('@/views/locationResources/components/medicalResources.vue'),
     },
     {
-      path: '/greenlResources',
-      name: '绿地资源',
+      path: '/houseinfo',
+      name: '小区详情',
       component: () =>
-        import('@/views/locationResources/components/greenlResources.vue'),
+        import('@/views/houseCompare/components/houseinfo.vue'),
     },
     {
       path: '/businessResources',

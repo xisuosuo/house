@@ -198,14 +198,14 @@
                                 <FormItem label="年龄:">
                                     <span>{{this.userage}}</span>
                                 </FormItem>
+                                <FormItem label="资金:">
+                                    <span>{{this.money}}</span>
+                                </FormItem>
                                 <FormItem label="工作类型:">
                                     <span>程序猿</span>
                                 </FormItem>
                                 <FormItem label="注册时间:">
                                     <span>{{this.userInfo.createTime}}</span>
-                                </FormItem>
-                                <FormItem label="资金:">
-                                    <span>{{this.money}}</span>
                                 </FormItem>
                                 <FormItem label="教育程度:">
                                     <span>{{this.educations}}</span>
@@ -606,7 +606,7 @@
                             }).then(rsp => {
                                 if (rsp.status == 1) {
                                     this.$Message.success(rsp.message);
-                                    this.personalComments();
+                                    this.onRefresh();
                                 } else {
                                     this.$Message.error(rsp.message);
                                 }
@@ -636,7 +636,7 @@
                                 url: services.delUserComments,
                                 params: {
                                     userId: userId,
-                                    commentsId: commentsId
+                                    houseName : name
                                 }
                             }).then(rsp => {
                                 if (rsp.data.status == 1) {
