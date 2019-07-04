@@ -247,7 +247,6 @@ import houseInfoId from "@/vuex/store";
 import { MapAPI } from "@/core/config/const";
 import Item from "./items/item";
 import aroundInfo from "@/vuex/store";
-import userMessage from "@/vuex/store";
 import housueName from "@/vuex/store";
 import companyName from "@/vuex/store";
 import housePoint from "@/vuex/store";
