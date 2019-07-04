@@ -63,7 +63,6 @@ class GDrawGraphic {
         }
 
         if (popup && list.length > 0) {
-          debugger
           mapApi.popup.show({
             mapView: mapView,
             res: list[0],
@@ -75,7 +74,6 @@ class GDrawGraphic {
     });
   }
   housesByList(args, layer = null) {
-    debugger;
     var list = args.list || [];
     var marker = args.marker || false;
     var name = args.name || null;
@@ -146,7 +144,6 @@ class GDrawGraphic {
   }
 
   polygonsByList(args, layer = null) {
-    debugger;
     var mapView = args.mapView;
     var list = args.list;
     var extent = args.extent && args.extent === true ? true : false;
@@ -210,7 +207,6 @@ class GDrawGraphic {
   }
 
   polygonsByGeoJson(args, layer = null) {
-    debugger;
     var mapView = args.mapView;
     var geojson = args.geojson;
     var list = args.list;
@@ -252,7 +248,6 @@ class GDrawGraphic {
     });
   }
   housesGWRByList(args, layer = null) {
-    debugger
     var list = args.list || [];
     var marker = args.marker || false;
     var name = args.name || null;
@@ -324,7 +319,6 @@ class GDrawGraphic {
 
 
   daishouHouse(args, layer = null) {
-    debugger;
     var list = args.list || [];
     var marker = args.marker || false;
     var name = args.name || null;
