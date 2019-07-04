@@ -271,6 +271,7 @@ export default {
           houseName: _this.newdata
         }
       }).then(rsp => {
+        debugger;
         var _this = this;
         var arr1 = [];
         var gwrPoint = _this.gwrPoint;
@@ -281,7 +282,7 @@ export default {
             rsp.data.forEach((itemArr, index) => {
               if (itemArr.objectId === itemData.attributes.OBJECTID) {
                 arr1.push(
-                  itemArr.forecastHouseName,
+                  itemArr.name1,
                   itemData.attributes.C1_DJ,
                   itemData.attributes.C2_RJL
                 );
@@ -304,7 +305,6 @@ export default {
     },
     showGraphics() {
       console.log(this.housePoint);
-      debugger;
       onemap.pubsub.publish("drawforeHouseWKT", {
         list: this.housePoint,
         popup: this.isPopup

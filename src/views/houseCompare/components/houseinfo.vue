@@ -668,7 +668,7 @@ td {
   margin: 0 auto;
   .title {
     font-size: 22px;
-    margin-top: 80px;
+    // margin-top: 80px;
     margin-bottom: 5px;
     font-weight: 600;
     color: #101d37;

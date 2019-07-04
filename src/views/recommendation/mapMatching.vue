@@ -91,16 +91,17 @@
           <template slot="title">
             <Icon type="md-analytics" /> 房价预测
           </template>
-          <router-link to="/Kriging">
-            <MenuItem name="8-1">
-            <span style="font-size: 13px">克里金插值预测</span>
-            </MenuItem>
-          </router-link>
           <router-link to="/GWR">
             <MenuItem name="8-2">
             <span style="font-size: 13px">GWR模型</span>
             </MenuItem>
           </router-link>
+          <router-link to="/Kriging">
+            <MenuItem name="8-1">
+            <span style="font-size: 13px">克里金插值预测</span>
+            </MenuItem>
+          </router-link>
+
           <router-link to="/priceForecast">
             <MenuItem name="8-3">
             <span style="font-size: 13px">房价预测</span>
@@ -386,6 +387,7 @@ export default {
       this.$router.push("/personalcenter");
     },
     getdata() {
+      debugger;
       debugger;
       var self = this;
       this.map = true;
