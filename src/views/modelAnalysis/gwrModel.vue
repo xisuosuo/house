@@ -157,9 +157,7 @@
                                 </Select>
                             </div>
                         </TabPane>
-                        <TabPane label="克里金插值图">
-                            <div id="map2" style=" padding: 0; margin: 0; height: 800px;width: 100%;;background-color: #FCF9F2"></div>
-                        </TabPane>
+ 
                     </Tabs>
                     <Button type="primary" @click="ongo" style="float:right;margin-top:10px;margin-left:10px;">房价预测
                     </Button>
