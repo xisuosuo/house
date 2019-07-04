@@ -4,9 +4,11 @@
       <Header class='header'>
         <Row type="flex" justify="start" class="code-row-bg">
           <Col span="1">
-            <div style="margin-left: 15px">
-              <Icon type="md-globe" size='40' color='white' />
-            </div>
+          <div style="margin-left: 15px">
+            <!-- <div class="icon-wrap"> -->
+              <i class="icon-searcHouse"></i>
+            <!-- </div> -->
+          </div>
           </Col>
           <Col span="17">
           <span style='margin-left: 10px; font-size: 24px;color: white;font-family: sans-serif;'>城市商品住宅选择推荐系统</span>
@@ -105,7 +107,7 @@ export default {
     debugger;
     this.user = JSON.parse(sessionStorage.getItem("userAccount"));
     this.roleid = JSON.parse(sessionStorage.getItem("roleId"));
-    if ((this.roleid == "R0002")) {
+    if (this.roleid == "R0002") {
       this.nav = true;
     } else {
       this.nav1 = true;
