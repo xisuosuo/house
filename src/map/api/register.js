@@ -36,15 +36,23 @@ export default class Register {
   }
 
   mapAPI() {
-    debugger;
+
     onemap.pubsub.subscribe("drawMarkerByList", arg => {
       arg.mapView = this.mapView;
       gDrawGraphic.markersByList(arg);
     });
     onemap.pubsub.subscribe("drawHouseByList", arg => {
-      debugger;
+
       arg.mapView = this.mapView;
       gDrawGraphic.housesByList(arg);
+    }); // 绘制小气泡列表
+    onemap.pubsub.subscribe("drawforeHouseWKT", arg => {
+      arg.mapView = this.mapView;
+      gDrawGraphic.housesGWRByList(arg);
+    }); // 绘制小气泡列表
+    onemap.pubsub.subscribe("drawHouseGWRByList", arg => {
+      arg.mapView = this.mapView;
+      gDrawGraphic.daishouHouse(arg);
     }); // 绘制小气泡列表
     onemap.pubsub.subscribe("drawPolygonByList", arg => {
       arg.mapView = this.mapView;

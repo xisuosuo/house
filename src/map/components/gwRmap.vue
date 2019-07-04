@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div id="viewDiv" region="center">
+    <div id="viewDiv1" region="center">
       <div class="smallTools">
         <MapToolsView :mapView="mapview" v-if="IsMapToolsView" :url="toolsUrl"></MapToolsView>
       </div>
@@ -14,10 +14,10 @@
             <span class="icon baseLayerImg"></span>
             <span>影像</span>
           </li>
-          <li class="btn" @click="onToggleLayer">
+          <!-- <li class="btn" @click="onToggleLayer">
             <span class="icon layerView"></span>
             <span>图层</span>
-          </li>
+          </li> -->
         </ul>
       </div>
     </div>
@@ -222,7 +222,7 @@ export default {
                   spatialReference: this.spatialReference
                 };
                 this.mapview = new MapView({
-                  container: "viewDiv",
+                  container: "viewDiv1",
                   map: map,
                   zoom: zoom,
                   center: center
@@ -276,11 +276,11 @@ export default {
   /* margin-left: px; */
   margin-top: 15px;
 }
-#viewDiv {
-    /* padding: 0;
+#viewDiv1 {
+    padding: 0;
     position: absolute;
     height: 100%;
-    width: 100%; */
+    width: 1000px;  
     background: #FCF9F2  
 }
 

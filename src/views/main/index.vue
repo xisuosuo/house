@@ -5,8 +5,7 @@
         <Row type="flex" justify="start" class="code-row-bg">
           <Col span="1">
             <div style="margin-left: 22px">
-              <img src="../../assets/img/logo.png" style="height: 30px;width:30px;margin-top: 10px" alt="logo">
-              <!--<Icon type="md-globe" size='40' color='white' />-->
+            <img src="../../assets/img/logo.png" style="height: 30px;width:30px;margin-top: 10px" alt="logo">
             </div>
           </Col>
           <Col span="17">
@@ -106,7 +105,7 @@ export default {
     debugger;
     this.user = JSON.parse(sessionStorage.getItem("userAccount"));
     this.roleid = JSON.parse(sessionStorage.getItem("roleId"));
-    if ((this.roleid == "R0002")) {
+    if (this.roleid == "R0002") {
       this.nav = true;
     } else {
       this.nav1 = true;
