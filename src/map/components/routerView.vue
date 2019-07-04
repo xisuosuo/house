@@ -228,7 +228,7 @@ export default {
                 this.routeParams = routeParams;
                 var routeTask = new RouteTask({
                   url:
-                    "http://122.112.216.247:6080/arcgis/rest/services/CHUZHOU/routerNet_201901031829/NAServer/Route"
+                    "http://122.112.216.247:6080/arcgis/rest/services/serverTest/MapServer/20"
                 });
                 this.routeTask = routeTask;
                 var ext = String(this.defaultMapExtent).split(",");

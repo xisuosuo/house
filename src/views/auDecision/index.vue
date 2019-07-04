@@ -148,7 +148,7 @@
   </Layout>
 </template>
 <style lang="less" scoped>
-// .ivu-layout {
+// .ivu- {
 //   height: 1024px;
 // }
 </style>

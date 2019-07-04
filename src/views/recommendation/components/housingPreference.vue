@@ -6,15 +6,15 @@
         <Row :gutter="30">
           <div v-for="(value,index) in information1">
             <Col span="8">
-              <Card style="width:385px;padding: 0;">
-                <div  style="text-align:center" @click="getInfo(index,value)">
-                  <img style="width: 350px;height: 250px" v-bind:src="value.image" alt="">
-                  <div style="overflow: hidden">
-                    <h2 style="float: left">{{value.name}}</h2>
-                    <span style="float: right">{{value.price}}元/㎡</span>
-                  </div>
+            <Card style="width:385px;padding: 0;">
+              <div style="text-align:center" @click="getInfo(index,value)">
+                <img style="width: 350px;height: 250px" v-bind:src="value.image" alt="">
+                <div style="overflow: hidden">
+                  <h2 style="float: left">{{value.name}}</h2>
+                  <span style="float: right">{{value.price}}元/㎡</span>
                 </div>
-              </Card>
+              </div>
+            </Card>
             </Col>
           </div>
         </Row>
@@ -22,7 +22,7 @@
           <a @click="moreInfo">点击查看更多小区>></a>
         </div>
       </div>
-      <div id="moreInfo" style="margin-top: 55px;background-color: #F5F5F5;display: none">
+      <div id="moreInfo" style=" background-color: #F5F5F5;display: none">
         <div v-for="(value,index) in information2" :key="index" style="width: 800px;margin: 0 auto;background-color: #fff;">
           <div @click="location(index,value)" style="margin: 10px;border-bottom:1px solid #999">
             <Row>
@@ -71,7 +71,7 @@
 import Server from "@/core/server";
 import { services } from "@/core/config/services";
 import houseInfoId from "@/vuex/store";
-
+import userMessage from "@/vuex/store";
 import dataRap from "@/vuex/store";
 import aroundInfo from "@/vuex/store";
 import housePoint from "@/vuex/store";
@@ -125,10 +125,10 @@ export default {
       this.$router.push("/houseinfo");
     },
     getdata() {
-        debugger;
-        var information = JSON.parse(sessionStorage.getItem("information2"));
-        this.information2 = information;
-        this.information1.push(information[0],information[1],information[2])
+      debugger;
+      var information = JSON.parse(sessionStorage.getItem("information2"));
+      this.information2 = information;
+      this.information1.push(information[0], information[1], information[2]);
     },
     moreInfo() {
       document.getElementById("preference").style.display = "none";
