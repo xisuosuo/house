@@ -213,7 +213,6 @@
 <script>
 import Server from "@/core/server";
 import { services } from "@/core/config/services";
-import userMessage from "@/vuex/store";
 import dataRap from "@/vuex/store";
 export default {
   computed: {
@@ -559,6 +558,7 @@ export default {
           // for(var i=0)
           // var s = recommend.reverse();
           dataRap.commit("dataRap", rsp);
+          console.log(dataRap)
           this.$Spin.hide();
           this.$router.push("/recommendHousing");
         } else {

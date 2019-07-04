@@ -31,7 +31,7 @@
               <Option v-for="item in capital" :value="item.value" :key="item.value">{{ item.label }}</Option>
             </Select>
           </FormItem>
-          <FormItem label="学历" prop="education">
+          <FormItem label="学历" prop="education">.
             <Select v-model="educationModel">
               <Option v-for="item in education" :value="item.value" :key="item.value">{{ item.label }}</Option>
             </Select>

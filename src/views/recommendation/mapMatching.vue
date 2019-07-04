@@ -391,8 +391,12 @@ export default {
       debugger;
       var self = this;
       this.map = true;
-      Server.get({
-        url: services.getrecommendHouse
+        var userId = JSON.parse(sessionStorage.getItem("userId"));
+        Server.get({
+        url: services.getrecommendHouse,
+            params: {
+                userId: userId
+            }
       }).then(function(rsp) {
         if (rsp.status === 1) {
           self.information = rsp.data;

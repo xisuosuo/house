@@ -2,7 +2,6 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import main from '@/views/main/index.vue'
 import login from './views/login/index.vue'
-import test from './views/test/index.vue'
 import buffer from './views/test/buffer.vue'
 import server from '@/map/components/serverArea'
 Vue.use(Router)
@@ -25,10 +24,10 @@ export default new Router({
     path: '/server',
     component: server,
   },
-  {
-    path: '/test',
-    component: test,
-  },
+  // {
+  //   path: '/test',
+  //   component: test,
+  // },
   {
     path: '/main',
     component: main,
@@ -53,10 +52,7 @@ export default new Router({
       path: '/buffer',
       component: buffer,
     },
-    {
-      path: '/test',
-      component: test,
-    },
+
 
     {
       name: "个人中心",
@@ -74,12 +70,7 @@ export default new Router({
       },]
     },
 
-    {
-      name: "test",
-      path: "/test",
-      component: () =>
-        import('@/views/test/index.vue'),
-    },
+
     {
       name: "我的收藏",
       path: "/collection",
@@ -383,10 +374,10 @@ export default new Router({
         import('@/views/locationResources/components/medicalResources.vue'),
     },
     {
-      path: '/greenlResources',
-      name: '绿地资源',
+      path: '/houseinfo',
+      name: '小区详情',
       component: () =>
-        import('@/views/locationResources/components/greenlResources.vue'),
+        import('@/views/houseCompare/components/houseinfo.vue'),
     },
     {
       path: '/businessResources',
@@ -406,6 +397,7 @@ export default new Router({
       component: () =>
         import('@/views/heatMap/2d.vue'),
     },
+
     ]
   }
   ]

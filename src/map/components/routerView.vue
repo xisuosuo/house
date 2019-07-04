@@ -189,7 +189,7 @@ export default {
                 this.routeLayer = routeLayer;
                 var layer = new TileLayer({
                   url:
-                    "http://122.112.216.247:6080/arcgis/rest/services/CHUZHOU/Map/MapServer"
+                    "http://122.112.216.247:6080/arcgis/rest/services/Servers/Map/MapServer"
                 });
                 this.baseLayer = layer;
 

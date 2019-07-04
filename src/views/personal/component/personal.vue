@@ -2,7 +2,7 @@
   <Layout>
     <Content>
 
-      <div style="text-align:center;margin:auto;width:1000px;height:715px;border:1px solid rgb(220, 222, 226);background: #fff;margin-top: 55px">
+      <div style="text-align:center;margin:auto;width:1000px;height:715px;border:1px solid rgb(220, 222, 226);background: #fff; ">
         <Alert show-icon style="width:660px;height:90px;margin-left:175px;margin-top:20px">
           用户提示
           <Icon type="ios-bulb-outline" slot="icon"></Icon>

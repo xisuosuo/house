@@ -140,8 +140,62 @@
           <span>个人中心</span>
           </MenuItem>
         </router-link>
-      </Menu>
-    </Sider>
+      </Submenu>
+      <router-link to="/personalcenter">
+        <MenuItem name="11-1">
+        <Icon type="md-person" />
+        <span>个人中心</span>
+        </MenuItem>
+      </router-link>
+    </Menu>
+  </Sider>
+  <Content>
+    <div style="margin:65px auto;width:1000px;">
+      <table id="customers">
+        <thead>
+          <tr>
+            <th>小区名称</th>
+            <th @click="education" title="查看教育资源可达性计算数据">教育资源可达性
+              <Icon type="ios-book" />
+            </th>
+            <th @click="Medical" title="查看医疗资源可达性计算数据">医疗资源可达性
+              <Icon type="md-add-circle" />
+            </th>
+            <th @click="traffic" title="查看交通资源可达性计算数据">交通资源可达性
+              <Icon type="ios-car" />
+            </th>
+            <th @click="entertainment" title="查看休闲娱乐可达性计算数据">休闲娱乐可达性
+              <Icon type="md-cart" />
+            </th>
+            <th>综合值</th>
+          </tr>
+        </thead>
+        <tbody id="customerss"></tbody>
+      </table>
+      <Row>
+        <Col span="12">
+        <div id="trend" style="height: 350px;margin-top: 5px;margin-right: 5px; border: 1px solid  #dcdee2">
+        </div>
+        </Col>
+        <Col span="12">
+        <div id="comprise" style="height:350px;margin-top: 5px; margin-left: 5px;border: 1px solid  #dcdee2">
+        </div>
+        </Col>
+      </Row>
+      <Row type="flex" justify="end" class="code-row-bg" style="margin-top:6px">
+        <Col span="5">
+        <ButtonGroup shape="circle">
+          <Button type="primary" @click="back()">
+            <Icon type="ios-arrow-back"></Icon>
+            重新推荐
+          </Button>
+          <Button type="primary" @click="map()">
+            地图查看
+            <Icon type="ios-arrow-forward"></Icon>
+          </Button>
+        </ButtonGroup>
+        </Col>
+      </Row>
 
     <Content>
       <div style="margin:65px auto;width:1000px;">
@@ -326,7 +380,6 @@
 import $ from "jquery";
 import Server from "@/core/server";
 import { services } from "@/core/config/services";
-import userMessage from "@/vuex/store";
 import dataRap from "@/vuex/store";
 import mapHouse from "@/vuex/store";
 var echarts = require("echarts");
