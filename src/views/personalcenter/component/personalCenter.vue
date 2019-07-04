@@ -10,8 +10,7 @@
                 </router-link>
                 <Submenu name="2">
                     <template slot="title">
-                        <Icon type="md-speedometer"/>
-                        数据展示
+                        <Icon type="md-speedometer" /> 数据展示
                     </template>
                     <router-link to="/data">
                         <MenuItem name="2-1">
@@ -26,14 +25,13 @@
                 </Submenu>
                 <router-link to="/infoSearch">
                     <MenuItem name="3-1">
-                        <Icon type="md-search"/>
+                        <Icon type="md-search" />
                         <span>信息查询</span>
                     </MenuItem>
                 </router-link>
                 <Submenu name="4">
                     <template slot="title">
-                        <Icon type="md-globe"/>
-                        区位资源
+                        <Icon type="md-globe" /> 区位资源
                     </template>
                     <router-link to="/locationResources">
                         <MenuItem name="4-1">
@@ -58,21 +56,20 @@
                 </Submenu>
                 <router-link to="/recommendation/factor">
                     <MenuItem name="5-1">
-                        <Icon type="md-pin"/>
+                        <Icon type="md-pin" />
                         <span>购房选址</span>
                     </MenuItem>
                 </router-link>
                 <router-link to="/recommendation/housingPreference">
                     <MenuItem name="6-1">
-                        <Icon type="md-thumbs-up"/>
+                        <Icon type="md-thumbs-up" />
                         <span>房源推荐</span>
                     </MenuItem>
                 </router-link>
 
                 <Submenu name="7">
                     <template slot="title">
-                        <Icon type="ios-radio"/>
-                        房价分析
+                        <Icon type="ios-radio" /> 房价分析
                     </template>
                     <router-link to="/priceAnalysis">
                         <MenuItem name="7-1">
@@ -92,8 +89,7 @@
                 </Submenu>
                 <Submenu name="8">
                     <template slot="title">
-                        <Icon type="md-analytics"/>
-                        房价预测
+                        <Icon type="md-analytics" /> 房价预测
                     </template>
                     <router-link to="/Kriging">
                         <MenuItem name="8-1">
@@ -113,14 +109,13 @@
                 </Submenu>
                 <router-link to="/userManager">
                     <MenuItem name="9-1" v-if="show">
-                        <Icon type="md-contacts"/>
+                        <Icon type="md-contacts" />
                         <span>用户管理</span>
                     </MenuItem>
                 </router-link>
                 <Submenu name="10">
                     <template slot="title">
-                        <Icon type="md-paper"/>
-                        用户手册
+                        <Icon type="md-paper" /> 用户手册
                     </template>
                     <router-link to="/auDecision/usersManual">
                         <MenuItem name="10-1">
@@ -140,7 +135,7 @@
                 </Submenu>
                 <router-link to="/personalcenter">
                     <MenuItem name="11-1">
-                        <Icon type="md-person"/>
+                        <Icon type="md-person" />
                         <span>个人中心</span>
                     </MenuItem>
                 </router-link>
@@ -160,8 +155,7 @@
                     <Col span="8">
                         <Card>
                             <div class="avatar">
-                                <img style="width: 100px;height: 100px;border-radius: 50%;margin: 20px"
-                                     src="../../../assets/img/u=3085477210,754180516&fm=11&gp=0.jpg"/>
+                                <img style="width: 100px;height: 100px;border-radius: 50%;margin: 20px" src="../../../assets/img/u=3085477210,754180516&fm=11&gp=0.jpg" />
                             </div>
                             <div style="text-align: left;margin-left: 10%;font-size: 12px">
                                 <div>
@@ -177,7 +171,7 @@
                                     <span style="margin-left: 5px">这个人很懒，什么都没有留下</span>
                                 </div>
                             </div>
-                            <Divider dashed="true"/>
+                            <Divider dashed="true" />
                             <strong>
                                 <div style="margin-bottom: 10px;">标签</div>
                             </strong>
@@ -187,7 +181,7 @@
                                 <Tag checkable color="primary">有存款</Tag>
                                 <Tag checkable color="warning">长得漂亮</Tag>
                             </div>
-                            <Divider dashed="true"/>
+                            <Divider dashed="true" />
                             <strong>
                                 <div>详细信息:</div>
                             </strong>
@@ -229,7 +223,7 @@
                             <div>
                                 <Table height="349" stripe :columns="columns1" :data="data1"></Table>
                             </div>
-                            <Divider dashed="true"/>
+                            <Divider dashed="true" />
                             <strong>
                                 <div>我的评论：</div>
                             </strong>
@@ -245,7 +239,7 @@
 </template>
 <script>
     import Server from "@/core/server";
-    import {services} from "@/core/config/services";
+    import { services } from "@/core/config/services";
     import ChangePsd from "@/views/login/components/changepsd";
 
     export default {
@@ -257,6 +251,11 @@
                 show: true,
                 modal1: false,
                 columns2: [
+                    {
+                        align: "center",
+                        title: "ID",
+                        key: "commentsId"
+                    },
                     {
                         align: "center",
                         title: "小区名称",
@@ -382,8 +381,8 @@
                 data2: [],
                 userInfo: [],
                 userage: [],
-                money:[],
-                educations:[],
+                money: [],
+                educations: [],
                 age: [
                     {
                         value: "1",
@@ -527,19 +526,19 @@
                 }).then(rsp => {
                     this.userInfo = rsp.data;
                     // this.userage = rsp.data.userEducationLevel;
-                    for (let i =1;i<=9;i++){
-                        if( this.userInfo.age==i){
-                            this.userage =  this.age[i].label;
-                        }
-                   }
-                    for (let i =1;i<=9;i++){
-                        if(this.userInfo.userMoney==i){
-                            this.money =  this.capital[i].label;
+                    for (let i = 1; i <= 9; i++) {
+                        if (this.userInfo.age == i) {
+                            this.userage = this.age[i].label;
                         }
                     }
-                    for (let i =1;i<=9;i++){
-                        if(this.userInfo.userEducationLevel==i){
-                            this.educations =  this.education[i].label;
+                    for (let i = 1; i <= 9; i++) {
+                        if (this.userInfo.userMoney == i) {
+                            this.money = this.capital[i].label;
+                        }
+                    }
+                    for (let i = 1; i <= 9; i++) {
+                        if (this.userInfo.userEducationLevel == i) {
+                            this.educations = this.education[i].label;
                         }
                     }
                 });
@@ -612,8 +611,7 @@
                                 }
                             });
                         },
-                        onCancel: () => {
-                        }
+                        onCancel: () => {}
                     });
                 }
             },
@@ -631,24 +629,23 @@
                         onOk: () => {
                             debugger;
                             // var id = row.houseId;
-                            var name = row.name;
+                            var id = row.commentsId;
                             Server.get({
                                 url: services.delUserComments,
                                 params: {
                                     userId: userId,
-                                    houseName : name
+                                    commentsId : id
                                 }
                             }).then(rsp => {
                                 if (rsp.data.status == 1) {
-                                    this.$Message.success(rsp.message);
                                     this.onRefresh();
+                                    this.$Message.success(rsp.data.message);
                                 } else {
-                                    this.$Message.error(rsp.message);
+                                    this.$Message.error(rsp.data.message);
                                 }
                             });
                         },
-                        onCancel: () => {
-                        }
+                        onCancel: () => {}
                     });
                 }
             }
