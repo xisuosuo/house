@@ -123,7 +123,7 @@
             </Menu>
         </Sider>
         <Content>
-            <div style="border:1px solid red;margin: 0 auto;margin-top: 5px;width:1000px;">
+            <div style="border:1px solid red;margin: 0 auto;margin-top: 5px;width:1200px;">
                 <Button type="primary" @click="impor" style="margin-bottom:3px">导入数据</Button>
                 <Table :columns="columns1" :data="data1" @on-select="handleChange"></Table>
                 <!-- <Page :total="dataCount1" :page-size="pageSize1" show-total show-elevator/> -->
@@ -139,7 +139,6 @@
         </Modal>
     </layout>
 
-    <!-- overflow-x: auto;overflow-y: auto -->
 </template>
 <script>
 import axios from "axios";
@@ -158,12 +157,13 @@ export default {
         {
           title: "小区",
           key: "name",
-          align: "center"
+          align: "center",
         },
         {
           title: "地址",
           key: "attribute",
-          align: "center"
+          align: "center",
+          width: 250
         },
         {
           title: "房屋类型",
@@ -175,9 +175,28 @@ export default {
           align: "center"
         },
         {
+          title: "GWR",
+          align: "center",
+          children: [
+            {
+              title: "地价",
+              key: "dj",
+              align: "center",
+              width: 200
+            },
+            {
+              title: "容积率",
+              key: "rjl",
+              align: "center",
+              width: 200
+            }
+          ]
+        },
+        {
           title: "预测价格",
           key: "price",
-          align: "center"
+          align: "center",
+                    fixed: "right"
         }
       ],
       data1: [],
@@ -204,7 +223,7 @@ export default {
         {
           title: "是否在售",
           key: "buildingCharact",
-          align: "center"
+          align: "center",
         }
       ],
       data2: [],
@@ -215,9 +234,7 @@ export default {
     };
   },
   created() {
-    // var gwrPoint = localStorage.getItem("GWRponit");.
     var optionss = localStorage.getItem("gwrPoint");
-    // console.log(JSON.parse(optionss));
     var gwrPoint = JSON.parse(optionss);
     this.gwrPoint = gwrPoint;
   },
@@ -264,6 +281,7 @@ export default {
                   itemData.attributes.C2_RJL
                 );
                 _this.newdata1 = arr1.join(",");
+
               }
             });
           });
@@ -275,6 +293,7 @@ export default {
           }
         }).then(rsp => {
           var _this = this;
+
           _this.data1 = rsp.data;
         });
       });
@@ -283,14 +302,7 @@ export default {
       debugger;
       onemap.pubsub.publish("drawHouseGWRBypriceList", {
         list: this.housePoint
-        // popup: this.isPopup,
-        // pan: this.isPan
       });
-      // onemap.pubsub.publish("drawHouseGWRByList", {
-      //   list: this.housePoint
-      //   // popup: this.isPopup,
-      //   // pan: this.isPan
-      // });
     }
   }
 };
