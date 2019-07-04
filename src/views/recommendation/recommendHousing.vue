@@ -141,7 +141,6 @@
       </router-link>
     </Menu>
   </Sider>
-
   <Content>
     <div style="margin:65px auto;width:1000px;">
       <table id="customers">
