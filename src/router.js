@@ -309,7 +309,8 @@ export default new Router({
         component: () =>
           import('@/views/userManager/components/userIndex.vue'),
       },]
-    }, {
+    },
+    {
       name: "价格分析",
       path: "/priceAnalysis",
       component: () =>
@@ -392,6 +393,12 @@ export default new Router({
       name: '商业资源',
       component: () =>
         import('@/views/locationResources/components/businessResources.vue'),
+    },
+    {
+      path: '/Kriging',
+      name: '克里金插值预测',
+      component: () =>
+        import('@/views/modelAnalysis/Kriging.vue'),
     },
     {
       name: "二维热力图",

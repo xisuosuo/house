@@ -4,11 +4,10 @@
       <Header class='header'>
         <Row type="flex" justify="start" class="code-row-bg">
           <Col span="1">
-          <div style="margin-left: 15px">
-            <!-- <div class="icon-wrap"> -->
-              <i class="icon-searcHouse"></i>
-            <!-- </div> -->
-          </div>
+            <div style="margin-left: 22px">
+              <img src="../../assets/img/logo.png" style="height: 30px;width:30px;margin-top: 10px" alt="logo">
+              <!--<Icon type="md-globe" size='40' color='white' />-->
+            </div>
           </Col>
           <Col span="17">
           <span style='margin-left: 10px; font-size: 24px;color: white;font-family: sans-serif;'>城市商品住宅选择推荐系统</span>
