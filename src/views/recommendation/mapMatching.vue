@@ -174,7 +174,7 @@
                 为您推荐
                 <span class="ret">5</span>
                 <span>个楼盘</span>
-                <Badge :count=this.count style="float: right;margin-right: 10px">
+                <Badge  :count=this.count style="float: right;margin-right: 50px">
                   <Icon title="楼盘对比" @click="addComapre" type="ios-notifications-outline" size="26"></Icon>
                 </Badge>
                 <img title="我的收藏夹" @click="jumpCollect" src="../../assets/img/sumcollect.png" alt="" style="float: right;height: 20px;width: 20px;margin-top: 7px;margin-right: 10px">
