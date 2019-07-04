@@ -27,7 +27,7 @@
                 </div>
                 <Form :model="formItem" :label-width="70">
                   <FormItem label="价格说明:">
-                    <span>价格说明：</span>在{{this.houseInfo.minPrice}}元/㎡ ~ {{this.houseInfo.maxPrice}}元/㎡之间
+                    <span>在{{this.houseInfo.minPrice}}元/㎡ ~ {{this.houseInfo.maxPrice}}元/㎡之间</span>
                   </FormItem>
                   <FormItem label="建筑类型:">
                     <span>{{this.houseInfo.houseFeature}}</span>
