@@ -335,7 +335,11 @@ export default {
       modal2: false,
       modal3: false,
       modal4: false,
-      tableData: {}
+      tableData: {},
+      count1: 0,
+      count2: 0,
+      count3: 0,
+      count4: 0,
     };
   },
   mounted() {
@@ -363,209 +367,223 @@ export default {
         }
       }
     },
+
     education() {
+      debugger;
+      this.count1++;
       this.modal1 = true;
-      var userId = JSON.parse(sessionStorage.getItem("userId"));
-      Server.get({
-        url: services.processData,
-        params: {
-          serviceType: "education",
-          userId: userId
-        }
-      }).then(rsp => {
-        if (rsp.status === 1) {
-          var tab1 = document.getElementById("population");
-          var tab2 = document.getElementById("service");
-          var tab3 = document.getElementById("distance");
-          for (var i = 0; i < 5; i++) {
-            tab1.insertRow(i);
-            for (var j = 0; j < 2; j++) {
-              var tt = rsp.data.peopleNumList[i];
-              for (var k in tt) {
-                tab1.rows[i].insertCell(j).innerHTML = tt[k];
-                continue;
-              }
-              break;
-            }
+      if (this.count1 <= 1) {
+        var userId = JSON.parse(sessionStorage.getItem("userId"));
+        Server.get({
+          url: services.processData,
+          params: {
+            serviceType: "education",
+            userId: userId
           }
-          for (var i = 0; i < 100; i++) {
-            tab2.insertRow(i);
-            for (var j = 0; j < 2; j++) {
-              var tt = rsp.data.serviceList[i];
-              for (var k in tt) {
-                tab2.rows[i].insertCell(j).innerHTML = tt[k];
-                continue;
+        }).then(rsp => {
+          if (rsp.status === 1) {
+            var tab1 = document.getElementById("population");
+            var tab2 = document.getElementById("service");
+            var tab3 = document.getElementById("distance");
+            for (var i = 0; i < 5; i++) {
+              tab1.insertRow(i);
+              for (var j = 0; j < 2; j++) {
+                var tt = rsp.data.peopleNumList[i];
+                for (var k in tt) {
+                  tab1.rows[i].insertCell(j).innerHTML = tt[k];
+                  continue;
+                }
+                break;
               }
-              break;
             }
-          }
-          for (var i = 0; i < 100; i++) {
-            tab3.insertRow(i);
-            for (var j = 0; j < 2; j++) {
-              var tt = rsp.data.distanceList[i];
-              for (var k in tt) {
-                tab3.rows[i].insertCell(j).innerHTML = tt[k];
-                continue;
+            for (var i = 0; i < 100; i++) {
+              tab2.insertRow(i);
+              for (var j = 0; j < 2; j++) {
+                var tt = rsp.data.serviceList[i];
+                for (var k in tt) {
+                  tab2.rows[i].insertCell(j).innerHTML = tt[k];
+                  continue;
+                }
+                break;
               }
-              break;
             }
+            for (var i = 0; i < 100; i++) {
+              tab3.insertRow(i);
+              for (var j = 0; j < 2; j++) {
+                var tt = rsp.data.distanceList[i];
+                for (var k in tt) {
+                  tab3.rows[i].insertCell(j).innerHTML = tt[k];
+                  continue;
+                }
+                break;
+              }
+            }
+          } else {
           }
-        } else {
-        }
-      });
+        });
+      }
     },
     Medical() {
+      this.count2++;
       this.modal2 = true;
-      var userId = JSON.parse(sessionStorage.getItem("userId"));
-      Server.get({
-        url: services.processData,
-        params: {
-          serviceType: "medical",
-          userId: userId
-        }
-      }).then(rsp => {
-        if (rsp.status === 1) {
-          var tab1 = document.getElementById("population2");
-          var tab2 = document.getElementById("service2");
-          var tab3 = document.getElementById("distance2");
-          for (var i = 0; i < 5; i++) {
-            tab1.insertRow(i);
-            for (var j = 0; j < 2; j++) {
-              var tt = rsp.data.peopleNumList[i];
-              for (var k in tt) {
-                tab1.rows[i].insertCell(j).innerHTML = tt[k];
-                continue;
-              }
-              break;
-            }
+      if (this.count2 <= 1) {
+        var userId = JSON.parse(sessionStorage.getItem("userId"));
+        Server.get({
+          url: services.processData,
+          params: {
+            serviceType: "medical",
+            userId: userId
           }
-          for (var i = 0; i < 100; i++) {
-            tab2.insertRow(i);
-            for (var j = 0; j < 2; j++) {
-              var tt = rsp.data.serviceList[i];
-              for (var k in tt) {
-                tab2.rows[i].insertCell(j).innerHTML = tt[k];
-                continue;
+        }).then(rsp => {
+          if (rsp.status === 1) {
+            var tab1 = document.getElementById("population2");
+            var tab2 = document.getElementById("service2");
+            var tab3 = document.getElementById("distance2");
+            for (var i = 0; i < 5; i++) {
+              tab1.insertRow(i);
+              for (var j = 0; j < 2; j++) {
+                var tt = rsp.data.peopleNumList[i];
+                for (var k in tt) {
+                  tab1.rows[i].insertCell(j).innerHTML = tt[k];
+                  continue;
+                }
+                break;
               }
-              break;
             }
-          }
-          for (var i = 0; i < 100; i++) {
-            tab3.insertRow(i);
-            for (var j = 0; j < 2; j++) {
-              var tt = rsp.data.distanceList[i];
-              for (var k in tt) {
-                tab3.rows[i].insertCell(j).innerHTML = tt[k];
-                continue;
+            for (var i = 0; i < 100; i++) {
+              tab2.insertRow(i);
+              for (var j = 0; j < 2; j++) {
+                var tt = rsp.data.serviceList[i];
+                for (var k in tt) {
+                  tab2.rows[i].insertCell(j).innerHTML = tt[k];
+                  continue;
+                }
+                break;
               }
-              break;
             }
+            for (var i = 0; i < 100; i++) {
+              tab3.insertRow(i);
+              for (var j = 0; j < 2; j++) {
+                var tt = rsp.data.distanceList[i];
+                for (var k in tt) {
+                  tab3.rows[i].insertCell(j).innerHTML = tt[k];
+                  continue;
+                }
+                break;
+              }
+            }
+          } else {
           }
-        } else {
-        }
-      });
+        });
+      }
     },
     traffic() {
+      this.count3++;
       this.modal3 = true;
-      var userId = JSON.parse(sessionStorage.getItem("userId"));
-      Server.get({
-        url: services.processData,
-        params: {
-          serviceType: "station",
-          userId: userId
-        }
-      }).then(rsp => {
-        if (rsp.status === 1) {
-          var tab1 = document.getElementById("population3");
-          var tab2 = document.getElementById("service3");
-          var tab3 = document.getElementById("distance3");
-          for (var i = 0; i < 5; i++) {
-            tab1.insertRow(i);
-            for (var j = 0; j < 2; j++) {
-              var tt = rsp.data.peopleNumList[i];
-              for (var k in tt) {
-                tab1.rows[i].insertCell(j).innerHTML = tt[k];
-                continue;
-              }
-              break;
-            }
+      if (this.count3 <= 1) {
+        var userId = JSON.parse(sessionStorage.getItem("userId"));
+        Server.get({
+          url: services.processData,
+          params: {
+            serviceType: "station",
+            userId: userId
           }
-          for (var i = 0; i < 100; i++) {
-            tab2.insertRow(i);
-            for (var j = 0; j < 2; j++) {
-              var tt = rsp.data.serviceList[i];
-              for (var k in tt) {
-                tab2.rows[i].insertCell(j).innerHTML = tt[k];
-                continue;
+        }).then(rsp => {
+          if (rsp.status === 1) {
+            var tab1 = document.getElementById("population3");
+            var tab2 = document.getElementById("service3");
+            var tab3 = document.getElementById("distance3");
+            for (var i = 0; i < 5; i++) {
+              tab1.insertRow(i);
+              for (var j = 0; j < 2; j++) {
+                var tt = rsp.data.peopleNumList[i];
+                for (var k in tt) {
+                  tab1.rows[i].insertCell(j).innerHTML = tt[k];
+                  continue;
+                }
+                break;
               }
-              break;
             }
-          }
-          for (var i = 0; i < 100; i++) {
-            tab3.insertRow(i);
-            for (var j = 0; j < 2; j++) {
-              var tt = rsp.data.distanceList[i];
-              for (var k in tt) {
-                tab3.rows[i].insertCell(j).innerHTML = tt[k];
-                continue;
+            for (var i = 0; i < 100; i++) {
+              tab2.insertRow(i);
+              for (var j = 0; j < 2; j++) {
+                var tt = rsp.data.serviceList[i];
+                for (var k in tt) {
+                  tab2.rows[i].insertCell(j).innerHTML = tt[k];
+                  continue;
+                }
+                break;
               }
-              break;
             }
+            for (var i = 0; i < 100; i++) {
+              tab3.insertRow(i);
+              for (var j = 0; j < 2; j++) {
+                var tt = rsp.data.distanceList[i];
+                for (var k in tt) {
+                  tab3.rows[i].insertCell(j).innerHTML = tt[k];
+                  continue;
+                }
+                break;
+              }
+            }
+          } else {
           }
-        } else {
-        }
-      });
+        });
+      }
     },
     entertainment() {
+      this.count4++;
       this.modal4 = true;
-      var userId = JSON.parse(sessionStorage.getItem("userId"));
-      Server.get({
-        url: services.processData,
-        params: {
-          serviceType: "entertainment",
-          userId: userId
-        }
-      }).then(rsp => {
-        if (rsp.status === 1) {
-          var tab1 = document.getElementById("population4");
-          var tab2 = document.getElementById("service4");
-          var tab3 = document.getElementById("distance4");
-          for (var i = 0; i < 5; i++) {
-            tab1.insertRow(i);
-            for (var j = 0; j < 2; j++) {
-              var tt = rsp.data.peopleNumList[i];
-              for (var k in tt) {
-                tab1.rows[i].insertCell(j).innerHTML = tt[k];
-                continue;
-              }
-              break;
-            }
+      if (this.count4 <= 1) {
+        var userId = JSON.parse(sessionStorage.getItem("userId"));
+        Server.get({
+          url: services.processData,
+          params: {
+            serviceType: "entertainment",
+            userId: userId
           }
-          for (var i = 0; i < 100; i++) {
-            tab2.insertRow(i);
-            for (var j = 0; j < 2; j++) {
-              var tt = rsp.data.serviceList[i];
-              for (var k in tt) {
-                tab2.rows[i].insertCell(j).innerHTML = tt[k];
-                continue;
+        }).then(rsp => {
+          if (rsp.status === 1) {
+            var tab1 = document.getElementById("population4");
+            var tab2 = document.getElementById("service4");
+            var tab3 = document.getElementById("distance4");
+            for (var i = 0; i < 5; i++) {
+              tab1.insertRow(i);
+              for (var j = 0; j < 2; j++) {
+                var tt = rsp.data.peopleNumList[i];
+                for (var k in tt) {
+                  tab1.rows[i].insertCell(j).innerHTML = tt[k];
+                  continue;
+                }
+                break;
               }
-              break;
             }
-          }
-          for (var i = 0; i < 100; i++) {
-            tab3.insertRow(i);
-            for (var j = 0; j < 2; j++) {
-              var tt = rsp.data.distanceList[i];
-              for (var k in tt) {
-                tab3.rows[i].insertCell(j).innerHTML = tt[k];
-                continue;
+            for (var i = 0; i < 100; i++) {
+              tab2.insertRow(i);
+              for (var j = 0; j < 2; j++) {
+                var tt = rsp.data.serviceList[i];
+                for (var k in tt) {
+                  tab2.rows[i].insertCell(j).innerHTML = tt[k];
+                  continue;
+                }
+                break;
               }
-              break;
             }
+            for (var i = 0; i < 100; i++) {
+              tab3.insertRow(i);
+              for (var j = 0; j < 2; j++) {
+                var tt = rsp.data.distanceList[i];
+                for (var k in tt) {
+                  tab3.rows[i].insertCell(j).innerHTML = tt[k];
+                  continue;
+                }
+                break;
+              }
+            }
+          } else {
           }
-        } else {
-        }
-      });
+        });
+      }
     },
     back() {
       this.$router.push("/recommendation/factor");
