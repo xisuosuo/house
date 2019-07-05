@@ -161,12 +161,12 @@ export default {
         }
       }
       this.list = data;
-      onemap.pubsub.publish("clear");
       setTimeout(() => {
         this.showGraphics();
       }, 100);
     },
     showGraphics() {
+      mapview.graphics.removeAll();
       //render graphic
       if (this.list === 0) return;
       onemap.pubsub.publish("drawPolygonByList", {
