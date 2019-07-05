@@ -4,7 +4,7 @@
             <sider-menu/>
         </Sider>
         <Content>
-            <div style="margin: 0 auto;margin-top: 5px;width:1000px;height:680px">
+            <div style="margin: 0 auto;margin-top: 5px;width:1000px;height:670px">
                 <Card style="height:100%">
                     <Tabs type="card">
                         <TabPane label="GWR模型分析数据">
@@ -458,7 +458,7 @@ export default {
 #viewDiv {
   padding: 0;
   margin: 0;
-  height: 800px;
+  height: 600px;
   width: 100%;
 }
 .demo-spin-icon-load {
