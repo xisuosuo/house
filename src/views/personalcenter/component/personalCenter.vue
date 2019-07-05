@@ -12,7 +12,7 @@
                     </BreadcrumbItem>
                 </Breadcrumb>
             </Header>
-            <div style="margin: 15px; width: 100%;overflow-y: auto">
+            <div style="margin: 15px; width: 100%;overflow-y: hidden">
                 <Row>
                     <Col span="8">
                         <Card>
@@ -57,8 +57,8 @@
                                 <FormItem label="资金:">
                                     <span>{{this.money}}</span>
                                 </FormItem>
-                                <FormItem label="工作类型:">
-                                    <span>程序猿</span>
+                                <FormItem label="手机号码:">
+                                    <span>{{this.userInfo.userMobile}}</span>
                                 </FormItem>
                                 <FormItem label="注册时间:">
                                     <span>{{this.userInfo.createTime}}</span>
@@ -216,7 +216,7 @@
                                         },
                                         on: {
                                             click: () => {
-                                                this.show(params.index);
+                                                this.shows();
                                             }
                                         }
                                     },
@@ -369,11 +369,11 @@
             this.getInfo();
             this.personalComments();
             var roleid = JSON.parse(sessionStorage.getItem("roleId"));
-            if (roleid === "R0001" || roleid === "R0002") {
-                this.show = true;
-            } else {
-                this.show = false;
-            }
+            // if (roleid === "R0001" || roleid === "R0002") {
+            //     this.show = true;
+            // } else {
+            //     this.show = false;
+            // }
         },
         methods: {
             getInfo() {
@@ -389,20 +389,22 @@
                     }
                 }).then(rsp => {
                     this.userInfo = rsp.data;
+                    debugger
                     // this.userage = rsp.data.userEducationLevel;
-                    for (let i = 1; i <= 9; i++) {
+                    for (let i = 1; i < 9; i++) {
+
                         if (this.userInfo.age == i) {
-                            this.userage = this.age[i].label;
+                            this.userage = this.age[i-1].label;
                         }
                     }
                     for (let i = 1; i <= 9; i++) {
                         if (this.userInfo.userMoney == i) {
-                            this.money = this.capital[i].label;
+                            this.money = this.capital[i-1].label;
                         }
                     }
-                    for (let i = 1; i <= 9; i++) {
+                    for (let i = 0; i < 9; i++) {
                         if (this.userInfo.userEducationLevel == i) {
-                            this.educations = this.education[i].label;
+                            this.educations = this.education[i-1].label;
                         }
                     }
                 });
@@ -429,7 +431,7 @@
             onSubmit() {
                 this.$refs.changepsd.onSubmit();
             },
-            show() {
+            shows() {
                 this.$router.push("/collection");
             },
             personalComments() {

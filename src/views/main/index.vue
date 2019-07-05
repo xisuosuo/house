@@ -127,7 +127,7 @@ export default {
     },
     getInfo() {
       var _this = this;
-      _this.$router.push("/personal");
+      _this.$router.push("/personalcenter");
     },
     onSubmit() {
       this.$refs.changepsd.onSubmit();
