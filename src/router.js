@@ -367,6 +367,12 @@ export default new Router({
       component: () =>
         import('@/views/locationResources/components/locationResources.vue'),
     },
+        {
+      path: '/greenlResources',
+      name: '绿地资源',
+      component: () =>
+        import('@/views/locationResources/components/greenlResources.vue'),
+    },
     {
       path: '/medicalResources',
       name: '医疗资源',
