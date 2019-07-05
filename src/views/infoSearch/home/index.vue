@@ -1,5 +1,5 @@
 <template>
-  <div id="viewDiv" region="center">
+  <div id="viewDivDI" region="center">
     <div class="tools">
       <MapToolsView :mapView="mapview" v-if="IsMapToolsView" :url="toolsUrl"></MapToolsView>
     </div>
@@ -227,7 +227,7 @@ export default {
 
                 var layer = new TileLayer({
                   url:
-                  "http://122.112.216.247:6080/arcgis/rest/services/Servers/Map/MapServer"
+                    "http://122.112.216.247:6080/arcgis/rest/services/Servers/Map/MapServer"
                 });
                 this.baseLayer = layer;
 
@@ -280,7 +280,7 @@ export default {
                   spatialReference: this.spatialReference
                 };
                 this.mapview = new MapView({
-                  container: "viewDiv",
+                  container: "viewDivDI",
                   map: map,
                   zoom: zoom,
                   center: center
@@ -425,6 +425,13 @@ export default {
 };
 </script>
 <style>
+#viewDivDI {
+  padding: 0;
+  position: absolute;
+  height: 100%;
+  width: 1350px;
+  background: #fcf9f2;
+}
 .main .container-fluid {
   padding: 0 0px;
 }

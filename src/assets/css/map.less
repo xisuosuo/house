@@ -186,6 +186,7 @@
         }
     }
 
+
     .popup-close {
         position: absolute;
         top: 0;
@@ -199,7 +200,7 @@
 }
 
 .esri-popup__main-container {
-    max-height: 700px;
+    max-height: 300px;
 
     .v-popup-content {
         padding: 5px 0 10px; // min-height: 120px;
@@ -430,12 +431,12 @@
 }
 
 .esri-popup__main-container {
-    width: 330px !important;
+    width: 300px !important;
 }
 
 .esri-popup__header {
     color: #fff;
-    background-color: #434343;
+    background-color: #2D8CF0;
 }
 
 .esri-popup__header>h1 {
@@ -459,15 +460,22 @@
     outline: none;
     color: white;
     padding: 7px 7px;
+    
+   esri-popup__button--dock {
+        display: none !important;
+        pointer-events: none; 
+    }
 
     &:hover {
         color: white;
         opacity: 0.8;
     }
+
+
 }
 
 .esri-popup--aligned-bottom-center .esri-popup__pointer-direction {
-    background: #434343;
+    background: #2D8CF0;
 }
 
 .esri-display-object image {
