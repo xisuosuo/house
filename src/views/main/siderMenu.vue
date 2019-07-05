@@ -13,19 +13,19 @@
                 </template>
                 <router-link to="/data">
                     <MenuItem name="2-1">
-                    <span style="font-size: 13px">数据统计</span>
+                    <span style="font-size: 13px"> 数据统计</span>
                     </MenuItem>
                 </router-link>
                 <router-link to="/data/dataDeatils">
                     <MenuItem name="2-2">
-                    <span style="font-size: 13px">数据查询</span>
+                    <span style="font-size: 13px"> 数据查询</span>
                     </MenuItem>
                 </router-link>
             </Submenu>
             <router-link to="/infoSearch">
                 <MenuItem name="3-1">
                 <Icon type="md-search" />
-                <span>信息查询</span>
+                <span> 信息查询</span>
                 </MenuItem>
             </router-link>
             <Submenu name="4">
@@ -56,19 +56,19 @@
             <router-link to="/recommendation/factor">
                 <MenuItem name="5-1">
                 <Icon type="md-pin" />
-                <span>购房选址</span>
+                <span> 购房选址</span>
                 </MenuItem>
             </router-link>
             <router-link to="/recommendation/housingPreference">
                 <MenuItem name="6-1">
                 <Icon type="md-thumbs-up" />
-                <span>房源推荐</span>
+                <span>  房源推荐</span>
                 </MenuItem>
             </router-link>
 
             <Submenu name="7">
                 <template slot="title">
-                    <Icon type="ios-radio" /> 房价分析
+                    <Icon type="ios-radio"/> 房价分析
                 </template>
                 <router-link to="/priceAnalysis">
                     <MenuItem name="7-1">
@@ -90,14 +90,14 @@
                 <template slot="title">
                     <Icon type="md-analytics" /> 房价预测
                 </template>
-                <router-link to="/Kriging">
-                    <MenuItem name="8-1">
-                    <span style="font-size: 13px">克里金插值预测</span>
-                    </MenuItem>
-                </router-link>
                 <router-link to="/GWR">
                     <MenuItem name="8-2">
                     <span style="font-size: 13px">GWR模型</span>
+                    </MenuItem>
+                </router-link>
+                <router-link to="/Kriging">
+                    <MenuItem name="8-1">
+                    <span style="font-size: 13px">克里金插值预测</span>
                     </MenuItem>
                 </router-link>
                 <router-link to="/priceForecast">
@@ -107,14 +107,14 @@
                 </router-link>
             </Submenu>
             <router-link to="/userManager">
-                <MenuItem name="9-1" v-if="show">
+                <MenuItem name="9-1">
                 <Icon type="md-contacts" />
-                <span>用户管理</span>
+                <span> 用户管理</span>
                 </MenuItem>
             </router-link>
             <Submenu name="10">
                 <template slot="title">
-                    <Icon type="md-paper" /> 用户手册
+                    <Icon type="md-paper"/> 用户手册
                 </template>
                 <router-link to="/auDecision/usersManual">
                     <MenuItem name="10-1">
@@ -135,7 +135,7 @@
             <router-link to="/personalcenter">
                 <MenuItem name="11-1">
                 <Icon type="md-person" />
-                <span>个人中心</span>
+                <span> 个人中心</span>
                 </MenuItem>
             </router-link>
         </Menu>
