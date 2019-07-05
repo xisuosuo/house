@@ -3,7 +3,6 @@
     <Sider ref="side1" :width='180'>
       <sider-menu/>
     </Sider>
-
     <Content>
       <div style="overflow-y: hidden;">
         <Row>
@@ -54,9 +53,9 @@
                     <Col span="12">
                     <div class="left name" style="margin-top: 5px">
                       <h3 style="display:inline-block;width:140px">{{value.name}}</h3>
-                      <Icon @click="detail(index,value)" type="ios-information-circle" color="#2d8cf0" size="17" title="小区信息详情" style="margin-bottom:8px;" />
-                      <img v-if="value.collected == '0'" :src=uncollect alt="" title="收藏" @click="Collection(index,value)" id="index" style="width: 15px;height: 15px;margin-left: 5px">
-                      <img v-else-if="value.collected == '1'" :src=collect alt="" title="取消收藏" @click="Collection(index,value)" style="width: 15px;height: 15px;margin-left: 5px">
+                      <img v-if="value.collected == '0'" :src=uncollect alt="" title="收藏" @click="Collection(index,value)" id="index" style="width: 15px;height: 15px;">
+                      <img v-else-if="value.collected == '1'" :src=collect alt="" title="取消收藏" @click="Collection(index,value)" style="width: 15px;height: 15px;">
+                      <Icon @click="detail(index,value)" type="ios-information-circle" color="#2d8cf0" size="17" title="小区信息详情" style="margin-bottom:8px;float: right" />
                       <p style="margin-top: 5px">
                         <span>建面：</span>{{value.area}}/m2</p>
                       <div style="margin-top: 5px;color: red">
@@ -113,7 +112,7 @@
 </template>
 
 <script>
-    import SiderMenu from "@/views/main/siderMenu";
+import SiderMenu from "@/views/main/siderMenu";
 import smallMapView from "@/map/components/smallMapView";
 import recommendHose from "./components/recommendHose.vue";
 import choice from "./components/choice.vue";
@@ -150,6 +149,7 @@ export default {
       showChoice: false,
       order: "默认排序",
       information: [],
+        mapInformation: [],
       houseShape: "",
       orderList: [
         { name: "默认排序", type: "" },
@@ -249,8 +249,6 @@ export default {
       this.$router.push("/personalcenter");
     },
     getdata() {
-      debugger;
-      debugger;
       var self = this;
       this.map = true;
         var userId = JSON.parse(sessionStorage.getItem("userId"));
@@ -262,6 +260,8 @@ export default {
       }).then(function(rsp) {
         if (rsp.status === 1) {
           self.information = rsp.data;
+          self.mapInformation = rsp.data;
+
         }
       });
     },
@@ -269,19 +269,19 @@ export default {
       debugger;
       for (
         var i = 0, len = this.total, item;
-        i < len, (item = this.information[i]);
+        i < len, (item = this.mapInformation[i]);
         i++
       ) {
         if (i < this.total) {
           item.pIndex = "p" + i;
-          this.information.push(item);
+          this.mapInformation.push(item);
         } else {
           break;
         }
       }
       document.getElementById("part").style.display = "block";
       onemap.pubsub.publish("drawHouseByList", {
-        list: this.information,
+        list: this.mapInformation,
         popup: this.isPopup,
         pan: this.isPan
       });
@@ -453,7 +453,7 @@ export default {
     smallMapView,
     choice,
     recommendHose,
-      SiderMenu
+    SiderMenu
   }
 };
 </script>
