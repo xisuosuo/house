@@ -1,6 +1,6 @@
 <template>
   <div class="layout">
-    <Layout :style="{height:'100%'}">
+    <Layout :style="{height:'1400px'}">
       <Sider ref="side1" :width='180'>
         <Menu active-name="" theme="dark" width="auto" :open-names="['']">
           <router-link to="/menu">

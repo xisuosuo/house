@@ -85,7 +85,7 @@
                         label: '城北'
                     }
                 ],
-                model1: '城东'
+                model1: '城南'
             };
         },
         mounted() {
