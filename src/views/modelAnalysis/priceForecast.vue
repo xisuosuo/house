@@ -22,7 +22,7 @@
 
 </template>
 <script>
-    import SiderMenu from "@/views/main/siderMenu";
+import SiderMenu from "@/views/main/siderMenu";
 import axios from "axios";
 import Server from "@/core/server";
 import { services } from "@/core/config/services";
@@ -39,19 +39,26 @@ export default {
       housePoint: "",
       columns1: [
         {
-          title: "小区",
+          title: "预测小区",
           key: "name",
           align: "center"
         },
         {
+          title: "相似小区",
+          key: "foreName",
+          align: "center"
+        },
+        {
           title: "地址",
-          key: "attribute",
+          key: "address",
           align: "center",
-          width: 250
+          width: 200
         },
         {
           title: "房屋类型",
-          key: "type"
+          key: "type",
+          align: "center",
+          width: 150
         },
         {
           title: "是否在售",
@@ -66,13 +73,13 @@ export default {
               title: "地价",
               key: "dj",
               align: "center",
-              width: 200
+              width: 100
             },
             {
               title: "容积率",
               key: "rjl",
               align: "center",
-              width: 200
+              width: 100
             }
           ]
         },
@@ -97,7 +104,7 @@ export default {
         },
         {
           title: "地址",
-          key: "attribute",
+          key: "address",
           align: "center"
         },
         {
@@ -145,7 +152,7 @@ export default {
       //   console.log(_this.newdata);
     },
     ok() {
-      debugger
+      debugger;
       var _this = this;
       Server.get({
         url: services.housePrice,
@@ -180,7 +187,6 @@ export default {
           }
         }).then(rsp => {
           var _this = this;
-
           _this.data1 = rsp.data;
         });
       });
@@ -199,7 +205,7 @@ export default {
     }
   },
   components: {
-      SiderMenu,
+    SiderMenu,
     gwRmap
   }
 };
