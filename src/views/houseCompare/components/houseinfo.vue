@@ -591,6 +591,10 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.layout-header-bar {
+  background: #fff;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+}
 #viewDiv {
   padding: 0;
   margin: 0;
