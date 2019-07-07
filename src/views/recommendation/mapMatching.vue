@@ -135,7 +135,7 @@ export default {
     this.getdata();
     setTimeout(() => {
       this.showGraphics();
-    }, 5000);
+    }, 8000);
   },
   data() {
     return {

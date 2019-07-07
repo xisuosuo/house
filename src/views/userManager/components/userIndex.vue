@@ -54,18 +54,18 @@ export default {
             align: "center"
           },
           {
-            title: "年龄",
+            title: "年龄等级",
             key: "age",
             maxWidth: 80,
             align: "center"
           },
           {
-            title: "文化程度",
+            title: "文化程度等级",
             key: "userEducationLevel",
             align: "center"
           },
           {
-            title: "家庭收入",
+            title: "家庭收入等级",
             key: "money",
             align: "center"
           },
