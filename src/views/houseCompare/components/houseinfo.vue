@@ -180,6 +180,30 @@
         </Col>
       </Row>
       <Card>
+        <div>
+          <Row>
+            <Col>
+            <span style="font-size: 14px">
+              <strong>相似小区:</strong>
+            </span>
+              <div class="map" style="height: 200px;width: 100%;">
+                <div v-for="(value,index) in BaseOnHouse" :key="index">
+                  <Col span="4">
+                    <img @click="onHouseclick(value,index)" style="width: 200px;height: 160px;margin: 5px" v-bind:src="value.image" alt="">
+                    <strong>
+                      <span>{{value.name}}</span>
+                    </strong>
+                    <a>
+                      <span style="margin: 20px">{{value.price}}元/㎡</span>
+                    </a>
+                  </Col>
+                </div>
+              </div>
+            </Col>
+          </Row>
+        </div>
+      </Card>
+      <Card>
         <div class="around">
           <div class="title">
             <p>周边设施</p>
@@ -206,30 +230,6 @@
               </div>
               <div class="page-footer" v-show="list.length>10">
                 <Page :total="list.length" :page-size="pageSize" size="small" @on-change="onPageChange"></Page>
-              </div>
-            </div>
-            </Col>
-          </Row>
-        </div>
-      </Card>
-      <Card>
-        <div>
-          <Row>
-            <Col>
-            <span style="font-size: 14px">
-              <strong>相似小区:</strong>
-            </span>
-            <div class="map" style="height: 200px;width: 100%;">
-              <div v-for="(value,index) in BaseOnHouse" :key="index">
-                <Col span="4">
-                <img @click="onHouseclick(value,index)" style="width: 200px;height: 160px;margin: 5px" v-bind:src="value.image" alt="">
-                <strong>
-                  <span>{{value.name}}</span>
-                </strong>
-                <a>
-                  <span style="margin: 20px">{{value.price}}元/㎡</span>
-                </a>
-                </Col>
               </div>
             </div>
             </Col>
