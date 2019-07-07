@@ -11,9 +11,9 @@
 
 
 export const MapAPI = {
-    js: "http://58.210.9.131/esriJS/4.6/",
-    css: "http://58.210.9.131/esriJS/4.6/esri/css/main.css"
-};  //官网
+    js:  "http://122.112.216.247:8080/arcgis/arcgis_js_api/library/4.8/init.js",
+    css: "http://122.112.216.247:8080/arcgis/arcgis_js_api/library/4.8/esri/css/main.css"
+  };
 
 export const IP = "122.112.216.247:8080"; //正式
 // export const IP = "192.168.1.101:8080"; //测试
