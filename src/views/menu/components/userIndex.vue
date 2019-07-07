@@ -20,7 +20,7 @@
                         <i class="icon-cgzs"></i>
                     </div>
                     <div class="label">
-                        <span>信息查询</span>
+                        <span>空间查询</span>
                     </div>
                 </div>
             </div>

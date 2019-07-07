@@ -114,7 +114,7 @@ export default new Router({
     },
     {
       path: '/infoSearch',
-      name: '信息查询',
+      name: '空间查询',
       // redirect: '/',
       component: () =>
         import('@/views/infoSearch/index.vue'),

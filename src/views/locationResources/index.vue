@@ -27,7 +27,7 @@
                     <router-link to="/infoSearch">
                         <MenuItem name="3-1">
                         <Icon type="md-search" />
-                        <span>信息查询</span>
+                        <span>空间查询</span>
                         </MenuItem>
                     </router-link>
                     <Submenu name="4">

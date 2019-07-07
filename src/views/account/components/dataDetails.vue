@@ -2,7 +2,7 @@
     <Card style="margin: 10px;">
         <div title="数据详情">
             <div class="group-panel-box blue">
-                <div class="panel-title">数据统计</div>
+                <div class="panel-title">属性查询</div>
                 <div class="panel-line"></div>
             </div>
         </div>

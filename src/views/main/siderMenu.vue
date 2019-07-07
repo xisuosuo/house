@@ -13,19 +13,19 @@
                 </template>
                 <router-link to="/data">
                     <MenuItem name="2-1">
-                    <span style="font-size: 13px"> 数据统计</span>
+                    <span style="font-size: 13px"> 数据台账</span>
                     </MenuItem>
                 </router-link>
                 <router-link to="/data/dataDeatils">
                     <MenuItem name="2-2">
-                    <span style="font-size: 13px"> 数据查询</span>
+                    <span style="font-size: 13px"> 属性查询</span>
                     </MenuItem>
                 </router-link>
             </Submenu>
             <router-link to="/infoSearch">
                 <MenuItem name="3-1">
                 <Icon type="md-search" />
-                <span> 信息查询</span>
+                <span> 空间查询</span>
                 </MenuItem>
             </router-link>
             <Submenu name="4">

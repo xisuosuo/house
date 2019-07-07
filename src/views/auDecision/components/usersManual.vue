@@ -22,7 +22,7 @@
                 信息共享展示
                 <div slot="content">
                     <p style="margin-left: 30px">
-                        1.信息查询,在地图上展示用户想要查找的小区，并把该小区的详细信息展示给用户。
+                        1.空间查询,在地图上展示用户想要查找的小区，并把该小区的详细信息展示给用户。
                     </p>
                     <img style="width: 600px;height: 300px;margin-left: 20%" src="../../../assets/img/searchinfo.png"
                          alt="">

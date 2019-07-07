@@ -11,22 +11,22 @@
           </router-link>
           <Submenu name="2">
             <template slot="title">
-              <Icon type="md-speedometer" /> 数据展示
+              <Icon type="md-speedometer"/> 数据展示
             </template>
             <router-link to="/data">
               <MenuItem name="2-1">
-              <span style="font-size: 13px">数据统计</span>
+              <span style="font-size: 13px"> 数据台账</span>
               </MenuItem>
             </router-link>
             <router-link to="/data/dataDeatils">
               <MenuItem name="2-2">
-              <span style="font-size: 13px">数据查询</span>
+              <span style="font-size: 13px">属性查询</span>
               </MenuItem>
             </router-link>
           </Submenu>
           <Submenu name="3">
             <template slot="title">
-              <Icon type="md-search" /> 信息查询
+              <Icon type="md-search" /> 空间查询
             </template>
             <MenuItem name="3-1">
             <span @click="siteSelect">条件选房</span>
