@@ -1,5 +1,5 @@
 <template>
-  <div id="viewDivDI" region="center">
+  <div id="viewDiv" region="center">
     <div class="tools">
       <MapToolsView :mapView="mapview" v-if="IsMapToolsView" :url="toolsUrl"></MapToolsView>
     </div>
@@ -280,7 +280,7 @@ export default {
                   spatialReference: this.spatialReference
                 };
                 this.mapview = new MapView({
-                  container: "viewDivDI",
+                  container: "viewDiv",
                   map: map,
                   zoom: zoom,
                   center: center
@@ -425,7 +425,7 @@ export default {
 };
 </script>
 <style lang="less">
-#viewDivDI {
+#viewDiv{
   padding: 0;
   position: absolute;
   height: 100%;
