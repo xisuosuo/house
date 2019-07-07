@@ -4,12 +4,12 @@
       <sider-menu/>
     </Sider>
     <Content>
-      <div style=" margin: 0 auto;margin-top: 5px;width:1000px;">
+      <div style=" margin: 0 auto;margin-top: 5px;width:1300px;">
         <Button type="primary" @click="impor" style="margin-bottom:3px">导入数据</Button>
         <Table :columns="columns1" :data="data1" @on-select="handleChange"></Table>
         <!-- <Page :total="dataCount1" :page-size="pageSize1" show-total show-elevator/> -->
       </div>
-      <div style=" margin: 0 auto;margin-top: 5px;width:1000px;height:670px">
+      <div style=" margin: 0 auto;margin-top: 5px;width:1300px;height:670px">
         <gwRmap></gwRmap>
       </div>
       <router-view/>
