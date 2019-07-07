@@ -10,7 +10,7 @@
           <BreadcrumbItem v-for="(item,idx) in $route.matched" :key="idx" :to="(item.path)">{{item.name}}</BreadcrumbItem>
         </Breadcrumb>
       </Header>
-      <div  >
+      <div>
         <div>
           <Row :gutter="30">
             <Col span="12">
@@ -252,7 +252,8 @@
     </Content>
   </Layout>
 </template>
-<script>    import SiderMenu from "@/views/main/siderMenu";
+<script>
+import SiderMenu from "@/views/main/siderMenu";
 import routerView from "@/map/components/routerView";
 import Server from "@/core/server";
 import { services } from "@/core/config/services";
@@ -585,7 +586,8 @@ export default {
   },
   components: {
     Item,
-    routerView,SiderMenu
+    routerView,
+    SiderMenu
   }
 };
 </script>
