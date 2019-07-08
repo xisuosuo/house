@@ -71,7 +71,6 @@
 import Server from "@/core/server";
 import { services } from "@/core/config/services";
 import houseInfoId from "@/vuex/store";
-import userMessage from "@/vuex/store";
 import dataRap from "@/vuex/store";
 import aroundInfo from "@/vuex/store";
 import housePoint from "@/vuex/store";

@@ -11,29 +11,16 @@
                         <BreadcrumbItem v-for="(item,idx) in $route.matched" :key="idx" :to="(item.path)">{{item.name}}</BreadcrumbItem>
                     </Breadcrumb>
                 </Header>
-                <div style="width: 90%; margin: 0 auto;margin-top: 30px;border: 1px solid #dcdee2">
+                <div style="width: 1300px; margin: 0 auto;margin-top: 30px;border: 1px solid #dcdee2">
                     <Tabs>
                         <TabPane label="学区">
                             <div id="map1" style="width:100%;height: 100%;border: 1px solid #dcdee2; position: absolute;">
                                 <smallMapView></smallMapView>
                             </div>
-                            <!-- <div style="padding-top: 50px;position: absolute;right: 10px; z-index: 9999;">
-                                <CheckboxGroup  v-model="checkAllGroup" @on-change="checkAllGroupChange">
-                                    <Checkbox label="幼儿园">幼儿园</Checkbox>
-                                    <br>
-                                    <Checkbox label="小学"></Checkbox>
-                                    <br>
-                                    <Checkbox label="初中"></Checkbox>
-                                    <br>
-                                    <Checkbox label="高中"></Checkbox>
-                                    <br>
-                                    <Checkbox label="大专院校"></Checkbox>
-                                </CheckboxGroup>
-                            </div> -->
                         </TabPane>
                         <TabPane label="服务区">
-                            <div id="map2" style="width:100%;height: 800px;position: absolute;background-color: #FCF9F2"></div>
-                            <div style="position: relative;float: right; width: 250px;top: 340px;background-color: #FCF9F2;padding: 10px;opacity: 0.8">
+                            <div id="map2" style="width:100%;height: 100%;position: absolute;background-color: #FCF9F2"></div>
+                            <div style="position: relative;float: right; width: 250px;top: 420px;background-color: #FCF9F2;padding: 10px;opacity: 0.8">
                                 <Col span="20">
                                 <Slider v-model="break1" max="500" show-input input-size="small" @on-change="getArea"></Slider>
                                 </Col>
@@ -485,6 +472,9 @@ export default {
 </script>
 
 <style lang="less">
+    .ivu-tabs-tabpane{
+        height: 550px;
+    }
 .ivu-tabs-bar {
   margin-bottom: 0;
 }

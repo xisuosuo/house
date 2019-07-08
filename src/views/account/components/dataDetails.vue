@@ -18,13 +18,33 @@
 <script>
     import Server from "@/core/server";
     import { services } from "@/core/config/services";
+    import houseInfoId from "@/vuex/store";
+    import dataRap from "@/vuex/store";
+    import aroundInfo from "@/vuex/store";
+    import housePoint from "@/vuex/store";
     export default {
         data () {
             return {
                 value: '',
                 columns5: [
                     {
-                        title: '小区',
+                        title: '小区图片',
+                        // key: 'options',
+                        align: 'center',
+                        width: 110,
+                        render: (h) => {
+                            return h('img', {
+                                attrs: {
+                                    src: 'https://www.baidu.com/img/bd_logo1.png',
+                                },
+                                style: {
+                                    marginRight: '5px',height:'40px',width:'40px',
+                                }
+                            });
+                        }
+                    },
+                    {
+                        title: '小区名称',
                         key: 'name',
                         align:'center'
                     },
@@ -47,8 +67,34 @@
                         key: 'isSelling',
                         align:'center'
                     },
+                    {
+                        title: '小区详情',
+                        key: 'action',
+                        width: 150,
+                        align: 'center',
+                        render: (h, params) => {
+                            return h('div', [
+                                h('Button', {
+                                    props: {
+                                        type: 'primary',
+                                        size: 'small'
+                                    },
+                                    style: {
+                                        marginRight: '5px'
+                                    },
+                                    on: {
+                                        click: () => {
+                                            this.getHouseInfo(params.row, params.index)
+                                        }
+                                    }
+                                }, '小区详情'),
+                            ]);
+                        }
+                    }
                 ],
                 data5:[],
+                houseShape:[],
+                houseId:[],
             }
         },
         mounted() {
@@ -56,10 +102,43 @@
             Server.get({
                 url: services.getallinfo,
             }).then(function(res){
-                _this.data5 = res.data
+                _this.data5 = res.data;
+                _this.houseShape = res.data.Shape;
+                _this.houseId = res.data.houseId
             })
         },
         methods: {
+            getHouseInfo(currentRow, index) {
+                currentRow.Index = index;
+                this.selectedRow = currentRow;
+                var row = this.selectedRow;
+                this.houseName = row.houseName;
+                housePoint.commit("housePoint", this.houseShape);
+                Server.get({
+                    url: services.compareHouseDetails,
+                    params: {
+                        houseId: this.houseId
+                    }
+                }).then(rsp => {
+                        if (rsp.status === 1) {
+                            houseInfoId.commit("houseInfoId", rsp);
+                        }
+                    }).then(
+                        Server.get({
+                            url: services.road,
+                            params: {
+                                name: this.houseName,
+                                tableName: "BUSSTATION"
+                            }
+                        }).then(rsp => {
+                            if (rsp.status === 1) {
+                                aroundInfo.commit("aroundInfo", rsp);
+                                aroundInfo.commit("housueName", this.houseName);
+                            }
+                        })
+                    );
+                this.$router.push("/houseinfo");
+            },
             getinfo() {
                 var _this=this;
                 Server.get({

@@ -494,7 +494,6 @@
                         content: "是否永久删除此数据?",
                         onOk: () => {
                             debugger;
-                            // var id = row.houseId;
                             var id = row.commentsId;
                             Server.get({
                                 url: services.delUserComments,
