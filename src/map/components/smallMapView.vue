@@ -174,25 +174,25 @@ export default {
                     "http://122.112.216.247:6080/arcgis/rest/services/Servers/Map/MapServer"
                 });
                 this.baseLayer = layer;
-                var street = new TileLayer({
-                  url:
-                    "	https://localhost:6443/arcgis/rest/services/ChuZhou/ChuZhouYX/MapServer",
+                // var street = new TileLayer({
+                //   url:
+                //     "	https://localhost:6443/arcgis/rest/services/ChuZhou/ChuZhouYX/MapServer",
 
-                  visible: false
-                });
+                //   visible: false
+                // });
 
                 // this.street = street;
-                var USALayer = new MapImageLayer({
+                var USALayer = new TileLayer({
                   url:
-                    "	https://localhost:6443/arcgis/rest/services/ChuZhou/XZQH/MapServer",
-                  title: "行政规划",
+                    "		http://122.112.216.247:6080/arcgis/rest/services/Servers/中学学区/MapServer",
+                  title: "中学学区",
                   visible: false
                 });
 
-                var censusLayer = new MapImageLayer({
+                var censusLayer = new TileLayer({
                   url:
-                    "https://localhost:6443/arcgis/rest/services/ChuZhou/yeWuData/MapServer",
-                  title: "业务数据",
+                    "http://122.112.216.247:6080/arcgis/rest/services/Servers/小学学区/MapServer",
+                  title: "小学学区",
                   visible: false
                 });
                 var baseMap = new Basemap({
@@ -202,13 +202,15 @@ export default {
                   title: "专题图层",
                   visible: true,
                   visibilityMode: "independent",
-                  layers: [USALayer, censusLayer]
-                  // opacity: 0.75
+                  layers: [USALayer,censusLayer],
+                  opacity: 0.75
                 });
 
                 var map = new Map({
                   // basemap: baseMap,
-                  layers: [layer]
+                   basemap: baseMap,
+                 layers: [demographicGroupLayer]
+                  
                 });
                 var ext = String(this.defaultMapExtent).split(",");
                 if (ext.length > 3) {
@@ -270,18 +272,18 @@ export default {
 <style >
 .esri-component esri-layer-list esri-widget esri-widget--panel {
   display: none;
-  margin-right: -20px;
+  margin-right: 0px;
   max-height: 240px;
   width: 210px;
   /* margin-left: px; */
-  margin-top: 15px;
+  margin-top: 0px;
 }
 #viewDiv {
-    /* padding: 0;
+  /* padding: 0;
     position: absolute;
     height: 100%;
     width: 100%; */
-    background: #FCF9F2  
+  background: #fcf9f2;
 }
 
 .main .container-fluid {
