@@ -79,7 +79,6 @@
 <script>
 import Server from "@/core/server";
 import { services } from "@/core/config/services";
-import Navigation from "@/views/menu/components/cityIndex";
 
 import { login } from "@/views/login/js/login.js";
 import ChangePsd from "@/views/login/components/changepsd";
@@ -164,8 +163,6 @@ export default {
     $route: "getPath"
   },
   components: {
-    Navigation,
-
     ChangePsd
   }
 };
