@@ -1,7 +1,7 @@
 <template>
     <div>
         <Layout :style="{height:'100%'}">
-            <Sider ref="side1" :width='180'>
+            <Sider ref="side1" :width='180' :height='1000'>
                 <sider-menu/>
             </Sider>
             <Content>

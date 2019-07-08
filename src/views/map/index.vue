@@ -1,13 +1,28 @@
 <template>
-  <div class="animated fadeIn">
-    <div id="viewDiv">
-    </div>
-    <div class="threeMap">
-      <Button @click="go2D" icon="android-globe">二维地图</Button>
-    </div>
-  </div>
+  <layout>
+    <Sider ref="side1" :width='180'>
+      <sider-menu/>
+    </Sider>
+    <Content>
+      <Header :style="{padding: 0}" class="layout-header-bar">
+        <Breadcrumb>
+          <Icon :class="rotateIcon" :style="{margin: '0 5px'}" type="md-menu" size="25"></Icon>
+          <BreadcrumbItem v-for="(item,idx) in $route.matched" :key="idx" :to="(item.path)">{{item.name}}</BreadcrumbItem>
+        </Breadcrumb>
+      </Header>
+      <div class="animated fadeIn">
+        <div id="viewDiv">
+        </div>
+        <div class="threeMap">
+          <Button @click="go2D" icon="android-globe">二维地图</Button>
+        </div>
+      </div>
+    </Content>
+  </layout>
+
 </template>
 <script>
+import SiderMenu from "@/views/main/siderMenu";
 import axios from "axios";
 import esriLoader from "esri-loader";
 import { MapAPI } from "@/core/config/const";
@@ -71,7 +86,7 @@ export default {
                 });
                 var housingLayer = new TileLayer({
                   url:
-                    "https://localhost:6443/arcgis/rest/services/ChuZhou/ChuZhouYX/MapServer",
+                    "http://122.112.216.247:6080/arcgis/rest/services/Servers/Map/MapServer",
                   id: "ny-housing",
                   opacity: 0.9
                 });
@@ -81,8 +96,8 @@ export default {
                     type: "polygon-3d", // autocasts as new PolygonSymbol3D()
                     symbolLayers: [
                       {
-                        type: "extrude" // autocasts as new ExtrudeSymbol3DLayer()
-                        // material: { color: [ 41,123,140 ] }
+                        type: "extrude", // autocasts as new ExtrudeSymbol3DLayer()
+                        material: { color: [203, 177, 152] }
                       }
                     ]
                   },
@@ -96,7 +111,7 @@ export default {
 
                 var buildingLayer = new FeatureLayer({
                   url:
-                    "https://localhost:6443/arcgis/rest/services/ChuZhou/JMQ/MapServer/0",
+                    "http://122.112.216.247:6080/arcgis/rest/services/jinzhu2/MapServer/0",
                   opacity: 0.9,
                   renderer: renderer,
                   outFields: ["Floor"],
@@ -118,11 +133,14 @@ export default {
                 var baseMap = new Basemap({
                   baseLayers: [street, housingLayer]
                 });
-
-                var layer = new MapImageLayer({
+                var layer = new TileLayer({
                   url:
-                    "https://192.168.122.13:6443/arcgis/rest/services/WGS84/sx/MapServer"
+                    "http://server.arcgisonline.com/arcgis/rest/services/World_Imagery/MapServer"
                 });
+                // var layer = new MapImageLayer({
+                //   url:
+                //     "https://192.168.122.13:6443/arcgis/rest/services/WGS84/sx/MapServer"
+                // });
 
                 var map = new Map({
                   basemap: baseMap,
@@ -166,6 +184,9 @@ export default {
     go2D() {
       this.$router.push("/infoSearch");
     }
+  },
+  components: {
+    SiderMenu
   }
 };
 </script>
@@ -173,10 +194,17 @@ export default {
 .threeMap {
   position: absolute;
   right: 0;
-  top: 62px;
+  top: 104px;
 }
 .left {
   width: 410px;
   height: 150px;
+}
+.layout-header-bar {
+  background: #fff;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+.ivu-layout-sider{
+  height:1000px;
 }
 </style>
