@@ -4,9 +4,9 @@
       <Header class='header'>
         <Row type="flex" justify="start" class="code-row-bg">
           <Col span="1">
-            <div style="margin-left: 22px">
+          <div style="margin-left: 22px">
             <img src="../../assets/img/logo.png" style="height: 30px;width:30px;margin-top: 10px" alt="logo">
-            </div>
+          </div>
           </Col>
           <Col span="17">
           <span style='margin-left: 10px; font-size: 24px;color: white;font-family: sans-serif;'>城市商品住宅选择推荐系统</span>
@@ -16,12 +16,14 @@
           <span class="toggle">
             <Icon type="ios-arrow-down"></Icon>
             <div class="ivu-poptip-arrow"></div>
-            <span class="poupTitle">
-              <Navigation v-if="nav" class="nav" />
-            </span>
-            <span class="poupTitle1">
-              <Navigation1 v-if="nav1" class="nav" />
-            </span>
+            <div class="poupTitle">
+              <div style="color:black">
+                <ul>
+                  <li v-for="(value,index) in citylist" :key="index" @click="selectTimer(index,value)">{{ value }}
+                  </li>
+                </ul>
+              </div>
+            </div>
           </span>
           </Col>
           <Col span="6">
@@ -77,8 +79,8 @@
 <script>
 import Server from "@/core/server";
 import { services } from "@/core/config/services";
-import Navigation from "@/views/menu/components";
-import Navigation1 from "@/views/menu/components/userIndex";
+import Navigation from "@/views/menu/components/cityIndex";
+
 import { login } from "@/views/login/js/login.js";
 import ChangePsd from "@/views/login/components/changepsd";
 import { computeh } from "@/core/computeh";
@@ -92,7 +94,8 @@ export default {
 
   data() {
     return {
-      name: "首页",
+      citylist: ["北京", "上海", "南京", "合肥", "滁州"],
+      name: "滁州",
       nav: false,
       nav1: false,
       user: "",
@@ -105,14 +108,13 @@ export default {
     debugger;
     this.user = JSON.parse(sessionStorage.getItem("userAccount"));
     this.roleid = JSON.parse(sessionStorage.getItem("roleId"));
-    if (this.roleid == "R0002") {
-      this.nav = true;
-    } else {
-      this.nav1 = true;
-    }
+
     console.log(this.user);
   },
   methods: {
+    selectTimer(index, value) {
+      this.name = value;
+    },
     reload() {
       this.isRouterAlive = false;
       this.$nextTick(function() {
@@ -163,7 +165,7 @@ export default {
   },
   components: {
     Navigation,
-    Navigation1,
+
     ChangePsd
   }
 };
@@ -242,10 +244,10 @@ export default {
 .poupTitle {
   position: absolute;
   top: 55px;
-  left: 90px;
+  left: 330px;
   display: none;
   will-change: top, left;
-  width: 800px;
+  width: 100px;
   background: white;
   z-index: 8;
   padding: 10px 0px 0px 20px;
