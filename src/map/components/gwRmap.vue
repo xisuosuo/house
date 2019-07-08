@@ -280,7 +280,7 @@ export default {
   padding: 0;
   position: absolute;
   height: 670px;
-  width: 1000px;
+  width: 1300px;
   background: #fcf9f2;
 }
 
