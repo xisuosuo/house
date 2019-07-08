@@ -182,7 +182,7 @@ export default {
         });
     },
     go2D() {
-      this.$router.push("/infoSearch");
+      this.$router.push("/locationResources");
     }
   },
   components: {
@@ -204,7 +204,7 @@ export default {
   background: #fff;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
 }
-.ivu-layout-sider{
-  height:1000px;
+.ivu-layout-sider {
+  height: 1000px;
 }
 </style>
