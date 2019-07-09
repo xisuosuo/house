@@ -11,7 +11,7 @@
         </Breadcrumb>
       </Header>
       <div>
-        <Card style="width:95%;margin:0 auto">
+        <Card style="margin: 0 auto;width: 95%;">
           <Tabs type="card">
             <TabPane label="GWR回归结果">
               <Table :columns="columns1" :data="nowData"></Table>
@@ -25,11 +25,13 @@
                 </Select>
               </div>
             </TabPane>
-
           </Tabs>
-          <Button type="primary" @click="ongo" style="float:right;margin-top:10px;margin-left:10px;">房价预测
-          </Button>
-          <Button type="primary" @click="onSubmit" style="float:right;margin-top:10px">保存</Button>
+          <div style="overflow: hidden">
+            <Button type="primary" @click="ongo" style="float:right;margin-left:10px;">房价预测
+            </Button>
+            <Button type="primary" @click="onSubmit" style="float:right;">保存</Button>
+          </div>
+
         </Card>
       </div>
       <router-view/>

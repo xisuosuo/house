@@ -389,7 +389,6 @@
                     }
                 }).then(rsp => {
                     this.userInfo = rsp.data;
-                    debugger
                     // this.userage = rsp.data.userEducationLevel;
                     for (let i = 1; i < 9; i++) {
 

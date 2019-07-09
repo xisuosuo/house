@@ -27,22 +27,22 @@
             return {
                 value: '',
                 columns5: [
-                    {
-                        title: '小区图片',
-                        // key: 'options',
-                        align: 'center',
-                        width: 110,
-                        render: (h) => {
-                            return h('img', {
-                                attrs: {
-                                    src: 'https://www.baidu.com/img/bd_logo1.png',
-                                },
-                                style: {
-                                    marginRight: '5px',height:'40px',width:'40px',
-                                }
-                            });
-                        }
-                    },
+                    // {
+                    //     title: '小区图片',
+                    //     // key: 'options',
+                    //     align: 'center',
+                    //     width: 110,
+                    //     render: (h) => {
+                    //         return h('img', {
+                    //             attrs: {
+                    //                 src: 'https://www.baidu.com/img/bd_logo1.png',
+                    //             },
+                    //             style: {
+                    //                 marginRight: '5px',height:'40px',width:'40px',
+                    //             }
+                    //         });
+                    //     }
+                    // },
                     {
                         title: '小区名称',
                         key: 'name',
@@ -109,15 +109,17 @@
         },
         methods: {
             getHouseInfo(currentRow, index) {
+                debugger;
                 currentRow.Index = index;
                 this.selectedRow = currentRow;
                 var row = this.selectedRow;
-                this.houseName = row.houseName;
+                this.houseName = row.name;
+                this.houseId = row.houseId;
                 housePoint.commit("housePoint", this.houseShape);
                 Server.get({
                     url: services.compareHouseDetails,
                     params: {
-                        houseId: this.houseId
+                        houseId:  this.houseId
                     }
                 }).then(rsp => {
                         if (rsp.status === 1) {
@@ -134,10 +136,10 @@
                             if (rsp.status === 1) {
                                 aroundInfo.commit("aroundInfo", rsp);
                                 aroundInfo.commit("housueName", this.houseName);
+                                this.$router.push("/houseinfo");
                             }
                         })
                     );
-                this.$router.push("/houseinfo");
             },
             getinfo() {
                 var _this=this;
