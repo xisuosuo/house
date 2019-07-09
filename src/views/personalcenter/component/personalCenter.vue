@@ -47,7 +47,7 @@
                             <strong>
                                 <div>详细信息:</div>
                             </strong>
-                            <Form style="margin-left: 10%" :model="formItem" :label-width="80">
+                            <Form style="margin-left: 10%"  :label-width="80">
                                 <FormItem label="昵称:">
                                     <span>{{this.user}}</span>
                                 </FormItem>
@@ -104,6 +104,9 @@
     import Server from "@/core/server";
     import { services } from "@/core/config/services";
     import ChangePsd from "@/views/login/components/changepsd";
+    import houseInfoId from "@/vuex/store";
+    import aroundInfo from "@/vuex/store";
+    import housePoint from "@/vuex/store";
 
     export default {
         components: {
@@ -216,7 +219,7 @@
                                         },
                                         on: {
                                             click: () => {
-                                                this.shows();
+                                                this.shows(params.row, params.index);
                                             }
                                         }
                                     },
@@ -361,7 +364,9 @@
                         label: "博士以上"
                     }
                 ],
-                user: ""
+                user: "",
+                houseShape:[],
+                houseId:[],
             };
         },
         mounted() {
@@ -369,11 +374,11 @@
             this.getInfo();
             this.personalComments();
             var roleid = JSON.parse(sessionStorage.getItem("roleId"));
-            // if (roleid === "R0001" || roleid === "R0002") {
-            //     this.show = true;
-            // } else {
-            //     this.show = false;
-            // }
+            if (roleid === "R0001" || roleid === "R0002") {
+                this.show = true;
+            } else {
+                this.show = false;
+            }
         },
         methods: {
             getInfo() {
@@ -430,8 +435,37 @@
             onSubmit() {
                 this.$refs.changepsd.onSubmit();
             },
-            shows() {
-                this.$router.push("/collection");
+            shows(currentRow, index) {
+                currentRow.Index = index;
+                this.selectedRow = currentRow;
+                var row = this.selectedRow;
+                this.houseName = row.name;
+                this.houseId = row.houseId;
+                housePoint.commit("housePoint", this.houseShape);
+                Server.get({
+                    url: services.compareHouseDetails,
+                    params: {
+                        houseId:  this.houseId
+                    }
+                }).then(rsp => {
+                    if (rsp.status === 1) {
+                        houseInfoId.commit("houseInfoId", rsp);
+                    }
+                }).then(
+                    Server.get({
+                        url: services.road,
+                        params: {
+                            name: this.houseName,
+                            tableName: "BUSSTATION"
+                        }
+                    }).then(rsp => {
+                        if (rsp.status === 1) {
+                            aroundInfo.commit("aroundInfo", rsp);
+                            aroundInfo.commit("housueName", this.houseName);
+                            this.$router.push("/houseinfo");
+                        }
+                    })
+                );
             },
             personalComments() {
                 var this_ = this;
@@ -520,7 +554,9 @@
     .avatar {
         text-align: center;
     }
-
+    .ivu-tabs-bar {
+        margin-bottom: 0;
+    }
     .layout {
         // border: 1px solid #d7dde4;
         background: #f5f7f9;

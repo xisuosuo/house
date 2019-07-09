@@ -27,22 +27,22 @@
             return {
                 value: '',
                 columns5: [
-                    // {
-                    //     title: '小区图片',
-                    //     // key: 'options',
-                    //     align: 'center',
-                    //     width: 110,
-                    //     render: (h) => {
-                    //         return h('img', {
-                    //             attrs: {
-                    //                 src: 'https://www.baidu.com/img/bd_logo1.png',
-                    //             },
-                    //             style: {
-                    //                 marginRight: '5px',height:'40px',width:'40px',
-                    //             }
-                    //         });
-                    //     }
-                    // },
+                    {
+                        title: '小区图片',
+                        // key: 'options',
+                        align: 'center',
+                        width: 110,
+                        render: (h) => {
+                            return h('img', {
+                                attrs: {
+                                    src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1562690914117&di=bbcea125a585ff22982e736274834d30&imgtype=0&src=http%3A%2F%2Fpic48.nipic.com%2Ffile%2F20140914%2F12768522_082734717768_2.jpg',
+                                },
+                                style: {
+                                    marginRight: '5px',height:'70px',width:'200px',
+                                }
+                            });
+                        }
+                    },
                     {
                         title: '小区名称',
                         key: 'name',
@@ -109,7 +109,6 @@
         },
         methods: {
             getHouseInfo(currentRow, index) {
-                debugger;
                 currentRow.Index = index;
                 this.selectedRow = currentRow;
                 var row = this.selectedRow;

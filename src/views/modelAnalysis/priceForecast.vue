@@ -94,7 +94,7 @@ export default {
           key: "price",
           align: "center",
           fixed: "right"
-        }
+        },
       ],
       data1: [],
       columns2: [
@@ -127,7 +127,7 @@ export default {
       data3: [],
       newdata: "",
       newdata1: "",
-      gwrPoint: ""
+      gwrPoint: "",
     };
   },
   created() {

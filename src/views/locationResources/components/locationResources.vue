@@ -43,7 +43,7 @@
                         </TabPane>
                         <TabPane label="缓冲区">
                             <div id="map3" style="width:100%;height: 800px;position: absolute;background-color: #FCF9F2"></div>
-                            <div style="position: relative;float: right; width: 250px;margin: 10px;padding-top: 400px;z-index: 9999">
+                            <div style="position: relative;float: right; width: 250px;margin: 10px;padding-top: 500px;z-index: 9999">
                                 <Col span="2">
                                 <p style="margin: 7px">0</p>
                                 </Col>
