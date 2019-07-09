@@ -1,24 +1,24 @@
 <template>
-    <div class="layout">
-        <Layout :style="{height:'100%'}">
-            <Sider ref="side1" :width='180'>
-                <sider-menu/>
-            </Sider>
-            <Content>
-                <Header :style="{padding: 0}" class="layout-header-bar">
-                    <Breadcrumb>
-                        <Icon :class="rotateIcon" :style="{margin: '0 5px'}" type="md-menu" size="25"></Icon>
-                        <BreadcrumbItem v-for="(item,idx) in $route.matched" :key="idx" :to="(item.path)">{{item.name}}</BreadcrumbItem>
-                    </Breadcrumb>
-                </Header>
-                <router-view/>
-            </Content>
-        </Layout>
-    </div>
+  <div class="layout">
+    <Layout :style="{height:'100%'}">
+      <Sider ref="side1" :width='180'>
+        <sider-menu/>
+      </Sider>
+      <Content>
+        <Header :style="{padding: 0}" class="layout-header-bar">
+          <Breadcrumb>
+            <Icon :class="rotateIcon" :style="{margin: '0 5px'}" type="md-menu" size="25"></Icon>
+            <BreadcrumbItem v-for="(item,idx) in $route.matched" :key="idx" :to="(item.path)">{{item.name}}</BreadcrumbItem>
+          </Breadcrumb>
+        </Header>
+        <router-view/>
+      </Content>
+    </Layout>
+  </div>
 </template>
 
 <script>
-    import SiderMenu from "@/views/main/siderMenu";
+import SiderMenu from "@/views/main/siderMenu";
 import factor from "./components/factor.vue";
 
 export default {
@@ -39,7 +39,7 @@ export default {
   },
   components: {
     factor,
-      SiderMenu
+    SiderMenu
   }
 };
 </script>

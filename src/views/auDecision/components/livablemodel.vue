@@ -1,6 +1,15 @@
 <template>
-    <div>
+    <Layout :style="{height:'100%'}">
+        <Sider ref="side1" :width='180'>
+            <sider-menu/>>
+        </Sider>
         <Content>
+            <Header :style="{padding: 0}" class="layout-header-bar">
+                <Breadcrumb>
+                    <Icon :class="rotateIcon" :style="{margin: '0 5px'}" type="md-menu" size="25"></Icon>
+                    <BreadcrumbItem v-for="(item,idx) in $route.matched" :key="idx" :to="(item.path)">{{item.name}}</BreadcrumbItem>
+                </Breadcrumb>
+            </Header>
             <div class="data-view" style="margin-top: 20px;overflow: hidden;">
                 <Row :gutter="30">
                     <Col span="12">
@@ -40,18 +49,26 @@
                 </Row>
             </div>
         </Content>
-    </div>
 
+    </Layout>
 </template>
 
 <script>
+import SiderMenu from "@/views/main/siderMenu";
 export default {
-  name: "livablemodel"
+  name: "livablemodel",
+  components: {
+    SiderMenu
+  }
 };
 </script>
 
 <style scoped>
 p {
   text-indent: 2em;
+}
+.layout-header-bar {
+  background: #fff;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
 }
 </style>

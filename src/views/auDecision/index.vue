@@ -1,8 +1,8 @@
 <template>
-  <Layout>
-    <Sider ref="side1" :width='180'>
+  <Layout :style="{height:'100%'}">
+    <!-- <Sider ref="side1" :width='180'>
       <sider-menu/>
-    </Sider>
+    </Sider> -->
     <Content>
       <houseCompare></houseCompare>
       <router-view/>
@@ -15,7 +15,7 @@
 // }
 </style>
 <script>
-import SiderMenu from "@/views/main/siderMenu";
+// import SiderMenu from "@/views/main/siderMenu";
 import houseCompare from "./components/houseCompare";
 export default {
   data() {
@@ -23,9 +23,9 @@ export default {
       show: true
     };
   },
-  components: {
-    SiderMenu
-  },
+  // components: {
+  //   SiderMenu
+  // },
   mounted() {
     var roleid = JSON.parse(sessionStorage.getItem("roleId"));
     if (roleid === "R0001" || roleid === "R0002") {
