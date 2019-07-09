@@ -63,7 +63,6 @@ export default new Vuex.Store({
             state.companyName = company
         },
         houseInfoId(state, rsp) {
-
             state.houseInforA = rsp.data;
         },
         dataRap(state, data) {

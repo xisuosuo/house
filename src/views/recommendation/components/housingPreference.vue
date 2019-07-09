@@ -90,6 +90,7 @@ export default {
   },
   methods: {
     getInfo(index, value) {
+        debugger;
       this.houseName = value.name;
       this.houseId = value.houseId;
       this.houseShape = value.Shape;
@@ -99,13 +100,11 @@ export default {
         params: {
           houseId: this.houseId
         }
-      })
-        .then(rsp => {
+      }).then(rsp => {
           if (rsp.status === 1) {
             houseInfoId.commit("houseInfoId", rsp);
           }
-        })
-        .then(
+        }).then(
           Server.get({
             url: services.road,
             params: {
@@ -118,10 +117,10 @@ export default {
             if (rsp.status === 1) {
               aroundInfo.commit("aroundInfo", rsp);
               aroundInfo.commit("housueName", this.houseName);
+                this.$router.push("/houseinfo");
             }
           })
         );
-      this.$router.push("/houseinfo");
     },
     getdata() {
       debugger;
