@@ -19,12 +19,12 @@
         </ul>
         <Row>
           <Col span="17">
-          <div class="map" style="height: 540px;width: 100%;">
+          <div class="map" style="height: 605px;width: 100%;">
             <routerView ref="routerView" v-if="map"></routerView>
           </div>
           </Col>
           <Col span="7">
-          <div class="list" id="mapListContainer">
+          <div class="list">
             <div class="name">{{listName}}</div>
             <div class="ul-box">
               <div class="around-no-info">
@@ -190,8 +190,8 @@ export default {
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
 }
 .around {
-  height: 600px;
-  width: 1250px;
+  height: 700px;
+  width: 1300px;
   margin: 0 auto;
   .title {
     font-size: 22px;
@@ -232,7 +232,7 @@ export default {
 
 .around .list {
   //   width: 310px;
-  height: 540px;
+  height: 605px;
   background-color: #fff;
   box-shadow: 0 0 7px rgba(0, 0, 0, 0.45);
   .name {
@@ -244,7 +244,7 @@ export default {
     background: #3072f6 !important;
   }
   .ul-box {
-    height: 420px;
+    height: 540px;
     overflow-y: scroll;
   }
 }

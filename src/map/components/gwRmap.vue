@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div id="viewDiv1" region="center">
+    <div id="viewDiv" region="center">
       <div class="smallTools">
         <MapToolsView :mapView="mapview" v-if="IsMapToolsView" :url="toolsUrl"></MapToolsView>
       </div>
@@ -222,7 +222,7 @@ export default {
                   spatialReference: this.spatialReference
                 };
                 this.mapview = new MapView({
-                  container: "viewDiv1",
+                  container: "viewDiv",
                   map: map,
                   zoom: zoom,
                   center: center
@@ -276,7 +276,7 @@ export default {
   /* margin-left: px; */
   margin-top: 15px;
 }
-#viewDiv1 {
+#viewDiv {
   padding: 0;
   position: absolute;
   height: 670px;
