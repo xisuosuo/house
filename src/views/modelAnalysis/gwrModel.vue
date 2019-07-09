@@ -10,14 +10,14 @@
           <BreadcrumbItem v-for="(item,idx) in $route.matched" :key="idx" :to="(item.path)">{{item.name}}</BreadcrumbItem>
         </Breadcrumb>
       </Header>
-      <div style="margin: 0 auto;margin-top: 5px;width:1000px;height:670px">
-        <Card style="height:100%">
+      <div>
+        <Card style="width:95%;margin:0 auto">
           <Tabs type="card">
-            <TabPane label="GWR模型分析数据">
+            <TabPane label="GWR回归结果">
               <Table :columns="columns1" :data="nowData"></Table>
               <Page :total="dataCount" :page-size="pageSize" @on-change="changepage" @on-page-size-change="_nowPageSize" show-total show-elevator/>
             </TabPane>
-            <TabPane label="GWR模型分析图">
+            <TabPane label="GWR回归因子">
               <div id="viewDiv">
                 <Select v-model="model1" placeholder="地价" @on-change="changeAttributes" style="width:200px;position:absolute;top:2px;right:2px">
                   <Option v-for="item in cityList" :value="item.value" :key="item.value">{{ item.label }}
