@@ -78,7 +78,7 @@ export const login = {
                     sessionStorage.setItem("userName", JSON.stringify(rsp.data.userName));
                     sessionStorage.setItem("roleId", JSON.stringify(rsp.data.roleId));
                     this.$router.push({
-                        path: `/menu`
+                        path: `/data`
                     });
                 } else {
                     this.$Message.error(rsp.message);
@@ -90,7 +90,7 @@ export const login = {
                     params: {
                         userId: userId
                     }
-                }).then(function(rsp) {
+                }).then(function (rsp) {
                     if (rsp.status === 1) {
                         sessionStorage.setItem("information2", JSON.stringify(rsp.data))
                     }
