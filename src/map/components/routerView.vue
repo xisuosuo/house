@@ -4,23 +4,6 @@
       <div class="smallTools">
         <MapToolsView :mapView="mapview" v-if="IsMapToolsView" :url="toolsUrl"></MapToolsView>
       </div>
-      <div class="smallMapbar">
-        <ul>
-          <li class="btn">
-            <span class="icon baseLayer" @click="switch3d"></span>
-            <span>3D</span>
-          </li>
-          <li id="switchbasemap" @click="switchbasemap">
-            <span class="icon baseLayerImg"></span>
-            <span>影像</span>
-          </li>
-          <li id="switchbasemap" @click="onToggleLayer">
-            <span class="icon layerView"></span>
-            <span>图层</span>
-          </li>
-        </ul>
-        <layerView :active="active" />
-      </div>
     </div>
   </div>
 </template><script>
@@ -228,7 +211,7 @@ export default {
                 this.routeParams = routeParams;
                 var routeTask = new RouteTask({
                   url:
-                    "http://122.112.216.247:6080/arcgis/rest/services/serverTest/MapServer/20"
+                    "http://122.112.216.247:6080/arcgis/rest/services/Servers/routerTask/NAServer/Route"
                 });
                 this.routeTask = routeTask;
                 var ext = String(this.defaultMapExtent).split(",");
@@ -279,6 +262,9 @@ export default {
     },
     watchLayer() {},
     addLastStop() {
+      debugger;
+      console.log(housePoint.state.shapePoi);
+
       var lastpoint = mapApi.convert.toGeometryByWKT.parse({
         wkt: housePoint.state.shapePoi,
         spatialReference: window.mapview.spatialReference
@@ -323,7 +309,6 @@ export default {
       });
     },
     addStop(value) {
-      debugger;
       if (this.routeLayer.graphics.length > 2) {
         this.routeLayer.removeAll();
         this.addPoint(value);
@@ -332,12 +317,10 @@ export default {
       }
     },
     showRoute(data) {
-      debugger;
       var routeResult = data.routeResults[0].route;
       routeResult.symbol = this.routeSymbol;
       this.routeResult = routeResult;
       this.routeLayer.add(routeResult);
-      console.log(this.routeLayer);
       console.log(this.routeLayer);
     },
     logError(error) {

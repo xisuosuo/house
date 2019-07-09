@@ -235,19 +235,16 @@
                   </div>
                 </Col>
                 <Col span="7">
-                  <div class="list" id="mapListContainer">
-                    <div class="name">{{listName}}</div>
-                    <div class="ul-box">
-                      <div class="around-no-info">
-                        <ul>
-                          <item v-for="(item,id) in listData" :key="item.id" :data="item" :id="id+1" @on-item-click="onItemClick" />
-                        </ul>
-                      </div>
-                    </div>
-                    <div class="page-footer" v-show="list.length>10">
-                      <Page :total="list.length" :page-size="pageSize" size="small" @on-change="onPageChange"></Page>
+                <div class="list">
+                  <div class="name">{{listName}}</div>
+                  <div class="ul-box">
+                    <div class="around-no-info">
+                      <ul>
+                        <item v-for="(item,id) in listData" :key="item.id" :data="item" :id="id+1" @on-item-click="onItemClick" />
+                      </ul>
                     </div>
                   </div>
+                </div>
                 </Col>
               </Row>
             </div>
@@ -686,6 +683,9 @@ td {
   clear: both;
 }
 
+.list {
+  height: 600px;
+}
 .around {
   height: 600px;
   width: 1250px;
@@ -729,7 +729,7 @@ td {
 
 .around .list {
   //   width: 310px;
-  height: 540px;
+  height: 600px;
   background-color: #fff;
   box-shadow: 0 0 7px rgba(0, 0, 0, 0.45);
   .name {

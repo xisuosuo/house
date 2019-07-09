@@ -4,6 +4,12 @@
       <sider-menu/>
     </Sider>
     <Content>
+      <Header :style="{padding: 0}" class="layout-header-bar">
+        <Breadcrumb>
+          <Icon :style="{margin: '0 5px'}" type="md-menu" size="25"></Icon>
+          <BreadcrumbItem v-for="(item,idx) in $route.matched" :key="idx" :to="(item.path)">{{item.name}}</BreadcrumbItem>
+        </Breadcrumb>
+      </Header>
       <div style=" margin: 0 auto;margin-top: 5px;width:1300px;">
         <Button type="primary" @click="impor" style="margin-bottom:3px">导入数据</Button>
         <Table :columns="columns1" :data="data1" @on-select="handleChange"></Table>
@@ -211,5 +217,9 @@ export default {
 };
 </script>
 <style>
+.layout-header-bar {
+  background: #fff;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+}
 </style>
 

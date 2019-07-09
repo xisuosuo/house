@@ -40,14 +40,14 @@
     </div>
     <div class="mapbarIn">
       <ul>
-        <li class="btn">
+        <!-- <li class="btn">
           <span class="icon baseLayer" @click="switch3d"></span>
           <span>3D</span>
         </li>
         <li id="switchbasemap" @click="switchbasemap">
           <span class="icon baseLayerImg"></span>
           <span>影像</span>
-        </li>
+        </li> -->
         <!-- <li class="btn" @click="onToggleLayer">
           <span class="icon layerView"></span>
           <span>图层</span>
@@ -432,55 +432,7 @@ export default {
   width: 1350px;
   background: #fcf9f2;
 }
-.mapbarIn {
-  position: absolute;
-  top: 5px;
-  right: 15px;
 
-  li.more {
-    padding: 0 !important;
-  }
-
-  li.btn {
-    float: left;
-    padding: 0 10px 0 4px;
-    height: 30px;
-    line-height: 30px;
-    background: #ffffff;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-    transition: all 0.2s;
-    cursor: pointer;
-
-    &.active {
-      background: #0593d3;
-      color: white;
-    }
-
-    &:not(:first-child) {
-      margin-left: 10px;
-    }
-
-    span.icon-chevron-down {
-      margin-left: 6px;
-
-      &:hover {
-        opacity: 0.8;
-      }
-    }
-
-    &.back {
-      * {
-        vertical-align: middle;
-      }
-    }
-
-    span.back {
-      padding: 0 5px;
-      font-weight: 600;
-      font-size: 14px;
-    }
-  }
-}
 
 .main .container-fluid {
   padding: 0 0px;
@@ -503,14 +455,7 @@ export default {
   padding-left: 5px;
   margin-top: 5px;
 }
-.esri-layer-list {
-  color: #323232;
-  background-color: #f5f5f5;
-  padding: 6px 7px;
-  overflow-y: auto;
-  margin-top: 17px;
-  margin-right: 75px;
-}
+
 #switchbasemap {
   float: left;
   padding: 0 10px 0 4px;
