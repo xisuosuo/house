@@ -1,36 +1,42 @@
 <template>
-    <layout>
-        <Sider ref="side1" :width='180'>
-            <sider-menu/>
-        </Sider>
-        <Content>
-            <div style="margin: 0 auto;margin-top: 5px;width:1000px;height:670px">
-                <Card style="height:100%">
-                    <Tabs type="card">
-                        <TabPane label="GWR模型分析数据">
-                            <Table :columns="columns1" :data="nowData"></Table>
-                            <Page :total="dataCount" :page-size="pageSize" @on-change="changepage" @on-page-size-change="_nowPageSize" show-total show-elevator/>
-                        </TabPane>
-                        <TabPane label="GWR模型分析图">
-                            <div id="viewDiv">
-                                <Select v-model="model1" placeholder="地价" @on-change="changeAttributes" style="width:200px;position:absolute;top:2px;right:2px">
-                                    <Option v-for="item in cityList" :value="item.value" :key="item.value">{{ item.label }}
-                                    </Option>
-                                </Select>
-                            </div>
-                        </TabPane>
- 
-                    </Tabs>
-                    <Button type="primary" @click="ongo" style="float:right;margin-top:10px;margin-left:10px;">房价预测
-                    </Button>
-                    <Button type="primary" @click="onSubmit" style="float:right;margin-top:10px">保存</Button>
-                </Card>
-            </div>
-            <router-view/>
-        </Content>
-    </layout>
+  <layout>
+    <Sider ref="side1" :width='180'>
+      <sider-menu/>
+    </Sider>
+    <Content>
+      <Header :style="{padding: 0}" class="layout-header-bar">
+        <Breadcrumb>
+          <Icon :style="{margin: '0 5px'}" type="md-menu" size="25"></Icon>
+          <BreadcrumbItem v-for="(item,idx) in $route.matched" :key="idx" :to="(item.path)">{{item.name}}</BreadcrumbItem>
+        </Breadcrumb>
+      </Header>
+      <div style="margin: 0 auto;margin-top: 5px;width:1000px;height:670px">
+        <Card style="height:100%">
+          <Tabs type="card">
+            <TabPane label="GWR模型分析数据">
+              <Table :columns="columns1" :data="nowData"></Table>
+              <Page :total="dataCount" :page-size="pageSize" @on-change="changepage" @on-page-size-change="_nowPageSize" show-total show-elevator/>
+            </TabPane>
+            <TabPane label="GWR模型分析图">
+              <div id="viewDiv">
+                <Select v-model="model1" placeholder="地价" @on-change="changeAttributes" style="width:200px;position:absolute;top:2px;right:2px">
+                  <Option v-for="item in cityList" :value="item.value" :key="item.value">{{ item.label }}
+                  </Option>
+                </Select>
+              </div>
+            </TabPane>
 
-    <!-- overflow-x: auto;overflow-y: auto -->
+          </Tabs>
+          <Button type="primary" @click="ongo" style="float:right;margin-top:10px;margin-left:10px;">房价预测
+          </Button>
+          <Button type="primary" @click="onSubmit" style="float:right;margin-top:10px">保存</Button>
+        </Card>
+      </div>
+      <router-view/>
+    </Content>
+  </layout>
+
+  <!-- overflow-x: auto;overflow-y: auto -->
 </template>
 <script>
 import SiderMenu from "@/views/main/siderMenu";
@@ -108,9 +114,9 @@ export default {
       res: []
     };
   },
-    components: {
-        SiderMenu
-    },
+  components: {
+    SiderMenu
+  },
   mounted() {
     this.handleSpinCustom();
     this.changepage();
@@ -463,6 +469,10 @@ export default {
 }
 .demo-spin-icon-load {
   animation: ani-demo-spin 1s linear infinite;
+}
+.layout-header-bar {
+  background: #fff;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
 }
 </style>
 
