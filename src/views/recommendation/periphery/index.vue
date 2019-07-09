@@ -1,52 +1,51 @@
   <template>
-    <Layout :style="{height:'100%'}">
-      <Sider ref="side1" :width='180'>
-        <sider-menu/>>
-      </Sider>
-      <Content>
-        <Header :style="{padding: 0}" class="layout-header-bar">
-          <Breadcrumb>
-            <Icon :class="rotateIcon" :style="{margin: '0 5px'}" type="md-menu" size="25"></Icon>
-            <BreadcrumbItem v-for="(item,idx) in $route.matched" :key="idx" :to="(item.path)">{{item.name}}</BreadcrumbItem>
-          </Breadcrumb>
-        </Header>
-        <div class="around">
-          <div class="title">
-            <p>{{houseName}}</p>
-          </div>
-          <ul>
-            <li v-for="(value,index) in orderList" :key="index" @click="selectTimer(index,value)" :class="timeIndex === index ? 'default-active' : 'default' ">{{ value.name }}</li>
-          </ul>
-          <Row>
-            <Col span="17">
-              <div class="map" style="height: 540px;width: 100%;">
-                <routerView ref="routerView" v-if="map"></routerView>
-              </div>
-            </Col>
-            <Col span="7">
-              <div class="list" id="mapListContainer">
-                <div class="name">{{listName}}</div>
-                <div class="ul-box">
-                  <div class="around-no-info">
-                    <ul>
-                      <item v-for="(item,id) in listData" :key="item.id" :data="item" :id="id+1" @on-item-click="onItemClick" />
-                    </ul>
-                  </div>
-                </div>
-                <div class="page-footer" v-show="list.length>10">
-                  <Page :total="list.length" :page-size="pageSize" size="small" @on-change="onPageChange"></Page>
-                </div>
-              </div>
-            </Col>
-          </Row>
+  <Layout :style="{height:'100%'}">
+    <Sider ref="side1" :width='180'>
+      <sider-menu/>>
+    </Sider>
+    <Content>
+      <Header :style="{padding: 0}" class="layout-header-bar">
+        <Breadcrumb>
+          <Icon :class="rotateIcon" :style="{margin: '0 5px'}" type="md-menu" size="25"></Icon>
+          <BreadcrumbItem v-for="(item,idx) in $route.matched" :key="idx" :to="(item.path)">{{item.name}}</BreadcrumbItem>
+        </Breadcrumb>
+      </Header>
+      <div class="around">
+        <div class="title">
+          <p>{{houseName}}</p>
         </div>
-      </Content>
-    </Layout>
-
+        <ul>
+          <li v-for="(value,index) in orderList" :key="index" @click="selectTimer(index,value)" :class="timeIndex === index ? 'default-active' : 'default' ">{{ value.name }}</li>
+        </ul>
+        <Row>
+          <Col span="17">
+          <div class="map" style="height: 540px;width: 100%;">
+            <routerView ref="routerView" v-if="map"></routerView>
+          </div>
+          </Col>
+          <Col span="7">
+          <div class="list" id="mapListContainer">
+            <div class="name">{{listName}}</div>
+            <div class="ul-box">
+              <div class="around-no-info">
+                <ul>
+                  <item v-for="(item,id) in listData" :key="item.id" :data="item" :id="id+1" @on-item-click="onItemClick" />
+                </ul>
+              </div>
+            </div>
+            <div class="page-footer" v-show="list.length>10">
+              <Page :total="list.length" :page-size="pageSize" size="small" @on-change="onPageChange"></Page>
+            </div>
+          </div>
+          </Col>
+        </Row>
+      </div>
+    </Content>
+  </Layout>
 
 </template>
 <script>
-    import SiderMenu from "@/views/main/siderMenu";
+import SiderMenu from "@/views/main/siderMenu";
 import routerView from "@/map/components/routerView";
 import Server from "@/core/server";
 import { MapAPI } from "@/core/config/const";
@@ -181,15 +180,15 @@ export default {
   components: {
     Item,
     routerView,
-      SiderMenu
+    SiderMenu
   }
 };
 </script>
 <style lang="less" scoped>
-  .layout-header-bar {
-    background: #fff;
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
-  }
+.layout-header-bar {
+  background: #fff;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+}
 .around {
   height: 600px;
   width: 1250px;
