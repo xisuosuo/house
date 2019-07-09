@@ -4,7 +4,7 @@
       <div class="smallTools">
         <MapToolsView :mapView="mapview" v-if="IsMapToolsView" :url="toolsUrl"></MapToolsView>
       </div>
-      <!-- <div class="smallMapbar">
+      <div class="smallMapbar">
         <ul>
           <li class="btn">
             <span class="icon baseLayer" @click="switch3d"></span>
@@ -19,7 +19,7 @@
             <span>图层</span>
           </li>
         </ul>
-      </div> -->
+      </div>
     </div>
   </div>
 </template><script>
@@ -174,17 +174,17 @@ export default {
                     "http://122.112.216.247:6080/arcgis/rest/services/Servers/Map/MapServer"
                 });
                 this.baseLayer = layer;
-                // var street = new TileLayer({
-                //   url:
-                //     "	https://localhost:6443/arcgis/rest/services/ChuZhou/ChuZhouYX/MapServer",
+                var street = new TileLayer({
+                  url:
+                    "http://server.arcgisonline.com/arcgis/rest/services/World_Imagery/MapServer",
 
-                //   visible: false
-                // });
+                  visible: false
+                });
 
-                // this.street = street;
+                this.street = street;
                 var USALayer = new TileLayer({
                   url:
-                    "		http://122.112.216.247:6080/arcgis/rest/services/Servers/中学学区/MapServer",
+                    "http://122.112.216.247:6080/arcgis/rest/services/Servers/中学学区/MapServer",
                   title: "中学学区",
                   visible: false
                 });
@@ -193,10 +193,10 @@ export default {
                   url:
                     "http://122.112.216.247:6080/arcgis/rest/services/Servers/小学学区/MapServer",
                   title: "小学学区",
-                  visible: false
+                  visible: true
                 });
                 var baseMap = new Basemap({
-                  baseLayers: [layer]
+                  baseLayers: [layer, street]
                 });
                 var demographicGroupLayer = new GroupLayer({
                   title: "专题图层",
@@ -272,14 +272,14 @@ export default {
 .esri-layer-list {
   display: block;
 }
-.esri-component esri-layer-list esri-widget esri-widget--panel {
+/* .esri-component esri-layer-list esri-widget esri-widget--panel {
   display: block;
   margin-right: 0px;
   max-height: 240px;
   width: 210px;
   /* margin-left: px; */
-  margin-top: 0px;
-}
+/* margin-top: 0px;
+} */
 #viewDiv {
   /* padding: 0;
     position: absolute;

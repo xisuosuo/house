@@ -95,7 +95,6 @@ export default class GMapSymbol {
   }
 
   static getGWRPoiSymbol(opt) {
-    debugger
     var w = opt.w || 21;
     var h = opt.h || 33;
     var x = opt.x || 0;

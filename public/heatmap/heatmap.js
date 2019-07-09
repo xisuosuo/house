@@ -35,7 +35,6 @@ var HeatmapConfig = {
 var Store = (function StoreClosure() {
 
   var Store = function Store(config) {
-    debugger;
     this._coordinator = {};
     this._data = [];
     this._radi = [];
@@ -132,7 +131,6 @@ var Store = (function StoreClosure() {
       });
     },
     addData: function() {
-		debugger;
       if (arguments[0].length > 0) {
         var dataArr = arguments[0];
         var dataLen = dataArr.length;

@@ -1,86 +1,86 @@
 <template>
-    <div class="layout">
-        <Layout :style="{height:'100%'}">
-            <Sider ref="side1" :width='180'>
-                <sider-menu/>
-            </Sider>
-            <Content>
-                <Header :style="{padding: 0}" class="layout-header-bar">
-                    <Breadcrumb>
-                        <Icon :class="rotateIcon" :style="{margin: '0 5px'}" type="md-menu" size="25"></Icon>
-                        <BreadcrumbItem v-for="(item,idx) in $route.matched" :key="idx" :to="(item.path)">{{item.name}}</BreadcrumbItem>
-                    </Breadcrumb>
-                </Header>
-                <div style="width: 1300px; margin: 0 auto;margin-top: 30px;border: 1px solid #dcdee2">
-                    <Tabs>
-                        <TabPane label="学区">
-                            <div id="map1" style="width:100%;height: 100%;border: 1px solid #dcdee2; position: absolute;">
-                                <smallMapView></smallMapView>
-                            </div>
-                        </TabPane>
-                        <TabPane label="服务区">
-                            <div id="map2" style="width:100%;height: 100%;position: absolute;background-color: #FCF9F2"></div>
-                            <div style="position: relative;float: right; width: 250px;top: 420px;background-color: #FCF9F2;padding: 10px;opacity: 0.8">
-                                <Col span="20">
-                                <Slider v-model="break1" max="500" show-input input-size="small" @on-change="getArea"></Slider>
-                                </Col>
-                                <Col span="4">
-                                <p style="margin: 7px">米</p>
-                                </Col>
-                                <Col span="20">
-                                <Slider v-model="break2" max="1000" show-input input-size="small" @on-change="getArea"></Slider>
-                                </Col>
-                                <Col span="4">
-                                <p style="margin: 7px">米</p>
-                                </Col>
-                                <Col span="20">
-                                <Slider v-model="break3" max="1500" show-input input-size="small" @on-change="getArea"></Slider>
-                                </Col>
-                                <Col span="4">
-                                <p style="margin: 7px">米</p>
-                                </Col>
-                            </div>
-                        </TabPane>
-                        <TabPane label="缓冲区">
-                            <div id="map3" style="width:100%;height: 800px;position: absolute;background-color: #FCF9F2"></div>
-                            <div style="position: relative;float: right; width: 250px;margin: 10px;padding-top: 400px;z-index: 9999">
-                                <Col span="2">
-                                <p style="margin: 7px">0</p>
-                                </Col>
-                                <Col span="18">
-                                <Slider v-model="value1" max="1500" show-input input-size="small" @on-change="getDis"></Slider>
-                                </Col>
-                                <Col span="4">
-                                <p style="margin: 7px">米</p>
-                                </Col>
-                            </div>
-                        </TabPane>
-                        <TabPane label="可达性">
-                            <div class="map4">
-                                <!-- <smallMapView></smallMapView> -->
-                            </div>
-                            <div style="padding-top: 50px;position: relative;float: right; z-index: 9999;">
-                                <CheckboxGroup>
-                                    <Checkbox label="引力模型"></Checkbox>
-                                    <br>
-                                    <Checkbox label="引力模型"></Checkbox>
-                                    <br>
-                                    <Checkbox label="两步移动"></Checkbox>
-                                    <br>
-                                    <Checkbox label="两步移动"></Checkbox>
-                                </CheckboxGroup>
-                            </div>
-                        </TabPane>
-                    </Tabs>
-                </div>
-            </Content>
-        </Layout>
-    </div>
+  <div class="layout">
+    <Layout :style="{height:'100%'}">
+      <Sider ref="side1" :width='180'>
+        <sider-menu/>
+      </Sider>
+      <Content>
+        <Header :style="{padding: 0}" class="layout-header-bar">
+          <Breadcrumb>
+            <Icon :class="rotateIcon" :style="{margin: '0 5px'}" type="md-menu" size="25"></Icon>
+            <BreadcrumbItem v-for="(item,idx) in $route.matched" :key="idx" :to="(item.path)">{{item.name}}</BreadcrumbItem>
+          </Breadcrumb>
+        </Header>
+        <div style="width: 1300px; margin: 0 auto;margin-top: 30px;border: 1px solid #dcdee2">
+          <Tabs>
+            <TabPane label="学区">
+              <div id="map1" style="width:100%;height: 100%;border: 1px solid #dcdee2; position: absolute;">
+                <studyResources></studyResources>
+              </div>
+            </TabPane>
+            <TabPane label="服务区">
+              <div id="map2" style="width:100%;height: 100%;position: absolute;background-color: #FCF9F2"></div>
+              <div style="position: relative;float: right; width: 250px;top: 420px;background-color: #FCF9F2;padding: 10px;opacity: 0.8">
+                <Col span="20">
+                <Slider v-model="break1" max="500" show-input input-size="small" @on-change="getArea"></Slider>
+                </Col>
+                <Col span="4">
+                <p style="margin: 7px">米</p>
+                </Col>
+                <Col span="20">
+                <Slider v-model="break2" max="1000" show-input input-size="small" @on-change="getArea"></Slider>
+                </Col>
+                <Col span="4">
+                <p style="margin: 7px">米</p>
+                </Col>
+                <Col span="20">
+                <Slider v-model="break3" max="1500" show-input input-size="small" @on-change="getArea"></Slider>
+                </Col>
+                <Col span="4">
+                <p style="margin: 7px">米</p>
+                </Col>
+              </div>
+            </TabPane>
+            <TabPane label="缓冲区">
+              <div id="map3" style="width:100%;height: 800px;position: absolute;background-color: #FCF9F2"></div>
+              <div style="position: relative;float: right; width: 250px;margin: 10px;padding-top: 400px;z-index: 9999">
+                <Col span="2">
+                <p style="margin: 7px">0</p>
+                </Col>
+                <Col span="18">
+                <Slider v-model="value1" max="1500" show-input input-size="small" @on-change="getDis"></Slider>
+                </Col>
+                <Col span="4">
+                <p style="margin: 7px">米</p>
+                </Col>
+              </div>
+            </TabPane>
+            <TabPane label="可达性">
+              <div class="map4">
+                <!-- <studyResources></studyResources> -->
+              </div>
+              <div style="padding-top: 50px;position: relative;float: right; z-index: 9999;">
+                <CheckboxGroup>
+                  <Checkbox label="引力模型"></Checkbox>
+                  <br>
+                  <Checkbox label="引力模型"></Checkbox>
+                  <br>
+                  <Checkbox label="两步移动"></Checkbox>
+                  <br>
+                  <Checkbox label="两步移动"></Checkbox>
+                </CheckboxGroup>
+              </div>
+            </TabPane>
+          </Tabs>
+        </div>
+      </Content>
+    </Layout>
+  </div>
 </template>
 
 <script>
-    import SiderMenu from "@/views/main/siderMenu";
-import smallMapView from "@/map/components/smallMapView";
+import SiderMenu from "@/views/main/siderMenu";
+import studyResources from "@/map/components/studyResources";
 import serverArea from "@/map/components/serverArea";
 import esriLoader from "esri-loader";
 import { MapAPI } from "@/core/config/const";
@@ -464,17 +464,17 @@ export default {
     }
   },
   components: {
-      SiderMenu,
-    smallMapView,
+    SiderMenu,
+    studyResources,
     serverArea
   }
 };
 </script>
 
 <style lang="less">
-    .ivu-tabs-tabpane{
-        height: 550px;
-    }
+.ivu-tabs-tabpane {
+  height: 550px;
+}
 .ivu-tabs-bar {
   margin-bottom: 0;
 }
