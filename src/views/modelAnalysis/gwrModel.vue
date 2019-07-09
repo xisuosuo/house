@@ -10,8 +10,8 @@
           <BreadcrumbItem v-for="(item,idx) in $route.matched" :key="idx" :to="(item.path)">{{item.name}}</BreadcrumbItem>
         </Breadcrumb>
       </Header>
-      <div style="margin: 0 auto;margin-top: 5px;width:1000px;height:670px">
-        <Card style="height:100%">
+      <div>
+        <Card style="margin: 0 auto;width: 95%;">
           <Tabs type="card">
             <TabPane label="GWR模型分析数据">
               <Table :columns="columns1" :data="nowData"></Table>

@@ -10,9 +10,9 @@
           <BreadcrumbItem v-for="(item,idx) in $route.matched" :key="idx" :to="(item.path)">{{item.name}}</BreadcrumbItem>
         </Breadcrumb>
       </Header>
-      <Tabs type="card">
-        <TabPane label="小区详情">
-          <div style="margin: 10px">
+      <Tabs type="card" style="margin: 0 auto;width: 95%;">
+        <TabPane label="基本信息">
+          <div >
             <Row :gutter="30">
               <Col span="12">
                 <div style="border: 1px solid #dcdee2;">
@@ -216,14 +216,10 @@
               </Row>
             </div>
           </Card>
-
         </TabPane>
-        <TabPane label="小区周边">
+        <TabPane label="周边设施">
           <Card>
             <div class="around">
-              <div class="title">
-                <p>周边设施</p>
-              </div>
               <ul>
                 <li v-for="(value,index) in orderList" :key="index" @click="selectTimer(index,value)" :class="timeIndex === index ? 'default-active' : 'default' ">{{ value.name }}
                 </li>
@@ -595,6 +591,9 @@ export default {
 </script>
 
 <style lang="less" scoped>
+  .ivu-tabs-bar {
+    margin-bottom: 0;
+  }
 .layout-header-bar {
   background: #fff;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
