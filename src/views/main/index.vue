@@ -17,20 +17,35 @@
             <Icon type="ios-arrow-down"></Icon>
             <div class="ivu-poptip-arrow"></div>
             <div class="poupTitle">
-              <div style="color:black">
-                <ul>
-                  <li v-for="(value,index) in citylist" :key="index" @click="selectTimer(index,value)">{{ value }}
-                  </li>
-                </ul>
+              <div style="color:#2b85e4">
+
+                <div>
+                  <span class="city">华北东北</span>
+                  <span class="cityname" v-for="(value,index) in citylist1" :key="index" @click="selectTimer(index,value)">{{ value }}
+                  </span>
+                </div>
+                <div>
+                  <span class="city">华东地区</span>
+                  <span class="cityname" v-for="(value,index) in citylist2" :key="index" @click="selectTimer(index,value)">{{ value }}
+                  </span>
+                </div>
+                <div>
+                  <span class="city">华南地区</span>
+                  <span class="cityname" v-for="(value,index) in citylist3" :key="index" @click="selectTimer(index,value)">{{ value }}
+                  </span>
+                </div>
+                <div>
+                  <span class="city">中 西 部</span>
+                  <span class="cityname" v-for="(value,index) in citylist4" :key="index" @click="selectTimer(index,value)">{{ value }}
+                  </span>
+                </div>
+
               </div>
             </div>
           </span>
           </Col>
           <Col span="6">
           <div class="user-tools">
-            <!--<Badge :count=this.count style="margin-right: 20px;">-->
-            <!--<Icon  @click="addComapre" type="ios-notifications-outline" size="26"></Icon>-->
-            <!--</Badge>-->
             <Dropdown :transfer="false" placement="bottom-end" @on-click="onUserItemClick">
               <div class="user-info">
                 <icon type="ios-contact" :size="25" />
@@ -93,7 +108,70 @@ export default {
 
   data() {
     return {
-      citylist: ["北京", "上海", "南京", "合肥", "滁州"],
+      citylist1: [
+        "北京",
+        "天津",
+        "大连",
+        "石家庄",
+        "哈尔滨",
+        "沈阳",
+        "太原",
+        "长春",
+        "威海",
+        "潍坊",
+        "包头",
+        "秦皇岛",
+        "烟台",
+        "保定"
+      ],
+      citylist2: [
+        "上海",
+        "杭州",
+        "苏州",
+        "南京",
+        "无锡",
+        "济南",
+        "青岛",
+        "昆山",
+        "宁波",
+        "南昌",
+        "福州",
+        "合肥",
+        "徐州",
+        "淄博",
+        "南通",
+        "常州",
+        "湖州",
+        "滁州"
+      ],
+      citylist3: [
+        "深圳",
+        "广州",
+        "佛山",
+        "长沙",
+        "三亚",
+        "惠州",
+        "东莞",
+        "海口",
+        "珠海",
+        "中山",
+        "厦门",
+        "南宁",
+        "泉州",
+        "柳州"
+      ],
+      citylist4: [
+        "成都",
+        "重庆",
+        "武汉",
+        "郑州",
+        "西安",
+        "昆明",
+        "贵阳",
+        "兰州",
+        "洛阳"
+      ],
+
       name: "滁州",
       nav: false,
       nav1: false,
@@ -209,9 +287,7 @@ export default {
 .toggle:hover .poupTitle {
   display: block;
 }
-.toggle:hover .poupTitle1 {
-  display: block;
-}
+
 .sub-title {
   margin-left: 10px;
   font-size: 18px;
@@ -227,9 +303,7 @@ export default {
 .poupTitle:hover {
   display: block;
 }
-.poupTitle1:hover {
-  display: block;
-}
+
 .demo-badge {
   float: right;
   width: 22px;
@@ -239,26 +313,26 @@ export default {
   display: inline-block;
 }
 .poupTitle {
+  color: white;
+  font-size: 13px;
   position: absolute;
   top: 55px;
   left: 330px;
   display: none;
   will-change: top, left;
-  width: 100px;
-  background: white;
+  width: 380px;
+  background-color: #f8f8f9;
   z-index: 8;
-  padding: 10px 0px 0px 20px;
+  padding: 0px 10px 0px 10px;
 }
 
-.poupTitle1 {
-  position: absolute;
-  top: 55px;
-  left: 90px;
-  display: none;
-  will-change: top, left;
-  width: 680px;
-  background: white;
-  z-index: 8;
-  padding: 10px 0px 0px 20px;
+.city {
+  font-size: 14px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+.cityname{
+  color:black;
+  font-size: 13px;
 }
 </style>

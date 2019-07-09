@@ -109,7 +109,7 @@
                 <template slot="title">
                     <Icon type="md-analytics" /> 房价预测
                 </template>
-                <router-link to="/GWR">
+                <router-link to="/modelAnalysis">
                     <MenuItem name="8-2">
                     <span style="font-size: 13px">GWR模型</span>
                     </MenuItem>
