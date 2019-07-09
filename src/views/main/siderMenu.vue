@@ -30,21 +30,42 @@
                 </MenuItem>
             </router-link>
 
-            <Submenu name="2">
+          <Submenu name="2">
+            <template slot="title">
+              <Icon type="md-search" /> 查询统计
+            </template>
+
+            <Submenu name="3">
+              <template slot="title">
+                空间查询
+              </template>
+              <MenuItem name="3-1">
+              <span @click="siteSelect">条件选房</span>
+              </MenuItem>
+              
+              <Submenu name="4">
                 <template slot="title">
-                     <Icon type="md-search" /> 查询统计
+                  数据统计
                 </template>
-                <router-link to="/infoSearch">
-                    <MenuItem name="3-1">
-                    <span> 空间查询</span>
-                    </MenuItem>
-                </router-link>
-                <router-link to="/data/dataDeatils">
-                    <MenuItem name="3-2">
-                    <span> 属性查询</span>
-                    </MenuItem>
-                </router-link>
+                <MenuItem name="4-1-2">
+                <span @click="selectHouse() ">公共设施</span>
+                </MenuItem>
+                <MenuItem name="4-1-3">
+                <span @click="selectBuffer() ">缓冲区查询</span>
+                </MenuItem>
+              </Submenu>
+
+              <MenuItem name="4-2">
+              <span @click="controlAnlayse">周边设施</span>
+              </MenuItem>
+
             </Submenu>
+            <router-link to="/data/dataDeatils">
+              <MenuItem name="4-3">
+              <span> 属性查询</span>
+              </MenuItem>
+            </router-link>
+          </Submenu>
 
 
             <Submenu name="4">

@@ -20,7 +20,7 @@
             </TabPane>
             <TabPane label="服务区">
               <div id="map2" style="width:100%;height: 100%;position: absolute;background-color: #FCF9F2"></div>
-              <div style="position: relative;float: right; width: 250px;top: 420px;background-color: #FCF9F2;padding: 10px;opacity: 0.8">
+              <div style="position: relative;float: right; width: 250px;top: 420px;background-color: #F5F7F9; padding: 10px;opacity: 1">
                 <Col span="20">
                 <Slider v-model="break1" max="500" show-input input-size="small" @on-change="getArea"></Slider>
                 </Col>
@@ -43,7 +43,7 @@
             </TabPane>
             <TabPane label="缓冲区">
               <div id="map3" style="width:100%;height: 800px;position: absolute;background-color: #FCF9F2"></div>
-              <div style="position: relative;float: right; width: 250px;margin: 10px;padding-top: 400px;z-index: 9999">
+           <div style="position: relative;float: right; width: 250px;margin-right:15px;top: 485px;background-color: #F5F7F9; padding: 10px;opacity: 1">
                 <Col span="2">
                 <p style="margin: 7px">0</p>
                 </Col>
