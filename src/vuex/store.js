@@ -57,6 +57,7 @@ export default new Vuex.Store({
             state.shapePoi = houseShape;
         },
         housueName(state, housueName) {
+            debugger
             state.housueName = housueName
         },
         companyName(state, company) {

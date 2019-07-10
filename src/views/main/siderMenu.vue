@@ -1,38 +1,17 @@
    <template>
     <Sider ref="side1" :width='180'>
         <Menu active-name="" theme="dark" width="auto" :open-names="['']">
-            <!-- <router-link to="/menu">
-                <MenuItem name="1-1">
-                <Icon type="ios-navigate"></Icon>
-                <span>首页</span>
-                </MenuItem>
-            </router-link> -->
-            <!-- <Submenu name="2">
-                <template slot="title">
-                    <Icon type="md-speedometer" /> 数据展示
-                </template>
-                <router-link to="/data">
-                    <MenuItem name="2-1">
-                    <span style="font-size: 13px"> 数据台账</span>
-                    </MenuItem>
-                </router-link>
-                <router-link to="/data/dataDeatils">
-                    <MenuItem name="2-2">
-                    <span style="font-size: 13px"> 属性查询</span>
-                    </MenuItem>
-                </router-link>
-            </Submenu> -->
 
             <router-link to="/data">
                 <MenuItem name="2-1">
                 <Icon type="md-speedometer" />
-                <span> 数据台账</span>
+                <span class="siderItem">数据台账</span>
                 </MenuItem>
             </router-link>
 
             <Submenu name="2">
                 <template slot="title">
-                    <Icon type="md-search" /> 查询统计
+                    <Icon type="md-search" />查询统计
                 </template>
                 <router-link to="/infoSearch">
                     <MenuItem name="3-1">
@@ -48,7 +27,7 @@
 
             <Submenu name="4">
                 <template slot="title">
-                    <Icon type="md-globe" /> 区位资源
+                    <Icon type="md-globe" />区位资源
                 </template>
                 <router-link to="/locationResources">
                     <MenuItem name="4-1">
@@ -74,19 +53,19 @@
             <router-link to="/recommendation/factor">
                 <MenuItem name="5-1">
                 <Icon type="md-pin" />
-                <span> 购房选址</span>
+                <span class="siderItem">购房选址</span>
                 </MenuItem>
             </router-link>
             <router-link to="/recommendation/housingPreference">
                 <MenuItem name="6-1">
                 <Icon type="md-thumbs-up" />
-                <span> 房源推荐</span>
+                <span class="siderItem">房源推荐</span>
                 </MenuItem>
             </router-link>
 
             <Submenu name="7">
                 <template slot="title">
-                    <Icon type="ios-radio" /> 房价分析
+                    <Icon type="ios-radio" />房价分析
                 </template>
                 <router-link to="/priceAnalysis">
                     <MenuItem name="7-1">
@@ -106,7 +85,7 @@
             </Submenu>
             <Submenu name="8">
                 <template slot="title">
-                    <Icon type="md-analytics" /> 房价预测
+                    <Icon type="md-analytics" />房价预测
                 </template>
                 <router-link to="/modelAnalysis">
                     <MenuItem name="8-2">
@@ -127,12 +106,12 @@
             <router-link to="/userManager">
                 <MenuItem name="9-1">
                 <Icon type="md-contacts" />
-                <span> 用户管理</span>
+                <span class="siderItem">用户管理</span>
                 </MenuItem>
             </router-link>
             <Submenu name="10">
                 <template slot="title">
-                    <Icon type="md-paper" /> 用户手册
+                    <Icon type="md-paper" />用户手册
                 </template>
                 <router-link to="/auDecision/usersManual">
                     <MenuItem name="10-1">
@@ -153,15 +132,18 @@
             <router-link to="/personalcenter">
                 <MenuItem name="11-1">
                 <Icon type="md-person" />
-                <span> 个人中心</span>
+                <span class="siderItem">个人中心</span>
                 </MenuItem>
             </router-link>
         </Menu>
     </Sider>
 </template>
 <style lang="less">
-.ivu-layout-sider-children{
-        height: 730px;
+.ivu-layout-sider-children {
+  height: 730px;
+}
+.siderItem{
+    margin-left: 1px;
 }
 </style>
 
