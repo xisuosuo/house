@@ -145,8 +145,6 @@ export default {
               "esri/views/MapView",
               "esri/layers/MapImageLayer",
               "esri/layers/TileLayer",
-              "esri/widgets/Legend",
-              "esri/layers/FeatureLayer",
               "esri/geometry/Extent",
               "esri/widgets/LayerList"
             ])
@@ -159,8 +157,6 @@ export default {
                 MapView,
                 MapImageLayer,
                 TileLayer,
-                Legend,
-                FeatureLayer,
                 Extent,
                 LayerList,
                 dom,
@@ -186,9 +182,11 @@ export default {
                 });
 
                 this.street = street;
-                var USALayer = new FeatureLayer({
+                var USALayer = new TileLayer({
                   url:
-                    "http://122.112.216.247:6080/arcgis/rest/services/Servers/gwrfeature/MapServer/0"
+                    "http://122.112.216.247:6080/arcgis/rest/services/Servers/中学学区/MapServer",
+                  title: "中学学区",
+                  visible: false
                 });
 
                 var censusLayer = new TileLayer({
@@ -237,18 +235,7 @@ export default {
                   var layerList = new LayerList({
                     view: view
                   });
-                  debugger;
-                  var legend = new Legend({
-                    view: view,
-                    layerInfos: [
-                      {
-                        layer: USALayer,
-                        title: "NY Educational Attainment"
-                      }
-                    ]
-                  });
                   view.ui.add(layerList, "top-right");
-                  view.ui.add(legend, "bottom-right");
                 });
 
                 this.mapview.initExtent = {

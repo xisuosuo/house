@@ -3,6 +3,7 @@ class PopupHtml {
     let html = ["<div class='v-popup-content'>"];
     var attr = res.attribute;
     for (var key in attr) {
+      debugger
       html.push("<div class='ivu-row'>")
       html.push("<div class='ivu-col ivu-col-span-7' style='text-align: right;'>" + key.split("$")[0] + "：</div>");
       html.push("<div class='ivu-col ivu-col-span-17'>" + attr[key] + " ");

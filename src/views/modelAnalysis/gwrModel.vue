@@ -424,7 +424,7 @@ export default {
     doGP1(featureSet) {
       debugger;
       var gpUrl =
-        "http://122.112.216.247:6080/arcgis/rest/services/Servers/kingModel/GPServer/kingModel";
+        "http://122.112.216.247:6080/arcgis/rest/services/Servers/kingModel/GPServer";
       mapApi.esriApi.GetGeoprocessor().then(Geoprocessor => {
         var Kriging_GP = new Geoprocessor(gpUrl);
         this.krigingGP = Kriging_GP;

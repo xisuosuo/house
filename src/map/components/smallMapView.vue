@@ -4,7 +4,7 @@
       <div class="smallTools">
         <MapToolsView :mapView="mapview" v-if="IsMapToolsView" :url="toolsUrl"></MapToolsView>
       </div>
-      <div class="smallMapbar">
+      <!-- <div class="smallMapbar">
         <ul>
           <li class="btn">
             <span class="icon baseLayer" @click="switch3d"></span>
@@ -19,7 +19,7 @@
             <span>图层</span>
           </li>
         </ul>
-      </div>
+      </div> -->
     </div>
   </div>
 </template><script>
@@ -202,15 +202,14 @@ export default {
                   title: "专题图层",
                   visible: true,
                   visibilityMode: "independent",
-                  layers: [USALayer,censusLayer],
+                  layers: [USALayer, censusLayer],
                   opacity: 0.75
                 });
 
                 var map = new Map({
                   // basemap: baseMap,
-                   basemap: baseMap,
-                 layers: [demographicGroupLayer]
-                  
+                  basemap: baseMap,
+                  layers: [demographicGroupLayer]
                 });
                 var ext = String(this.defaultMapExtent).split(",");
                 if (ext.length > 3) {
@@ -270,8 +269,11 @@ export default {
 </script>
 
 <style >
+.esri-layer-list {
+  display: block;
+}
 .esri-component esri-layer-list esri-widget esri-widget--panel {
-  display: none;
+  display: block;
   margin-right: 0px;
   max-height: 240px;
   width: 210px;
