@@ -574,6 +574,7 @@ export default {
       });
     },
     comment() {
+      debugger;
       var _this = this;
       this.houseName = housueName.state.housueName;
       Server.get({

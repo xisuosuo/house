@@ -6,13 +6,13 @@
           <router-link to="/data">
             <MenuItem name="2-1">
             <Icon type="md-speedometer" />
-            <span> 数据台账</span>
+            <span class="siderItem">数据台账</span>
             </MenuItem>
           </router-link>
 
           <Submenu name="2">
             <template slot="title">
-              <Icon type="md-search" /> 查询统计
+              <Icon type="md-search" />查询统计
             </template>
 
             <Submenu name="3">
@@ -49,7 +49,7 @@
 
           <Submenu name="5">
             <template slot="title">
-              <Icon type="md-globe" /> 区位资源
+              <Icon type="md-globe" />区位资源
             </template>
             <router-link to="/locationResources">
               <MenuItem name="5-1">
@@ -74,90 +74,88 @@
           </Submenu>
 
           <router-link to="/recommendation/factor">
-            <MenuItem name="6-1">
+            <MenuItem name="5-1">
             <Icon type="md-pin" />
-            <span>购房选址</span>
+            <span class="siderItem">购房选址</span>
             </MenuItem>
           </router-link>
           <router-link to="/recommendation/housingPreference">
-            <MenuItem name="7-1">
+            <MenuItem name="6-1">
             <Icon type="md-thumbs-up" />
-            <span>房源推荐</span>
+            <span class="siderItem">房源推荐</span>
             </MenuItem>
           </router-link>
 
-          <Submenu name="8">
+          <Submenu name="7">
             <template slot="title">
-              <Icon type="ios-radio" /> 房价分析
+              <Icon type="ios-radio" />房价分析
             </template>
             <router-link to="/priceAnalysis">
-              <MenuItem name="8-1">
+              <MenuItem name="7-1">
               <span style="font-size: 13px">价格分析</span>
               </MenuItem>
             </router-link>
             <router-link to="/heatMap2d">
-              <MenuItem name="8-2">
+              <MenuItem name="7-2">
               <span style="font-size: 13px">二维热力图</span>
               </MenuItem>
             </router-link>
             <router-link to="/heatMap">
-              <MenuItem name="8-3">
+              <MenuItem name="7-3">
               <span style="font-size: 13px">三维热力图</span>
               </MenuItem>
             </router-link>
           </Submenu>
-          <Submenu name="9">
+          <Submenu name="8">
             <template slot="title">
-              <Icon type="md-analytics" /> 房价预测
+              <Icon type="md-analytics" />房价预测
             </template>
-            <router-link to="/GWR">
-              <MenuItem name="9-2">
+            <router-link to="/modelAnalysis">
+              <MenuItem name="8-2">
               <span style="font-size: 13px">GWR模型</span>
               </MenuItem>
             </router-link>
             <router-link to="/Kriging">
-              <MenuItem name="9-1">
-              <span style="font-size: 13px">克里金插值预测
-              </span>
+              <MenuItem name="8-1">
+              <span style="font-size: 13px">克里金插值预测</span>
               </MenuItem>
             </router-link>
-
             <router-link to="/priceForecast">
-              <MenuItem name="9-3">
+              <MenuItem name="8-3">
               <span style="font-size: 13px">房价预测</span>
               </MenuItem>
             </router-link>
           </Submenu>
           <router-link to="/userManager">
-            <MenuItem name="10-1" v-if="show">
+            <MenuItem name="9-1">
             <Icon type="md-contacts" />
-            <span>用户管理</span>
+            <span class="siderItem">用户管理</span>
             </MenuItem>
           </router-link>
-          <Submenu name="11">
+          <Submenu name="10">
             <template slot="title">
-              <Icon type="md-paper" /> 用户手册
+              <Icon type="md-paper" />用户手册
             </template>
             <router-link to="/auDecision/usersManual">
-              <MenuItem name="11-1">
+              <MenuItem name="10-1">
               <span style="font-size: 13px">用户手册</span>
               </MenuItem>
             </router-link>
             <router-link to="/auDecision/livablemodel">
-              <MenuItem name="11-2">
+              <MenuItem name="10-2">
               <span style="font-size: 13px">宜居模型</span>
               </MenuItem>
             </router-link>
             <router-link to="/auDecision/model">
-              <MenuItem name="11-3">
+              <MenuItem name="10-3">
               <span style="font-size: 13px">引力模型</span>
               </MenuItem>
             </router-link>
           </Submenu>
           <router-link to="/personalcenter">
-            <MenuItem name="12-1">
+            <MenuItem name="11-1">
             <Icon type="md-person" />
-            <span>个人中心</span>
+            <span class="siderItem">个人中心</span>
             </MenuItem>
           </router-link>
         </Menu>
@@ -247,7 +245,7 @@ export default {
     },
     gethousePoint() {
       if (this.distance < 1000) {
-        this.$Message.warning("范围过小，未查询到数据");
+        this.$Message.warning("范围过小或小区不存在，未查询到数据");
       } else {
         Server.get({
           url: services.road,
@@ -262,6 +260,8 @@ export default {
             _this.list = rsp.data;
             debugger;
             this.showGraphics();
+          } else {
+            this.$Message.warning("小区不存在，未查询到数据");
           }
         });
       }
@@ -382,5 +382,8 @@ export default {
   transition: font-size 0.2s ease 0.2s, transform 0.2s ease 0.2s;
   vertical-align: middle;
   font-size: 22px;
+}
+.siderItem {
+  margin-left: 1px;
 }
 </style>
