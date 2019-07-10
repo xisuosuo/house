@@ -10,18 +10,34 @@
             </router-link>
 
             <Submenu name="2">
+                <router-link to="/data/dataDeatils">
+                    <MenuItem name="4-3">
+                        <span> 简单查询</span>
+                    </MenuItem>
+                </router-link>
                 <template slot="title">
                     <Icon type="md-search" />查询统计
                 </template>
+
                 <router-link to="/infoSearch">
-                    <MenuItem name="3-1">
-                    <span> 空间查询</span>
+                    <MenuItem name="4-1-2">
+                        <span class="kjcx">条件查询</span>
                     </MenuItem>
                 </router-link>
-                <router-link to="/data/dataDeatils">
-                    <MenuItem name="3-2">
-                    <span> 属性查询</span>
-                    </MenuItem>
+                <router-link to="/infoSearch">
+                <MenuItem name="4-1-2">
+                    <span class="kjcx" >公共设施统计</span>
+                </MenuItem>
+                </router-link>
+                <router-link to="/infoSearch">
+                <MenuItem name="4-1-3">
+                    <span class="kjcx">缓冲区查询</span>
+                </MenuItem>
+                </router-link>
+                <router-link to="/infoSearch">
+                <MenuItem name="4-2">
+                    <span class="kjcx">周边设施查询</span>
+                </MenuItem>
                 </router-link>
             </Submenu>
 
