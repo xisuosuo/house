@@ -232,6 +232,7 @@ export default {
       this.pageSize = index;
     },
     doGWRGP(featureSet) {
+      debugger;
       var _this = this;
       var gpUrl =
         "http://122.112.216.247:6080/arcgis/rest/services/Servers/lastModelgwr/GPServer/Model";
