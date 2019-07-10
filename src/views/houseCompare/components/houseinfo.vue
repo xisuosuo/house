@@ -38,8 +38,8 @@
                         <span class="price">{{this.houseInfo.price}}</span><span style="font-size: 14px">元/平方米</span>
                       </div>
                       <div class="prices">
-                        <span>价格说明:</span>
-                        <span>在{{this.houseInfo.minPrice}}元/㎡ ~ {{this.houseInfo.maxPrice}}元/㎡之间</span>
+                        <span>绿化率:</span>
+                        <span>{{this.houseInfo.greeningRate}}</span>
                       </div>
                       <div class="prices">
                         <span>建筑类型:</span>
