@@ -142,7 +142,6 @@
                     </div>
                 </TabPane>
             </Tabs>
-
         </Content>
     </Layout>
 </template>
@@ -424,7 +423,7 @@
     };
 </script>
 
-<style lang="less">
+<style lang="less" >
     .ivu-tabs-bar {
         margin-bottom: 0;
     }

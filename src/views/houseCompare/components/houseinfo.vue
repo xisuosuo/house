@@ -590,7 +590,7 @@ export default {
 };
 </script>
 
-<style lang="less" scoped>
+<style lang="less" >
   .ivu-tabs-bar {
     margin-bottom: 0;
   }

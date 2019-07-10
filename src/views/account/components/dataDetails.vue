@@ -29,16 +29,17 @@
                 columns5: [
                     {
                         title: '小区图片',
-                        // key: 'options',
+                        key: 'img',
                         align: 'center',
-                        width: 110,
-                        render: (h) => {
+                        width: 180,
+                        render: (h, params) => {
+                            console.log(params.row);
                             return h('img', {
                                 attrs: {
-                                    src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1562690914117&di=bbcea125a585ff22982e736274834d30&imgtype=0&src=http%3A%2F%2Fpic48.nipic.com%2Ffile%2F20140914%2F12768522_082734717768_2.jpg',
+                                    src:  params.row.image,
                                 },
                                 style: {
-                                    marginRight: '5px',height:'70px',width:'200px',
+                                    marginRight: '5px',height:'80px',width:'130px',
                                 }
                             });
                         }
@@ -98,13 +99,28 @@
             }
         },
         mounted() {
+            this.$Spin.show({
+                render: (h) => {
+                    return h('div', [
+                        h('Icon', {
+                            'class': 'demo-spin-icon-load',
+                            props: {
+                                type: 'ios-loading',
+                                size: 22
+                            }
+                        }),
+                        h('div', '正在加载数据')
+                    ])
+                }
+            });
             var _this=this;
             Server.get({
                 url: services.getallinfo,
             }).then(function(res){
                 _this.data5 = res.data;
                 _this.houseShape = res.data.Shape;
-                _this.houseId = res.data.houseId
+                _this.houseId = res.data.houseId;
+                _this.$Spin.hide();
             })
         },
         methods: {
@@ -141,6 +157,7 @@
                     );
             },
             getinfo() {
+
                 var _this=this;
                 Server.get({
                     url: services.getallinfo,
@@ -148,13 +165,14 @@
                         name: _this.value
                     }
                 }).then(function(res){
-                    _this.data5 = res.data
+                    _this.data5 = res.data;
                 })
             }
         }
         }
 </script>
-<style lang="less" scoped>
+<style lang="less" >
+
     // .ivu-layout {
     //     height: 1024px;
     // }
@@ -235,5 +253,8 @@
                 }
             }
         }
+    }
+    .demo-spin-icon-load{
+        animation: ani-demo-spin 1s linear infinite;
     }
 </style>
