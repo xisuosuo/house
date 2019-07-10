@@ -49,10 +49,7 @@ export default {
     $route: "getPath"
   },
   methods: {
-    getPath() {
-      this.path = this.$route.matched;
-      console.log(this.path);
-    }
+ 
   }
 };
 </script>

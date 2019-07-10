@@ -226,7 +226,7 @@
               </ul>
               <Row>
                 <Col span="17">
-                  <div class="map" style="height: 540px;width: 100%;">
+                  <div class="map" style="height: 570px;width: 100%;">
                     <routerView ref="routerView" v-if="map"></routerView>
                   </div>
                 </Col>
@@ -728,7 +728,7 @@ td {
 
 .around .list {
   //   width: 310px;
-  height: 600px;
+  height: 580px;
   background-color: #fff;
   box-shadow: 0 0 7px rgba(0, 0, 0, 0.45);
   .name {
@@ -740,7 +740,7 @@ td {
     background: #3072f6 !important;
   }
   .ul-box {
-    height: 420px;
+    height: 550px;
     overflow-y: scroll;
   }
 }

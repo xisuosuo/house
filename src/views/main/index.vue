@@ -201,9 +201,7 @@ export default {
     collection() {
       this.$router.push("/collection");
     },
-    getPath() {
-      this.name = this.$route.name;
-    },
+ 
     getInfo() {
       var _this = this;
       _this.$router.push("/personalcenter");
@@ -237,9 +235,7 @@ export default {
       });
     }
   },
-  watch: {
-    $route: "getPath"
-  },
+ 
   components: {
     ChangePsd
   }

@@ -22,7 +22,7 @@
               <MenuItem name="3-1">
               <span @click="siteSelect">条件选房</span>
               </MenuItem>
-              
+
               <Submenu name="4">
                 <template slot="title">
                   数据统计
@@ -307,22 +307,9 @@ export default {
       ]
     };
   },
-  computed: {
-    rotateIcon() {
-      return ["menu-icon", this.isCollapsed ? "rotate-icon" : ""];
-    },
-    menuitemClasses() {
-      return ["menu-item", this.isCollapsed ? "collapsed-menu" : ""];
-    }
-  },
-  watch: {
-    $route: "getPath"
-  },
+  computed: {},
+
   methods: {
-    getPath() {
-      this.path = this.$route.matched;
-      console.log(this.path);
-    },
     collapsedSider() {
       this.$refs.side1.toggleCollapse();
     },

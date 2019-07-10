@@ -10,9 +10,9 @@
             <Option value="小区" label="小区">
               <span>小区</span>
             </Option>
-            <Option value="单位区" label="单位区">
+            <!-- <Option value="单位区" label="单位区">
               <span>单位区</span>
-            </Option>
+            </Option> -->
           </i-select>
         </i-input>
         <div class="close-wrapper" @click="onClosePanel">
@@ -92,11 +92,11 @@ export default {
         {
           value: "小区",
           label: "小区"
-        },
-        {
-          value: "单位区",
-          label: "单位区"
         }
+        // {
+        //   value: "单位区",
+        //   label: "单位区"
+        // }
       ],
       defaultMapExtent: "13391592.41591351,3404268.145961022,3",
       spatialReference: "",
@@ -315,49 +315,26 @@ export default {
       }
     },
     onSearchClick() {
-      if (this.txt_select == "小区") {
-        Server.get({
-          url: services.houseQuery,
-          params: {
-            name: this.txt_input
+      Server.get({
+        url: services.houseQuery,
+        params: {
+          name: this.txt_input
+        }
+      }).then(
+        rsp => {
+          var _this = this;
+          if (rsp.status === 1) {
+            _this.data = rsp.data;
+            _this.list = rsp.data;
+          } else {
+            _this.data = [];
           }
-        }).then(
-          rsp => {
-            var _this = this;
-            if (rsp.status === 1) {
-              _this.data = rsp.data;
-              _this.list = rsp.data;
-            } else {
-              _this.data = [];
-            }
-            _this.visible = true;
-          },
-          error => {
-            this.$Message.warning(error.message);
-          }
-        );
-      } else {
-        Server.get({
-          url: services.companyQuery,
-          params: {
-            name: this.txt_input
-          }
-        }).then(
-          rsp => {
-            var _this = this;
-            if (rsp.status === 1) {
-              _this.data = rsp.data;
-              _this.list = rsp.data;
-            } else {
-              _this.data = [];
-            }
-            _this.visible = true;
-          },
-          error => {
-            this.$Message.warning(error.message);
-          }
-        );
-      }
+          _this.visible = true;
+        },
+        error => {
+          this.$Message.warning(error.message);
+        }
+      );
     },
     onPageChange(page) {
       let data = [];
@@ -425,14 +402,13 @@ export default {
 };
 </script>
 <style lang="less">
-#viewDiv{
+#viewDiv {
   padding: 0;
   position: absolute;
   height: 100%;
   width: 1350px;
   background: #fcf9f2;
 }
-
 
 .main .container-fluid {
   padding: 0 0px;

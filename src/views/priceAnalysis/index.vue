@@ -12,7 +12,7 @@
                     </Breadcrumb>
                 </Header>
                 <!-- <div id="map" style="height: 670px;width: 100%;"> -->
-                <iframe src="price.html" frameborder="0" scrolling="auto" height="600px" width="100%"></iframe>
+                <iframe src="price.html" frameborder="0" scrolling="auto" height="720px" width="100%"></iframe>
                 <!-- </div> -->
                 <router-view/>
             </Content>

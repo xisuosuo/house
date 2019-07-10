@@ -34,14 +34,9 @@ export default {
       return ["menu-item", this.isCollapsed ? "collapsed-menu" : ""];
     }
   },
-  watch: {
-    $route: "getPath"
-  },
+  
   methods: {
-    getPath() {
-      this.path = this.$route.matched;
-      console.log(this.path);
-    },
+ 
     collapsedSider() {
       this.$refs.side1.toggleCollapse();
     }
