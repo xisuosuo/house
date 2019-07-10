@@ -15,7 +15,7 @@
           <div id="viewDiv" style=" padding: 0; margin: 0; height: 860px;width: 100%;;background-color: #FCF9F2"></div>
         </div>
         <div>
-          <Select v-model="model1" placeholder="地价"  style="width:200px;position:absolute;top:102px;right:2px">
+          <Select v-model="model1" placeholder="地价" style="width:200px;position:absolute;top:102px;right:2px">
             <Option v-for="item in cityList" :value="item.value" :key="item.value">{{ item.label }}
             </Option>
           </Select>
@@ -132,12 +132,12 @@ export default {
                 //   this.doGP(results);
                 // });
                 queryTask.execute(query).then(this.doGP);
+                this.mapview.ui.remove(["attribution", "zoom"]);
               }
             );
         });
     },
     doGP(featureSet) {
-      ;
       var gpUrl =
         "http://122.112.216.247:6080/arcgis/rest/services/Servers/KING/GPServer/Last";
       mapApi.esriApi.GetGeoprocessor().then(Geoprocessor => {
@@ -157,7 +157,6 @@ export default {
     },
     gpJobComplete(jobinfo) {
       console.log(jobinfo);
-      ;
       if (jobinfo.jobStatus == "job-succeeded") {
         mapApi.esriApi.GetImageParameters().then(ImageParameters => {
           var imageParams = new ImageParameters({

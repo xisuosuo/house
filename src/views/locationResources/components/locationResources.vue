@@ -15,7 +15,7 @@
           <Tabs>
             <TabPane label="学区">
               <div id="map1" style="width:100%;height: 100%;border: 1px solid #dcdee2; position: absolute;">
-                <smallMapView></smallMapView>
+                <studyResources></studyResources>
               </div>
             </TabPane>
             <TabPane label="服务区">
@@ -80,7 +80,7 @@
 
 <script>
 import SiderMenu from "@/views/main/siderMenu";
-import smallMapView from "@/map/components/smallMapView";
+import studyResources from "@/map/components/studyResources";
 import serverArea from "@/map/components/serverArea";
 import esriLoader from "esri-loader";
 import { MapAPI } from "@/core/config/const";
@@ -490,7 +490,7 @@ export default {
   },
   components: {
     SiderMenu,
-    smallMapView,
+    studyResources,
     serverArea
   }
 };
