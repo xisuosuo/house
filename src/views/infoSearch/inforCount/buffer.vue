@@ -1,25 +1,26 @@
 <template>
-    <Modal v-model="dialog2" :mask-closable="false" width="400" title="缓冲区查询" draggable>
-        <Form :label-width="60">
-            <FormItem label="半径：" prop="zoning" :width="80">
+  <Modal v-model="dialog2" :mask-closable="false" width="400" title="缓冲区查询" draggable>
+    <Form :label-width="60">
+      <FormItem label="半径：" prop="zoning" :width="80">
 
-                <Input v-model="distance" placeholder="" clearable :width="80">
-                </Input>
-
-            </FormItem>
-            <p style="float:right">千米</p>
-            <FormItem label="选点：" prop="zoning">
-                <Button shape="circle" title="自定义选点" @click="createPoint">
-                    <span>
-                        <Icon type="ios-pin-outline" size="17" />
-                    </span>
-                </Button>
-            </FormItem>
-        </Form>
-        <div slot="footer">
-            <Button type="primary" size="large" long @click="getHouse">查询</Button>
+        <div style="width:80px">
+        <Input v-model="distance" placeholder="" clearable  >
+          </Input>
         </div>
-    </Modal>
+        <span style="width:20px">千米</span>
+      </FormItem>
+      <FormItem label="选点：" prop="zoning">
+        <Button shape="circle" title="自定义选点" @click="createPoint">
+          <span>
+            <Icon type="ios-pin-outline" size="17" />
+          </span>
+        </Button>
+      </FormItem>
+    </Form>
+    <div slot="footer">
+      <Button type="primary" size="large" long @click="getHouse">查询</Button>
+    </div>
+  </Modal>
 </template>
  <script>
 import Server from "@/core/server";
