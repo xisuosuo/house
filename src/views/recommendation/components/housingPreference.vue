@@ -71,7 +71,7 @@
                                         <Col span="17">
                                             <div class="left name" style="margin-top: 35px">
                                                 <div style="margin-top: 25px;float: right">
-                                                    <span style="color: red;font-size: 20px;font-weight: bold;">均价：{{value.price}}元/㎡</span>
+                                                    <span style="color: red;font-weight: bold;">均价：{{value.price}}元/㎡</span>
                                                     <p style="margin-top: 5px;font-size: 13px">
                                                         <span>楼层高度：{{value.houseHeight}}</span>
                                                     </p>
@@ -425,7 +425,7 @@
     };
 </script>
 
-<style lang="less">
+<style lang="less" >
     .ivu-form-item-content {
         position: relative;
         line-height: 32px;
