@@ -4,7 +4,7 @@
       <div style="margin: 0 auto;margin-top: 5px;width:1100px;">
         <Row>
           <Col span="20">
-          <Card>
+          <Card style="height:615px">
             <div slot="title">
               <Icon type="md-aperture" size="20" />
               <strong>
@@ -107,7 +107,7 @@
                   </div>
                 </Poptip>
                 <CheckboxGroup v-model="education5">
-                  <Checkbox label="大学">大学</Checkbox>
+                  <Checkbox label="一级大学">大学</Checkbox>
                 </CheckboxGroup>
                 </Col>
               </Row>
@@ -181,7 +181,7 @@
                 </Col>
               </Row>
             </Form>
-            <div style="text-align: center;margin-top:20px">
+            <div style="text-align: center;margin-top:5px">
               <Button style="margin-right: 20px" type="primary" @click="showTable">确定</Button>
               <Button style="margin-right: 80px">重置</Button>
             </div>
@@ -639,5 +639,9 @@ p {
 <style lang="less" >
 .demo-spin-icon-load {
   animation: ani-demo-spin 1s linear infinite;
+}
+html,body{
+height: 100%;
+overflow: hidden;
 }
 </style>

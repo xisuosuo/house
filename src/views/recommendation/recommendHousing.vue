@@ -2,33 +2,37 @@
   <Layout :style="{height:'100%'}">
     <Sider ref="side1" :width='180'>
       <Menu active-name="" theme="dark" width="auto" :open-names="['']">
+
         <router-link to="/menu">
           <MenuItem name="1-1">
           <Icon type="ios-navigate"></Icon>
           <span>首页</span>
           </MenuItem>
         </router-link>
+
         <Submenu name="2">
           <template slot="title">
-            <Icon type="md-speedometer" /> 数据展示
+            <Icon type="md-speedometer" />数据展示
           </template>
           <router-link to="/data">
             <MenuItem name="2-1">
-            <span style="font-size: 13px">数据统计</span>
+            <span style="font-size:13px">数据统计</span>
             </MenuItem>
           </router-link>
           <router-link to="/data/dataDeatils">
             <MenuItem name="2-2">
-            <span style="font-size: 13px">数据查询</span>
+            <span style="font-size:13px">数据查询</span>
             </MenuItem>
           </router-link>
         </Submenu>
+
         <router-link to="/infoSearch">
           <MenuItem name="3-1">
           <Icon type="md-search" />
           <span>空间查询</span>
           </MenuItem>
         </router-link>
+        
         <Submenu name="4">
           <template slot="title">
             <Icon type="md-globe" /> 区位资源
@@ -339,7 +343,7 @@ export default {
       count1: 0,
       count2: 0,
       count3: 0,
-      count4: 0,
+      count4: 0
     };
   },
   mounted() {

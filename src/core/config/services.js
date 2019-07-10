@@ -44,4 +44,5 @@ export const services = {
   houseShow:`http://${IP}/chzuHouse/house/queryForecastHouseInfo`,
   housePrice:`http://${IP}/chzuHouse/house/houseForecast`,
   findimage:`http://${IP}/chzuHouse/queryImage/queryImage`,
+  getEA:`http://${IP}/chzuHouse/recommended/getEducationAccessibility`,
 };
