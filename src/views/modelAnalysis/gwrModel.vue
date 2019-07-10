@@ -234,7 +234,7 @@ export default {
     doGWRGP(featureSet) {
       var _this = this;
       var gpUrl =
-        "http://122.112.216.247:6080/arcgis/rest/services/Servers/GwrResulr/GPServer/Model";
+        "http://122.112.216.247:6080/arcgis/rest/services/Servers/lastModelgwr/GPServer/Model";
       mapApi.esriApi.GetGeoprocessor().then(Geoprocessor => {
         var Kriging_GP = new Geoprocessor(gpUrl);
         var parms = {
@@ -246,7 +246,7 @@ export default {
             // ;
             Kriging_GP.getResultData(
               jobinfo.jobId,
-              "GeographicallyWeightedRegression10"
+              "GeographicallyWeightedRegression13"
             ).then(function(results) {
               // console.log("projected points: ", results.value.features.length);
               var GwrPoint = results.value.features;
@@ -424,7 +424,7 @@ export default {
     doGP1(featureSet) {
       debugger;
       var gpUrl =
-        "http://122.112.216.247:6080/arcgis/rest/services/Servers/kingModel/GPServer";
+        "http://122.112.216.247:6080/arcgis/rest/services/Servers/gwrlastresult/GPServer/GWRModel";
       mapApi.esriApi.GetGeoprocessor().then(Geoprocessor => {
         var Kriging_GP = new Geoprocessor(gpUrl);
         this.krigingGP = Kriging_GP;
