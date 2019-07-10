@@ -1,5 +1,5 @@
 <template>
-  <layout>
+  <layout :style="{height:'100%'}">
     <Sider ref="side1" :width='180'>
       <sider-menu/>
     </Sider>

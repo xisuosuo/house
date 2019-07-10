@@ -1,5 +1,5 @@
 <template>
-  <Layout>
+  <Layout :style="{height:'100%'}">
     <Content>
       <div style="margin: 0 auto;margin-top: 5px;width:1100px;">
         <Row>
