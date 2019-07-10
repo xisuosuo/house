@@ -121,11 +121,6 @@ export default {
           align: 'center',
         },
         {
-          title: "教育资源",
-          key: "serverName",
-          align: 'center',
-        },
-        {
           title: "小区到教育资源可达性",
           key: "accessibilityLevel",
           align: 'center',
