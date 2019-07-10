@@ -20,7 +20,7 @@
                 空间查询
               </template>
               <MenuItem name="3-1">
-              <span @click="siteSelect">条件选房</span>
+              <span class="kjcx" @click="siteSelect()">条件选房</span>
               </MenuItem>
 
               <Submenu name="4">
@@ -28,15 +28,15 @@
                   数据统计
                 </template>
                 <MenuItem name="4-1-2">
-                <span @click="selectHouse() ">公共设施</span>
+                <span class="kjcx" @click="selectHouse() ">公共设施</span>
                 </MenuItem>
                 <MenuItem name="4-1-3">
-                <span @click="selectBuffer() ">缓冲区查询</span>
+                <span class="kjcx" @click="selectBuffer() ">缓冲区查询</span>
                 </MenuItem>
               </Submenu>
 
               <MenuItem name="4-2">
-              <span @click="controlAnlayse">周边设施</span>
+              <span class="kjcx" @click="controlAnlayse()">周边设施</span>
               </MenuItem>
 
             </Submenu>
@@ -378,6 +378,9 @@ export default {
 };
 </script>
 <style lang="less" scoped>
+.kjcx{
+  display: block;
+}
 .ivu-form-item {
   margin-bottom: 12px;
   vertical-align: top;
