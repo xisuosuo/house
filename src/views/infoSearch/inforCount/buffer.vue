@@ -1,13 +1,13 @@
 <template>
   <Modal v-model="dialog2" :mask-closable="false" width="400" title="缓冲区查询" draggable>
     <Form :label-width="60">
-
       <FormItem label="半径：" prop="zoning" :width="80">
-        <Input v-model="distance" placeholder="" clearable :width="10">
-        </Input>  千米
+        <div style="width:260px ;display:inline-block">
+        <Input v-model="distance" placeholder="" clearable  >
+          </Input>
+        </div>
+        <span style="width:20px;margin-left:15px">千米</span>
       </FormItem>
-
-
       <FormItem label="选点：" prop="zoning">
         <Button shape="circle" title="自定义选点" @click="createPoint">
           <span>
@@ -97,8 +97,8 @@ export default {
   }
 };
 </script>
-<style>
-.ivu-input {
+<style >
+/* .ivu-input {
     display: inline-block;
     width: 80%;
     height: 32px;
@@ -113,7 +113,7 @@ export default {
     position: relative;
     cursor: text;
     transition: border .2s ease-in-out,background .2s ease-in-out,box-shadow .2s ease-in-out;
-}
+} */
 </style>
 
  
