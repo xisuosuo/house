@@ -1,5 +1,5 @@
 <template>
-    <layout>
+    <layout :style="{height:'100%'}">
         <Sider ref="side1" :width='180'>
             <sider-menu/>>
         </Sider>
@@ -10,8 +10,8 @@
                     <BreadcrumbItem v-for="(item,idx) in $route.matched" :key="idx" :to="(item.path)">{{item.name}}</BreadcrumbItem>
                 </Breadcrumb>
             </Header>
-            <div style="margin: 0 auto;margin-top: 5px;width:900px;">
-                <Card style="height:1500px">
+            <div style="margin: 0 auto;margin-top: 5px;width:1300px;">
+                <Card style="height:1500px;">
                     <Tabs type="card">
                         <TabPane label="模型XX">
                             <Collapse v-model="value1">
