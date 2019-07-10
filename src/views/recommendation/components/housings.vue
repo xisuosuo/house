@@ -1,121 +1,38 @@
 <template>
     <Layout>
         <Content>
-            <div  style="margin: 0 auto;width: 95%;">
+            <!--<Tabs type="card" style="margin: 0 auto;width: 95%;">-->
                 <!--<TabPane label="基于用户推荐">-->
-                    <Card>
-                        <span style="margin: 15px">昵称:</span>
-                        <span>{{this.user}}</span>
-                        <span style="margin: 15px">年龄:</span>
-                        <span>{{this.userage}}</span>
-                        <span style="margin: 15px">资金:</span>
-                        <span>{{this.money}}</span>
-                        <span style="margin: 15px">教育程度:</span>
-                        <span>{{this.educations}}</span>
-                        <span style="margin: 15px">用户类型:</span>
-                        <span>{{this.userInfo.roleName}}</span>
-                        <span style="margin: 15px">注册时间:</span>
-                        <span>{{this.userInfo.createTime}}</span>
-                        <router-link to="/personal">
-                        <Button style="margin-right: 20px;margin-left: 20px">更新基本信息</Button>
-                        </router-link>
-                        <router-link to="/personalcenter">
-                        <Button style="margin-right: 20px">查看收藏小区</Button>
-                        </router-link>
-                    </Card>
-                    <Card>
-                        <Row :gutter="30">
-                            <div v-for="(value,index) in information1">
-                                <Col span="8">
-                                    <Card style="padding: 0;">
-                                        <div style="text-align:center">
-                                            <img @click="getInfo(index,value)" style="width: 320px;height: 230px"
-                                                 v-bind:src="value.image" alt="">
-                                            <div style="overflow: hidden">
-                                                <h2 style="float: left;font-size: 15px">{{value.name}}</h2>
-                                                <img v-if="value.collected == '0'" :src=uncollect alt="" title="收藏"
-                                                     @click="Collection(index,value)"
-                                                     style="width: 15px;height: 15px;margin-top: 7px;margin-left: 15px;float: left">
-                                                <img v-else-if="value.collected == '1'" :src=collect alt="" title="取消收藏"
-                                                     @click="Collection(index,value)"
-                                                     style="width: 15px;height: 15px;margin-top: 7px;margin-left: 15px;float: left">
-                                                <span style="float: right">{{value.price}}元/㎡</span>
-                                            </div>
-                                        </div>
-                                    </Card>
-                                </Col>
-                            </div>
-                        </Row>
-                    </Card>
-                    <card>
-                        <div>
-                            <div v-for="(value,index) in information2" :key="index">
-                                <div @click="location(index,value)" style="border-bottom:1px solid #999">
-                                    <Row>
-                                        <Col span="7">
-                                            <div class="left mend_img">
-                                                <img style="width: 250px;height: 150px;margin-top: 20px;margin-bottom: 10px"
-                                                     v-bind:src="value.image"/>
-                                            </div>
-                                        </Col>
-                                        <Col span="17">
-                                            <div class="left name" style="margin-top: 35px">
-                                                <div style="margin-top: 25px;float: right;margin-right: 10%">
-                                                    <span style="color: red;font-weight: bold;">均价：{{value.price}}元/㎡</span>
-                                                    <p style="margin-top: 5px;font-size: 13px">
-                                                        <span>楼层高度：{{value.houseHeight}}</span>
-                                                    </p>
-                                                    <p style="margin-top: 5px;font-size: 13px">
-                                                        <span>销售情况：{{value.isSelling}}</span>
-                                                    </p>
-                                                    <p style="margin-top: 5px;font-size: 13px">
-                                                        <span>停车位：{{value.parkingSpace}}个</span>
-                                                    </p>
-                                                </div>
-                                                <h2 style="display:inline-block;font-size: 15px">{{value.name}}</h2>
-                                                <img v-if="value.collected == '0'" :src=uncollect alt="" title="收藏"
-                                                     @click="Collection(index,value)" id="index"
-                                                     style="width: 15px;height: 15px;margin-left: 20px">
-                                                <img v-else-if="value.collected == '1'" :src=collect alt="" title="取消收藏"
-                                                     @click="Collection(index,value)"
-                                                     style="width: 15px;height: 15px;margin-left: 20px">
-
-                                                <p style="margin-top: 5px;font-size: 13px">
-                                                    <span>价格说明：</span>在{{value.minPrice}}元/㎡ ~ {{value.maxPrice}}元/㎡之间
-                                                </p>
-                                                <p style="margin-top: 5px;font-size: 13px">
-                                                    <span>物业类型：</span>{{value.houseType}}</p>
-                                                <p style="margin-top: 5px;font-size: 13px">
-                                                    <span>地址：</span>{{value.address}}</p>
-                                                <p style="margin-top: 5px">
-                                                    <a @click="getInfo(index,value)"
-                                                       style="font-size: 10px">查看小区详情>></a>
-                                                </p>
-                                            </div>
-                                        </Col>
-                                    </Row>
-                                </div>
-                            </div>
-                        </div>
-                    </card>
-                <!--</TabPane>-->
-                <!--<TabPane label="基于住宅推荐">-->
                     <!--<Card>-->
-                        <!--<div>-->
-                            <!--<Input v-model="value6" placeholder="请输入小区名" style="width: 200px;margin: 10px;" />-->
-                            <!--<Button type="primary" @click="getSmiarly" class="submit">确定</Button>-->
-                        <!--</div>-->
+                        <!--<span style="margin: 15px">昵称:</span>-->
+                        <!--<span>{{this.user}}</span>-->
+                        <!--<span style="margin: 15px">年龄:</span>-->
+                        <!--<span>{{this.userage}}</span>-->
+                        <!--<span style="margin: 15px">资金:</span>-->
+                        <!--<span>{{this.money}}</span>-->
+                        <!--<span style="margin: 15px">教育程度:</span>-->
+                        <!--<span>{{this.educations}}</span>-->
+                        <!--<span style="margin: 15px">用户类型:</span>-->
+                        <!--<span>{{this.userInfo.roleName}}</span>-->
+                        <!--<span style="margin: 15px">注册时间:</span>-->
+                        <!--<span>{{this.userInfo.createTime}}</span>-->
+                        <!--<router-link to="/personal">-->
+                            <!--<Button style="margin-right: 20px;margin-left: 20px">更新基本信息</Button>-->
+                        <!--</router-link>-->
+                        <!--<router-link to="/personalcenter">-->
+                            <!--<Button style="margin-right: 20px">查看收藏小区</Button>-->
+                        <!--</router-link>-->
                     <!--</Card>-->
-                    <!--<div>-->
+                    <!--<Card>-->
                         <!--<Row :gutter="30">-->
-                            <!--<div v-for="(value,index) in BaseOnHouses">-->
+                            <!--<div v-for="(value,index) in information1">-->
                                 <!--<Col span="8">-->
                                     <!--<Card style="padding: 0;">-->
                                         <!--<div style="text-align:center">-->
                                             <!--<img @click="getInfo(index,value)" style="width: 320px;height: 230px"-->
                                                  <!--v-bind:src="value.image" alt="">-->
                                             <!--<div style="overflow: hidden">-->
-                                                <!--<h2 style="float: left;font-size: 16px">{{value.name}}</h2>-->
+                                                <!--<h2 style="float: left;font-size: 15px">{{value.name}}</h2>-->
                                                 <!--<img v-if="value.collected == '0'" :src=uncollect alt="" title="收藏"-->
                                                      <!--@click="Collection(index,value)"-->
                                                      <!--style="width: 15px;height: 15px;margin-top: 7px;margin-left: 15px;float: left">-->
@@ -129,9 +46,92 @@
                                 <!--</Col>-->
                             <!--</div>-->
                         <!--</Row>-->
-                    <!--</div>-->
+                    <!--</Card>-->
+                    <!--<card>-->
+                        <!--<div>-->
+                            <!--<div v-for="(value,index) in information2" :key="index">-->
+                                <!--<div @click="location(index,value)" style="border-bottom:1px solid #999">-->
+                                    <!--<Row>-->
+                                        <!--<Col span="7">-->
+                                            <!--<div class="left mend_img">-->
+                                                <!--<img style="width: 250px;height: 150px;margin-top: 20px;margin-bottom: 10px"-->
+                                                     <!--v-bind:src="value.image"/>-->
+                                            <!--</div>-->
+                                        <!--</Col>-->
+                                        <!--<Col span="17">-->
+                                            <!--<div class="left name" style="margin-top: 35px">-->
+                                                <!--<div style="margin-top: 25px;float: right">-->
+                                                    <!--<span style="color: red;font-weight: bold;">均价：{{value.price}}元/㎡</span>-->
+                                                    <!--<p style="margin-top: 5px;font-size: 13px">-->
+                                                        <!--<span>楼层高度：{{value.houseHeight}}</span>-->
+                                                    <!--</p>-->
+                                                    <!--<p style="margin-top: 5px;font-size: 13px">-->
+                                                        <!--<span>销售情况：{{value.isSelling}}</span>-->
+                                                    <!--</p>-->
+                                                    <!--<p style="margin-top: 5px;font-size: 13px">-->
+                                                        <!--<span>停车位：{{value.parkingSpace}}个</span>-->
+                                                    <!--</p>-->
+                                                <!--</div>-->
+                                                <!--<h2 style="display:inline-block;font-size: 15px">{{value.name}}</h2>-->
+                                                <!--<img v-if="value.collected == '0'" :src=uncollect alt="" title="收藏"-->
+                                                     <!--@click="Collection(index,value)" id="index"-->
+                                                     <!--style="width: 15px;height: 15px;margin-left: 20px">-->
+                                                <!--<img v-else-if="value.collected == '1'" :src=collect alt="" title="取消收藏"-->
+                                                     <!--@click="Collection(index,value)"-->
+                                                     <!--style="width: 15px;height: 15px;margin-left: 20px">-->
+
+                                                <!--<p style="margin-top: 5px;font-size: 13px">-->
+                                                    <!--<span>价格说明：</span>在{{value.minPrice}}元/㎡ ~ {{value.maxPrice}}元/㎡之间-->
+                                                <!--</p>-->
+                                                <!--<p style="margin-top: 5px;font-size: 13px">-->
+                                                    <!--<span>物业类型：</span>{{value.houseType}}</p>-->
+                                                <!--<p style="margin-top: 5px;font-size: 13px">-->
+                                                    <!--<span>地址：</span>{{value.address}}</p>-->
+                                                <!--<p style="margin-top: 5px">-->
+                                                    <!--<a @click="getInfo(index,value)"-->
+                                                       <!--style="font-size: 10px">查看小区详情>></a>-->
+                                                <!--</p>-->
+                                            <!--</div>-->
+                                        <!--</Col>-->
+                                    <!--</Row>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</card>-->
                 <!--</TabPane>-->
-            </div>
+                <div style="margin: 0 auto;width: 95%;">
+                    <Card>
+                        <div>
+                            <Input v-model="value6" placeholder="请输入小区名" style="width: 200px;margin: 10px;" />
+                            <Button type="primary" @click="getSmiarly" class="submit">确定</Button>
+                        </div>
+                    </Card>
+                    <div>
+                        <Row :gutter="30">
+                            <div v-for="(value,index) in BaseOnHouses">
+                                <Col span="8">
+                                    <Card style="padding: 0;">
+                                        <div style="text-align:center">
+                                            <img @click="getInfo(index,value)" style="width: 320px;height: 230px"
+                                                 v-bind:src="value.image" alt="">
+                                            <div style="overflow: hidden">
+                                                <h2 style="float: left;font-size: 16px">{{value.name}}</h2>
+                                                <img v-if="value.collected == '0'" :src=uncollect alt="" title="收藏"
+                                                     @click="Collection(index,value)"
+                                                     style="width: 15px;height: 15px;margin-top: 7px;margin-left: 15px;float: left">
+                                                <img v-else-if="value.collected == '1'" :src=collect alt="" title="取消收藏"
+                                                     @click="Collection(index,value)"
+                                                     style="width: 15px;height: 15px;margin-top: 7px;margin-left: 15px;float: left">
+                                                <span style="float: right">{{value.price}}元/㎡</span>
+                                            </div>
+                                        </div>
+                                    </Card>
+                                </Col>
+                            </div>
+                        </Row>
+                    </div>
+                </div>
+            <!--</Tabs>-->
         </Content>
     </Layout>
 </template>
@@ -418,22 +418,22 @@
 
 <style lang="less" >
     /*.userMessage.span{*/
-        /*margin-left: 20px;*/
+    /*margin-left: 20px;*/
     /*}*/
     /*.ivu-form-item-content {*/
-        /*position: relative;*/
-        /*line-height: 32px;*/
-        /*font-size: 14px;*/
+    /*position: relative;*/
+    /*line-height: 32px;*/
+    /*font-size: 14px;*/
     /*}*/
     /*.ivu-form .ivu-form-item-label {*/
-        /*text-align: right;*/
-        /*vertical-align: middle;*/
-        /*float: left;*/
-        /*font-size: 14px;*/
-        /*color: #515a6e;*/
-        /*line-height: 1;*/
-        /*padding: 10px 12px 10px 0;*/
-        /*box-sizing: border-box;*/
+    /*text-align: right;*/
+    /*vertical-align: middle;*/
+    /*float: left;*/
+    /*font-size: 14px;*/
+    /*color: #515a6e;*/
+    /*line-height: 1;*/
+    /*padding: 10px 12px 10px 0;*/
+    /*box-sizing: border-box;*/
     /*}*/
     .ivu-tabs-bar {
         margin-bottom: 0;

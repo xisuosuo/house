@@ -82,14 +82,21 @@
                     </MenuItem>
                 </router-link>
             </Submenu>
-
+            <Submenu name="6">
+                <template slot="title">
+                    <Icon type="md-thumbs-up" />房源推荐
+                </template>
             <router-link to="/recommendation/housingPreference">
                 <MenuItem name="6-1">
-                <Icon type="md-thumbs-up" />
-                <span class="siderItem">房源推荐</span>
+                <span class="siderItem">基于用户推荐</span>
                 </MenuItem>
             </router-link>
-
+                <router-link to="/recommendation/housings">
+                    <MenuItem name="6-2">
+                        <span class="siderItem">基于住宅推荐</span>
+                    </MenuItem>
+                </router-link>
+            </Submenu>
             <Submenu name="7">
                 <template slot="title">
                     <Icon type="ios-radio" />房价分析

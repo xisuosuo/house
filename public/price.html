@@ -36,7 +36,7 @@
 <body>
     <!-- <button id="del">清除渲染</button> -->
     <div id="map"></div>
-    <div id="showdata" style="width: 500px;height: 200px;position: fixed;right:30px;top: 100px;"></div>
+    <div id="showdata" style="width: 500px;height: 200px;position: fixed;right:30px;bottom: 100px;"></div>
     <script src="ArcGISEcharts4.js"></script>
     <script>
         var dojoConfig = {
@@ -428,7 +428,7 @@
 
                 option = {
                     title: {
-                        text: '滁州市房价变化分析',
+                        // text: '滁州市房价变化分析',
                         // subtext: 'Data from 房价',
                         left: 'center',
                         textStyle: {
@@ -443,21 +443,21 @@
                         }
                     },
                     legend: {
+
                         orient: 'vertical',
                         top: '50px',
                         right: '50px',
-                        data: ['房价', 'Top 5'],
+                        data: ['所有小区', 'Top 5 小区'],
                         textStyle: {
                             color: '#111'
                         }
                     },
                     visualMap: {
                         min: 0,
-                        max: 180,
+                        max: 1800,
                         calculable: true,
                         inRange: {
-                            color: ['#800026', '#BD0026', '#E31A1C', '#FC4E2A', '#FEB24C',
-                                '#BD0026', '#BD0026'
+                            color: ['#2d8cf0', '#2d8cf0', '#2d8cf0', '#2d8cf0', '#2d8cf0', '#2d8cf0', '#2d8cf0'
                             ],
                             symbolSize: [1, 20]
                         },
@@ -486,8 +486,7 @@
                     },
                     series: [
                         {
-                            backgroundColor: '#fff',
-                            name: '房价',
+                            name: '所有小区',
                             type: 'scatter',
                             coordinateSystem: 'geo',
                             data:convertData(data),
@@ -505,13 +504,12 @@
                             },
                             itemStyle: {
                                 normal: {
-                                    color: '#ddb926'
+                                    color: '#2d8cf0'
                                 }
                             }
                         },
                         {
-                            backgroundColor: '#fff',
-                            name: 'Top 5',
+                            name: 'Top 5 小区',
                             type: 'effectScatter',
                             coordinateSystem: 'geo',
                             data: convertData(data.sort(function (a, b) {
@@ -520,6 +518,7 @@
                             symbolSize: function (val) {
                                 return val[2] / 10;
                             },
+                            backgroundColor: '#ff0000',
                             showEffectOn: 'render',
                             rippleEffect: {
                                 brushType: 'stroke'
@@ -534,9 +533,9 @@
                             },
                             itemStyle: {
                                 normal: {
-                                    color: '#f4e925',
+                                    color: '#ff0000',
                                     shadowBlur: 10,
-                                    shadowColor: '#BD0026'
+                                    shadowColor: '#ff0000'
                                 }
                             },
                             zlevel: 1
