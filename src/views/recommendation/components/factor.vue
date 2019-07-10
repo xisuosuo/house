@@ -188,7 +188,7 @@
           </Card>
           </Col>
           <Col span="4">
-          <div style="margin:0">
+          <div style="  margin:0">
             <img class="light" v-show="!downIcon" @click="change" src="../../../assets/img/lightbulb1.png">
             <img class="light" v-show="downIcon" @click="change" src="../../../assets/img/lightbulb2.png">
             <Alert type=success id="tip" style="width:200px;margin:0">

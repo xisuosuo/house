@@ -30,33 +30,38 @@
                   </Col>
                   <Col span="12">
                   <div style="margin-top:40px;margin-left: 10px">
-                    <div>
+                    <div style="margin: 10px">
                       <div class="key">
                         <strong>楼盘最低价:</strong>
                       </div>
                       <div class="value light">
-                        <span class="price">{{this.houseInfo.price}}</span> 元/平方米
+                        <span class="price">{{this.houseInfo.price}}</span><span style="font-size: 14px">元/平方米</span>
                       </div>
-                      <Form :model="formItem" :label-width="70">
-                        <FormItem label="价格说明:">
-                          <span>在{{this.houseInfo.minPrice}}元/㎡ ~ {{this.houseInfo.maxPrice}}元/㎡之间</span>
-                        </FormItem>
-                        <FormItem label="建筑类型:">
-                          <span>{{this.houseInfo.houseFeature}}</span>
-                        </FormItem>
-                        <FormItem label="物业类型:">
-                          <span>{{this.houseInfo.houseType}}</span>
-                        </FormItem>
-                        <FormItem label="楼盘高度:">
-                          <span>{{this.houseInfo.houseHeight}}</span>
-                        </FormItem>
-                        <FormItem label="主力户型:">
-                          <span>{{this.detailList[0].imagename}}</span>
-                        </FormItem>
-                        <FormItem label="楼盘位置:">
-                          <span>{{this.houseInfo.address}}</span>
-                        </FormItem>
-                      </Form>
+                      <div class="prices">
+                        <span>价格说明:</span>
+                        <span>在{{this.houseInfo.minPrice}}元/㎡ ~ {{this.houseInfo.maxPrice}}元/㎡之间</span>
+                      </div>
+                      <div class="prices">
+                        <span>建筑类型:</span>
+                        <span>{{this.houseInfo.houseFeature}}</span>
+                      </div>
+
+                      <div class="prices">
+                        <span>楼盘高度:</span>
+                        <span>{{this.houseInfo.houseHeight}}</span>
+                      </div>
+                      <div class="prices">
+                        <span>主力户型:</span>
+                        <span>{{this.detailList[0].imagename}}</span>
+                      </div>
+                      <div class="prices">
+                        <span>物业类型:</span>
+                        <span>{{this.houseInfo.houseType}}</span>
+                      </div>
+                      <div class="prices">
+                        <span>楼盘位置:</span>
+                        <span>{{this.houseInfo.address}}</span>
+                      </div>
                     </div>
                   </div>
                   </Col>
@@ -78,7 +83,7 @@
                   </div>
                   </Col>
                   <Col span="12">
-                  <table style="margin-top: 50px">
+                  <table style="margin-top: 50px;margin-left: 20px">
                     <tbody>
                       <tr>
                         <td class="label-l">居室：</td>
@@ -119,6 +124,8 @@
                       <tr>
                         <td class="label-l">楼盘名称：</td>
                         <td valign="top" class="text-l"> {{this.houseInfo.name}}</td>
+                        <td class="label-l">所属学区：</td>
+                        <td valign="top" class="text-l" style="color: red"> {{this.houseInfo.schoolName}}</td>
                       </tr>
                       <tr>
                         <td class="label-l">物业类型：</td>
@@ -618,19 +625,25 @@ export default {
 
 .price {
   color: #e43;
-  font-size: 30px;
+  font-size: 16px;
   font-weight: 700;
   vertical-align: baseline;
-  margin-right: 5px;
+}
+.prices {
+  margin-bottom: 15px;
+  font-size: 14px;
+  vertical-align: baseline;
 }
 
 .key {
+  margin-bottom: 15px;
   font-size: 14px;
   display: inline-block;
   white-space: nowrap;
 }
 
 .label-l {
+  font-size: 14px;
   min-width: 70px;
   color: #666;
   text-align: right;
@@ -641,6 +654,7 @@ export default {
 }
 
 .label-r {
+  font-size: 14px;
   width: 74px;
   text-align: right;
   color: #666;
@@ -651,18 +665,21 @@ export default {
 }
 
 .text-l {
+  font-size: 14px;
   line-height: 24px;
   vertical-align: top;
   padding: 5px 40px 5px 4px;
 }
 
 .text-r {
+  font-size: 14px;
   line-height: 24px;
   overflow: hidden;
   display: inline-block;
 }
 
 tr {
+  font-size: 14px;
   display: table-row;
   vertical-align: inherit;
   border-color: inherit;
