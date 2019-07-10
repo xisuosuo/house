@@ -12,110 +12,110 @@
       </Header>
       <Tabs type="card" style="margin: 0 auto;width: 95%;">
         <TabPane label="基本信息">
-          <div >
+          <div>
             <Row :gutter="30">
               <Col span="12">
-                <div style="border: 1px solid #dcdee2;">
-                  <Row>
-                    <Col span="12">
-                      <div style="padding: 5px">
-                  <span style="font-size: 14px">
-                    <strong>楼盘首页:</strong>
-                  </span>
-                        <span style="font-size: 14px">
-                    <strong>{{this.houseInfo.name}}</strong>
-                  </span>
-                        <img style="height: 250px;width: 300px;margin: 10px" v-bind:src="this.houseInfo.image" alt="">
+              <div style="border: 1px solid #dcdee2;">
+                <Row>
+                  <Col span="12">
+                  <div style="padding: 5px">
+                    <span style="font-size: 14px">
+                      <strong>楼盘首页:</strong>
+                    </span>
+                    <span style="font-size: 14px">
+                      <strong>{{this.houseInfo.name}}</strong>
+                    </span>
+                    <img style="height: 250px;width: 300px;margin: 10px" v-bind:src="this.houseInfo.image" alt="">
+                  </div>
+                  </Col>
+                  <Col span="12">
+                  <div style="margin-top:40px;margin-left: 10px">
+                    <div>
+                      <div class="key">
+                        <strong>楼盘最低价:</strong>
                       </div>
-                    </Col>
-                    <Col span="12">
-                      <div style="margin-top:40px;margin-left: 10px">
-                        <div>
-                          <div class="key">
-                            <strong>楼盘最低价:</strong>
-                          </div>
-                          <div class="value light">
-                            <span class="price">{{this.houseInfo.price}}</span> 元/平方米
-                          </div>
-                          <Form :model="formItem" :label-width="70">
-                            <FormItem label="价格说明:">
-                              <span>在{{this.houseInfo.minPrice}}元/㎡ ~ {{this.houseInfo.maxPrice}}元/㎡之间</span>
-                            </FormItem>
-                            <FormItem label="建筑类型:">
-                              <span>{{this.houseInfo.houseFeature}}</span>
-                            </FormItem>
-                            <FormItem label="物业类型:">
-                              <span>{{this.houseInfo.houseType}}</span>
-                            </FormItem>
-                            <FormItem label="楼盘高度:">
-                              <span>{{this.houseInfo.houseHeight}}</span>
-                            </FormItem>
-                            <FormItem label="主力户型:">
-                              <span>{{this.detailList[0].imagename}}</span>
-                            </FormItem>
-                            <FormItem label="楼盘位置:">
-                              <span>{{this.houseInfo.address}}</span>
-                            </FormItem>
-                          </Form>
-                        </div>
+                      <div class="value light">
+                        <span class="price">{{this.houseInfo.price}}</span> 元/平方米
                       </div>
-                    </Col>
-                  </Row>
-                </div>
+                      <Form :model="formItem" :label-width="70">
+                        <FormItem label="价格说明:">
+                          <span>在{{this.houseInfo.minPrice}}元/㎡ ~ {{this.houseInfo.maxPrice}}元/㎡之间</span>
+                        </FormItem>
+                        <FormItem label="建筑类型:">
+                          <span>{{this.houseInfo.houseFeature}}</span>
+                        </FormItem>
+                        <FormItem label="物业类型:">
+                          <span>{{this.houseInfo.houseType}}</span>
+                        </FormItem>
+                        <FormItem label="楼盘高度:">
+                          <span>{{this.houseInfo.houseHeight}}</span>
+                        </FormItem>
+                        <FormItem label="主力户型:">
+                          <span>{{this.detailList[0].imagename}}</span>
+                        </FormItem>
+                        <FormItem label="楼盘位置:">
+                          <span>{{this.houseInfo.address}}</span>
+                        </FormItem>
+                      </Form>
+                    </div>
+                  </div>
+                  </Col>
+                </Row>
+              </div>
               </Col>
               <Col span="12">
-                <div style="border: 1px solid #dcdee2;">
-                  <Row>
-                    <Col span="12">
-                      <div style="padding: 5px">
-                  <span style="font-size: 14px">
-                    <strong>户型:</strong>
-                  </span>
-                        <span style="font-size: 14px">
-                    <strong>{{this.detailList[0].imagename}}</strong>
-                  </span>
-                        <img style="height: 250px;width: 300px;margin: 10px" :src=detailList[0].image alt="">
-                      </div>
-                    </Col>
-                    <Col span="12">
-                      <table style="margin-top: 50px">
-                        <tbody>
-                        <tr>
-                          <td class="label-l">居室：</td>
-                          <td valign="top" class="text-l"> {{this.detailList[0].imagename}}</td>
-                        </tr>
-                        <tr>
-                          <td class="label-l">层高：</td>
-                          <td valign="top" class="text-l"> 暂无</td>
-                        </tr>
-                        <tr>
-                          <td class="label-l">户型朝向：</td>
-                          <td valign="top" class="text-l"> 南</td>
-                        </tr>
-                        <tr>
-                          <td class="label-l">建筑面积：</td>
-                          <td valign="top" class="text-l"> 74.0平米</td>
-                        </tr>
-                        <tr>
-                          <td class="label-l">详情：</td>
-                          <td valign="top" class="text-l">{{this.detailList[0].charact}}</td>
-                        </tr>
-                        </tbody>
-                      </table>
-                    </Col>
-                  </Row>
-                </div>
+              <div style="border: 1px solid #dcdee2;">
+                <Row>
+                  <Col span="12">
+                  <div style="padding: 5px">
+                    <span style="font-size: 14px">
+                      <strong>户型:</strong>
+                    </span>
+                    <span style="font-size: 14px">
+                      <strong>{{this.detailList[0].imagename}}</strong>
+                    </span>
+                    <img style="height: 250px;width: 300px;margin: 10px" :src=detailList[0].image alt="">
+                  </div>
+                  </Col>
+                  <Col span="12">
+                  <table style="margin-top: 50px">
+                    <tbody>
+                      <tr>
+                        <td class="label-l">居室：</td>
+                        <td valign="top" class="text-l"> {{this.detailList[0].imagename}}</td>
+                      </tr>
+                      <tr>
+                        <td class="label-l">层高：</td>
+                        <td valign="top" class="text-l"> 暂无</td>
+                      </tr>
+                      <tr>
+                        <td class="label-l">户型朝向：</td>
+                        <td valign="top" class="text-l"> 南</td>
+                      </tr>
+                      <tr>
+                        <td class="label-l">建筑面积：</td>
+                        <td valign="top" class="text-l"> 74.0平米</td>
+                      </tr>
+                      <tr>
+                        <td class="label-l">详情：</td>
+                        <td valign="top" class="text-l">{{this.detailList[0].charact}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  </Col>
+                </Row>
+              </div>
 
               </Col>
             </Row>
             <br>
             <Row :gutter="30">
               <Col span="12">
-                <div style="border: 1px solid #dcdee2;height: 280px">
-                  <div style="padding: 14px">
-                    <h3>基本信息</h3>
-                    <table class="table-noline">
-                      <tbody>
+              <div style="border: 1px solid #dcdee2;height: 280px">
+                <div style="padding: 14px">
+                  <h3>基本信息</h3>
+                  <table class="table-noline">
+                    <tbody>
                       <tr>
                         <td class="label-l">楼盘名称：</td>
                         <td valign="top" class="text-l"> {{this.houseInfo.name}}</td>
@@ -150,45 +150,45 @@
                         <td class="label-r">建筑面积：</td>
                         <td valign="top" class="text-r">{{this.houseInfo.area}}㎡</td>
                       </tr>
-                      </tbody>
-                    </table>
-                  </div>
-
+                    </tbody>
+                  </table>
                 </div>
+
+              </div>
               </Col>
               <Col span="12">
-                <div style="border: 1px solid #dcdee2;">
-                  <div style="padding: 14px;height: 280px;overflow-y: scroll">
-                    <div>
-                      <h3 style="display:inline-block">楼盘评论</h3>
-                      <Button type="primary" style="float:right" @click="write">写评论</Button>
-                    </div>
-                    <Modal v-model="modal1" title="你的评价" @on-ok="ok">
-                      <Input v-model="form.houseComments" type="textarea" :autosize="{minRows: 5,maxRows: 10}" placeholder="评价字数100-120字" />
-                      <Rate v-model="form.houseScore" />
-                    </Modal>
-                    <Row v-for="(v,k) in commentList" :key="k" style="margin-top:20px">
-                      <Col span="6">
-                        <div class="avatar" style="text-align:center;">
-                          <img style="width: 60px;height: 60px;border-radius: 50%;" src="../../../assets/img/u=3085477210,754180516&fm=11&gp=0.jpg" />
-                        </div>
-                        <div style="width:140px;text-align:center;">
-                          <span style="font-weight:bold;font-size: 1.17em;"> 系统用户:</span>
-                          {{v.userNickName}}
-                        </div>
-                      </Col>
-                      <Col span="8">
-                        <div style="width:450px;background-color:#f9f9f9">
-                          <Rate disabled v-model="v.houseScore" />
-                          <div>{{v.houseComments}}</div>
-                          <div style="margin-top:5px;text-align:right">
-                            <span style="font-weight:bold;"> 评论时间：</span>{{v.commentTime}}
-                          </div>
-                        </div>
-                      </Col>
-                    </Row>
+              <div style="border: 1px solid #dcdee2;">
+                <div style="padding: 14px;height: 280px;overflow-y: scroll">
+                  <div>
+                    <h3 style="display:inline-block">楼盘评论</h3>
+                    <Button type="primary" style="float:right" @click="write">写评论</Button>
                   </div>
+                  <Modal v-model="modal1" title="你的评价" @on-ok="ok">
+                    <Input v-model="form.houseComments" type="textarea" :autosize="{minRows: 5,maxRows: 10}" placeholder="评价字数100-120字" />
+                    <Rate v-model="form.houseScore" />
+                  </Modal>
+                  <Row v-for="(v,k) in commentList" :key="k" style="margin-top:20px">
+                    <Col span="6">
+                    <div class="avatar" style="text-align:center;">
+                      <img style="width: 60px;height: 60px;border-radius: 50%;" src="../../../assets/img/u=3085477210,754180516&fm=11&gp=0.jpg" />
+                    </div>
+                    <div style="width:140px;text-align:center;">
+                      <span style="font-weight:bold;font-size: 1.17em;"> 系统用户:</span>
+                      {{v.userNickName}}
+                    </div>
+                    </Col>
+                    <Col span="8">
+                    <div style="width:450px;background-color:#f9f9f9">
+                      <Rate disabled v-model="v.houseScore" />
+                      <div>{{v.houseComments}}</div>
+                      <div style="margin-top:5px;text-align:right">
+                        <span style="font-weight:bold;"> 评论时间：</span>{{v.commentTime}}
+                      </div>
+                    </div>
+                    </Col>
+                  </Row>
                 </div>
+              </div>
               </Col>
             </Row>
           </div>
@@ -199,19 +199,19 @@
                 <span style="font-size: 14px">
                   <strong>相似小区:</strong>
                 </span>
-                  <div class="map" style="height: 200px;width: 100%;">
-                    <div v-for="(value,index) in BaseOnHouse" :key="index">
-                      <Col span="4">
-                        <img @click="onHouseclick(value,index)" style="width: 200px;height: 160px;margin: 5px" v-bind:src="value.image" alt="">
-                        <strong>
-                          <span>{{value.name}}</span>
-                        </strong>
-                        <a>
-                          <span style="margin: 20px">{{value.price}}元/㎡</span>
-                        </a>
-                      </Col>
-                    </div>
+                <div class="map" style="height: 200px;width: 100%;">
+                  <div v-for="(value,index) in BaseOnHouse" :key="index">
+                    <Col span="4">
+                    <img @click="onHouseclick(value,index)" style="width: 200px;height: 160px;margin: 5px" v-bind:src="value.image" alt="">
+                    <strong>
+                      <span>{{value.name}}</span>
+                    </strong>
+                    <a>
+                      <span style="margin: 20px">{{value.price}}元/㎡</span>
+                    </a>
+                    </Col>
                   </div>
+                </div>
                 </Col>
               </Row>
             </div>
@@ -226,9 +226,9 @@
               </ul>
               <Row>
                 <Col span="17">
-                  <div class="map" style="height: 570px;width: 100%;">
-                    <routerView ref="routerView" v-if="map"></routerView>
-                  </div>
+                <div class="map" style="height: 570px;width: 100%;">
+                  <routerView ref="routerView" v-if="map"></routerView>
+                </div>
                 </Col>
                 <Col span="7">
                 <div class="list">
@@ -291,7 +291,7 @@ export default {
         commentsTime: ""
       },
       modal1: false,
-        distance: "1000",
+      distance: "1000",
       form: {
         houseComments: "",
         houseScore: 0,
@@ -402,7 +402,7 @@ export default {
         params: {
           name: this.houseName,
           tableName: "BUSSTATION",
-            distance:this.distance
+          distance: this.distance
         }
       }).then(rsp => {
         var _this = this;
@@ -458,7 +458,7 @@ export default {
         params: {
           name: this.houseName,
           tableName: value.type,
-            distance:this.distance
+          distance: this.distance
         }
       }).then(rsp => {
         var _this = this;
@@ -552,7 +552,6 @@ export default {
       this.modal1 = true;
     },
     ok() {
-      this.form;
       debugger;
       Server.get({
         url: services.addHouseComments,
@@ -594,9 +593,9 @@ export default {
 </script>
 
 <style lang="less" >
-  .ivu-tabs-bar {
-    margin-bottom: 0;
-  }
+.ivu-tabs-bar {
+  margin-bottom: 0;
+}
 .layout-header-bar {
   background: #fff;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
