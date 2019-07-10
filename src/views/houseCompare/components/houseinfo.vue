@@ -83,7 +83,7 @@
                   </div>
                   </Col>
                   <Col span="12">
-                  <table style="margin-top: 50px;margin-left: 20px">
+                  <table style="margin-top: 50px;margin-left:30px">
                     <tbody>
                       <tr>
                         <td class="label-l">居室：</td>
