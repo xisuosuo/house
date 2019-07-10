@@ -117,7 +117,8 @@
             </router-link>
             <router-link to="/Kriging">
               <MenuItem name="9-1">
-              <span style="font-size: 13px">克里金插值预测</span>
+              <span style="font-size: 13px">克里金插值预测
+              </span>
               </MenuItem>
             </router-link>
 
@@ -181,6 +182,13 @@
                 <Option v-for="item in orderList" :value="item.type" :key="item.name">{{ item.name }}</Option>
               </Select>
             </FormItem>
+            <FormItem label="搜索半径" :label-width="60" prop="zoning" :width="10">
+              <div style="width:120px ;display:inline-block">
+                <Input v-model="distance" placeholder="" clearable></Input>
+                </Input>
+              </div>
+              <span style="width:20px;margin-left:10px">米</span>
+            </FormItem>
           </Form>
           <div slot="footer">
             <Button type="primary" size="large" long @click="gethousePoint">查询</Button>
@@ -190,83 +198,6 @@
       </Content>
     </Layout>
   </div>
-  <!-- <div class="screen" style="width:w_height"> -->
-  <!-- <Layout :height="w_height-55">
-    <Sider hide-trigger :width=" 70 " :height=" w_height ">
-      <div class="layout-menu ">
-        <ul>
-          <router-link to="/menu">
-            <li class="menu-home">
-              <a>
-                <span class="icon-home "></span>
-              </a>
-            </li>
-          </router-link>
-          <li class="menu-item " @click="siteSelect ">
-            <a class="nav-item ">
-              <div class="icon-wrap ">
-                <span class="menu-icon icon-collision "></span>
-              </div>
-              <div class="div-label ">
-                <span>条件选房</span>
-              </div>
-            </a>
-          </li>
-          <li class="menu-item ">
-            <a class="nav-item ">
-              <div class="icon-wrap ">
-                <span class="menu-icon icon-chart "></span>
-              </div>
-              <div class="div-label ">
-                <span>数据统计</span>
-              </div>
-            </a>
-            <ul class="sub-menu-item ">
-              <li>
-                <a @click="selectHouse() ">公共设施</a>
-              </li>
-              <li>
-                <a @click="selectBuffer() ">缓冲区分析</a>
-              </li>
-            </ul>
-
-          </li>
-          <li class="menu-item " @click="controlAnlayse">
-            <a class="nav-item ">
-              <div class="icon-wrap ">
-                <span class="menu-icon icon-search "></span>
-              </div>
-              <div class="div-label ">
-                <span>周边设施</span>
-              </div>
-            </a>
-          </li>
-        </ul>
-      </div>
-      <tool-form/>
-      <buffer/>
-      <Modal v-model="dialog3" :mask-closable="false" width="400" title="周边设施" draggable>
-        <Form :label-width="60">
-          <FormItem label="小区名：" prop="zoning">
-            <Input v-model="houseTitle" placeholder="" clearable></Input>
-          </FormItem>
-          <FormItem label="周边设施" prop="zoning">
-            <Select v-model="publicsheshi">
-              <Option v-for="item in orderList" :value="item.type" :key="item.name">{{ item.name }}</Option>
-            </Select>
-          </FormItem>
-        </Form>
-        <div slot="footer">
-          <Button type="primary" size="large" long @click="gethousePoint">查询</Button>
-        </div>
-      </Modal>
-    </Sider>
-    <Content>
-      <siteSelection v-if="site " v-on:change="getfalse($event) " :site="site " />
-      <router-view/>
-    </Content>
-  </Layout> -->
-  <!-- </div> -->
 </template>
 <script>
 import toolForm from "@/views/infoSearch/inforCount/public.vue";
@@ -288,8 +219,9 @@ export default {
   data() {
     return {
       show: true,
+      distance: "",
       isCollapsed: false,
-      path: "",
+      path: "10",
       site: false,
       publicsheshi: "",
       isPopup: true,
@@ -314,21 +246,25 @@ export default {
       this.$refs.side1.toggleCollapse();
     },
     gethousePoint() {
-      debugger;
-      Server.get({
-        url: services.road,
-        params: {
-          name: this.houseTitle,
-          tableName: this.publicsheshi
-        }
-      }).then(rsp => {
-        var _this = this;
-        if (rsp.status === 1) {
-          _this.list = rsp.data;
-          debugger;
-          this.showGraphics();
-        }
-      });
+      if (this.distance < 1000) {
+        this.$Message.warning("范围过小，未查询到数据");
+      } else {
+        Server.get({
+          url: services.road,
+          params: {
+            name: this.houseTitle,
+            tableName: this.publicsheshi,
+            distance: this.distance
+          }
+        }).then(rsp => {
+          var _this = this;
+          if (rsp.status === 1) {
+            _this.list = rsp.data;
+            debugger;
+            this.showGraphics();
+          }
+        });
+      }
     },
     showGraphics() {
       if (window.mapview.graphics.length == 0) {
@@ -378,7 +314,7 @@ export default {
 };
 </script>
 <style lang="less" scoped>
-.kjcx{
+.kjcx {
   display: block;
 }
 .ivu-form-item {

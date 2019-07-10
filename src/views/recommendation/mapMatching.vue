@@ -139,6 +139,7 @@ export default {
   },
   data() {
     return {
+        distance: "1000",
       count: 0,
       countCollect: "",
       houseName: [],
@@ -295,7 +296,7 @@ export default {
         url: services.road,
         params: {
           name: value.name,
-          tableName: "BUSSTATION"
+          tableName: "BUSSTATION",distance:this.distance
         }
       }).then(rsp => {
         var _this = this;

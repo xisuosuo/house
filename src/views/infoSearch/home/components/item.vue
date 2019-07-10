@@ -28,6 +28,7 @@ import housePoint from "@/vuex/store";
 export default {
   props: {
     data: {
+
       type: Object,
       default: {}
     },
@@ -38,6 +39,7 @@ export default {
   },
   data() {
     return {
+        distance: "1000",
       label: "",
       unit: ""
     };
@@ -63,7 +65,8 @@ export default {
             url: services.road,
             params: {
               name: name,
-              tableName: "BUSSTATION"
+              tableName: "BUSSTATION",
+                distance:this.distance
             }
           }).then(rsp => {
             debugger;

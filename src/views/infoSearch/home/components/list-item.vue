@@ -46,7 +46,8 @@ export default {
             url: services.road,
             params: {
               name: name,
-              tableName: "BUSSTATION"
+              tableName: "BUSSTATION",
+                distance:this.distance
             }
           }).then(rsp => {
             debugger;

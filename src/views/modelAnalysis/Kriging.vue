@@ -1,29 +1,32 @@
 <template>
-    <div class="layout">
-        <Layout :style="{height:'100%'}">
-            <Sider ref="side1" :width='180'>
-                <sider-menu/>
-            </Sider>
-            <Content>
-                <Header :style="{padding: 0}" class="layout-header-bar">
-                    <Breadcrumb>
-                        <Icon :class="rotateIcon" :style="{margin: '0 5px'}" type="md-menu" size="25"></Icon>
-                        <BreadcrumbItem v-for="(item,idx) in $route.matched" :key="idx" :to="(item.path)">{{item.name}}</BreadcrumbItem>
-                    </Breadcrumb>
-                </Header>
-                <div style="width:100%;height:880px">
-                    <div id="viewDiv" style=" padding: 0; margin: 0; height: 860px;width: 100%;;background-color: #FCF9F2"></div>
-                    <Button type="primary" @click="ongo" style="float:right;margin-top:10px;margin-left:10px;">房价预测
-                    </Button>
-                    <Button type="primary" @click="onSubmit" style="float:right;margin-top:10px">保存</Button>
-                </div>
-            </Content>
-        </Layout>
-    </div>
+  <div class="layout">
+    <Layout :style="{height:'100%'}">
+      <Sider ref="side1" :width='180'>
+        <sider-menu/>
+      </Sider>
+      <Content>
+        <Header :style="{padding: 0}" class="layout-header-bar">
+          <Breadcrumb>
+            <Icon :class="rotateIcon" :style="{margin: '0 5px'}" type="md-menu" size="25"></Icon>
+            <BreadcrumbItem v-for="(item,idx) in $route.matched" :key="idx" :to="(item.path)">{{item.name}}</BreadcrumbItem>
+          </Breadcrumb>
+        </Header>
+        <div style="width:100%;height:880px">
+          <div id="viewDiv" style=" padding: 0; margin: 0; height: 860px;width: 100%;;background-color: #FCF9F2"></div>
+        </div>
+        <div>
+          <Select v-model="model1" placeholder="地价"  style="width:200px;position:absolute;top:102px;right:2px">
+            <Option v-for="item in cityList" :value="item.value" :key="item.value">{{ item.label }}
+            </Option>
+          </Select>
+        </div>
+      </Content>
+    </Layout>
+  </div>
 
 </template>
 <script>
-    import SiderMenu from "@/views/main/siderMenu";
+import SiderMenu from "@/views/main/siderMenu";
 import axios from "axios";
 import esriLoader from "esri-loader";
 import { MapAPI } from "@/core/config/const";
@@ -32,6 +35,17 @@ import { debug } from "util";
 export default {
   data() {
     return {
+      model1: "C1_DJ",
+      cityList: [
+        {
+          value: "C1_DJ",
+          label: "地价"
+        },
+        {
+          value: "C2_RJL",
+          label: "容积率"
+        }
+      ],
       mapTileLayerLayers: "",
       TileLayerStreets: "",
       MapImageLayer: "",
@@ -45,7 +59,7 @@ export default {
       top: "-100px",
       width: 0,
       feature: "",
-        social: []
+      social: []
     };
   },
   mounted() {
@@ -123,9 +137,9 @@ export default {
         });
     },
     doGP(featureSet) {
-      debugger;
+      ;
       var gpUrl =
-        "http://122.112.216.247:6080/arcgis/rest/services/Servers/KING/GPServer/Model";
+        "http://122.112.216.247:6080/arcgis/rest/services/Servers/KING/GPServer/Last";
       mapApi.esriApi.GetGeoprocessor().then(Geoprocessor => {
         var Kriging_GP = new Geoprocessor(gpUrl);
         this.krigingGP = Kriging_GP;
@@ -143,7 +157,7 @@ export default {
     },
     gpJobComplete(jobinfo) {
       console.log(jobinfo);
-      debugger;
+      ;
       if (jobinfo.jobStatus == "job-succeeded") {
         mapApi.esriApi.GetImageParameters().then(ImageParameters => {
           var imageParams = new ImageParameters({
@@ -162,10 +176,9 @@ export default {
       }
     }
   },
-    components: {
-
-        SiderMenu
-    },
+  components: {
+    SiderMenu
+  }
 };
 </script>
 <style>

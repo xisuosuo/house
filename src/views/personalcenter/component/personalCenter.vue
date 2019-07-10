@@ -115,6 +115,7 @@
         },
         data() {
             return {
+                distance: "1000",
                 show: true,
                 modal1: false,
                 columns2: [
@@ -456,7 +457,7 @@
                         url: services.road,
                         params: {
                             name: this.houseName,
-                            tableName: "BUSSTATION"
+                            tableName: "BUSSTATION",distance:this.distance
                         }
                     }).then(rsp => {
                         if (rsp.status === 1) {

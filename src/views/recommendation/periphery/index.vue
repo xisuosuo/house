@@ -62,6 +62,7 @@ export default {
   },
   data() {
     return {
+        distance: "1000",
       map: true,
       timeIndex: 0,
       pageSize: 10,
@@ -140,7 +141,8 @@ export default {
         url: services.road,
         params: {
           name: this.houseName,
-          tableName: value.type
+          tableName: value.type,
+            distance:this.distance
         }
       }).then(rsp => {
         var _this = this;

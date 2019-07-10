@@ -25,6 +25,7 @@
     export default {
         data () {
             return {
+                distance: "1000",
                 value: '',
                 columns5: [
                     {
@@ -145,7 +146,8 @@
                             url: services.road,
                             params: {
                                 name: this.houseName,
-                                tableName: "BUSSTATION"
+                                tableName: "BUSSTATION",
+                                distance:this.distance
                             }
                         }).then(rsp => {
                             if (rsp.status === 1) {

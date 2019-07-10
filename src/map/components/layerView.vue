@@ -74,7 +74,8 @@ export default {
           url: services.road,
           params: {
             name: this.houseName,
-            tableName: value
+            tableName: value,
+              distance:this.distance
           }
         }).then(rsp => {
           var _this = this;
@@ -167,7 +168,8 @@ export default {
         url: services.road,
         params: {
           name: this.houseName,
-          tableName: value
+          tableName: value,
+            distance:this.distance
         }
       }).then(rsp => {
         var _this = this;
