@@ -291,6 +291,7 @@ export default {
         commentsTime: ""
       },
       modal1: false,
+        distance: "1000",
       form: {
         houseComments: "",
         houseScore: 0,
@@ -400,7 +401,8 @@ export default {
         url: services.road,
         params: {
           name: this.houseName,
-          tableName: "BUSSTATION"
+          tableName: "BUSSTATION",
+            distance:this.distance
         }
       }).then(rsp => {
         var _this = this;
@@ -455,7 +457,8 @@ export default {
         url: services.road,
         params: {
           name: this.houseName,
-          tableName: value.type
+          tableName: value.type,
+            distance:this.distance
         }
       }).then(rsp => {
         var _this = this;

@@ -157,6 +157,7 @@
         computed: {},
         data() {
             return {
+                distance: "1000",
                 value6:'南台新苑安',
                 information2: [],
                 information1: [],
@@ -361,7 +362,8 @@
                         url: services.road,
                         params: {
                             name: value.name,
-                            tableName: "BUSSTATION"
+                            tableName: "BUSSTATION",
+                            distance:this.distance
                         }
                     }).then(rsp => {
                         debugger;
