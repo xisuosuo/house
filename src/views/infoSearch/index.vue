@@ -11,42 +11,28 @@
           </router-link>
 
           <Submenu name="2">
+            <router-link to="/data/dataDeatils">
+              <MenuItem name="4-3">
+                <span> 简单查询</span>
+              </MenuItem>
+            </router-link>
             <template slot="title">
               <Icon type="md-search" />查询统计
             </template>
 
-            <Submenu name="3">
-              <template slot="title">
-                空间查询
-              </template>
               <MenuItem name="3-1">
-              <span class="kjcx" @click="siteSelect()">条件选房</span>
+              <span class="kjcx" @click="siteSelect()">条件查询</span>
               </MenuItem>
-
-              <Submenu name="4">
-                <template slot="title">
-                  数据统计
-                </template>
                 <MenuItem name="4-1-2">
-                <span class="kjcx" @click="selectHouse() ">公共设施</span>
+                <span class="kjcx" @click="selectHouse() ">公共设施统计</span>
                 </MenuItem>
                 <MenuItem name="4-1-3">
                 <span class="kjcx" @click="selectBuffer() ">缓冲区查询</span>
                 </MenuItem>
-              </Submenu>
-
               <MenuItem name="4-2">
-              <span class="kjcx" @click="controlAnlayse()">周边设施</span>
+              <span class="kjcx" @click="controlAnlayse()">周边设施查询</span>
               </MenuItem>
-
-            </Submenu>
-            <router-link to="/data/dataDeatils">
-              <MenuItem name="4-3">
-              <span> 属性查询</span>
-              </MenuItem>
-            </router-link>
           </Submenu>
-
           <Submenu name="5">
             <template slot="title">
               <Icon type="md-globe" />区位资源

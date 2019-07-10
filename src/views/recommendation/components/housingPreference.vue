@@ -99,7 +99,7 @@
                         </div>
                     </card>
                 </TabPane>
-                <TabPane label="基于小区推荐">
+                <TabPane label="基于住宅推荐">
                     <Card>
                         <div>
                             <Input v-model="value6" placeholder="请输入小区名" style="width: 200px;margin: 10px;" />
