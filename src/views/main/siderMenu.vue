@@ -12,7 +12,7 @@
             <Submenu name="2">
                 <router-link to="/data/dataDeatils">
                     <MenuItem name="4-3">
-                        <span> 简单查询</span>
+                    <span> 简单查询</span>
                     </MenuItem>
                 </router-link>
                 <template slot="title">
@@ -21,23 +21,23 @@
 
                 <router-link to="/infoSearch">
                     <MenuItem name="4-1-2">
-                        <span class="kjcx">条件查询</span>
+                    <span class="kjcx">条件查询</span>
                     </MenuItem>
                 </router-link>
                 <router-link to="/infoSearch">
-                <MenuItem name="4-1-2">
-                    <span class="kjcx" >公共设施统计</span>
-                </MenuItem>
+                    <MenuItem name="4-1-2">
+                    <span class="kjcx">公共设施统计</span>
+                    </MenuItem>
                 </router-link>
                 <router-link to="/infoSearch">
-                <MenuItem name="4-1-3">
+                    <MenuItem name="4-1-3">
                     <span class="kjcx">缓冲区查询</span>
-                </MenuItem>
+                    </MenuItem>
                 </router-link>
                 <router-link to="/infoSearch">
-                <MenuItem name="4-2">
+                    <MenuItem name="4-2">
                     <span class="kjcx">周边设施查询</span>
-                </MenuItem>
+                    </MenuItem>
                 </router-link>
             </Submenu>
 
@@ -66,12 +66,23 @@
                     </MenuItem>
                 </router-link>
             </Submenu>
-            <router-link to="/recommendation/factor">
-                <MenuItem name="5-1">
-                <Icon type="md-pin" />
-                <span class="siderItem">购房选址</span>
-                </MenuItem>
-            </router-link>
+
+            <Submenu name="5">
+                <template slot="title">
+                    <Icon type="ios-radio" />购房选址
+                </template>
+                <router-link to="/recommendation/factor">
+                    <MenuItem name="5-1">
+                    <span style="font-size: 13px">偏好选址</span>
+                    </MenuItem>
+                </router-link>
+                <router-link to="/compare">
+                    <MenuItem name="5-2">
+                    <span style="font-size: 13px">房源对比</span>
+                    </MenuItem>
+                </router-link>
+            </Submenu>
+
             <router-link to="/recommendation/housingPreference">
                 <MenuItem name="6-1">
                 <Icon type="md-thumbs-up" />
@@ -118,39 +129,57 @@
                     <span style="font-size: 13px">房价预测</span>
                     </MenuItem>
                 </router-link>
+
             </Submenu>
-            <router-link to="/userManager">
-                <MenuItem name="9-1">
-                <Icon type="md-contacts" />
-                <span class="siderItem">用户管理</span>
-                </MenuItem>
-            </router-link>
-            <Submenu name="10">
+
+            <Submenu name="9">
                 <template slot="title">
-                    <Icon type="md-paper" />用户手册
+                    <Icon type="md-contacts" />系统管理
                 </template>
+                <router-link to="/userManager">
+                    <MenuItem name="9-2">
+                    <span style="font-size: 13px">用户管理</span>
+                    </MenuItem>
+                </router-link>
                 <router-link to="/auDecision/usersManual">
-                    <MenuItem name="10-1">
+                    <MenuItem name="9-2">
                     <span style="font-size: 13px">用户手册</span>
                     </MenuItem>
                 </router-link>
                 <router-link to="/auDecision/livablemodel">
-                    <MenuItem name="10-2">
+                    <MenuItem name="9-3">
                     <span style="font-size: 13px">宜居模型</span>
                     </MenuItem>
                 </router-link>
                 <router-link to="/auDecision/model">
-                    <MenuItem name="10-3">
+                    <MenuItem name="9-4">
                     <span style="font-size: 13px">引力模型</span>
                     </MenuItem>
                 </router-link>
             </Submenu>
-            <router-link to="/personalcenter">
+
+            <Submenu name="10">
+                <template slot="title">
+                    <Icon type="md-contacts" />个人中心
+                </template>
+                <router-link to="/personalcenter">
+                    <MenuItem name="10-1">
+                    <span style="font-size: 13px">信息维护</span>
+                    </MenuItem>
+                </router-link>
+                <router-link to="personal">
+                    <MenuItem name="10-2">
+                    <span style="font-size: 13px">密码修改</span>
+                    </MenuItem>
+                </router-link>
+            </Submenu>
+
+            <!-- <router-link to="/personalcenter">
                 <MenuItem name="11-1">
                 <Icon type="md-person" />
                 <span class="siderItem">个人中心</span>
                 </MenuItem>
-            </router-link>
+            </router-link> -->
         </Menu>
     </Sider>
 </template>
@@ -158,8 +187,8 @@
 .ivu-layout-sider-children {
   height: 730px;
 }
-.siderItem{
-    margin-left: 1px;
+.siderItem {
+  margin-left: 1px;
 }
 </style>
 
