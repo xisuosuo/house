@@ -4,34 +4,24 @@
             <Tabs type="card" style="margin: 0 auto;width: 95%;">
                 <TabPane label="基于用户推荐">
                     <Card>
-                        <Form :label-width="80" inline>
-                            <FormItem label="昵称:">
-                                <span >{{this.user}}</span>
-                            </FormItem>
-                            <FormItem label="年龄:">
-                                <span>{{this.userage}}</span>
-                            </FormItem>
-                            <FormItem label="资金:">
-                                <span>{{this.money}}</span>
-                            </FormItem>
-                            <FormItem label="教育程度:">
-                                <span>{{this.educations}}</span>
-                            </FormItem>
-                            <FormItem label="用户类型:">
-                                <span>{{this.userInfo.roleName}}</span>
-                            </FormItem>
-                            <FormItem label="注册时间:">
-                                <span>{{this.userInfo.createTime}}</span>
-                            </FormItem>
-                            <FormItem>
-                                <router-link to="/personal">
-                                    <Button style="margin-right: 20px">更新基本信息</Button>
-                                </router-link>
-                                <router-link to="/personalcenter">
-                                    <Button>查看收藏小区</Button>
-                                </router-link>
-                            </FormItem>
-                        </Form>
+                        <span style="margin: 15px">昵称:</span>
+                        <span>{{this.user}}</span>
+                        <span style="margin: 15px">年龄:</span>
+                        <span>{{this.userage}}</span>
+                        <span style="margin: 15px">资金:</span>
+                        <span>{{this.money}}</span>
+                        <span style="margin: 15px">教育程度:</span>
+                        <span>{{this.educations}}</span>
+                        <span style="margin: 15px">用户类型:</span>
+                        <span>{{this.userInfo.roleName}}</span>
+                        <span style="margin: 15px">注册时间:</span>
+                        <span>{{this.userInfo.createTime}}</span>
+                        <router-link to="/personal">
+                        <Button style="margin-right: 20px;margin-left: 20px">更新基本信息</Button>
+                        </router-link>
+                        <router-link to="/personalcenter">
+                        <Button style="margin-right: 20px">查看收藏小区</Button>
+                        </router-link>
                     </Card>
                     <Card>
                         <Row :gutter="30">
@@ -383,6 +373,7 @@
                 this.information1.push(information[0], information[1], information[2]);
             },
             Collection(index, value) {
+                debugger;
                 var userId = JSON.parse(sessionStorage.getItem("userId"));
                 if (value.collected === 0) {
                     this.houseName = value.name;
@@ -426,21 +417,24 @@
 </script>
 
 <style lang="less" >
-    .ivu-form-item-content {
-        position: relative;
-        line-height: 32px;
-        font-size: 14px;
-    }
-    .ivu-form .ivu-form-item-label {
-        text-align: right;
-        vertical-align: middle;
-        float: left;
-        font-size: 14px;
-        color: #515a6e;
-        line-height: 1;
-        padding: 10px 12px 10px 0;
-        box-sizing: border-box;
-    }
+    /*.userMessage.span{*/
+        /*margin-left: 20px;*/
+    /*}*/
+    /*.ivu-form-item-content {*/
+        /*position: relative;*/
+        /*line-height: 32px;*/
+        /*font-size: 14px;*/
+    /*}*/
+    /*.ivu-form .ivu-form-item-label {*/
+        /*text-align: right;*/
+        /*vertical-align: middle;*/
+        /*float: left;*/
+        /*font-size: 14px;*/
+        /*color: #515a6e;*/
+        /*line-height: 1;*/
+        /*padding: 10px 12px 10px 0;*/
+        /*box-sizing: border-box;*/
+    /*}*/
     .ivu-tabs-bar {
         margin-bottom: 0;
     }
