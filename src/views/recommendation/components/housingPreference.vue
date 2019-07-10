@@ -6,7 +6,7 @@
                     <Card>
                         <Form :label-width="80" inline>
                             <FormItem label="昵称:">
-                                <span>{{this.user}}</span>
+                                <span >{{this.user}}</span>
                             </FormItem>
                             <FormItem label="年龄:">
                                 <span>{{this.userage}}</span>
@@ -42,7 +42,7 @@
                                             <img @click="getInfo(index,value)" style="width: 320px;height: 230px"
                                                  v-bind:src="value.image" alt="">
                                             <div style="overflow: hidden">
-                                                <h2 style="float: left">{{value.name}}</h2>
+                                                <h2 style="float: left;font-size: 15px">{{value.name}}</h2>
                                                 <img v-if="value.collected == '0'" :src=uncollect alt="" title="收藏"
                                                      @click="Collection(index,value)"
                                                      style="width: 15px;height: 15px;margin-top: 7px;margin-left: 15px;float: left">
@@ -82,7 +82,7 @@
                                                         <span>停车位：{{value.parkingSpace}}个</span>
                                                     </p>
                                                 </div>
-                                                <h2 style="display:inline-block;">{{value.name}}</h2>
+                                                <h2 style="display:inline-block;font-size: 15px">{{value.name}}</h2>
                                                 <img v-if="value.collected == '0'" :src=uncollect alt="" title="收藏"
                                                      @click="Collection(index,value)" id="index"
                                                      style="width: 15px;height: 15px;margin-left: 20px">
@@ -125,7 +125,7 @@
                                             <img @click="getInfo(index,value)" style="width: 320px;height: 230px"
                                                  v-bind:src="value.image" alt="">
                                             <div style="overflow: hidden">
-                                                <h2 style="float: left">{{value.name}}</h2>
+                                                <h2 style="float: left;font-size: 16px">{{value.name}}</h2>
                                                 <img v-if="value.collected == '0'" :src=uncollect alt="" title="收藏"
                                                      @click="Collection(index,value)"
                                                      style="width: 15px;height: 15px;margin-top: 7px;margin-left: 15px;float: left">
@@ -425,7 +425,22 @@
     };
 </script>
 
-<style lang="less" >
+<style lang="less">
+    .ivu-form-item-content {
+        position: relative;
+        line-height: 32px;
+        font-size: 14px;
+    }
+    .ivu-form .ivu-form-item-label {
+        text-align: right;
+        vertical-align: middle;
+        float: left;
+        font-size: 14px;
+        color: #515a6e;
+        line-height: 1;
+        padding: 10px 12px 10px 0;
+        box-sizing: border-box;
+    }
     .ivu-tabs-bar {
         margin-bottom: 0;
     }
