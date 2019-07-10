@@ -1,25 +1,25 @@
 <template>
-    <Modal v-model="dialog2" :mask-closable="false" width="400" title="缓冲区查询" draggable>
-        <Form :label-width="60">
-            <FormItem label="半径：" prop="zoning" :width="80">
+  <Modal v-model="dialog2" :mask-closable="false" width="400" title="缓冲区查询" draggable>
+    <Form :label-width="60">
 
-                <Input v-model="distance" placeholder="" clearable :width="80">
-                </Input>
+      <FormItem label="半径：" prop="zoning" :width="80">
+        <Input v-model="distance" placeholder="" clearable :width="10">
+        </Input>  千米
+      </FormItem>
 
-            </FormItem>
-            <p style="float:right">千米</p>
-            <FormItem label="选点：" prop="zoning">
-                <Button shape="circle" title="自定义选点" @click="createPoint">
-                    <span>
-                        <Icon type="ios-pin-outline" size="17" />
-                    </span>
-                </Button>
-            </FormItem>
-        </Form>
-        <div slot="footer">
-            <Button type="primary" size="large" long @click="getHouse">查询</Button>
-        </div>
-    </Modal>
+
+      <FormItem label="选点：" prop="zoning">
+        <Button shape="circle" title="自定义选点" @click="createPoint">
+          <span>
+            <Icon type="ios-pin-outline" size="17" />
+          </span>
+        </Button>
+      </FormItem>
+    </Form>
+    <div slot="footer">
+      <Button type="primary" size="large" long @click="getHouse">查询</Button>
+    </div>
+  </Modal>
 </template>
  <script>
 import Server from "@/core/server";
@@ -97,4 +97,23 @@ export default {
   }
 };
 </script>
+<style>
+.ivu-input {
+    display: inline-block;
+    width: 80%;
+    height: 32px;
+    line-height: 1.5;
+    padding: 4px 7px;
+    font-size: 12px;
+    border: 1px solid #dcdee2;
+    border-radius: 4px;
+    color: #515a6e;
+    background-color: #fff;
+    background-image: none;
+    position: relative;
+    cursor: text;
+    transition: border .2s ease-in-out,background .2s ease-in-out,box-shadow .2s ease-in-out;
+}
+</style>
+
  
