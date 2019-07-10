@@ -33,7 +33,7 @@
                             </FormItem>
                         </Form>
                     </Card>
-                    <div>
+                    <Card>
                         <Row :gutter="30">
                             <div v-for="(value,index) in information1">
                                 <Col span="8">
@@ -56,7 +56,7 @@
                                 </Col>
                             </div>
                         </Row>
-                    </div>
+                    </Card>
                     <card>
                         <div>
                             <div v-for="(value,index) in information2" :key="index">
