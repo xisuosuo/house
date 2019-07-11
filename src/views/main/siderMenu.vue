@@ -69,7 +69,7 @@
 
             <Submenu name="5">
                 <template slot="title">
-                    <Icon type="ios-radio" />购房选址
+                    <Icon type="md-pin" />购房选址
                 </template>
                 <router-link to="/recommendation/factor">
                     <MenuItem name="5-1">
