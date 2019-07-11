@@ -539,7 +539,7 @@ export default {
                   fontSize: "20px"
                 }
               },
-              "正在为您推荐"
+              "正在为您选择"
             )
           ]);
         }
