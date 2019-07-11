@@ -199,6 +199,7 @@ export default {
       debugger;
     },
     ok() {
+      debugger;
       var _this = this;
       //   Server.get({
       //     url: services.housePrice,
@@ -254,6 +255,8 @@ export default {
         debugger;
         var _this = this;
         _this.data1 = rsp.data;
+        _this.housePoint = rsp.data;
+        _this.showGraphics();
       });
     },
     showGraphics() {
