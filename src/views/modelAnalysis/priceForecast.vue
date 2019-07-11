@@ -96,19 +96,31 @@ export default {
               width: 100
             },
             {
-              title: "容积率",
+              title: "绿化率",
               key: "rjl",
               align: "center",
               width: 100
             },
             {
-              title: "容积率",
+              title: "学区",
               key: "rjl",
               align: "center",
               width: 100
             },
             {
-              title: "容积率",
+              title: "商场",
+              key: "rjl",
+              align: "center",
+              width: 100
+            },
+            {
+              title: "车站",
+              key: "rjl",
+              align: "center",
+              width: 100
+            },
+            {
+              title: "公园",
               key: "rjl",
               align: "center",
               width: 100
@@ -193,7 +205,6 @@ export default {
           houseName: _this.newdata
         }
       }).then(rsp => {
-        debugger;
         var _this = this;
         var arr1 = [];
         var gwrPoint = _this.gwrPoint;
@@ -206,9 +217,16 @@ export default {
                 arr1.push(
                   itemArr.name1,
                   itemData.attributes.C1_DJ,
-                  itemData.attributes.C2_RJL
+                  itemData.attributes.C2_RJL,
+                  itemData.attributes.C3_LHL,
+                  itemData.attributes.C4_SCH,
+                  itemData.attributes.C5_SMAR,
+                  itemData.attributes.C6_BUS,
+                  itemData.attributes.C7_PARK,
+
                 );
                 _this.newdata1 = arr1.join(",");
+                debugger;
               }
             });
           });
