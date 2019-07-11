@@ -16,8 +16,8 @@
                     <Button type="primary" @click="getData()" class="submit">加入对比</Button>
                 </div>
             </Card>
-            <div id="mainBody" style="height: 900px;width: 100%;">
-                <Card style="margin: 0 auto;width: 90%;">
+            <div id="mainBody" style="margin: 0 auto;width: 90%;">
+                <Card >
                     <div node-type="module" class="module-lpcompare">
                         <table class="mtable" note-type="common-data" data-cityprefix="yt" data-domain="focus">
                             <colgroup>
@@ -28,7 +28,7 @@
                                 <tr class="normal loupan-info" node-type="loupan-info">
                                     <td class="key">楼盘名称</td>
                                     <td id="value-name-1">
-                                        <div>
+                                        <div @click="getOnehouseinfo">
                                             <a>
                                                 <img style="width: 120px;height: 90px;" v-bind:src="HouseData[0].image" alt="">
                                             </a>
@@ -36,19 +36,19 @@
                                         <div id="name-1">{{HouseData[0].name}}</div>
                                     </td>
                                     <td id="value-name-2">
-                                        <div>
+                                        <div @click="getTwohouseinfo">
                                             <a target="_blank"><img style="width: 120px;height: 90px;" v-bind:src="HouseData[1].image" alt=""></a>
                                         </div>
                                         <div id="name-2">{{HouseData[1].name}}</div>
                                     </td>
                                     <td id="value-name-3">
-                                        <div>
+                                        <div @click="getThreehouseinfo">
                                             <a target="_blank"><img style="width: 120px;height: 90px;" v-bind:src="HouseData[2].image" alt=""></a>
                                         </div>
                                         <div id="name-3">{{HouseData[2].name}}</div>
                                     </td>
                                     <td id="value-name-4">
-                                        <div>
+                                        <div @click="getFourhouseinfo">
                                             <a target="_blank"><img style="width: 120px;height: 90px;" v-bind:src="HouseData[3].image" alt=""></a>
                                         </div>
                                         <div id="name-4">{{HouseData[3].name}}</div>
@@ -187,6 +187,8 @@
 import SiderMenu from "@/views/main/siderMenu";
 import Server from "@/core/server";
 import { services } from "@/core/config/services";
+import houseInfoId from "@/vuex/store";
+
 
 export default {
   watch: {
@@ -200,6 +202,7 @@ export default {
       count: 0,
       HouseData: [
         {
+            houseId:"",
           address: "",
           image: "",
           houseFeature: "",
@@ -219,6 +222,7 @@ export default {
           greeningRate: ""
         },
         {
+            houseId:"",
           address: "",
           image: "",
           houseFeature: "",
@@ -238,6 +242,7 @@ export default {
           greeningRate: ""
         },
         {
+            houseId:"",
           address: "",
           image: "",
           houseFeature: "",
@@ -257,6 +262,7 @@ export default {
           greeningRate: ""
         },
         {
+            houseId:"",
           address: "",
           image: "",
           houseFeature: "",
@@ -316,61 +322,65 @@ export default {
         this_.count++;
       });
     },
+      getOnehouseinfo() {
+          var this_ = this;
+          Server.get({
+              url: services.compareHouseDetails,
+              params: {
+                  houseId: this_.HouseData[0].houseId
+              }
+          }).then(function(rsp) {
+              if (rsp.status === 1) {
+                  houseInfoId.commit("houseInfoId", rsp);
+              }
+          });
+          this.$router.push("/houseinfo");
+      },
+      getTwohouseinfo() {
+          var this_ = this;
+          Server.get({
+              url: services.compareHouseDetails,
+              params: {
+                  houseId: this_.HouseData[1].houseId
+              }
+          }).then(function(rsp) {
+              if (rsp.status === 1) {
+                  houseInfoId.commit("houseInfoId", rsp);
+              }
+          });
+          this.$router.push("/houseinfo");
+      },
+      getThreehouseinfo() {
+          var this_ = this;
+          Server.get({
+              url: services.compareHouseDetails,
+              params: {
+                  houseId: this_.HouseData[2].houseId
+              }
+          }).then(function(rsp) {
+              if (rsp.status === 1) {
+                  houseInfoId.commit("houseInfoId", rsp);
+              }
+          });
+          this.$router.push("/houseinfo");
+      },
+      getFourhouseinfo() {
+          var this_ = this;
+          Server.get({
+              url: services.compareHouseDetails,
+              params: {
+                  houseId: this_.HouseData[3].houseId
+              }
+          }).then(function(rsp) {
+              if (rsp.status === 1) {
+                  houseInfoId.commit("houseInfoId", rsp);
+              }
+          });
+          this.$router.push("/houseinfo");
+      },
     getPath() {
       this.reload();
     }
-    // getOnehouseinfo() {
-    //     Server.get({
-    //         url: services.compareHouseDetails,
-    //         params: {
-    //             houseId: this.HouseOne.houseId
-    //         }
-    //     }).then(function(rsp) {
-    //         if (rsp.status === 1) {
-    //             houseInfoId.commit("houseInfoId", rsp);
-    //         }
-    //     });
-    //     this.$router.push("/houseinfo");
-    // },
-    // getTwohouseinfo() {
-    //     Server.get({
-    //         url: services.compareHouseDetails,
-    //         params: {
-    //             houseId: this.HouseTwo.houseId
-    //         }
-    //     }).then(function(rsp) {
-    //         if (rsp.status === 1) {
-    //             houseInfoId.commit("houseInfoId", rsp);
-    //         }
-    //     });
-    //     this.$router.push("/houseinfo");
-    // },
-    // getThreehouseinfo() {
-    //     Server.get({
-    //         url: services.compareHouseDetails,
-    //         params: {
-    //             houseId: this.HouseThree.houseId
-    //         }
-    //     }).then(function(rsp) {
-    //         if (rsp.status === 1) {
-    //             houseInfoId.commit("houseInfoId", rsp);
-    //         }
-    //     });
-    //     this.$router.push("/houseinfo");
-    // },
-    // getFourhouseinfo() {
-    //     Server.get({
-    //         url: services.compareHouseDetails,
-    //         params: {
-    //             houseId: this.HouseFour.houseId
-    //         }
-    //     }).then(function(rsp) {
-    //         if (rsp.status === 1) {
-    //             houseInfoId.commit("houseInfoId", rsp);
-    //         }
-    //     });
-    //     this.$router.push("/houseinfo");
-    // }
   },
   components: {
     SiderMenu
