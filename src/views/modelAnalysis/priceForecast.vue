@@ -85,43 +85,43 @@ export default {
           children: [
             {
               title: "地价",
-              key: "dj",
+              key: "houseDj",
               align: "center",
               width: 100
             },
             {
               title: "容积率",
-              key: "rjl",
+              key: "houseRjl",
               align: "center",
               width: 100
             },
             {
               title: "绿化率",
-              key: "rjl",
+              key: "houseLhl",
               align: "center",
               width: 100
             },
             {
               title: "学区",
-              key: "rjl",
+              key: "schoolCut",
               align: "center",
               width: 100
             },
             {
               title: "商场",
-              key: "rjl",
+              key: "market",
               align: "center",
               width: 100
             },
             {
-              title: "车站",
-              key: "rjl",
+              title: "公交站",
+              key: "station",
               align: "center",
               width: 100
             },
             {
               title: "公园",
-              key: "rjl",
+              key: "park",
               align: "center",
               width: 100
             }
@@ -154,7 +154,8 @@ export default {
         },
         {
           title: "房屋类型",
-          key: "type"
+          key: "type",
+          align: "center"
         },
         {
           title: "是否在售",
@@ -177,6 +178,7 @@ export default {
   methods: {
     impor() {
       this.modal1 = true;
+      debugger;
       Server.get({
         url: services.houseSelect,
         params: {}
@@ -194,52 +196,64 @@ export default {
       for (let i = 0; i < _this.data3.length; i++)
         pushData.push(_this.data3[i].name);
       _this.newdata = pushData.join(",");
-      //   console.log(_this.newdata);
+      debugger;
     },
     ok() {
-      debugger;
       var _this = this;
+      //   Server.get({
+      //     url: services.housePrice,
+      //     params: {
+      //       houseName: _this.newdata
+      //     }
+      //   }).then(rsp => {
+      //     var _this = this;
+      //     var arr1 = [];
+      //     var gwrPoint = _this.gwrPoint;
+      //     if (rsp.status === 1) {
+      //       debugger;
+      //       _this.housePoint = rsp.data;
+      //       this.showGraphics();
+      //       gwrPoint.forEach(itemData => {
+      //         rsp.data.forEach((itemArr, index) => {
+      //           if (itemArr.objectId === itemData.attributes.OBJECTID) {
+      //             arr1.push(
+      //               itemArr.name1,
+      //               itemData.attributes.C1_DJ,
+      //               itemData.attributes.C2_RJL,
+      //               itemData.attributes.C3_LHL,
+      //               itemData.attributes.C4_SCH,
+      //               itemData.attributes.C5_SMAR,
+      //               itemData.attributes.C6_BUS,
+      //               itemData.attributes.C7_PARK
+      //             );
+      //             _this.newdata1 = arr1.join(",");
+      //             console.log(_this.newdata1);
+      //             debugger;
+      //           }
+      //         });
+      //       });
+      //     }
+      //     Server.get({
+      //       url: services.houseShow,
+      //       params: {
+      //         houseValue: _this.newdata1
+      //       }
+      //     }).then(rsp => {
+      //       debugger;
+      //       var _this = this;
+      //       _this.data1 = rsp.data;
+      //     });
+      //   });
+      // },
       Server.get({
-        url: services.housePrice,
+        url: services.houseShow,
         params: {
           houseName: _this.newdata
         }
       }).then(rsp => {
+        debugger;
         var _this = this;
-        var arr1 = [];
-        var gwrPoint = _this.gwrPoint;
-        if (rsp.status === 1) {
-          _this.housePoint = rsp.data;
-          this.showGraphics();
-          gwrPoint.forEach(itemData => {
-            rsp.data.forEach((itemArr, index) => {
-              if (itemArr.objectId === itemData.attributes.OBJECTID) {
-                arr1.push(
-                  itemArr.name1,
-                  itemData.attributes.C1_DJ,
-                  itemData.attributes.C2_RJL,
-                  itemData.attributes.C3_LHL,
-                  itemData.attributes.C4_SCH,
-                  itemData.attributes.C5_SMAR,
-                  itemData.attributes.C6_BUS,
-                  itemData.attributes.C7_PARK,
-
-                );
-                _this.newdata1 = arr1.join(",");
-                debugger;
-              }
-            });
-          });
-        }
-        Server.get({
-          url: services.houseShow,
-          params: {
-            houseValue: _this.newdata1
-          }
-        }).then(rsp => {
-          var _this = this;
-          _this.data1 = rsp.data;
-        });
+        _this.data1 = rsp.data;
       });
     },
     showGraphics() {
