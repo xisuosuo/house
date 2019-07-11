@@ -67,32 +67,50 @@ export default {
       ],
       columns1: [
         {
-          title: "C1_DJ",
-          key: "C1_DJ"
-        },
-        {
-          title: "C2_RJL",
-          key: "C2_RJL"
+          title: "回归系数",
+          align: "center",
+          children: [
+            {
+              title: "地价",
+              key: "C1_Dj",
+              align: "center"
+            },
+            {
+              title: "容积率",
+              key: "C2_Rjl",
+              align: "center"
+            },
+            {
+              title: "绿化率",
+              key: "C3_Lhl",
+              align: "center"
+            },
+            {
+              title: "学区",
+              key: "C4_Sch",
+              align: "center"
+            },
+            {
+              title: "商场",
+              key: "C5_Smar",
+              align: "center"
+            }
+          ]
         },
         {
           title: "Cond",
-          key: "Cond"
+          key: "Cond",
+          align: "center"
         },
         {
           title: "Intercept",
-          key: "Intercept"
+          key: "Intercept",
+          align: "center"
         },
         {
           title: "LocalR2",
-          key: "LocalR2"
-        },
-        {
-          title: "StdErrC1_DJ",
-          key: "StdErrC1_DJ"
-        },
-        {
-          title: "StdErrC2_RJL",
-          key: "StdErrC2_RJL"
+          key: "LocalR2",
+          align: "center"
         }
       ],
       social: [],
@@ -248,10 +266,9 @@ export default {
               jobinfo.jobId,
               "GeographicallyWeightedRegression13"
             ).then(function(results) {
-              // console.log("projected points: ", results.value.features.length);
+              console.log("projected points: ", results.value.features);
               var GwrPoint = results.value.features;
-
-              // this.gwrPointP = GwrPoint;
+              debugger;
               function objSort(prop1, prop2) {
                 return function(obj1, obj2) {
                   var val1 = obj1[prop1][prop2];
@@ -279,12 +296,8 @@ export default {
               }
               for (let i = 0; i < _this.pageSize; i++) {
                 _this.nowData.push(GwrPoint[i].attributes);
+                debugger;
               }
-
-              debugger;
-              // for (let j = 0; j < 10; j++) {
-              //   _this.nowData.push(results.value.features[j].attributes);
-              // }
 
               var GwrPoint = results.value.features;
               var str = JSON.stringify(GwrPoint);
@@ -456,7 +469,6 @@ export default {
         });
         // Kriging_GP.getResultImage(jobinfo.jobId, "fx", imageParam, getResultImaLayer);
       } else {
-        alert("任务失败");
       }
     }
   }
