@@ -13,7 +13,7 @@
             <Card style="width: 90%;margin: 0 auto">
                 <div>
                     <Input v-model="value6" placeholder="请输入小区名" style="width: 200px;margin: 10px;" />
-                    <Button type="primary" @click="getData()" class="submit">确定</Button>
+                    <Button type="primary" @click="getData()" class="submit">加入对比</Button>
                 </div>
             </Card>
             <div id="mainBody" style="height: 900px;width: 100%;">
