@@ -76,7 +76,7 @@
                     <span style="font-size: 13px">偏好选址</span>
                     </MenuItem>
                 </router-link>
-                <router-link to="/compare">
+                <router-link to="/compareHouse">
                     <MenuItem name="5-2">
                     <span style="font-size: 13px">房源对比</span>
                     </MenuItem>
@@ -86,14 +86,14 @@
                 <template slot="title">
                     <Icon type="md-thumbs-up" />房源推荐
                 </template>
-            <router-link to="/recommendation/housingPreference">
-                <MenuItem name="6-1">
-                <span class="siderItem">基于用户推荐</span>
-                </MenuItem>
-            </router-link>
+                <router-link to="/recommendation/housingPreference">
+                    <MenuItem name="6-1">
+                    <span class="siderItem">基于用户推荐</span>
+                    </MenuItem>
+                </router-link>
                 <router-link to="/recommendation/housings">
                     <MenuItem name="6-2">
-                        <span class="siderItem">基于住宅推荐</span>
+                    <span class="siderItem">基于住宅推荐</span>
                     </MenuItem>
                 </router-link>
             </Submenu>

@@ -47,29 +47,37 @@ export default {
         {
           title: "预测小区",
           key: "name",
-          align: "center"
+          align: "center",
+          width: 100,
+          fixed: "left"
         },
         {
           title: "相似小区",
           key: "foreName",
-          align: "center"
+          align: "center",
+          width: 100,
+          fixed: "left"
         },
         {
           title: "地址",
           key: "address",
           align: "center",
-          width: 200
+          width: 200,
+          fixed: "left"
         },
         {
           title: "房屋类型",
           key: "type",
           align: "center",
-          width: 150
+          width: 150,
+          fixed: "left"
         },
         {
           title: "是否在售",
           key: "buildingCharact",
-          align: "center"
+          align: "center",
+          width: 150,
+          fixed: "left"
         },
         {
           title: "GWR",
@@ -86,6 +94,24 @@ export default {
               key: "rjl",
               align: "center",
               width: 100
+            },
+            {
+              title: "容积率",
+              key: "rjl",
+              align: "center",
+              width: 100
+            },
+            {
+              title: "容积率",
+              key: "rjl",
+              align: "center",
+              width: 100
+            },
+            {
+              title: "容积率",
+              key: "rjl",
+              align: "center",
+              width: 100
             }
           ]
         },
@@ -93,8 +119,9 @@ export default {
           title: "预测价格",
           key: "price",
           align: "center",
-          fixed: "right"
-        },
+          fixed: "right",
+          width: 150
+        }
       ],
       data1: [],
       columns2: [
@@ -127,7 +154,7 @@ export default {
       data3: [],
       newdata: "",
       newdata1: "",
-      gwrPoint: "",
+      gwrPoint: ""
     };
   },
   created() {
