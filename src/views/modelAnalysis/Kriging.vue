@@ -14,12 +14,12 @@
         <div style="width:100%;height:880px">
           <div id="viewDiv" style=" padding: 0; margin: 0; height: 860px;width: 100%;;background-color: #FCF9F2"></div>
         </div>
-        <div>
+        <!-- <div>
           <Select v-model="model1" placeholder="地价" style="width:200px;position:absolute;top:102px;right:2px">
             <Option v-for="item in cityList" :value="item.value" :key="item.value">{{ item.label }}
             </Option>
           </Select>
-        </div>
+        </div> -->
       </Content>
     </Layout>
   </div>
