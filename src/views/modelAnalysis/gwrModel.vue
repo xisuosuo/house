@@ -23,6 +23,7 @@
                   <Option v-for="item in cityList" :value="item.value" :key="item.value">{{ item.label }}
                   </Option>
                 </Select>
+                <img style="width:115px;height:140px; position: absolute;top:445px;right:8px" src="../../assets/img/lenged.png">
               </div>
             </TabPane>
           </Tabs>
@@ -31,7 +32,6 @@
             </Button>
             <Button type="primary" @click="onSubmit" style="float:right;">保存</Button>
           </div>
-
         </Card>
       </div>
       <router-view/>
@@ -64,26 +64,26 @@ export default {
           value: "C2_RJL",
           label: "容积率"
         },
-          {
-              label: "绿化率",
-              value: "C3_LHL",
-          },
-          {
-              label: "学区",
-              value: "C4_SCH",
-          },
-          {
-              label: "商场",
-              value: "C5_SMAR",
-          },
-          {
-              label: "车站",
-              value: "C6_BUS",
-          },
-          {
-              label: "公园",
-              value: "C7_PARK",
-          }
+        {
+          label: "绿化率",
+          value: "C3_LHL"
+        },
+        {
+          label: "学区",
+          value: "C4_SCH"
+        },
+        {
+          label: "商场",
+          value: "C5_SMAR"
+        },
+        {
+          label: "车站",
+          value: "C6_BUS"
+        },
+        {
+          label: "公园",
+          value: "C7_PARK"
+        }
       ],
       columns1: [
         {
@@ -267,7 +267,7 @@ export default {
         });
     },
     changeAttributes() {
-        debugger
+      debugger;
       this.addLayerL();
       this.doGP();
     },

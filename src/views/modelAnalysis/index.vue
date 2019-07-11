@@ -21,12 +21,12 @@
                                     <Icon type="ios-film-outline"></Icon>
                                     时间
                                 </p>
-                                <span>  从  </span>
+                                <span> 从 </span>
                                 <DatePicker type="date" placeholder="Select date" style="width: 200px"></DatePicker>
-                                <span>  至  </span>
+                                <span> 至 </span>
                                 <DatePicker type="date" placeholder="Select date" style="width: 200px"></DatePicker>
                             </Card>
-                            <Card slot="content" style="width:123">
+                            <!-- <Card slot="content" style="width:123">
                                 <p slot="title">
                                     <Icon type="ios-film-outline"></Icon>
                                     住宅
@@ -63,7 +63,7 @@
                                     <Checkbox label="普通装修"></Checkbox>
                                     <Checkbox label="毛坯房"></Checkbox>
                                 </CheckboxGroup>
-                            </Card>
+                            </Card> -->
                         </Panel>
 
                         <Panel name="1">
@@ -111,16 +111,6 @@
                                     <Checkbox label="大型商场"></Checkbox>
                                     <Checkbox label="餐饮酒店"></Checkbox>
                                     <Checkbox label="文化休闲"></Checkbox>
-                                </CheckboxGroup>
-                                <CheckboxGroup v-model="xjys" style="margin-bottom:15px">
-                                    <span style="margin-right:20px">消极因素</span>
-                                    <Checkbox label="垃圾中转站"></Checkbox>
-                                    <Checkbox label="墓地"></Checkbox>
-                                    <Checkbox label="火葬场"></Checkbox>
-                                    <Checkbox label="电力站"></Checkbox>
-                                    <Checkbox label="污水处理厂"></Checkbox>
-                                    <Checkbox label="大型污染企业"></Checkbox>
-                                    <Checkbox label="铁路沿线"></Checkbox>
                                 </CheckboxGroup>
                             </Card>
 
@@ -191,13 +181,13 @@ export default {
   data() {
     return {
       value1: "1",
-      jg: ["绿地公园", "水源"],
-      xqjy: ["幼儿园", "小学"],
-      jt: ["公交站", "地铁"],
-      yl: ["医院", "卫生站"],
+      jg: ["绿地公园"],
+      xqjy: ["幼儿园", "小学", "中学"],
+      jt: ["公交站"],
+      yl: ["医院"],
       shbl: ["菜市场", "药店"],
-      gwyl: ["大型商场", "餐饮酒店"],
-      xjys: ["垃圾中转站", "墓地"],
+      gwyl: ["大型商场"],
+    //   xjys: ["垃圾中转站", "墓地"],
       xqtj: ["容积率"],
       modal1: false
     };

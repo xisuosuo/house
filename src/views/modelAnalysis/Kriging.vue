@@ -14,12 +14,6 @@
         <div style="width:100%;height:880px">
           <div id="viewDiv" style=" padding: 0; margin: 0; height: 860px;width: 100%;;background-color: #FCF9F2"></div>
         </div>
-        <!-- <div>
-          <Select v-model="model1" placeholder="地价" style="width:200px;position:absolute;top:102px;right:2px">
-            <Option v-for="item in cityList" :value="item.value" :key="item.value">{{ item.label }}
-            </Option>
-          </Select>
-        </div> -->
       </Content>
     </Layout>
   </div>
@@ -66,6 +60,22 @@ export default {
     this.addLayerL();
   },
   methods: {
+    handleSpinCustom() {
+      this.$Spin.show({
+        render: h => {
+          return h("div", [
+            h("Icon", {
+              class: "demo-spin-icon-load",
+              props: {
+                type: "ios-loading",
+                size: 35
+              }
+            }),
+            h("div", "正在对房价进行克里金插值，请等待")
+          ]);
+        }
+      });
+    },
     addLayerL() {
       esriLoader
         .loadScript({
@@ -98,6 +108,7 @@ export default {
                 dom,
                 on
               ]) => {
+                this.handleSpinCustom();
                 var activeWidget = null;
                 var street = new TileLayer({
                   url:
@@ -167,9 +178,8 @@ export default {
           layer.opacity = 0.3;
           layer.title = "克里金插值";
           this.myMap.layers.add(layer);
+          this.$Spin.hide();
         });
-
-        // Kriging_GP.getResultImage(jobinfo.jobId, "fx", imageParam, getResultImaLayer);
       } else {
         alert("任务失败");
       }
@@ -180,7 +190,10 @@ export default {
   }
 };
 </script>
-<style>
+<style lang="less">
+.demo-spin-icon-load {
+  animation: ani-demo-spin 1s linear infinite;
+}
 .layout-header-bar {
   background: #fff;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
