@@ -16,7 +16,7 @@
               <Row>
                 <Col span="12">
                 <FormItem label="楼层：">
-                  <CheckboxGroup>
+                  <CheckboxGroup v-model="social">
                     <Checkbox label="低层"></Checkbox>
                     <Checkbox label="多层"></Checkbox>
                     <Checkbox label="小高层"></Checkbox>
@@ -27,7 +27,7 @@
                 </Col>
                 <Col span="12">
                 <FormItem label="绿化率：">
-                  <CheckboxGroup>
+                  <CheckboxGroup v-model="social">
                     <Checkbox label="25%-30%"></Checkbox>
                     <Checkbox label="30%-40%"></Checkbox>
                     <Checkbox label="40%-45%"></Checkbox>
@@ -39,7 +39,7 @@
               <Row>
                 <Col span="12">
                 <FormItem label="户型：">
-                  <CheckboxGroup>
+                  <CheckboxGroup v-model="social">
                     <Checkbox label="平层户型"></Checkbox>
                     <Checkbox label="错层户型"></Checkbox>
                     <Checkbox label="跃层户型"></Checkbox>
@@ -49,7 +49,7 @@
                 </Col>
                 <Col span="12">
                 <FormItem label="装修：">
-                  <CheckboxGroup>
+                  <CheckboxGroup v-model="social">
                     <Checkbox label="精装修"></Checkbox>
                     <Checkbox label="普通装修"></Checkbox>
                     <Checkbox label="毛坯房"></Checkbox>
@@ -223,6 +223,7 @@ export default {
   },
   data() {
     return {
+        social:["多层"," 小高层","30%-40%","40%-45%","错层户型","复式户型","精装修","普通装修"],
       education1: [],
       education2: [],
       education3: [],
