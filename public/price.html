@@ -454,11 +454,10 @@
                     },
                     visualMap: {
                         min: 0,
-                        max: 1800,
+                        max: 9462,
                         calculable: true,
                         inRange: {
-                            color: ['#2d8cf0', '#2d8cf0', '#2d8cf0', '#2d8cf0', '#2d8cf0', '#2d8cf0', '#2d8cf0'
-                            ],
+                            color: ["#38a800", "#6fc400", "#b0e000", "#ffff00",  "#ff0000"],
                             symbolSize: [1, 20]
                         },
 
@@ -504,7 +503,7 @@
                             },
                             itemStyle: {
                                 normal: {
-                                    color: '#2d8cf0'
+                                    color: '#fdd630',
                                 }
                             }
                         },
@@ -514,11 +513,10 @@
                             coordinateSystem: 'geo',
                             data: convertData(data.sort(function (a, b) {
                                 return b.value - a.value;
-                            }).slice(0, 6)),
+                            }).slice(0, 5)),
                             symbolSize: function (val) {
                                 return val[2] / 10;
                             },
-                            backgroundColor: '#ff0000',
                             showEffectOn: 'render',
                             rippleEffect: {
                                 brushType: 'stroke'
@@ -555,6 +553,10 @@
                         backgroundColor: '#fff',
                         title: {
                             text: `滁州市${parmas.data.name}近三年房价走向`,
+                            itemGap:0,
+                            textStyle:{
+                                fontSize: 14
+                            }
                         },
                         trigger: 'axis',
                         axisPointer : {

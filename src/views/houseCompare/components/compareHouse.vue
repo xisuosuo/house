@@ -298,7 +298,7 @@ export default {
       Server.get({
         url: services.compareHouseDetails,
         params: {
-          houseId: this.value6
+          houseName: this.value6
         }
       }).then(function(rsp) {
         if (rsp.status === 1) {
@@ -459,7 +459,7 @@ body {
 }
 
 .module-lpcompare {
-  margin-bottom: 30px;
+  /*margin-bottom: 30px;*/
   background: #f8f8f8;
   padding-bottom: 7px;
 }
