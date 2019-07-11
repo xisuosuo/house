@@ -132,7 +132,7 @@ export default {
                 //   this.doGP(results);
                 // });
                 queryTask.execute(query).then(this.doGP);
-                this.mapview.ui.remove(["attribution", "zoom"]);
+                // this.mapview.ui.remove(["attribution", "zoom"]);
               }
             );
         });

@@ -68,7 +68,7 @@
               <span style="font-size: 13px">偏好选址</span>
               </MenuItem>
             </router-link>
-            <router-link to="/compare">
+            <router-link to="/compareHouse">
               <MenuItem name="1-2">
               <span style="font-size: 13px">房源对比</span>
               </MenuItem>

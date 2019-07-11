@@ -63,7 +63,27 @@ export default {
         {
           value: "C2_RJL",
           label: "容积率"
-        }
+        },
+          {
+              label: "绿化率",
+              value: "C3_LHL",
+          },
+          {
+              label: "学区",
+              value: "C4_SCH",
+          },
+          {
+              label: "商场",
+              value: "C5_SMAR",
+          },
+          {
+              label: "车站",
+              value: "C6_BUS",
+          },
+          {
+              label: "公园",
+              value: "C7_PARK",
+          }
       ],
       columns1: [
         {
@@ -247,6 +267,7 @@ export default {
         });
     },
     changeAttributes() {
+        debugger
       this.addLayerL();
       this.doGP();
     },
