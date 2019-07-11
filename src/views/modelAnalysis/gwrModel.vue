@@ -72,27 +72,37 @@ export default {
           children: [
             {
               title: "地价",
-              key: "C1_Dj",
+              key: "C1_DJ",
               align: "center"
             },
             {
               title: "容积率",
-              key: "C2_Rjl",
+              key: "C2_RJL",
               align: "center"
             },
             {
               title: "绿化率",
-              key: "C3_Lhl",
+              key: "C3_LHL",
               align: "center"
             },
             {
               title: "学区",
-              key: "C4_Sch",
+              key: "C4_SCH",
               align: "center"
             },
             {
               title: "商场",
-              key: "C5_Smar",
+              key: "C5_SMAR",
+              align: "center"
+            },
+            {
+              title: "车站",
+              key: "C6_BUS",
+              align: "center"
+            },
+            {
+              title: "公园",
+              key: "C7_PARK",
               align: "center"
             }
           ]
@@ -253,11 +263,11 @@ export default {
       debugger;
       var _this = this;
       var gpUrl =
-        "http://122.112.216.247:6080/arcgis/rest/services/Servers/lastModelgwr/GPServer/Model";
+        "http://122.112.216.247:6080/arcgis/rest/services/Model9/GPServer/Model5";
       mapApi.esriApi.GetGeoprocessor().then(Geoprocessor => {
         var Kriging_GP = new Geoprocessor(gpUrl);
         var parms = {
-          Export_Output_6_shp: featureSet //传入的几何对象
+          Export_Output_6: featureSet //传入的几何对象
         };
         Kriging_GP.submitJob(parms).then(jobinfo => {
           // ;
@@ -265,11 +275,12 @@ export default {
             // ;
             Kriging_GP.getResultData(
               jobinfo.jobId,
-              "GeographicallyWeightedRegression13"
+              "GeographicallyWeightedRegression17"
             ).then(function(results) {
-              console.log("projected points: ", results.value.features);
+              // console.log("projected points: ", results.value.features.length);
               var GwrPoint = results.value.features;
-              debugger;
+
+              // this.gwrPointP = GwrPoint;
               function objSort(prop1, prop2) {
                 return function(obj1, obj2) {
                   var val1 = obj1[prop1][prop2];
@@ -297,8 +308,12 @@ export default {
               }
               for (let i = 0; i < _this.pageSize; i++) {
                 _this.nowData.push(GwrPoint[i].attributes);
-                debugger;
               }
+
+              debugger;
+              // for (let j = 0; j < 10; j++) {
+              //   _this.nowData.push(results.value.features[j].attributes);
+              // }
 
               var GwrPoint = results.value.features;
               var str = JSON.stringify(GwrPoint);
