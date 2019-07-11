@@ -1,7 +1,7 @@
 <template>
   <layout>
     <Sider ref="side1" :width='180'>
-      <sider-menu/>>
+      <sider-menu/>
     </Sider>
     <Content>
       <Header :style="{padding: 0}" class="layout-header-bar">
@@ -177,7 +177,7 @@
         </Card>
         <!-- <Modal v-model="mapModel" fullscreen footer-hide header-hide title="Fullscreen Modal">
             <! <mapCompare/> -->
-        </Modal>
+        <!--</Modal>-->
       </div>
     </Content>
   </layout>
@@ -215,9 +215,7 @@ export default {
       this.getData();
     }, 600);
   },
-  components: {
-    SiderMenu
-  },
+
   methods: {
     getData() {
       this.HouseOne = compareHouseOne.state.HouseOne;
@@ -285,9 +283,9 @@ export default {
       this.$router.push("/houseinfo");
     }
   },
-  components: {
-    // mapCompare
-  }
+    components: {
+        SiderMenu
+    },
 };
 </script>
 <style lang="less">

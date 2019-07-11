@@ -396,6 +396,12 @@ export default new Router({
                         import('@/views/houseCompare/components/compare.vue'),
                 },
                 {
+                    path: '/compareHouse',
+                    name: '房源对比',
+                    component: () =>
+                        import('@/views/houseCompare/components/compareHouse.vue'),
+                },
+                {
                     path: '/businessResources',
                     name: '商业资源',
                     component: () =>
