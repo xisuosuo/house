@@ -277,7 +277,7 @@ export default {
     }, 600);
     setTimeout(() => {
       this.getmapdata();
-    }, 800);
+    }, 1000);
     setTimeout(() => {
       this.comment();
     }, 800);
