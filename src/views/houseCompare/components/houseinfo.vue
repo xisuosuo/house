@@ -57,6 +57,13 @@
                           <FormItem label="楼盘位置:">
                             <span>{{this.houseInfo.address}}</span>
                           </FormItem>
+                          <FormItem label="房价走势:">
+                            <Button type="primary" @click=price size="small">点击查看</Button>
+                            <Modal v-model="modal1s"
+                            >
+                             <div id="trend" style="height: 200px;width: 500px"></div>
+                            </Modal>
+                          </FormItem>
                         </Form>
                       </div>
                     </div>
@@ -267,6 +274,7 @@ import aroundInfo from "@/vuex/store";
 import housueName from "@/vuex/store";
 import companyName from "@/vuex/store";
 import housePoint from "@/vuex/store";
+var echarts = require("echarts");
 
 export default {
   mounted() {
@@ -284,9 +292,11 @@ export default {
     setTimeout(() => {
       this.getBaseOnHouseData();
     }, 800);
+
   },
   data() {
     return {
+        modal1s:false,
       List1: {
         userId: "",
         houseName: "",
@@ -337,6 +347,56 @@ export default {
     }
   },
   methods: {
+      trendMap() {
+          if (!this.trend) {
+              this.trend = echarts.init(document.getElementById("trend"));
+          }
+          this.trend.setOption({
+              title: {
+                  text: `滁州市${this.houseInfo.name}近三年房价走向`,
+                  textStyle:{
+                      fontSize: 14
+                  }
+              },
+              tooltip: {
+                  trigger: 'axis'
+              },
+              xAxis: {
+                  type: 'category',
+                  data: ['2015', '2016', '2017']
+              },
+              grid: {
+                  left: '1%',
+                  right: '3%',
+                  bottom: '3%',
+                  top: '15%',
+                  containLabel: true
+              },
+              yAxis: {
+                  min:0,
+                  max:8000,
+                  interval: 2000,
+                  type: 'value',
+                  axisLabel: {
+                      formatter: '{value} 元'
+                  }
+              },
+              series: [{
+                  label: {
+                      normal: {
+                          show: true,
+                          position: 'top'
+                      }
+                  },
+                  data: [4481, 4057, 6589],
+                  type: 'line'
+              }]
+          });
+      },
+      price(){
+          this.modal1s = true;
+          this.trendMap();
+      },
     onHouseclick(value, index) {
       this.$Spin.show({
         render: h => {
