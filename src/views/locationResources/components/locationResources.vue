@@ -57,19 +57,8 @@
             </TabPane>
             <TabPane label="可达性">
               <div id="trend" style="height: 300px;width: 100%"></div>
-              <div>
-              <Table :columns="columns1" stripe :data="data1" height="550"></Table>
-              </div>
-              <div style="padding-top: 50px;position: relative;float: right; z-index: 9999;">
-                <CheckboxGroup>
-                  <Checkbox label="引力模型"></Checkbox>
-                  <br>
-                  <Checkbox label="引力模型"></Checkbox>
-                  <br>
-                  <Checkbox label="两步移动"></Checkbox>
-                  <br>
-                  <Checkbox label="两步移动"></Checkbox>
-                </CheckboxGroup>
+              <div style="height: 1000px;width: 100%">
+              <Table :columns="columns1"  :data="data1" ></Table>
               </div>
             </TabPane>
           </Tabs>
