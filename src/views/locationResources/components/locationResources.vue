@@ -57,8 +57,8 @@
             </TabPane>
             <TabPane label="可达性">
               <div id="trend" style="height: 300px;width: 100%"></div>
-              <div style="height: 1000px;width: 100%">
-              <Table :columns="columns1"  :data="data1" ></Table>
+              <div>
+              <Table :columns="columns1" stripe :data="data1" height="900"></Table>
               </div>
             </TabPane>
           </Tabs>
