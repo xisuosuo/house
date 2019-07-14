@@ -56,8 +56,9 @@
               </div>
             </TabPane>
             <TabPane label="可达性">
-              <div class="map4">
-                <Table :columns="columns1" stripe :data="data1" height="550"></Table>
+              <div id="trend" style="height: 300px;width: 100%"></div>
+              <div>
+              <Table :columns="columns1" stripe :data="data1" height="550"></Table>
               </div>
               <div style="padding-top: 50px;position: relative;float: right; z-index: 9999;">
                 <CheckboxGroup>
@@ -94,6 +95,7 @@ import GDrawSketch from "@/map/api/4+/GDrawSketch";
 import GConvertGeometry from "@/map/api/js/convert/GConvertGeometry";
 import GMapSymbol from "@/map/api/js/GMapSymbol";
 import housePoint from "@/vuex/store";
+var echarts = require("echarts");
 
 export default {
   created() {
@@ -105,6 +107,13 @@ export default {
       debugger;
       if (rsp.status === 1) {
         _this.data1 = rsp.data;
+          for (let i = 0;i<rsp.data.length;i++){
+              _this.housedata.push(rsp.data[i].houseName);
+              _this.accdata.push(rsp.data[i].accessibilityLevel)
+          }
+          this.trendMap();
+          console.log(this.housedata);
+          console.log(this.accdata);
       }
     });
   },
@@ -126,15 +135,67 @@ export default {
           align: 'center',
         }
       ],
-      data1: []
+      data1: [],
+        housedata:[],
+        accdata:[]
     };
   },
   mounted() {
     this.addLayer2();
     this.addLayer3();
+
   },
 
   methods: {
+      trendMap() {
+          debugger
+          if (!this.trend) {
+              this.trend = echarts.init(document.getElementById("trend"));
+          }
+          var this_=this;
+
+          this.trend.setOption({
+              title: {
+                  text: "小区到教育资源可达性",
+                  textStyle:{
+                      fontSize: 14
+                  }
+              },
+              tooltip: {
+                  trigger: 'axis'
+              },
+              xAxis: {
+                  type: 'category',
+                  axisLabel:{
+                      rotate:-60
+                  },
+                  data:this.housedata
+              },
+              grid: {
+                  left: '1%',
+                  right: '3%',
+                  bottom: '3%',
+                  top: '15%',
+                  containLabel: true
+              },
+              yAxis: {
+                  type: 'value',
+                  axisLabel: {
+                      formatter: '{value} 元'
+                  }
+              },
+              series: [{
+                  label: {
+                      normal: {
+                          show: true,
+                          position: 'top'
+                      }
+                  },
+                  data: this.accdata,
+                  type: 'line'
+              }]
+          });
+      },
     addLayer2() {
       esriLoader
         .loadScript({
