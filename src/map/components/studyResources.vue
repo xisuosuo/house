@@ -182,16 +182,16 @@ export default {
                 });
 
                 this.street = street;
-                var USALayer = new TileLayer({
+                var USALayer = new MapImageLayer({
                   url:
-                    "http://122.112.216.247:6080/arcgis/rest/services/Servers/中学学区/MapServer",
+                    "http://122.112.216.247:6080/arcgis/rest/services/zhongxuexuequxin/MapServer",
                   title: "中学学区",
                   visible: false
                 });
 
-                var censusLayer = new TileLayer({
+                var censusLayer = new MapImageLayer({
                   url:
-                    "http://122.112.216.247:6080/arcgis/rest/services/Servers/小学学区/MapServer",
+                    "http://122.112.216.247:6080/arcgis/rest/services/xiaoxuexuequ/MapServer",
                   title: "小学学区",
                   visible: true
                 });
