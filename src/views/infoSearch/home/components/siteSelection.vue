@@ -253,7 +253,7 @@ nav {
     float: right;
     margin: 4px 20px 0 0;
     .total {
-      color: #19be6b;
+      color: #0593d3;
       font-size: 16px;
     }
   }

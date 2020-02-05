@@ -56,7 +56,7 @@ export default {
     line-height: 30px;
     font-weight: bold;
     font-size: 14px;
-    color: #19be6b;
+    color: #3385ff;
     overflow: hidden;
     padding-left: 15px;
     text-overflow: ellipsis;

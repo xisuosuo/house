@@ -1,9 +1,9 @@
 <template>
   <Layout :style="{height:'100%'}">
     <Content>
-      <div style="margin: 0 auto;width:1200px;">
+      <div style="margin: 0 auto;margin-top: 5px;width:1400px;">
         <Row>
-          <Col span="24">
+          <Col span="20">
           <Card style="height:700px">
             <div slot="title">
               <Icon type="md-aperture" size="20" />
@@ -182,29 +182,29 @@
               </Row>
             </Form>
             <div style="text-align: center;margin-top:5px">
-              <Button style="margin-right: 20px" type="success" @click="showTable">确定</Button>
+              <Button style="margin-right: 20px" type="primary" @click="showTable">确定</Button>
               <Button style="margin-right: 80px">重置</Button>
             </div>
           </Card>
           </Col>
-          <!--<Col span="4">-->
-          <!--<div style="  margin:0">-->
-            <!--<img class="light" v-show="!downIcon" @click="change" src="../../../assets/img/lightbulb1.png">-->
-            <!--<img class="light" v-show="downIcon" @click="change" src="../../../assets/img/lightbulb2.png">-->
-            <!--<Alert type=success id="tip" style="width:200px;margin:0">-->
-              <!--<h3 style="margin-left:6px">用户提示</h3>-->
-              <!--<p style="font-weight: normal;font-size: 12px;margin-left:6px">-->
-                <!--在使用房源推荐功能之前，需完善用户个人信息，以此确定您的购房类型在使用房源推荐功能之前以此确定您的购房类型。</p>-->
-              <!--<ButtonGroup shape="circle">-->
-                <!--<Button type="primary" size="small" @click="push" style="margin-left:4px">-->
-                  <!--可达性模型-->
-                  <!--<Icon type="ios-arrow-forward"></Icon>-->
-                <!--</Button>-->
-              <!--</ButtonGroup>-->
-            <!--</Alert>-->
+          <Col span="4">
+          <div style="  margin:0">
+            <img class="light" v-show="!downIcon" @click="change" src="../../../assets/img/lightbulb1.png">
+            <img class="light" v-show="downIcon" @click="change" src="../../../assets/img/lightbulb2.png">
+            <Alert type=success id="tip" style="width:200px;margin:0">
+              <h3 style="margin-left:6px">用户提示</h3>
+              <p style="font-weight: normal;font-size: 12px;margin-left:6px">
+                在使用房源推荐功能之前，需完善用户个人信息，以此确定您的购房类型在使用房源推荐功能之前以此确定您的购房类型。</p>
+              <ButtonGroup shape="circle">
+                <Button type="primary" size="small" @click="push" style="margin-left:4px">
+                  可达性模型
+                  <Icon type="ios-arrow-forward"></Icon>
+                </Button>
+              </ButtonGroup>
+            </Alert>
 
-          <!--</div>-->
-          <!--</Col>-->
+          </div>
+          </Col>
         </Row>
       </div>
     </Content>

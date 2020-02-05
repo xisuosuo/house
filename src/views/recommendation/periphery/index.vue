@@ -211,7 +211,7 @@ export default {
       left: 0;
       width: 100%;
       height: 2px;
-      background: #19be6b;
+      background: #3072f6;
     }
     li {
       cursor: pointer;
@@ -223,11 +223,11 @@ export default {
       font-size: 14px;
     }
     .default-active {
-      color: #19be6b;
+      color: #3072f6;
       // background: #f00;
     }
     li:hover {
-      color: #19be6b;
+      color: #3072f6;
     }
   }
 }
@@ -243,7 +243,7 @@ export default {
     font-size: 14px;
     font-weight: 700;
     color: #fff;
-    background: #19be6b !important;
+    background: #3072f6 !important;
   }
   .ul-box {
     height: 540px;

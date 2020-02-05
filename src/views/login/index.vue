@@ -1,13 +1,22 @@
 <template>
-    <div id="login" class="log">
+    <div id="login">
         <header>
+            <div class="top">
+                <div class="line1 float"></div>
+                <div class="line2 float"></div>
+                <div class="line3 float"></div>
+                <div class="line4 float"></div>
+                <div class="clearfloat"></div>
+            </div>
             <div class="wrapper">
                 <div class="logo">
-                    <img src="../../assets/img/environmental_house.png" width="60"/>
-                    <span class="title">基于空间协同过滤的房产推荐系统</span>
+                    <img src="../../assets/img/logo/gh_logo.png" width="60"/>
+                    <span class="title">城市商品住宅选择推荐系统（“购房无忧”）
+          </span>
                 </div>
             </div>
         </header>
+
         <section>
             <Carousel autoplay :autoplay-speed="3000" loop :radius-dot="true">
                 <CarouselItem>
@@ -38,11 +47,12 @@
                     </FormItem>
                 </Form>
                 <div class="login-btn">
-                    <Button type="success" :loading="loading" long size="large" @click="checkLogin">登 录</Button>
+                    <Button type="primary" :loading="loading" long size="large" @click="checkLogin">登 录</Button>
                 </div>
                 <register ref="register" class="register"/>
             </div>
         </section>
+    </div>
     </div>
 </template>
 
@@ -65,10 +75,7 @@
     };
 </script>
 
-<style lang="less" >
-    /*body {*/
-        /*background-image:url(../../assets/img/bg.jpg);*/
-    /*}*/
+<style lang="less">
     #login {
         header {
             background: white;
@@ -102,30 +109,30 @@
             .wrapper {
                 height: 120px;
                 width: 1024px;
+                margin-bottom: 20px;
                 padding-bottom: 20px;
                 margin: 0 auto;
                 .logo {
                     float: left;
-                    margin-top: 20px;
+                    margin-top: 30px;
                     * {
                         vertical-align: middle;
                     }
                     img {
                         vertical-align: middle;
                         margin-right: 20px;
-                        margin-bottom: 20px;
                     }
                     .title {
                         font-family: "微软雅黑";
                         font-size: 26px;
                         font-weight: bold;
-                        color: #19be6b;
+                        color: #0088ce;
                         background-image: -webkit-gradient(
                                 linear,
                                 0 0,
                                 0 bottom,
-                                from(#19be6b),
-                                to(rgb(25, 190, 107))
+                                from(#005dba),
+                                to(rgb(11, 75, 139))
                         );
                         background-clip: text;
                         -webkit-background-clip: text;
@@ -142,12 +149,12 @@
             width: 100%;
             .bg1 {
                 height: 500px;
-                background: url("../../assets/img/banner-service.png") center no-repeat;
+                background: url("../../assets/img/logo/banner2.png") center no-repeat;
                 background-color: #016fc3;
             }
             .bg2 {
                 height: 500px;
-                background: url("../../assets/img/industry.jpg") center no-repeat;
+                background: url("../../assets/img/logo/banner1.jpg") center no-repeat;
                 background-color: #8ccfed;
             }
         }
@@ -182,7 +189,7 @@
         top: 80px;
         right: 105px;
         padding: 20px;
-        background-color: rgba(255, 255, 255, 0.7);
+        background-color: rgba(255, 255, 255, 0.3);
         border-radius: 4px;
         box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
         .title {

@@ -1,9 +1,9 @@
 <template>
   <div>
     <Layout :style="{height:'100%'}">
-      <!--<Sider ref="side1" :width='180'>-->
-        <!--<sider-menu/>-->
-      <!--</Sider>-->
+      <Sider ref="side1" :width='180'>
+        <sider-menu/>
+      </Sider>
       <Content>
         <Header :style="{padding: 0}" class="layout-header-bar">
           <Breadcrumb>
@@ -112,10 +112,10 @@ export default {
 .group-panel-box {
   &.blue {
     .panel-title {
-      background: #19be6b;
+      background: #2d8cf0;
     }
     .panel-line {
-      background: #19be6b;
+      background: #2d8cf0;
     }
   }
   .panel-title {

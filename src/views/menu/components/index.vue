@@ -24,18 +24,19 @@
         </div>
       </div>
     </router-link>
-    <!--<router-link to="/locationResources">-->
-      <!--<div class="item-view">-->
-        <!--<div class="item bg2">-->
-          <!--<div class="icon-wrap">-->
-            <!--<i class="icon-ltbz"></i>-->
-          <!--</div>-->
-          <!--<div class="label">-->
-            <!--<span>区位资源</span>-->
-          <!--</div>-->
-        <!--</div>-->
-      <!--</div>-->
-    <!--</router-link>-->
+
+    <router-link to="/locationResources">
+      <div class="item-view">
+        <div class="item bg2">
+          <div class="icon-wrap">
+            <i class="icon-ltbz"></i>
+          </div>
+          <div class="label">
+            <span>区位资源</span>
+          </div>
+        </div>
+      </div>
+    </router-link>
     <router-link to="/recommendation/factor">
       <div class="item-view">
         <div class="item bg3">
@@ -50,7 +51,7 @@
     </router-link>
     <router-link to="/recommendation/housingPreference">
     <div class="item-view">
-      <div class="item bg2">
+      <div class="item bg4">
         <div class="icon-wrap">
         <i class="icon-ssjc"></i>
       </div>
@@ -60,30 +61,30 @@
       </div>
     </div>
     </router-link>
-    <!--<router-link to="/priceAnalysis">-->
-      <!--<div class="item-view">-->
-        <!--<div class="item bg5">-->
-          <!--<div class="icon-wrap">-->
-            <!--<i class="icon-task"></i>-->
-          <!--</div>-->
-          <!--<div class="label">-->
-            <!--<span>房价分析</span>-->
-          <!--</div>-->
-        <!--</div>-->
-      <!--</div>-->
-      <!--<router-link to="/GWR">-->
-        <!--<div class="item-view">-->
-          <!--<div class="item bg8">-->
-            <!--<div class="icon-wrap">-->
-              <!--<i class="icon-gpxfx"></i>-->
-            <!--</div>-->
-            <!--<div class="label">-->
-              <!--<span>房价预测</span>-->
-            <!--</div>-->
-          <!--</div>-->
-        <!--</div>-->
-      <!--</router-link>-->
-    <!--</router-link>-->
+    <router-link to="/priceAnalysis">
+      <div class="item-view">
+        <div class="item bg5">
+          <div class="icon-wrap">
+            <i class="icon-task"></i>
+          </div>
+          <div class="label">
+            <span>房价分析</span>
+          </div>
+        </div>
+      </div>
+      <router-link to="/GWR">
+        <div class="item-view">
+          <div class="item bg8">
+            <div class="icon-wrap">
+              <i class="icon-gpxfx"></i>
+            </div>
+            <div class="label">
+              <span>房价预测</span>
+            </div>
+          </div>
+        </div>
+      </router-link>
+    </router-link>
     <div @click="jump1()" class="item-view">
       <div class="item bg6">
         <div class="icon-wrap">
@@ -94,18 +95,7 @@
         </div>
       </div>
     </div>
-    <router-link to="/personalcenter">
-      <div class="item-view">
-        <div class="item bg4">
-          <div class="icon-wrap">
-            <i class="icon-ywgl"></i>
-          </div>
-          <div class="label">
-            <span>个人中心</span>
-          </div>
-        </div>
-      </div>
-    </router-link>
+
   </div>
 </template>
 <script>

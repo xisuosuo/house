@@ -103,7 +103,7 @@
                     <Card>
                         <div>
                             <Input v-model="value6" placeholder="请输入小区名" style="width: 200px;margin: 10px;" />
-                            <Button type="success" @click="getSmiarly" class="submit">确定</Button>
+                            <Button type="primary" @click="getSmiarly" class="submit">确定</Button>
                         </div>
                     </Card>
                     <div>

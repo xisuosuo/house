@@ -416,7 +416,7 @@
     };
 </script>
 
-<style lang="less" scoped>
+<style lang="less" >
     /*.userMessage.span{*/
         /*margin-left: 20px;*/
     /*}*/

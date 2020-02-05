@@ -1,8 +1,8 @@
 <template>
   <div class="search-btn-container">
-    <Button class="search-btn-primay" type="success" icon="md-search" @click="onSearch" v-if="showSearch">{{searchText}}</Button>
-    <Button class="search-btn-primay" type="success" icon="md-close" @click="onReset" v-if="showReset">{{resetText}}</Button>
-    <Button class="search-btn-primay" type="success" icon="md-refresh" @click="onRefresh" v-if="showRefresh">{{refreshText}}</Button>
+    <Button class="search-btn-primay" type="primary" icon="md-search" @click="onSearch" v-if="showSearch">{{searchText}}</Button>
+    <Button class="search-btn-primay" type="primary" icon="md-close" @click="onReset" v-if="showReset">{{resetText}}</Button>
+    <Button class="search-btn-primay" type="primary" icon="md-refresh" @click="onRefresh" v-if="showRefresh">{{refreshText}}</Button>
     <!-- <Button class="search-btn-primay" type="primary" icon="md-add" @click="onAdd" v-if="showAdd">{{addText}}</Button> -->
   </div>
 </template>

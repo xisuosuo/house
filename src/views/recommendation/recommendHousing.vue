@@ -1,8 +1,8 @@
 <template>
   <Layout :style="{height:'100%'}">
-    <!--<Sider ref="side1" :width='180'>-->
-      <!--<sider-menu/>-->
-    <!--</Sider>-->
+    <Sider ref="side1" :width='180'>
+      <sider-menu/>
+    </Sider>
     <Content>
       <div style="margin:0 auto;width:90%;">
         <table id="customers" style="margin-top: 60px">
@@ -39,11 +39,11 @@
         <Row type="flex" justify="end" class="code-row-bg" style="margin-top:6px">
           <Col span="5">
           <ButtonGroup shape="circle">
-            <Button type="success" @click="back()">
+            <Button type="primary" @click="back()">
               <Icon type="ios-arrow-back"></Icon>
               重新推荐
             </Button>
-            <Button type="success" @click="map()">
+            <Button type="primary" @click="map()">
               地图查看
               <Icon type="ios-arrow-forward"></Icon>
             </Button>
@@ -503,7 +503,6 @@ export default {
           {
             name: "教育资源可达性",
             type: "bar",
-            color:"#ffdb5c",
             stack: "总量",
             barMaxWidth: 50,
             label: {
@@ -523,7 +522,6 @@ export default {
           {
             name: "医疗资源可达性",
             type: "bar",
-              color:"#71f6f9",
             stack: "总量",
             barMaxWidth: 50,
             label: {
@@ -543,7 +541,6 @@ export default {
           {
             name: "交通资源可达性",
             type: "bar",
-              color:"#37a2da",
             stack: "总量",
             barMaxWidth: 50,
             label: {
@@ -564,7 +561,6 @@ export default {
             name: "休闲娱乐可达性",
             type: "bar",
             stack: "总量",
-              color:"#19be6b",
             barMaxWidth: 50,
             label: {
               normal: {
@@ -592,9 +588,6 @@ export default {
           trigger: "item",
           formatter: "{a} <br/>{b}: {c} ({d}%)"
         },
-          color : [
-              '#19be6b', '#37a2da', '#71f6f9', '#FF8C00', '#ffdb5c', '#FE8463',
-          ],
         legend: {
           type: "scroll",
           top: 10,
@@ -660,7 +653,7 @@ export default {
 #customers td,
 #customers th {
   font-size: 1.1em;
-  border: 1px solid #19be6b;
+  border: 1px solid #2b85e4;
   text-align: center;
   padding: 3px 7px 2px 7px;
   width: 350px;
@@ -670,7 +663,7 @@ export default {
   text-align: center;
   padding-top: 5px;
   padding-bottom: 4px;
-  background-color: #19be6b;
+  background-color: #5cadff;
   color: #ffffff;
   cursor: pointer;
 }

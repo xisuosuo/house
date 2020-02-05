@@ -1,8 +1,8 @@
 <template>
     <layout>
-        <!--<Sider ref="side1" :width='180'>-->
-            <!--<sider-menu/>-->
-        <!--</Sider>-->
+        <Sider ref="side1" :width='180'>
+            <sider-menu/>
+        </Sider>
         <Content>
             <Header :style="{padding: 0}" class="layout-header-bar">
                 <Breadcrumb>
@@ -10,13 +10,13 @@
                     <BreadcrumbItem v-for="(item,idx) in $route.matched" :key="idx" :to="(item.path)">{{item.name}}</BreadcrumbItem>
                 </Breadcrumb>
             </Header>
-            <Card style="width: 80%;margin: 0 auto">
+            <Card style="width: 90%;margin: 0 auto">
                 <div>
                     <Input v-model="value6" placeholder="请输入小区名" style="width: 200px;margin: 10px;" />
-                    <Button type="success" @click="getData()" class="submit">加入对比</Button>
+                    <Button type="primary" @click="getData()" class="submit">加入对比</Button>
                 </div>
             </Card>
-            <div id="mainBody" style="margin: 0 auto;width: 80%;">
+            <div id="mainBody" style="margin: 0 auto;width: 90%;">
                 <Card >
                     <div node-type="module" class="module-lpcompare">
                         <table class="mtable" note-type="common-data" data-cityprefix="yt" data-domain="focus">
@@ -559,7 +559,7 @@ body {
 }
 
 .module-lpcompare .compare-btn {
-  background-color: #19be6b;
+  background-color: #2d8cf0;
 }
 
 .module-lpcompare .ctrl-wrap {
