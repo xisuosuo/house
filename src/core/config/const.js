@@ -15,5 +15,5 @@ export const MapAPI = {
     css: "http://122.112.216.247:8080/arcgis/arcgis_js_api/library/4.8/esri/css/main.css"
   };
 
-export const IP = "122.112.216.247:8080"; //正式
+export const IP = "localhost:8080"; //正式
 // export const IP = "192.168.1.101:8080"; //测试

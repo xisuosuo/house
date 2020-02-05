@@ -4,6 +4,7 @@ import router from './router'
 import store from './store'
 import iView from 'iview'
 import 'iview/dist/styles/iview.css';
+import '../my-theme/index.less';
 import '@/assets/css/main.less';
 import '@/assets/css/home.less';
 import '@/assets/css/map.less';
@@ -13,6 +14,7 @@ import echarts from 'echarts';
 import './core/';
 import "@/map/api/";
 import axios from "axios";
+import '../my-theme/index.less'
 // import qs from "qs";
 Vue.use(iView);
 

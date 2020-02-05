@@ -285,7 +285,7 @@
                         station:res.data[0].station,
                     });
                     _this.publicNum.setOption({
-                        color: ["#3398DB"],
+                        color: ["#19be6b"],
                         tooltip: {
                             trigger: "axis",
                             axisPointer: {
@@ -327,12 +327,12 @@
     .group-panel-box {
         &.blue {
             .panel-title {
-                background: #2d8cf0;
+                background: #19be6b;
                 margin-left: 3%;
                 margin-right: 3%
         }
             .panel-line {
-                background: #2d8cf0;
+                background: #19be6b;
                 margin-left: 3%;
                 margin-right: 3%
             }

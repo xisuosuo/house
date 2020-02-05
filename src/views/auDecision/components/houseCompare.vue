@@ -1,7 +1,7 @@
 <template>
   <Modal v-model="Compare" draggable>
-    <p slot="header" style="color:#2d8cf0;text-align:left">
-      <Icon type="md-git-compare" color="#2d8cf0" size="23" />
+    <p slot="header" style="color:#19be6b;text-align:left">
+      <Icon type="md-git-compare" color="#19be6b" size="23" />
       <span>房源对比</span>
     </p>
     <Row type="flex" justify="space-between" class="code-row-bg">

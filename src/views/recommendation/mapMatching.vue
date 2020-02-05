@@ -1,8 +1,8 @@
 <template>
   <Layout :style="{height:'100%'}">
-    <Sider ref="side1" :width='180'>
-      <sider-menu/>
-    </Sider>
+    <!--<Sider ref="side1" :width='180'>-->
+      <!--<sider-menu/>-->
+    <!--</Sider>-->
     <Content>
       <div style="overflow-y: hidden;">
         <Row>
@@ -55,7 +55,7 @@
                       <h3 style="display:inline-block;width:140px">{{value.name}}</h3>
                       <img v-if="value.collected == '0'" :src=uncollect alt="" title="收藏" @click="Collection(index,value)" id="index" style="width: 15px;height: 15px;">
                       <img v-else-if="value.collected == '1'" :src=collect alt="" title="取消收藏" @click="Collection(index,value)" style="width: 15px;height: 15px;">
-                      <Icon @click="detail(index,value)" type="ios-information-circle" color="#2d8cf0" size="17" title="小区信息详情" style="margin-bottom:8px;float: right" />
+                      <Icon @click="detail(index,value)" type="ios-information-circle" color="#19be6b" size="17" title="小区信息详情" style="margin-bottom:8px;float: right" />
                       <p style="margin-top: 5px">
                         <span>建面：</span>{{value.area}}/m2</p>
                       <div style="margin-top: 5px;color: red">

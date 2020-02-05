@@ -1,6 +1,7 @@
 <template>
     <div>
         <close-failities/>
+
     </div>
 </template>
 <script>

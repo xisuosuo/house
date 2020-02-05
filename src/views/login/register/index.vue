@@ -38,7 +38,7 @@
           </FormItem>
         </i-form>
       </Row>
-      <model-footer slot="footer" saveText="提交" @on-cancel="onCancelUser" @on-save="onsaveUser" />
+      <model-footer slot="footer"   saveText="提交" @on-cancel="onCancelUser" @on-save="onsaveUser" />
     </modal>
   </div>
 </template>

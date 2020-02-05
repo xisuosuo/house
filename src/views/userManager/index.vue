@@ -1,9 +1,9 @@
 <template>
     <div>
         <Layout :style="{height:'100%'}">
-            <Sider ref="side1" :width='180'>
-                <sider-menu/>
-            </Sider>
+            <!--<Sider ref="side1" :width='180'>-->
+                <!--<sider-menu/>-->
+            <!--</Sider>-->
             <Content>
                 <Header :style="{padding: 0}" class="layout-header-bar">
                     <Breadcrumb>

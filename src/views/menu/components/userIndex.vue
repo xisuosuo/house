@@ -1,5 +1,5 @@
 
- <template>
+<template>
     <div class="menu">
         <router-link to="/data">
             <div class="item-viewuser">

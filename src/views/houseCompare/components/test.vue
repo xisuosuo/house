@@ -488,7 +488,7 @@ body {
 }
 
 .module-lpcompare .compare-btn {
-  background-color: #2d8cf0;
+  background-color: #19be6b;
 }
 
 .module-lpcompare .ctrl-wrap {

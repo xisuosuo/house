@@ -1,9 +1,8 @@
 <template>
     <Layout :style="{height:'100%'}">
-        <Sider ref="side1" :width='180'>
-            <sider-menu/>
-        </Sider>
-
+        <!--<Sider ref="side1" :width='180'>-->
+            <!--<sider-menu/>-->
+        <!--</Sider>-->
         <Content>
             <Header :style="{padding: 0}" class="layout-header-bar">
                 <Breadcrumb>
@@ -17,7 +16,7 @@
                     <Col span="8">
                         <Card>
                             <div class="avatar">
-                                <img style="width: 100px;height: 100px;border-radius: 50%;margin: 20px" src="../../../assets/img/u=3085477210,754180516&fm=11&gp=0.jpg" />
+                                <img style="width: 100px;height: 100px;border-radius: 50%;margin: 20px" src="../../../assets/img/atvter.jpeg" />
                             </div>
                             <div style="text-align: left;margin-left: 10%;font-size: 12px">
                                 <div>
@@ -212,7 +211,7 @@
                                     "Button",
                                     {
                                         props: {
-                                            type: "primary",
+                                            type: "success",
                                             size: "small"
                                         },
                                         style: {

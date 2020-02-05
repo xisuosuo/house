@@ -9,7 +9,7 @@
         <div style="overflow: hidden;">
             <div style="float: right">
                 <Input v-model="value" placeholder="请输入小区名" style="width: 200px;margin: 10px;" />
-                <Button type="primary" @click="getinfo" class="submit">查询</Button>
+                <Button type="success" @click="getinfo" class="submit">查询</Button>
             </div>
         </div>
             <Table height="520"   stripe border :columns="columns5" :data="data5"></Table>
@@ -78,7 +78,7 @@
                             return h('div', [
                                 h('Button', {
                                     props: {
-                                        type: 'primary',
+                                        type: 'success',
                                         size: 'small'
                                     },
                                     style: {
@@ -189,10 +189,10 @@
     .group-panel-box {
         &.blue {
             .panel-title {
-                background: #2d8cf0;
+                background: #19be6b;
             }
             .panel-line {
-                background: #2d8cf0;
+                background: #19be6b;
             }
         }
         .panel-title {

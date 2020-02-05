@@ -1,7 +1,7 @@
 <template>
   <div>
     <i-button type="text" @click="onCancel">{{cancelText}}</i-button>
-    <i-button type="primary" :loading="loading" @click="onSave">{{saveText}}</i-button>
+    <i-button type="success" :loading="loading" @click="onSave">{{saveText}}</i-button>
   </div>
 </template>
 

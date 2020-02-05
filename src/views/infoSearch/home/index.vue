@@ -406,7 +406,7 @@ export default {
   padding: 0;
   position: absolute;
   height: 100%;
-  width: 1350px;
+  width: 100%;
   background: #fcf9f2;
 }
 
@@ -445,17 +445,17 @@ export default {
 .ivu-input-group-prepend .ivu-select-selection {
   border-radius: 0;
   margin: -5px -1px;
-  border-color: #57a3f3;
+  border-color: #19be6b;
 }
 .ivu-input {
   border-radius: 0;
-  border-color: #57a3f3;
+  border-color: #19be6b;
   padding-right: 75px;
 }
 .ivu-input-wrapper > i {
   width: 40px;
   font-size: 16px;
-  background: #57a3f3;
+  background: #19be6b;
   color: white;
   cursor: pointer;
 }

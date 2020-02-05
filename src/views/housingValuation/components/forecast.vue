@@ -53,7 +53,7 @@
                     <div id="part3" style="height: 330px; width: 600px; border: 1px solid #dcdee2">
                         <div style="margin: 20px">
                             <div style="background-color:#f8f8f9;height:120px;width: 100%;">
-                                <p style="font-size: 30px;color: #2d8cf0;text-align: left;margin: 20px">
+                                <p style="font-size: 30px;color: #19be6b;text-align: left;margin: 20px">
                                     <strong style="margin-right: 180px">单价:6992/m2</strong>
                                     <strong>总价:70万</strong>
                                 </p>
@@ -615,10 +615,10 @@ body {
 .group-panel-box {
   &.blue {
     .panel-title {
-      background: #2d8cf0;
+      background: #19be6b;
     }
     .panel-line {
-      background: #2d8cf0;
+      background: #19be6b;
     }
   }
   .panel-title {

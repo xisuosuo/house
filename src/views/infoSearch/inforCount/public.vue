@@ -1,8 +1,8 @@
 <template>
     <div>
     <Modal v-model="dialog1" footer-hide :mask-closable="false" width="380" draggable>
-      <p slot="header" style="color:#2d8cf0;text-align:left">
-      <Icon type="ios-stats"  color="#2d8cf0" size="23"/>
+      <p slot="header" style="color:#19be6b;text-align:left">
+      <Icon type="ios-stats"  color="#19be6b" size="23"/>
       <span>公共设施统计</span>
       </p>
       <Tabs size="small">
@@ -224,7 +224,7 @@ export default {
             yDate.push(res.data[0][element.key]);
           });
           _this.automyChart.setOption({
-            color: ["#3398DB"],
+            color: ["#19be6b"],
             tooltip: {
               trigger: "axis",
               axisPointer: {
@@ -302,7 +302,7 @@ export default {
           yDate.push(res.data[0][element.key]);
         });
         _this.myChart.setOption({
-          color: ["#3398DB"],
+          color: ["#19be6b"],
           tooltip: {
             trigger: "axis",
             axisPointer: {
